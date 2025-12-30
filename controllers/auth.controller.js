@@ -14,10 +14,12 @@ const registerUser = async (req, res) => {
       console.log("Email already exists");
       return res.status(400).send({ message: "Email already in use." });
     }
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
     const newUser = await User.create({
       name,
       email,
-      password,
+      password: hashedPassword,
     });
     res.send({ message: "User registered successfully." });
     console.log("User registered successfully");
@@ -32,10 +34,14 @@ const loginUser = async (req, res) => {
     const { email, password } = req.body;
     const checkUserWithEmail = await User.findOne({ email: email });
     if (!checkUserWithEmail) {
-      console.log("Invalid email or password");
-      return res.status(400).send({ message: "Invalid email or password." });
+      console.log("User does not exist with this email");
+      return res.status(400).send({ message: "User does not exist with this email." });
     }
-    if(password !== checkUserWithEmail.password){
+    const isValidPassword = await bcrypt.compare(
+      password,
+      checkUserWithEmail.password
+    );
+    if (!isValidPassword) {
       console.log("Invalid email or password");
       return res.status(400).send({ message: "Invalid email or password." });
     }
