@@ -2,6 +2,7 @@ const apiKeyModel = require("../models/apikey.model");
 
 const validateResponse = async (req, res, next) => {
   try {
+
     const apiKey = req.headers["x-api-key"];
     if (!apiKey) {
       return res.status(401).json({ message: "API key is missing" });
