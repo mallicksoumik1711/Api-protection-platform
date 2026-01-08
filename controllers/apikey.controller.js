@@ -4,6 +4,9 @@ const apiKeyModel = require("../models/apikey.model");
 const generateApiKey = async (req, res) => {
   try {
     const MAX_KEY_PER_USER = 5;
+    const EXPIRY_DAY = 1;
+
+    const expiresAt = new Date(Date.now() + EXPIRY_DAY * 24 * 60 * 60 * 1000);
 
     const totalKeys = await apiKeyModel.countDocuments({
       ownerId: req.user.id,
@@ -21,6 +24,7 @@ const generateApiKey = async (req, res) => {
       ownerType: "User",
       ownerId: userId,
       isActive: true,
+      expiresAt,
     });
 
     res.status(201).json({
