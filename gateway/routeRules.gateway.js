@@ -17,6 +17,12 @@ const rules =
         apiKey: false,
         rateLimit: true,
         auth: false
+    },
+    "/apikeys":
+    {
+        apiKey: false,
+        rateLimit: true,
+        auth: true
     }
 }
 
