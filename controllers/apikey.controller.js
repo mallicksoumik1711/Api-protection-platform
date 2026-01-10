@@ -38,4 +38,21 @@ const generateApiKey = async (req, res) => {
   }
 };
 
-module.exports = generateApiKey;
+const getApiKeys = async (req, res) => {
+  try {
+    const allkeys = await apiKeyModel.find({ ownerId: req.user.id });
+    const activeKeys = allkeys.filter((key) => key.isActive);
+    const inactiveKeys = allkeys.filter((key) => !key.isActive);
+    res.status(200).json({
+      "Total keys": allkeys.length,
+      "Active keys": activeKeys.length,
+      "Inactive keys": inactiveKeys.length,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: err.message });
+  }
+};
+
+module.exports = { generateApiKey, getApiKeys };
