@@ -23,6 +23,7 @@ app.use(gateway);
 
 app.use("/api", dummyData);
 app.use("/unprotected-api", dummyData);
+
 app.use("/auth", authRoutes);
 app.use("/apikeys", apiKeyRoutes);
 app.use("/anon-apikeys", anonApiKeyRoutes);

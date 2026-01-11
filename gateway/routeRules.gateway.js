@@ -1,30 +1,30 @@
 const rules = 
 {
-    "/api": 
+    "/api": // route
     {
         apiKey: true,
         rateLimit: true,
         auth: true
     },
-    "/unprotected-api":
+    "/unprotected-api": //route
     {
         apiKey: true,
         rateLimit: true,
         auth: false
     },
-    "/auth": 
+    "/auth": //middleware
     {
         apiKey: false,
         rateLimit: true,
         auth: false
     },
-    "/apikeys":
+    "/apikeys": //middlewrae
     {
         apiKey: false,
         rateLimit: true,
         auth: true
     },
-    "/anon-apikeys":
+    "/anon-apikeys": //route
     {
         apiKey: false,
         rateLimit: true,
