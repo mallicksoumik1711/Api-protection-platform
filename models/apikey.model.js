@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const apiKeysSchema = new mongoose.Schema({
     key: String,
     isActive: Boolean,
-    ownerType: String, //User, Anonymous
+    ownerType: String, //User
     ownerId: mongoose.Schema.Types.ObjectId,
     ip: String,
     createdAt: 

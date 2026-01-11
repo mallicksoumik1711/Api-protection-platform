@@ -23,6 +23,12 @@ const rules =
         apiKey: false,
         rateLimit: true,
         auth: true
+    },
+    "/anon-apikeys":
+    {
+        apiKey: false,
+        rateLimit: true,
+        auth: false
     }
 }
 

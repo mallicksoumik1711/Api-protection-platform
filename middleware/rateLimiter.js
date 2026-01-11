@@ -4,7 +4,11 @@ const MAX_REQUESTS = 5;
 
 const rateLimit = async (req, res, next) => {
     try{
-        const key = `rate-limit:${req.apiKey.key}`;
+        //not ai genersted comment, for my own understanding
+        const identity = req.apiKey?.key ? `apikey:${req.apiKey.key}` : `ip:${req.ip}`;
+        //ip:::1 where ::1 is the ip address 127.0.0.1
+        // console.log(identity);
+        const key = `rate-limit:${identity}`;
         // console.log(key);
         let currCount = await redisClient.get(key);
         // console.log(currCount);

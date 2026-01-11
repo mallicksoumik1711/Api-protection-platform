@@ -38,6 +38,15 @@ const generateApiKey = async (req, res) => {
   }
 };
 
+const generateAnonApiKey = async (req, res) => {
+  try{
+    res.status(201).json({message: "Anonymous API Key generated successfully"});
+  }
+  catch(err){
+    res.status(500).json({message: "Internal server error", error: err.message});
+  }
+}
+
 const getApiKeys = async (req, res) => {
   try {
     const allkeys = await apiKeyModel.find({ ownerId: req.user.id });
@@ -55,4 +64,4 @@ const getApiKeys = async (req, res) => {
   }
 };
 
-module.exports = { generateApiKey, getApiKeys };
+module.exports = { generateApiKey, generateAnonApiKey, getApiKeys };
