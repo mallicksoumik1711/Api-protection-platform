@@ -16,6 +16,7 @@ databaseConnection();
 const dummyData = require("./routes/dummyData.route");
 const authRoutes = require("./routes/auth.route");
 const apiKeyRoutes = require("./routes/apikey.route");
+const anonApiKeyRoutes = require("./routes/anon_apikey.route");
 
 const gateway = require("./gateway/gateway");
 app.use(gateway);
@@ -24,6 +25,6 @@ app.use("/api", dummyData);
 app.use("/unprotected-api", dummyData);
 app.use("/auth", authRoutes);
 app.use("/apikeys", apiKeyRoutes);
-app.use("/anon-apikeys", apiKeyRoutes);
+app.use("/anon-apikeys", anonApiKeyRoutes);
 
 module.exports = app;
