@@ -11,7 +11,7 @@ cron.schedule("*/5 * * * *", async () => {
 });
 
 // for anonymous API keys
-cron.schedule("*/1 * * * *", async () => {
+cron.schedule("*/5 * * * *", async () => {
   await anonApiKeyModel.updateMany(
     {
       expiresAt: { $lte: new Date() },
