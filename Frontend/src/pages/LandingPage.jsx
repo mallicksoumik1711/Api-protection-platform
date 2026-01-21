@@ -107,6 +107,11 @@ export default function LandingPage() {
         className="absolute inset-0 pointer-events-none z-0"
       />
 
+      {/* Center glow */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
+        <div className="w-[900px] h-[900px] rounded-full bg-purple-700 opacity-[0.2] blur-[180px]" />
+      </div>
+
       {/* Content */}
       <div className="relative z-20 flex flex-col items-center text-center px-6 pt-32">
         {/* Bouncer title */}
@@ -134,7 +139,6 @@ export default function LandingPage() {
           </button>
         </div>
       </div>
-
     </div>
   );
 }
