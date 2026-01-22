@@ -1,7 +1,0 @@
-
-till now I have done rate limit 5 res / min. redis via docker, jwt based middleware.
-user can get dummy data at /api only if theyare registered and they get to see user mail
-not logged in users can not get the /api but they can get data from /unprotected-api
-have rate limit and api keys auth in both the routes
-have authmiddleware in /api only.
-we have created gateway and through that the requests will travel to backend not directly
