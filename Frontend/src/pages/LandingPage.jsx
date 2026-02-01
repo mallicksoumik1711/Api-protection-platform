@@ -3,6 +3,7 @@ import SegmentedCTA from "../components/Buttons";
 import ProductPreview from "../components/ProductPreview";
 import DashboardPreview from "../components/DashboardPreview";
 import ProcessJourney from "../components/ProcessJourney";
+import Navbar from "../components/Navbar";
 
 export default function LandingPage() {
   return (
@@ -10,9 +11,11 @@ export default function LandingPage() {
       <BackgroundDots />
 
       {/* Main hero section */}
-      <section className="relative min-h-screen flex items-center justify-center">
+      <section className="relative min-h-screen flex flex-col items-center justify-center">
         {/* Top fade */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#100F0F] via-transparent to-transparent pointer-events-none" />
+        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#100F0F] via-transparent to-transparent pointer-events-none" /> */}
+
+        <Navbar />
 
         {/* Main content */}
         <div className="relative z-20 flex flex-col items-center text-center px-6 max-w-8xl mx-auto">

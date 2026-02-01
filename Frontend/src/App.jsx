@@ -1,12 +1,10 @@
-import LandingPage from "./pages/LandingPage"
-import FrontPage from "./pages/FrontPage"
+import RoutePage from "./routes/RoutePage";
 
 function App() {
 
   return (
     <div>
-      {/* <FrontPage/> */}
-      <LandingPage/>
+      <RoutePage />
     </div>
   )
 }
