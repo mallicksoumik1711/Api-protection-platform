@@ -1,11 +1,13 @@
 import BackgroundDots from "../components/BackgroundDots";
+import Navbar from "../components/Navbar";
 
 function SignIn() {
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden font-sans">
       <BackgroundDots />
+      <Navbar />
       {/* Login Card - centered with glassmorphism */}
-      <div className="absolute inset-0 flex items-center justify-center px-5 sm:px-0 z-10">
+      <div className="min-h-screen flex items-center justify-center px-5 sm:px-0 z-10 pt-32 pb-32">
         <div
           className="
             w-full max-w-md 

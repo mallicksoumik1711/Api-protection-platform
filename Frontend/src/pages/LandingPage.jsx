@@ -11,14 +11,12 @@ export default function LandingPage() {
       <BackgroundDots />
 
       {/* Main hero section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center">
-        {/* Top fade */}
-        {/* <div className="absolute inset-0 bg-gradient-to-b from-[#100F0F] via-transparent to-transparent pointer-events-none" /> */}
-
+      <section className="relative min-h-screen flex items-center justify-center">
+        
         <Navbar />
 
         {/* Main content */}
-        <div className="relative z-20 flex flex-col items-center text-center px-6 max-w-8xl mx-auto">
+        <div className="relative z-20 flex flex-col items-center  text-center px-6 max-w-8xl mx-auto mt-7">
           <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight">
             Supercharge your API Protection
             <br />
@@ -34,7 +32,7 @@ export default function LandingPage() {
           </p>
 
           {/* Buttons */}
-          <div className="mt-16">
+          <div className="">
             <SegmentedCTA />
           </div>
         </div>
