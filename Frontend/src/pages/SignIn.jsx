@@ -11,7 +11,7 @@ function SignIn() {
         <div
           className="
             w-full max-w-md 
-            backdrop-blur-xl bg-white/5 
+            backdrop-blur-md bg-white/5 
             border border-white/10 
             rounded-2xl 
             shadow-2xl shadow-black/40
@@ -80,10 +80,9 @@ function SignIn() {
               type="submit"
               className="
                 w-full py-3.5 
-                bg-gradient-to-r from-indigo-600 to-purple-600 
-                hover:from-indigo-500 hover:to-purple-500 
+                bg-black/10
+                backdrop-blur  
                 rounded-lg font-medium 
-                shadow-lg shadow-indigo-900/30 
                 transition-all duration-300 
                 mt-2
               "
