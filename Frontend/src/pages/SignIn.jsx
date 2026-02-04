@@ -79,12 +79,13 @@ function SignIn() {
             <button
               type="submit"
               className="
+                flex items-center justify-center gap-3 
                 w-full py-3.5 
-                bg-black/10
-                backdrop-blur  
-                rounded-lg font-medium 
-                transition-all duration-300 
-                mt-2
+                bg-white/5 
+                border border-white/10 
+                rounded-lg 
+                hover:bg-white/10 
+                transition-all duration-200
               "
             >
               Sign In
