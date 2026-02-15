@@ -1,7 +1,26 @@
 import BackgroundDots from "../components/BackgroundDots";
 import Navbar from "../components/Navbar";
+import {handleLogin} from "../api/auth";
+import {useNavigate} from "react-router-dom";
 
 function SignIn() {
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    try{
+      const submission = await handleLogin(email, password);
+      console.log("Login response:", submission);
+      navigate("/frontpage"); 
+    }
+    catch(err){
+      console.log("Login error:", err);
+    }
+  }
+
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden font-sans">
       <BackgroundDots />
@@ -27,7 +46,7 @@ function SignIn() {
           </p>
 
           {/* Form */}
-          <form className="space-y-5">
+          <form className="space-y-5" onSubmit={handleSubmit}>
             <div>
               <label
                 htmlFor="email"

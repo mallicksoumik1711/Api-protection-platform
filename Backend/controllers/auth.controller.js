@@ -23,7 +23,7 @@ const registerUser = async (req, res) => {
     const newUser = await User.create({
       name,
       email,
-      password: hashedPassword,
+      password: hashedPassword, 
     });
 
     const token = generateToken(newUser);

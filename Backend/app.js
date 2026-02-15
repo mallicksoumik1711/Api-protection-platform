@@ -1,8 +1,15 @@
 require("dotenv").config();
 
+const cors = require('cors');
+
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
+
+app.use(cors({
+    origin: "http://localhost:5173",
+    credentials: true,
+}));
 
 require("./utils/apiKeyExpiry");
 
