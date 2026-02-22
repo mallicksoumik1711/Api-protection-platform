@@ -1,12 +1,28 @@
 import BackgroundDots from "../components/BackgroundDots";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
+import { handleSignup } from "../api/auth";
 
 function SignUp() {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    const name = e.target.name.value;
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    const confirmPassword = e.target.confirmPassword.value;
+    if (password !== confirmPassword) {
+      console.error("Passwords do not match");
+      return;
+    }
+    try{
+      const submission = await handleSignup(name, email, password);
+      console.log("Signup response:", submission);
+      navigate("/frontpage"); 
+    } catch (error) {
+      console.error("Signup error:", error);
+    }
     console.log("Form submitted");
   }
 
@@ -108,6 +124,30 @@ function SignUp() {
               />
             </div>
 
+            <div>
+              <label
+                htmlFor="confirmPassword"
+                className="block text-sm font-medium text-gray-300 mb-1.5"
+              >
+                Confirm Password
+              </label>
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="••••••••"
+                className="
+                      w-full px-4 py-3.5 
+                      bg-white/5 
+                      border border-white/10 
+                      rounded-lg 
+                      text-white placeholder-gray-500 
+                      focus:outline-none focus:border-indigo-500/50 
+                      focus:bg-white/10 
+                      transition-all duration-200
+                    "
+              />
+            </div>
+
             <button
               type="submit"
               className="
@@ -120,7 +160,7 @@ function SignUp() {
                     transition-all duration-200
                   "
             >
-              Sign In
+              Sign Up
             </button>
           </form>
 
