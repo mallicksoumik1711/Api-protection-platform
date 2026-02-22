@@ -11,6 +11,10 @@ function SignIn() {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
+    if(!email || !password){
+      console.error("Email and password are required");
+      return;
+    }
     try{
       const submission = await handleLogin(email, password);
       console.log("Login response:", submission);

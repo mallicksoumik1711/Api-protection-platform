@@ -12,6 +12,10 @@ function SignUp() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
+    if(!name || !email || !password || !confirmPassword){
+      console.error("All fields are required");
+      return;
+    }
     if (password !== confirmPassword) {
       console.error("Passwords do not match");
       return;
