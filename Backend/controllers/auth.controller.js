@@ -7,6 +7,11 @@ const registerUser = async (req, res) => {
   try {
     const { name, email, password, confirmPassword } = req.body;
 
+    if (!name || !email || !password || !confirmPassword) {
+      console.log("All fields are required");
+      return res.status(400).send({ message: "All fields are required." });
+    }
+
     if (password !== confirmPassword) {
       console.log("Passwords do not match");
       return res.status(400).send({ message: "Passwords do not match." });
