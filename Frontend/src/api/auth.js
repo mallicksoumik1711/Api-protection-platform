@@ -4,19 +4,16 @@ export const handleLogin = async (email, password) => {
   try {
     const res = await axios.post(
       "http://localhost:3000/auth/login",
-      {
-        email,
-        password,
-      },
-      {
-        withCredentials: true,
-      },
+      { email, password },
+      { withCredentials: true },
     );
-    console.log("Login response:", res.data);
+
     return res.data;
   } catch (error) {
-    console.error("Login error:", error);
-    return { message: "Login failed." };
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Login failed.");
   }
 };
 
@@ -28,10 +25,11 @@ export const handleSignup = async (name, email, password) => {
       password,
       confirmPassword: password,
     });
-    console.log("Signup response:", res.data);
     return res.data;
   } catch (error) {
-    console.error("Signup error:", error);
-    return { message: "Signup failed." };
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Signup failed.");
   }
 };

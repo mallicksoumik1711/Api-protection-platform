@@ -12,6 +12,7 @@ function SignIn() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     if(!email || !password){
+      alert("Email and password are required");
       console.error("Email and password are required");
       return;
     }
@@ -22,6 +23,7 @@ function SignIn() {
     }
     catch(err){
       console.log("Login error:", err);
+      alert(err.message);
     }
   }
 

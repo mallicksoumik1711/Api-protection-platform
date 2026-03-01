@@ -13,10 +13,12 @@ function SignUp() {
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
     if(!name || !email || !password || !confirmPassword){
+      alert("All fields are required");
       console.error("All fields are required");
       return;
     }
     if (password !== confirmPassword) {
+      alert("Passwords do not match");
       console.error("Passwords do not match");
       return;
     }
@@ -25,9 +27,9 @@ function SignUp() {
       console.log("Signup response:", submission);
       navigate("/frontpage"); 
     } catch (error) {
+      alert(error.message);
       console.error("Signup error:", error);
     }
-    console.log("Form submitted");
   }
 
   return (
