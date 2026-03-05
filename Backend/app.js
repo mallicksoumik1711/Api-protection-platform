@@ -35,4 +35,6 @@ app.use("/auth", authRoutes);
 app.use("/apikeys", apiKeyRoutes);
 app.use("/anon-apikeys", anonApiKeyRoutes);
 
+app.use("/protected", authRoutes);
+
 module.exports = app;
