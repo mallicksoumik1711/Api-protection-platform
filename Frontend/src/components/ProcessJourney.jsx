@@ -116,7 +116,7 @@ export default function ProcessJourney() {
                   <div
                     className="
               relative w-[260px] h-[420px]
-              rounded-2xl
+              rounded-lg
               border border-white/10
               bg-gradient-to-b from-[#18142a] to-[#0c0a16]
               backdrop-blur-lg

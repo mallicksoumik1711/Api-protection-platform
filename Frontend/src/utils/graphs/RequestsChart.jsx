@@ -17,52 +17,52 @@ const data = [
   { name: "Sun", requests: 2800 },
 ];
 
-function RequestsChart() {
+export default function RequestsChart() {
   return (
-    <div className="h-[260px] w-full">
-      <ResponsiveContainer width="100%" height="100%">
-        <AreaChart data={data}>
-          <defs>
-            <linearGradient id="colorRequests" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#8b5cf6" stopOpacity={0.6} />
-              <stop offset="100%" stopColor="#8b5cf6" stopOpacity={0.05} />
-            </linearGradient>
-          </defs>
+    <ResponsiveContainer width="100%" height="100%">
+      <AreaChart data={data}>
+        <defs>
+          <linearGradient id="colorReq" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="5%" stopColor="#a78bfa" stopOpacity={0.55} />
+            <stop offset="95%" stopColor="#a78bfa" stopOpacity={0.04} />
+          </linearGradient>
+        </defs>
 
-          <XAxis
-            dataKey="name"
-            tick={{ fill: "rgba(255,255,255,0.5)", fontSize: 12 }}
-            axisLine={false}
-            tickLine={false}
-          />
+        <XAxis
+          dataKey="name"
+          tick={{ fill: "rgba(255,255,255,0.45)", fontSize: 13 }}
+          axisLine={false}
+          tickLine={false}
+          dy={12}
+        />
+        <YAxis
+          tick={{ fill: "rgba(255,255,255,0.45)", fontSize: 13 }}
+          axisLine={false}
+          tickLine={false}
+          dx={-8}
+        />
 
-          <YAxis
-            tick={{ fill: "rgba(255,255,255,0.5)", fontSize: 12 }}
-            axisLine={false}
-            tickLine={false}
-          />
+        <Tooltip
+          contentStyle={{
+            backgroundColor: "rgba(15, 15, 35, 0.94)",
+            border: "1px solid rgba(255,255,255,0.08)",
+            borderRadius: "12px",
+            boxShadow: "0 16px 40px -10px rgba(0,0,0,0.5)",
+            padding: "12px 16px",
+          }}
+          labelStyle={{ color: "#e0e0ff", fontWeight: 500 }}
+          itemStyle={{ color: "#fff" }}
+        />
 
-          <Tooltip
-            contentStyle={{
-              background: "rgba(15,15,25,0.9)",
-              border: "1px solid rgba(255,255,255,0.1)",
-              borderRadius: "8px",
-              color: "#fff",
-            }}
-            labelStyle={{ color: "#aaa" }}
-          />
-
-          <Area
-            type="monotone"
-            dataKey="requests"
-            stroke="#8b5cf6"
-            strokeWidth={2}
-            fill="url(#colorRequests)"
-          />
-        </AreaChart>
-      </ResponsiveContainer>
-    </div>
+        <Area
+          type="monotone"
+          dataKey="requests"
+          stroke="#c4b5fd"
+          strokeWidth={2.5}
+          fill="url(#colorReq)"
+          activeDot={{ r: 7, stroke: "#c4b5fd", strokeWidth: 3, fill: "#000" }}
+        />
+      </AreaChart>
+    </ResponsiveContainer>
   );
 }
-
-export default RequestsChart;
