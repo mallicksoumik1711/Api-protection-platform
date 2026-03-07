@@ -56,7 +56,7 @@ export default function DashboardPreview() {
       </aside>
 
       {/* Main content */}
-      <main className="flex-1 overflow-y-auto p-8 bg-black/20 backdrop-blur-sm">
+      <main className="flex-1 overflow-y-auto bg-black/20 backdrop-blur-sm">
         {active === "overview" && <Overview />}
         {active === "apikeys"   && <ApiKeys />}
         {active === "ratelimit" && <RateLimit />}
