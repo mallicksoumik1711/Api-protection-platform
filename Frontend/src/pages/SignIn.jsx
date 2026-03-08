@@ -3,6 +3,8 @@ import Navbar from "../components/Navbar";
 import {handleLogin} from "../api/auth";
 import {useNavigate} from "react-router-dom";
 
+import toast from "react-hot-toast";
+
 function SignIn() {
 
   const navigate = useNavigate();
@@ -12,7 +14,7 @@ function SignIn() {
     const email = e.target.email.value;
     const password = e.target.password.value;
     if(!email || !password){
-      alert("Email and password are required");
+      toast.error("Email and password are required");
       console.error("Email and password are required");
       return;
     }
@@ -23,7 +25,7 @@ function SignIn() {
     }
     catch(err){
       console.log("Login error:", err);
-      alert(err.message);
+      toast.error(err.message);
     }
   }
 
