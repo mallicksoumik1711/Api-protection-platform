@@ -1,6 +1,7 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {toast} from "react-hot-toast";
 
 function ProtectedRoutes({ children }) {
   const [isAuth, setIsAuth] = useState(null);
@@ -23,6 +24,7 @@ function ProtectedRoutes({ children }) {
   if (isAuth === null) return <div>Loading...</div>;
 
   if (!isAuth) {
+    toast.error("You must be logged in to access this page");
     return <Navigate to="/signin" />;
   }
 
