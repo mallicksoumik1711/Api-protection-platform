@@ -49,7 +49,7 @@ export default function SegmentedCTA() {
               ${hovered === "left" ? "text-black" : "text-white/70"}
             `}
           >
-            Analyze a GitHub Profile →
+            Sign In →
           </button>
 
           {/* COMPARE */}
@@ -63,7 +63,7 @@ export default function SegmentedCTA() {
               ${hovered === "right" ? "text-black" : "text-white/70"}
             `}
           >
-            Compare Developers →
+            Try Demo →
           </button>
         </div>
       </div>
