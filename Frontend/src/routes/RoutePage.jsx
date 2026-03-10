@@ -4,6 +4,7 @@ import SignUp from "../pages/SignUp";
 import FrontPage from "../pages/FrontPage";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "../utils/HelperFunctions/ProtectedRoutes";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 import { Toaster } from "react-hot-toast";
 
@@ -30,7 +31,9 @@ function RoutePage() {
           path="/frontpage"
           element={
             <ProtectedRoutes>
-              <FrontPage />
+              <DashboardLayout>
+                <FrontPage />
+              </DashboardLayout>
             </ProtectedRoutes>
           }
         />
