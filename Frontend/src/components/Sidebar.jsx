@@ -6,28 +6,20 @@ import {
   Gauge,
   Eye,
   Shield,
-  Globe,
-  Search
+  Globe
 } from "lucide-react";
 
 export default function Sidebar() {
   return (
     <aside className="h-screen w-1/5 bg-black border-r border-zinc-800 flex flex-col overflow-y-auto scrollbar scrollbar-thumb-zinc-800 scrollbar-track-black">
       {/* PROJECT HEADER */}
-      <div className="px-4 py-4 border-b border-zinc-800">
+      <div className="px-4 py-4 border-b border-zinc-800 flex items-center gap-2">
+        <img className="w-6 h-6" src="/asset/Images/bouncer.png" alt="Logo" />
         <p className="text-sm font-medium text-zinc-200">Soumik's projects</p>
       </div>
 
-      {/* SEARCH */}
-      <div className="px-2 py-3">
-        <input
-          placeholder="Find..."
-          className="w-full bg-zinc-900 text-sm px-3 py-2 rounded-md border border-zinc-800 focus:outline-none"
-        />
-      </div>
-
       {/* MENU */}
-      <div className="flex-1 px-2 space-y-2 text-sm">
+      <div className="flex-1 px-2 py-3 space-y-2 text-sm">
         <SidebarItem
           icon={<LayoutDashboard size={16} />}
           text="Projects"

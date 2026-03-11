@@ -49,11 +49,10 @@ export default function Navbar() {
           onClick={() => navigate("/")}
           className="flex items-center gap-2 cursor-pointer"
         >
-          {/* <span className="text-xl"></span> */}
           <img
             src="/asset/Images/bouncer.png"
             alt="Bouncer Logo"
-            className="w-8 h-8"
+            className="w-8"
           />
           <span className="text-gray-100">Bouncer</span>
         </div>

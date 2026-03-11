@@ -21,7 +21,7 @@ export default function LandingPage() {
             <h1 className="text-xl sm:text-3xl md:text-5xl lg:text-7xl font-bold tracking-tight leading-tight">
               Supercharge your API Protection
               <br />
-              <span className="bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-500 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-[#8e9eab] to-[#eef2f3] bg-clip-text text-transparent">
                 with Bouncer
               </span>
             </h1>
@@ -29,7 +29,7 @@ export default function LandingPage() {
             <p className="mt-8 max-w-3xl text-sm md:text-2xl lg:text-3xl font-medium text-white/80">
               The fastest API Protection Platform
               <br className="hidden sm:block" />
-              For Modern Application
+              For Modern Applications
             </p>
 
             {/* Buttons */}
@@ -40,7 +40,7 @@ export default function LandingPage() {
         </section>
       </ScrollRevealSection>
 
-      <ScrollRevealSection direction="up" duration="900" delay="200">
+      <ScrollRevealSection direction="up" duration="800" delay="0">
         <ProductPreview>
           <DashboardPreview />
         </ProductPreview>
