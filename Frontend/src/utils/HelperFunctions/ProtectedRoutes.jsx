@@ -1,13 +1,15 @@
 import { Navigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {toast} from "react-hot-toast";
+import { toast } from "react-hot-toast";
+import DashboardSkeleton from "../../layouts/skeletons/DashboardSkeleton";
 
 function ProtectedRoutes({ children }) {
   const [isAuth, setIsAuth] = useState(null);
 
   useEffect(() => {
     const checkAuth = async () => {
+      // await new Promise((resolve) => setTimeout(resolve, 10000)); 
       try {
         await axios.get("http://localhost:3000/auth/protected", {
           withCredentials: true,
@@ -20,8 +22,7 @@ function ProtectedRoutes({ children }) {
 
     checkAuth();
   }, []);
-
-  if (isAuth === null) return <div>Loading...</div>;
+  if (isAuth === null) return <DashboardSkeleton />;
 
   if (!isAuth) {
     toast.error("You must be logged in to access this page");
