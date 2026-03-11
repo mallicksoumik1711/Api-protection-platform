@@ -1,10 +1,13 @@
 import LandingPage from "../pages/LandingPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import FrontPage from "../pages/FrontPage";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "../utils/HelperFunctions/ProtectedRoutes";
 import DashboardLayout from "../layouts/DashboardLayout";
+
+// Dashboard Pages
+import FrontPage from "../pages/Dashboard/FrontPage";
+import CreateProject from "../pages/Dashboard/CreateProject";
 
 import { Toaster } from "react-hot-toast";
 
@@ -37,6 +40,17 @@ function RoutePage() {
             </ProtectedRoutes>
           }
         />
+        <Route
+          path="/create-project"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <CreateProject />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+
       </Routes>
     </div>
   );
