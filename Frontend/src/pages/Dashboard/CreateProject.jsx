@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { integrationCode } from "../../utils/HelperFunctions/integrationCode"
+import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
+import { Waypoints, BotOff, ShieldAlert } from "lucide-react";
 
 function CreateProject() {
   const [framework, setFramework] = useState("Node / Express");
@@ -8,21 +9,44 @@ function CreateProject() {
     <div className="bg-black px-6 py-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-8">
-          <p className="text-xs uppercase tracking-widest text-zinc-500 mb-2">
-            Project Setup
-          </p>
 
-          <h1 className="text-3xl font-semibold text-white mb-3">
-            Create Project
-          </h1>
+        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-5">
+          Project Setup
+        </p>
 
-          <p className="text-zinc-400 max-w-2xl">
-            Create a project to start protecting and monitoring your APIs. After
-            creating the project, integrate the middleware into your backend to
-            enable request protection and analytics.
-          </p>
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-semibold text-white py-2">
+              New Workspace
+            </h1>
+          </div>
+
+          {/* RIGHT HEADER FEATURES */}
+          <div className="hidden lg:block overflow-hidden">
+            <div className="flex whitespace-nowrap animate-marquee text-sm text-zinc-400">
+              <div className="flex gap-6 mr-6">
+                <div className="flex items-center gap-2">
+                  <Waypoints className="w-4 h-4" />
+                  <span>Rate Limiting</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <BotOff className="w-4 h-4" />
+                  <span>Bot Detection</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <ShieldAlert className="w-4 h-4" />
+                  <span>Attack Prevention</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+
+        <p className="text-zinc-400 max-w-2xl mb-8">
+          Create a project to start protecting and monitoring your APIs. After
+          creating the project, integrate the middleware into your backend to
+          enable request protection and analytics.
+        </p>
 
         <div className="grid grid-cols-2 gap-6">
           {/* LEFT SIDE */}
@@ -133,8 +157,13 @@ function CreateProject() {
               to start protecting API requests.
             </p>
 
+            <div className="h-10 bg-black/80 border-b border-white/8 px-6 flex items-center rounded-md">
+              <span className="text-xs font-medium text-slate-600">
+                {framework} • Integration
+              </span>
+            </div>
             <div className="bg-black border border-zinc-800 rounded-md p-4">
-              <pre className="text-sm text-green-400 overflow-x-auto">
+              <pre className="text-sm text-purple-400 overflow-x-auto">
                 <code>{integrationCode[framework]}</code>
               </pre>
             </div>
