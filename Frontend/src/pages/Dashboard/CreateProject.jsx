@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
 import { Waypoints, BotOff, ShieldAlert, Link } from "lucide-react";
+import Dropdown from "../../layouts/Dropdown";
 
 function CreateProject() {
   const [framework, setFramework] = useState("Node / Express");
+  const [environment, setEnvironment] = useState("Development");
 
   return (
     <div className="bg-black px-6 py-4">
@@ -48,9 +50,9 @@ function CreateProject() {
           enable request protection and analytics.
         </p>
 
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 gap-6 items-start">
           {/* LEFT SIDE */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5 space-y-6">
+          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5 space-y-6 sticky top-6 h-fit">
             {/* Project Name */}
             <div className="border border-zinc-800 rounded-lg p-5">
               <h2 className="text-white font-medium mb-2">Project Name</h2>
@@ -106,41 +108,30 @@ function CreateProject() {
 
             {/* Framework */}
 
-            <div className="border border-zinc-800 rounded-lg p-5">
-              <h2 className="text-white font-medium mb-2">
-                Framework <span className="text-zinc-500">(optional)</span>
-              </h2>
-
-              <p className="text-sm text-zinc-400 mb-4">
-                Select the backend framework used for this API.
-              </p>
-
-              <select
-                value={framework}
-                onChange={(e) => setFramework(e.target.value)}
-                className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
-              >
-                <option>Node / Express</option>
-                <option>FastAPI</option>
-                <option>Django</option>
-                <option>Spring Boot</option>
-                <option>Other</option>
-              </select>
-            </div>
+            <Dropdown
+              label="Framework"
+              optional={true}
+              description="Select the backend framework used for this API."
+              options={[
+                "Node / Express",
+                "FastAPI",
+                "Django",
+                "Spring Boot",
+                "Other",
+              ]}
+              value={framework}
+              onChange={setFramework}
+            />
 
             {/* Environment */}
-            <div className="border border-zinc-800 rounded-lg p-5">
-              <h2 className="text-white font-medium mb-2">Environment</h2>
 
-              <p className="text-sm text-zinc-400 mb-4">
-                Select the environment where this API will run.
-              </p>
-
-              <select className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700">
-                <option>Development</option>
-                <option>Production</option>
-              </select>
-            </div>
+            <Dropdown
+              label="Environment"
+              description="Select the environment where this API will run."
+              options={["Development", "Production"]}
+              value={environment}
+              onChange={setEnvironment}
+            />
 
             <div className="flex justify-end">
               <button className="bg-white text-black px-5 py-2 rounded-md cursor-pointer text-sm font-medium hover:bg-zinc-200 transition">
@@ -150,162 +141,172 @@ function CreateProject() {
           </div>
 
           {/* RIGHT SIDE */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
-            <h2 className="text-white font-medium mb-2">
-              Framework Integration
-            </h2>
+          <div className="space-y-6 sticky top-6 h-fit">
+            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+              <h2 className="text-white font-medium mb-2">
+                Framework Integration
+              </h2>
 
-            <p className="text-sm text-zinc-400 mb-4">
-              After creating your project, add this middleware to your backend
-              to start protecting API requests.
-            </p>
-
-            <div className="h-10 bg-black/80 border-b border-white/8 px-6 flex items-center rounded-md">
-              <span className="text-xs font-medium text-slate-600">
-                {framework} • Integration
-              </span>
-            </div>
-            <div className="bg-black border border-zinc-800 rounded-md p-4">
-              <pre className="text-sm overflow-x-auto">
-                <code>{integrationCode[framework]}</code>
-              </pre>
-            </div>
-
-            <div className="mt-6 space-y-4">
-              <h3 className="text-sm font-medium text-zinc-200">
-                What gets protected automatically
-              </h3>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                  <Waypoints className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-zinc-300 font-medium">Rate Limiting</p>
-                    <p className="text-zinc-500">
-                      Prevents abuse from repeated requests
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                  <BotOff className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-zinc-300 font-medium">
-                      Bot & Crawler Detection
-                    </p>
-                    <p className="text-zinc-500">Blocks malicious automation</p>
-                  </div>
-                </div>
-
-                <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                  <ShieldAlert className="w-5 h-5 text-violet-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-zinc-300 font-medium">
-                      Attack Pattern Blocking
-                    </p>
-                    <p className="text-zinc-500">
-                      SQLi, XSS, path traversal & more
-                    </p>
-                  </div>
-                </div>
-
-                <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                  <Link className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <p className="text-zinc-300 font-medium">
-                      Analytics & Insights
-                    </p>
-                    <p className="text-zinc-500">
-                      See blocked requests in dashboard
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <p className="text-xs text-zinc-500 text-center pt-2">
-                All features enabled by default — customize later in project
-                settings
+              <p className="text-sm text-zinc-400 mb-4">
+                After creating your project, add this middleware to your backend
+                to start protecting API requests.
               </p>
+
+              <div className="h-10 bg-black/80 border-b border-white/8 px-6 flex items-center rounded-md">
+                <span className="text-xs font-medium text-slate-600">
+                  {framework} • Integration
+                </span>
+              </div>
+              <div className="bg-black border border-zinc-800 rounded-md p-4">
+                <pre className="text-sm overflow-x-auto">
+                  <code>{integrationCode[framework]}</code>
+                </pre>
+              </div>
             </div>
 
-            <div className="mt-6">
-              <h3 className="text-sm font-medium text-zinc-200 mb-4">
-                Next steps after creation
-              </h3>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+              <div className="space-y-4">
+                <h3 className="text-sm font-medium text-zinc-200">
+                  What gets protected automatically
+                </h3>
 
-              <ol className="space-y-4 text-sm">
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-300 text-xs font-medium">
-                    1
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
+                    <Waypoints className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-zinc-300 font-medium">Rate Limiting</p>
+                      <p className="text-zinc-500">
+                        Prevents abuse from repeated requests
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-zinc-300">Copy your Project Key</p>
-                    <p className="text-zinc-500 text-xs">
-                      It will appear in the project overview
-                    </p>
-                  </div>
-                </li>
 
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-300 text-xs font-medium">
-                    2
+                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
+                    <BotOff className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-zinc-300 font-medium">
+                        Bot & Crawler Detection
+                      </p>
+                      <p className="text-zinc-500">
+                        Blocks malicious automation
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-zinc-300">
-                      Add middleware to your backend
-                    </p>
-                    <p className="text-zinc-500 text-xs">
-                      Paste the code above into your app
-                    </p>
-                  </div>
-                </li>
 
-                <li className="flex items-center gap-3">
-                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-300 text-xs font-medium">
-                    3
+                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
+                    <ShieldAlert className="w-5 h-5 text-violet-400 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-zinc-300 font-medium">
+                        Attack Pattern Blocking
+                      </p>
+                      <p className="text-zinc-500">
+                        SQLi, XSS, path traversal & more
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-zinc-300">Test & monitor</p>
-                    <p className="text-zinc-500 text-xs">
-                      Send requests and check dashboard for analytics
-                    </p>
+
+                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
+                    <Link className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
+                    <div>
+                      <p className="text-zinc-300 font-medium">
+                        Analytics & Insights
+                      </p>
+                      <p className="text-zinc-500">
+                        See blocked requests in dashboard
+                      </p>
+                    </div>
                   </div>
-                </li>
-              </ol>
+                </div>
+
+                <p className="text-xs text-zinc-500 text-center pt-2">
+                  All features enabled by default — customize later in project
+                  settings
+                </p>
+              </div>
             </div>
 
-            <div className="mt-6">
-              <h3 className="text-sm font-medium text-zinc-200 mb-3">
-                Pro Tips
-              </h3>
+            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+              <div className="">
+                <h3 className="text-sm font-medium text-zinc-200 mb-4">
+                  Next steps after creation
+                </h3>
 
-              <div className="space-y-3">
-                <div className="bg-zinc-950/40 border-l-4 border-violet-500 pl-3 py-2 text-xs">
-                  <span className="text-violet-300 font-medium">
-                    Start small:{" "}
-                  </span>
-                  <span className="text-zinc-400">
-                    Test in development first before going to production.
-                  </span>
-                </div>
+                <ol className="space-y-4 text-sm">
+                  <li className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-300 text-xs font-medium">
+                      1
+                    </div>
+                    <div>
+                      <p className="text-zinc-300">Copy your Project Key</p>
+                      <p className="text-zinc-500 text-xs">
+                        It will appear in the project overview
+                      </p>
+                    </div>
+                  </li>
 
-                <div className="bg-zinc-950/40 border-l-4 border-emerald-500 pl-3 py-2 text-xs">
-                  <span className="text-emerald-300 font-medium">
-                    Zero false positives:{" "}
-                  </span>
-                  <span className="text-zinc-400">
-                    Our ML-tuned rules rarely block legitimate users.
-                  </span>
-                </div>
+                  <li className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-300 text-xs font-medium">
+                      2
+                    </div>
+                    <div>
+                      <p className="text-zinc-300">
+                        Add middleware to your backend
+                      </p>
+                      <p className="text-zinc-500 text-xs">
+                        Paste the code above into your app
+                      </p>
+                    </div>
+                  </li>
 
-                <div className="bg-zinc-950/40 border-l-4 border-amber-500 pl-3 py-2 text-xs">
-                  <span className="text-amber-300 font-medium">
-                    Customize later:{" "}
-                  </span>
-                  <span className="text-zinc-400">
-                    Adjust rules, add allowlists, or create custom challenges
-                    from the dashboard.
-                  </span>
+                  <li className="flex items-center gap-3">
+                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-violet-950/50 border border-violet-800 flex items-center justify-center text-violet-300 text-xs font-medium">
+                      3
+                    </div>
+                    <div>
+                      <p className="text-zinc-300">Test & monitor</p>
+                      <p className="text-zinc-500 text-xs">
+                        Send requests and check dashboard for analytics
+                      </p>
+                    </div>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+              <div className="">
+                <h3 className="text-sm font-medium text-zinc-200 mb-3">
+                  Pro Tips
+                </h3>
+
+                <div className="space-y-3">
+                  <div className="bg-zinc-950/40 border-l-4 border-violet-500 pl-3 py-2 text-xs">
+                    <span className="text-violet-300 font-medium">
+                      Start small:{" "}
+                    </span>
+                    <span className="text-zinc-400">
+                      Test in development first before going to production.
+                    </span>
+                  </div>
+
+                  <div className="bg-zinc-950/40 border-l-4 border-emerald-500 pl-3 py-2 text-xs">
+                    <span className="text-emerald-300 font-medium">
+                      Zero false positives:{" "}
+                    </span>
+                    <span className="text-zinc-400">
+                      Our ML-tuned rules rarely block legitimate users.
+                    </span>
+                  </div>
+
+                  <div className="bg-zinc-950/40 border-l-4 border-amber-500 pl-3 py-2 text-xs">
+                    <span className="text-amber-300 font-medium">
+                      Customize later:{" "}
+                    </span>
+                    <span className="text-zinc-400">
+                      Adjust rules, add allowlists, or create custom challenges
+                      from the dashboard.
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
