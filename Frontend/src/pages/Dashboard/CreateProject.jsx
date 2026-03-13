@@ -10,7 +10,7 @@ function CreateProject() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
 
-        <p className="text-xs uppercase tracking-widest text-zinc-500 mb-5">
+        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
           Project Setup
         </p>
 
