@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
-import { Waypoints, BotOff, ShieldAlert } from "lucide-react";
+import { Waypoints, BotOff, ShieldAlert, Link } from "lucide-react";
 
 function CreateProject() {
   const [framework, setFramework] = useState("Node / Express");
@@ -86,8 +86,8 @@ function CreateProject() {
 
             {/* Backend URL */}
             <div className="border border-zinc-800 rounded-lg p-5">
-              <h2 className="text-white font-medium mb-2">
-                Backend API Base URL <span className="text-red-400">★</span>
+              <h2 className="flex items-center gap-2 text-white font-medium mb-2">
+                Backend API Base URL <span><Link className="w-4 h-4"/></span>
               </h2>
 
               <p className="text-sm text-zinc-400 mb-4">
