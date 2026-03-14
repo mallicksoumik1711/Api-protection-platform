@@ -8,6 +8,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
 import CreateProject from "../pages/Dashboard/CreateProject";
+import ApiKeysDetails from "../pages/Dashboard/API Keys/API Keys Details/ApiKeysDetails";
 
 import { Toaster } from "react-hot-toast";
 
@@ -50,7 +51,16 @@ function RoutePage() {
             </ProtectedRoutes>
           }
         />
-
+        <Route
+          path="/api-keys"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ApiKeysDetails />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
       </Routes>
     </div>
   );

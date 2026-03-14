@@ -33,6 +33,11 @@ export default function Sidebar() {
           text="Create Project"
           path="/create-project"
         />
+        <SidebarItem
+          icon={<FileText size={16} />}
+          text="API keys"
+          path="/api-keys"
+        />
         <SidebarItem icon={<FileText size={16} />} text="Logs" path="/logs" />
         <SidebarItem
           icon={<BarChart2 size={16} />}
