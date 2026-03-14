@@ -7,6 +7,7 @@ import {
   Eye,
   Shield,
   Globe,
+  FileCodeCorner,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -34,7 +35,7 @@ export default function Sidebar() {
           path="/create-project"
         />
         <SidebarItem
-          icon={<FileText size={16} />}
+          icon={<FileCodeCorner size={16} />}
           text="API keys"
           path="/api-keys"
         />
