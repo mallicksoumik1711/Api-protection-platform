@@ -25,7 +25,7 @@ function CreateProject() {
 
           {/* RIGHT HEADER FEATURES */}
           <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap animate-marquee text-sm text-zinc-400">
+            <div className="flex whitespace-nowrap text-sm text-zinc-400">
               <div className="flex gap-6 mr-6">
                 <div className="flex items-center gap-2">
                   <Waypoints className="w-4 h-4 text-emerald-400" />
