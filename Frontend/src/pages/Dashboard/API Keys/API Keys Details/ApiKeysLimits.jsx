@@ -1,6 +1,6 @@
 function ApiKeysLimits() {
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
+    <div className="h-full flex flex-col bg-zinc-900 border border-zinc-800 rounded-lg p-6">
 
       <h2 className="text-white font-medium mb-3">
         API Key Limits
@@ -36,7 +36,7 @@ function ApiKeysLimits() {
 
       </div>
 
-      <button className="mt-6 bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200">
+      <button className="mt-6 bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200 transition-colors">
         Save Limits
       </button>
 

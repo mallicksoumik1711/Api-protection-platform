@@ -12,6 +12,8 @@ import {
   KeyRound,
   Layers,
   RotateCw,
+  Clock,
+  ArrowRight,
 } from "lucide-react";
 
 function ApiKeysDetails() {
@@ -76,8 +78,8 @@ function ApiKeysDetails() {
         {/* Main content – two column layout with premium lifecycle path on right */}
         <div className="grid lg:grid-cols-12 gap-8 mt-6">
           {/* Left – Tabs + Content (main area) */}
-          <div className="lg:col-span-9">
-            <div className="flex border-b border-zinc-800 bg-zinc-900 rounded-lg mb-6 overflow-hidden">
+          <div className="col-span-12 lg:col-span-9 flex flex-col h-full">
+            <div className="flex border-b border-zinc-800 bg-zinc-900 rounded-lg mb-6">
               {tabs.map((tab, index) => (
                 <button
                   key={tab.id}
@@ -88,28 +90,65 @@ function ApiKeysDetails() {
         activeTab === tab.id
           ? "text-white bg-zinc-800"
           : "text-zinc-400 hover:text-white hover:bg-zinc-800/60"
-      }`}
+      }
+           ${index === 0 ? "rounded-l-lg" : ""}
+      `}
                 >
                   {tab.label}
 
                   {/* Active underline */}
-                  {activeTab === tab.id && (
+                  {/* {activeTab === tab.id && (
                     <span className="absolute left-0 bottom-0 w-full h-[2px] bg-emerald-400"></span>
-                  )}
+                  )} */}
                 </button>
               ))}
             </div>
 
             {/* Tab Content */}
-            <div>{renderTab()}</div>
+            <div className="flex-1 flex flex-col">
+              <div className="flex-1">{renderTab()}</div>
+            </div>
 
             {/* bottom section */}
-            <div className="bg-zinc-900 mt-5 h-44 rounded-lg p-5">hhdhd</div>
+            <div className="bg-zinc-900 mt-5 rounded-lg p-5 border border-zinc-800 flex flex-col justify-between">
+              <div>
+                <h3 className="text-sm text-zinc-300 font-medium">API Usage</h3>
+                <p className="text-xs text-zinc-500 mt-1">
+                  Current billing cycle
+                </p>
+              </div>
+
+              <div className="mt-4">
+                <div className="flex justify-between text-xs text-zinc-400 mb-1">
+                  <span>Requests used</span>
+                  <span>8,420 / 10,000</span>
+                </div>
+
+                <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-gradient-to-r from-emerald-400 to-green-500 w-[84%]"></div>
+                </div>
+              </div>
+
+              <div className="flex justify-between mt-4 text-xs">
+                <span className="text-zinc-500 flex items-center gap-1 justify-center">
+                  <div>
+                    <Clock className="w-3 h-3" />
+                  </div>
+                  <div>Resets in 12 days</div>
+                </span>
+                <button className="flex items-center justify-center gap-1 text-emerald-400 hover:text-emerald-300">
+                  <div>View details</div>
+                  <div>
+                    <ArrowRight className="w-3 h-3" />
+                  </div>
+                </button>
+              </div>
+            </div>
           </div>
 
           {/* Right sidebar – aligned style like CreateProject.jsx */}
           <div className="hidden lg:block lg:col-span-3 mt-10 lg:mt-0">
-            <div className="space-y-6 sticky top-6">
+            <div className="space-y-4 sticky top-6 h-fit">
               {/* Quick Stats Card */}
               <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
                 <h3 className="text-sm font-medium text-zinc-200 mb-4">

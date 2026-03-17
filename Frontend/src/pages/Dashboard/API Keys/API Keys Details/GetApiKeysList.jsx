@@ -28,7 +28,7 @@ function GetApiKeysList() {
   ];
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6">
+    <div className="h-full bg-zinc-900 border border-zinc-800 rounded-lg p-6 flex flex-col">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-white font-medium">Your API Keys</h2>
