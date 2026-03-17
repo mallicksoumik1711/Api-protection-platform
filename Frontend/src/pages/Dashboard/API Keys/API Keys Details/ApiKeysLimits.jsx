@@ -1,45 +1,158 @@
+// function ApiKeysLimits() {
+
+//   return (
+//     <div className="h-full flex flex-col bg-zinc-900 border border-zinc-800 rounded-lg p-6">
+
+//       <h2 className="text-white font-medium mb-3">
+//         API Key Limits
+//       </h2>
+
+//       <p className="text-sm text-zinc-400 mb-6">
+//         Configure request limits for each API key to prevent abuse.
+//       </p>
+
+//       <div className="grid grid-cols-2 gap-6">
+
+//         <div>
+//           <label className="text-sm text-zinc-400 block mb-2">
+//             Requests per minute
+//           </label>
+//           <input
+//             type="number"
+//             placeholder="100"
+//             className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm"
+//           />
+//         </div>
+
+//         <div>
+//           <label className="text-sm text-zinc-400 block mb-2">
+//             Requests per day
+//           </label>
+//           <input
+//             type="number"
+//             placeholder="10000"
+//             className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm"
+//           />
+//         </div>
+
+//       </div>
+
+//       <button className="mt-6 bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200 transition-colors">
+//         Save Limits
+//       </button>
+
+//     </div>
+//   );
+// }
+
+// export default ApiKeysLimits;
+
+import { Activity } from "lucide-react";
+import { useState, useEffect } from "react";
+import { getApiKeysDetails } from "../../../../api/apikey";
+
 function ApiKeysLimits() {
+  const [apiKeys, setApiKeys] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchKeys = async () => {
+    try {
+      const data = await getApiKeysDetails();
+      setApiKeys(data);
+    } catch (error) {
+      console.error("Error fetching API keys details:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchKeys();
+  }, []);
+
   return (
-    <div className="h-full flex flex-col bg-zinc-900 border border-zinc-800 rounded-lg p-6">
-
-      <h2 className="text-white font-medium mb-3">
-        API Key Limits
-      </h2>
-
-      <p className="text-sm text-zinc-400 mb-6">
-        Configure request limits for each API key to prevent abuse.
-      </p>
-
-      <div className="grid grid-cols-2 gap-6">
-
-        <div>
-          <label className="text-sm text-zinc-400 block mb-2">
-            Requests per minute
-          </label>
-          <input
-            type="number"
-            placeholder="100"
-            className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm"
-          />
-        </div>
-
-        <div>
-          <label className="text-sm text-zinc-400 block mb-2">
-            Requests per day
-          </label>
-          <input
-            type="number"
-            placeholder="10000"
-            className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm"
-          />
-        </div>
-
+    <div className="flex flex-col bg-zinc-900 border border-zinc-800 rounded-lg p-6">
+      {/* Header */}
+      <div className="flex items-center gap-2 mb-4">
+        <Activity className="w-5 h-5 text-emerald-400" />
+        <h2 className="text-white font-medium">API Usage & Limits</h2>
       </div>
 
-      <button className="mt-6 bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200 transition-colors">
-        Save Limits
-      </button>
+      <p className="text-sm text-zinc-400 mb-6">
+        Monitor how your API keys are being used and track remaining limits.
+      </p>
 
+      {/* Loading */}
+      {loading ? (
+        <div className="text-center text-zinc-500 py-10">Loading...</div>
+      ) : apiKeys.length === 0 ? (
+        <div className="text-center text-zinc-500 py-10">
+          No API keys found.
+        </div>
+      ) : (
+        <div className="space-y-4 pr-2 max-h-[50vh] overflow-y-auto">
+          {apiKeys.map((key) => {
+            const percentage =
+              key.usage.limit > 0
+                ? (key.usage.used / key.usage.limit) * 100
+                : 0;
+
+            return (
+              <div
+                key={key.id}
+                className="border border-zinc-800 rounded-md p-4 bg-zinc-950/80"
+              >
+                {/* Top Row */}
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="text-white text-sm">{key.name}</h3>
+
+                  <span
+                    className={`text-xs px-2 py-0.5 rounded-full ${
+                      key.status === "active"
+                        ? "bg-green-500/20 text-green-400"
+                        : "bg-red-500/20 text-red-400"
+                    }`}
+                  >
+                    {key.status}
+                  </span>
+                </div>
+
+                {/* Usage */}
+                <div className="flex justify-between text-xs text-zinc-400 mb-2">
+                  <span>
+                    {key.usage.used} / {key.usage.limit} requests
+                  </span>
+                  <span>
+                    {Math.max(key.usage.limit - key.usage.used, 0)} left
+                  </span>
+                </div>
+
+                {/* Progress */}
+                <div className="w-full bg-zinc-800 rounded-full h-2 overflow-hidden">
+                  <div
+                    className={`h-full ${
+                      percentage > 80
+                        ? "bg-red-500"
+                        : percentage > 50
+                          ? "bg-yellow-400"
+                          : "bg-emerald-400"
+                    }`}
+                    style={{ width: `${percentage}%` }}
+                  />
+                </div>
+
+                {/* Expiry */}
+                <p className="text-xs text-zinc-500 mt-2">
+                  Expires on{" "}
+                  {key.expiresAt
+                    ? new Date(key.expiresAt).toLocaleDateString("en-IN")
+                    : "Never"}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }

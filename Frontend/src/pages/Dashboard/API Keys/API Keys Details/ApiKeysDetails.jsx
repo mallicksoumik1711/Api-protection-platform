@@ -39,8 +39,8 @@ function ApiKeysDetails() {
   };
 
   return (
-    <div className="bg-black min-h-screen px-6 py-4">
-      <div className="max-w-6xl mx-auto">
+    <div className="bg-black min-h-screen flex flex-col px-6 py-4">
+      <div className="max-w-6xl mx-auto flex-1 flex flex-col">
         {/* Header */}
         <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-3">
           API Keys
@@ -76,9 +76,9 @@ function ApiKeysDetails() {
         </div>
 
         {/* Main content – two column layout with premium lifecycle path on right */}
-        <div className="grid lg:grid-cols-12 gap-8 mt-6">
+        <div className="grid lg:grid-cols-12 gap-8 mt-6 flex-1">
           {/* Left – Tabs + Content (main area) */}
-          <div className="col-span-12 lg:col-span-9 flex flex-col h-full">
+          <div className="col-span-12 lg:col-span-9 flex flex-col min-h-0">
             <div className="flex border-b border-zinc-800 bg-zinc-900 rounded-lg mb-6">
               {tabs.map((tab, index) => (
                 <button
@@ -105,8 +105,8 @@ function ApiKeysDetails() {
             </div>
 
             {/* Tab Content */}
-            <div className="flex-1 flex flex-col">
-              <div className="flex-1">{renderTab()}</div>
+            <div className="">
+              <div>{renderTab()}</div>
             </div>
 
             {/* bottom section */}
@@ -250,8 +250,8 @@ function ApiKeysDetails() {
                   <span className="text-emerald-400 font-medium">
                     Best practice:
                   </span>{" "}
-                  Treat API keys like passwords — rotate, monitor, revoke when
-                  not needed.
+                  Treat API keys like passwords rotate, monitor, revoke when not
+                  needed.
                 </p>
               </div>
             </div>
