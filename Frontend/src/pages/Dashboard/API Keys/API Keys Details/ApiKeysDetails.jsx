@@ -102,6 +102,9 @@ function ApiKeysDetails() {
 
             {/* Tab Content */}
             <div>{renderTab()}</div>
+
+            {/* bottom section */}
+            <div className="bg-zinc-900 mt-5 h-44 rounded-lg p-5">hhdhd</div>
           </div>
 
           {/* Right sidebar – aligned style like CreateProject.jsx */}
