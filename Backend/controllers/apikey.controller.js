@@ -6,6 +6,11 @@ const generateApiKey = async (req, res) => {
     const MAX_KEY_PER_USER = 5;
     const EXPIRY_DAY = 1;
 
+    const {name} = req.body;
+    if(!name || !name.trim()){
+        return res.status(400).json({message: "Name is required"})
+    }
+
     const expiresAt = new Date(Date.now() + EXPIRY_DAY * 24 * 60 * 60 * 1000);
 
     const totalKeys = await apiKeyModel.countDocuments({
@@ -24,7 +29,13 @@ const generateApiKey = async (req, res) => {
       ownerType: "User",
       ownerId: userId,
       isActive: true,
+      name,
       expiresAt,
+      lastUsed: null,
+      usage: {
+        used: 0,
+        limit: 100,
+      }
     });
 
     res.status(201).json({
@@ -55,4 +66,30 @@ const getApiKeys = async (req, res) => {
   }
 };
 
-module.exports = { generateApiKey, getApiKeys };
+const getApiKeysDetails = async (req, res) => {
+  try{
+    const keys = await apiKeyModel.find({
+      ownerId: req.user.id,
+    });
+
+    const allKeysDetails = keys.map((key) => ({
+      id: key._id,
+      name: key.name,
+      status: key.isActive ? "active" : "inactive",
+      createdAt: key.createdAt,
+      lastUsed: key.lastUsed,
+      expiresAt: key.expiresAt,
+      usage: {
+        used: key.usage?.used || 0,
+        limit: key.usage?.limit || 100
+      },
+    }));
+    res.status(200).json(allKeysDetails);
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: err.message });
+  }
+}
+
+module.exports = { generateApiKey, getApiKeys, getApiKeysDetails };

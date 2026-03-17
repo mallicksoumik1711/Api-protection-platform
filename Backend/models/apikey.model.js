@@ -6,6 +6,15 @@ const apiKeysSchema = new mongoose.Schema({
     ownerType: String, //User
     ownerId: mongoose.Schema.Types.ObjectId,
     ip: String,
+    name: String,
+    lastUsed: Date,
+    usage: {
+        used: Number,
+        limit: {
+            type: Number,
+            default: 100
+        }
+    },
     createdAt: 
     {
         type: Date,
