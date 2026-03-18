@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { getApiKeysDetails } from "../../../../api/apikey";
 
@@ -22,6 +23,7 @@ function GetApiKeysList() {
 
   return (
     <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 flex flex-col min-h-0">
+      
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-white font-medium">Your API Keys</h2>
@@ -29,7 +31,10 @@ function GetApiKeysList() {
             Manage and revoke existing API keys
           </p>
         </div>
-        <button className="bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200 transition-colors">
+        <button
+          onClick={fetchKeys}
+          className="bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200 transition-colors"
+        >
           Fetch / Refresh
         </button>
       </div>
@@ -41,69 +46,87 @@ function GetApiKeysList() {
           No API keys found. Generate your first key above.
         </div>
       ) : (
-        <div className="flex-1 min-h-0 overflow-y-auto max-h-[60vh] custom-scroll">
-          <table className="w-full text-sm text-left text-zinc-300">
-            <thead className="text-xs uppercase bg-zinc-800/70 sticky top-0 z-10">
-              <tr>
-                <th className="px-4 py-3">Name</th>
-                <th className="px-4 py-3">Created</th>
-                <th className="px-4 py-3">Last Used</th>
-                <th className="px-4 py-3">Status</th>
-                <th className="px-4 py-3">Usage</th>
-                <th className="px-4 py-3"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {apiKeys.map((key) => (
-                <tr
-                  key={key.id}
-                  className="border-b border-zinc-800 hover:bg-zinc-800/40"
-                >
-                  {/* Name */}
-                  <td className="px-4 py-4 font-medium text-white">
-                    {key.name}
-                  </td>
-
-                  {/* Created */}
-                  <td className="px-4 py-4">
-                    {new Date(key.createdAt).toLocaleDateString()}
-                  </td>
-
-                  {/* Last Used */}
-                  <td className="px-4 py-4">
-                    {key.lastUsed
-                      ? new Date(key.lastUsed).toLocaleDateString()
-                      : "—"}
-                  </td>
-
-                  {/* Status */}
-                  <td className="px-4 py-4">
-                    <span
-                      className={`inline-block px-2 py-0.5 text-xs rounded-full ${
-                        key.status === "active"
-                          ? "bg-green-500/20 text-green-400"
-                          : "bg-red-500/20 text-red-400"
-                      }`}
-                    >
-                      {key.status}
-                    </span>
-                  </td>
-
-                  {/* Usage */}
-                  <td className="px-4 py-4 text-xs text-zinc-400">
-                    {key.usage.used} / {key.usage.limit}
-                  </td>
-
-                  {/* Action */}
-                  <td className="px-4 py-4 text-right">
-                    <button className="text-red-400 hover:text-red-300 text-xs">
-                      Revoke
-                    </button>
-                  </td>
+        <div className="flex-1 min-h-0 border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/30">
+          
+          <div className="overflow-y-auto h-full max-h-[50vh] custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
+            <table className="w-full text-sm text-left text-zinc-300">
+              
+              <thead className="bg-zinc-950 sticky top-0 z-20 border-b border-zinc-700">
+                <tr>
+                  <th className="px-6 py-4 font-medium text-zinc-400">Name</th>
+                  <th className="px-6 py-4 font-medium text-zinc-400">
+                    Created
+                  </th>
+                  <th className="px-6 py-4 font-medium text-zinc-400">
+                    Last Used
+                  </th>
+                  <th className="px-6 py-4 font-medium text-zinc-400">
+                    Status
+                  </th>
+                  <th className="px-6 py-4 font-medium text-zinc-400">Usage</th>
+                  <th className="px-6 py-4 w-24"></th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+
+              <tbody className="divide-y divide-zinc-800">
+                {apiKeys.map((key) => (
+                  <tr
+                    key={key.id}
+                    className="hover:bg-zinc-900 transition-all duration-200"
+                  >
+                    <td className="px-6 py-4 font-medium text-white">
+                      {key.name}
+                    </td>
+                    <td className="px-6 py-4 text-zinc-400">
+                      {new Date(key.createdAt).toLocaleDateString()}
+                    </td>
+                    <td className="px-6 py-4 text-zinc-400">
+                      {key.lastUsed
+                        ? new Date(key.lastUsed).toLocaleDateString()
+                        : "—"}
+                    </td>
+                    <td className="px-6 py-4">
+                      <span
+                        className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
+                          key.status === "active"
+                            ? "bg-green-500/10 text-green-400 border border-green-500/20"
+                            : "bg-red-500/10 text-red-400 border border-red-500/20"
+                        }`}
+                      >
+                        {key.status}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4">
+                      <div className="flex items-center gap-2 text-xs mb-2">
+                        <span className="text-zinc-300 font-medium">
+                          {key.usage.used}
+                        </span>
+                        <span className="text-zinc-600">/</span>
+                        <span className="text-zinc-500">{key.usage.limit}</span>
+                      </div>
+
+                      <div className="w-full h-1.5 bg-zinc-800 rounded-full overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-emerald-400 to-green-500 rounded-full"
+                          style={{
+                            width: `${Math.min(
+                              (key.usage.used / key.usage.limit) * 100,
+                              100,
+                            )}%`,
+                          }}
+                        />
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 text-right">
+                      <button className="text-red-400 hover:text-red-300 text-sm font-medium opacity-70 hover:opacity-100 transition-all cursor-pointer">
+                        Revoke
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
     </div>
