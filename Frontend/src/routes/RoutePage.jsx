@@ -9,6 +9,7 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import FrontPage from "../pages/Dashboard/FrontPage";
 import CreateProject from "../pages/Dashboard/CreateProject";
 import ApiKeysDetails from "../pages/Dashboard/API Keys/API Keys Details/ApiKeysDetails";
+import ApiKeyLogs from "../pages/Dashboard/API Keys/ApiKeyLogs";
 
 import { Toaster } from "react-hot-toast";
 
@@ -57,6 +58,16 @@ function RoutePage() {
             <ProtectedRoutes>
               <DashboardLayout>
                 <ApiKeysDetails />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/api-logs"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ApiKeyLogs />
               </DashboardLayout>
             </ProtectedRoutes>
           }
