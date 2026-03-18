@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import GetApiKeysList from "./GetApiKeysList";
 import GenerateApiKeys from "./GenerateApiKeys";
 import ApiKeysLimits from "./ApiKeysLimits";
@@ -14,10 +14,19 @@ import {
   RotateCw,
   Clock,
   ArrowRight,
+  PowerOff,
 } from "lucide-react";
+import { getApiKeys } from "../../../../api/apikey";
+import useCountUp from "../../../../utils/HelperFunctions/countKeyStats";
 
 function ApiKeysDetails() {
   const [activeTab, setActiveTab] = useState("list");
+  const [apiKeyStatus, setApiKeyStatus] = useState(null);
+  const [loadingStatus, setLoadingStatus] = useState(true);
+
+  const activeKeys = useCountUp(apiKeyStatus?.["Active keys"], 500);
+  const totalKeys = useCountUp(apiKeyStatus?.["Total keys"], 600);
+  const inactiveKeys = useCountUp(apiKeyStatus?.["Inactive keys"], 500);
 
   const tabs = [
     { id: "list", label: "Get API Keys" },
@@ -25,18 +34,25 @@ function ApiKeysDetails() {
     { id: "limits", label: "API Key Limits" },
   ];
 
-  const renderTab = () => {
-    switch (activeTab) {
-      case "list":
-        return <GetApiKeysList />;
-      case "generate":
-        return <GenerateApiKeys />;
-      case "limits":
-        return <ApiKeysLimits />;
-      default:
-        return null;
+  const showKeyStatus = async () => {
+    try {
+      setLoadingStatus(true);
+
+      // for testing the loader. remove in the production
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
+      const data = await getApiKeys();
+      setApiKeyStatus(data);
+    } catch (error) {
+      console.error("Error fetching API keys:", error);
+    } finally {
+      setLoadingStatus(false);
     }
   };
+
+  useEffect(() => {
+    showKeyStatus();
+  }, []);
 
   return (
     <div className="bg-black min-h-screen flex flex-col px-6 py-4">
@@ -95,18 +111,17 @@ function ApiKeysDetails() {
       `}
                 >
                   {tab.label}
-
-                  {/* Active underline */}
-                  {/* {activeTab === tab.id && (
-                    <span className="absolute left-0 bottom-0 w-full h-[2px] bg-emerald-400"></span>
-                  )} */}
                 </button>
               ))}
             </div>
 
             {/* Tab Content */}
             <div className="">
-              <div>{renderTab()}</div>
+              <div>
+                {activeTab === "list" && <GetApiKeysList />}
+                {activeTab === "generate" && <GenerateApiKeys />}
+                {activeTab === "limits" && <ApiKeysLimits />}
+              </div>
             </div>
 
             {/* bottom section */}
@@ -161,7 +176,9 @@ function ApiKeysDetails() {
                     <div>
                       <p className="text-xs text-zinc-400">Active Keys</p>
                       <p className="text-xl font-semibold text-emerald-400 mt-0.5">
-                        4
+                        {apiKeyStatus
+                          ? apiKeyStatus["Active keys"]
+                          : activeKeys}
                       </p>
                     </div>
 
@@ -175,7 +192,7 @@ function ApiKeysDetails() {
                     <div>
                       <p className="text-xs text-zinc-400">Total Keys</p>
                       <p className="text-xl font-semibold text-violet-400 mt-0.5">
-                        11
+                        {apiKeyStatus ? apiKeyStatus["Total keys"] : totalKeys}
                       </p>
                     </div>
 
@@ -185,15 +202,42 @@ function ApiKeysDetails() {
                   </div>
                 </div>
 
+                <div className="bg-red-500/10 text-red-400 border border-red-500/20 rounded-md">
+                  <div className="text-xs px-2 py-1 text-zinc-400">
+                    Inactive Keys
+                  </div>
+                  <div className="flex justify-between px-2 items-center">
+                    <div className="text-xl">
+                      {apiKeyStatus
+                        ? apiKeyStatus["Inactive keys"]
+                        : inactiveKeys}
+                    </div>
+                    <div className="bg-red-500/10 p-2 rounded-md">
+                      <PowerOff className="w-4 h-4" />
+                    </div>
+                  </div>
+                  <p className="text-xs text-zinc-600 px-2 py-1">
+                    Consider revoking unused keys for better security
+                  </p>
+                </div>
+
                 {/* Rotation */}
                 <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
                   <div>
-                    <p className="text-xs text-zinc-500">Last rotation</p>
-                    <p className="text-sm text-zinc-300 mt-0.5">Feb 28, 2026</p>
+                    <p className="text-xs text-zinc-500">Data maybe outdated</p>
+                    <p className="text-sm text-zinc-300 mt-0.5">
+                      Refresh to update
+                    </p>
                   </div>
 
-                  <div className="p-2 bg-amber-500/10 rounded-md">
-                    <RotateCw className="w-4 h-4 text-amber-400" />
+                  <div className="p-2 bg-amber-500/10 rounded-md items-center flex cursor-pointer">
+                    <button onClick={showKeyStatus}>
+                      <RotateCw
+                        className={`w-4 h-4 text-amber-400 cursor-pointer ${
+                          loadingStatus ? "animate-spin" : ""
+                        }`}
+                      />
+                    </button>
                   </div>
                 </div>
               </div>
