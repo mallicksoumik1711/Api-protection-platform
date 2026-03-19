@@ -1,10 +1,51 @@
 import { Bug, Cctv, ChartNoAxesCombinedIcon } from "lucide-react";
+import { useState, useEffect } from "react";
+import { getApiLogs } from "../../../api/apilogs";
 
 function ApiKeyLogs() {
+  const [logs, setLogs] = useState([]);
+
+  useEffect(() => {
+    const fetchLogs = async () => {
+      try {
+        const data = await getApiLogs();
+        setLogs(data);
+      } catch (err) {
+        console.error("Failed to fetch API logs:", err);
+      }
+    };
+
+    fetchLogs();
+  }, []);
+
+  const groupedLogs = [];
+
+  logs.forEach((log) => {
+    const last = groupedLogs[groupedLogs.length - 1];
+
+    const isSameRequest =
+      last &&
+      last.method === log.method &&
+      last.path === log.path &&
+      last.status === log.status;
+
+    // only group automatically if status = 304
+    if (isSameRequest && log.status === 304) {
+      last.count += 1;
+      last.lastTime = log.createdAt;
+    } else {
+      groupedLogs.push({
+        ...log,
+        count: 1,
+        firstTime: log.createdAt,
+        lastTime: log.createdAt,
+      });
+    }
+  });
+
   return (
     <div className="bg-black px-6 py-4">
       <div className="max-w-6xl mx-auto">
-        
         <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
           API Logs
         </p>
@@ -70,8 +111,7 @@ function ApiKeyLogs() {
           </div>
 
           <div className="p-4 text-xs font-mono text-zinc-300 max-h-[55vh] overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-950">
-            
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
+            {/* <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
               <span className="inline-block w-20 text-zinc-600">14:32:05</span>
               <span className="text-emerald-400 font-medium">200</span>
               <span className="text-zinc-500 mx-2">→</span>
@@ -118,204 +158,57 @@ function ApiKeyLogs() {
               <span className="text-zinc-500 mx-2">→</span>
               <span className="text-amber-300">GET /api/search?q=..</span>
               <span className="text-zinc-600 ml-3">• quota exceeded</span>
-            </div>
+            </div> */}
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:05</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /users?page=1</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_abc123
-              </span>
-            </div>
+            {groupedLogs.map((log) => {
+              const time = new Date(log.createdAt).toLocaleTimeString();
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:18</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /login (x3 in 1m)</span>
-              <span className="text-zinc-600 ml-3">• rate limit exceeded</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_def456
-              </span>
-            </div>
+              const statusColor =
+                log.status === 200
+                  ? "text-emerald-400"
+                  : log.status === 429
+                    ? "text-amber-400"
+                    : "text-red-400";
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:33:02</span>
-              <span className="text-red-400 font-medium">403</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-red-300">POST /admin/users</span>
-              <span className="text-zinc-600 ml-3">• bot detected</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_ghi789
-              </span>
-            </div>
+              const pathColor =
+                log.status === 200
+                  ? "text-emerald-300"
+                  : log.status === 429
+                    ? "text-amber-300"
+                    : "text-red-300";
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:33:45</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /health</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-            </div>
+              return (
+                <div
+                  key={log._id}
+                  className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded"
+                >
+                  <span className="inline-block w-20 text-zinc-600">
+                    {time}
+                  </span>
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:34:10</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /api/search?q=..</span>
-              <span className="text-zinc-600 ml-3">• quota exceeded</span>
-            </div>
+                  <span className={`${statusColor} font-medium`}>
+                    {log.status}
+                  </span>
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:05</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /users?page=1</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_abc123
-              </span>
-            </div>
+                  <span className="text-zinc-500 mx-2">→</span>
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:18</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /login (x3 in 1m)</span>
-              <span className="text-zinc-600 ml-3">• rate limit exceeded</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_def456
-              </span>
-            </div>
+                  <span className={pathColor}>
+                    {log.method} {log.path}
+                    {log.status === 304 && log.count > 1 && (
+                      <span className="text-zinc-500 ml-2">
+                        (x{log.count} in 1m)
+                      </span>
+                    )}
+                  </span>
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:33:02</span>
-              <span className="text-red-400 font-medium">403</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-red-300">POST /admin/users</span>
-              <span className="text-zinc-600 ml-3">• bot detected</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_ghi789
-              </span>
-            </div>
+                  <span className="text-zinc-600 ml-3">• {log.result}</span>
 
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:33:45</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /health</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:34:10</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /api/search?q=..</span>
-              <span className="text-zinc-600 ml-3">• quota exceeded</span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:05</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /users?page=1</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_abc123
-              </span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:18</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /login (x3 in 1m)</span>
-              <span className="text-zinc-600 ml-3">• rate limit exceeded</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_def456
-              </span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:33:02</span>
-              <span className="text-red-400 font-medium">403</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-red-300">POST /admin/users</span>
-              <span className="text-zinc-600 ml-3">• bot detected</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_ghi789
-              </span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:33:45</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /health</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:34:10</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /api/search?q=..</span>
-              <span className="text-zinc-600 ml-3">• quota exceeded</span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:05</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /users?page=1</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_abc123
-              </span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:32:18</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /login (x3 in 1m)</span>
-              <span className="text-zinc-600 ml-3">• rate limit exceeded</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_def456
-              </span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded">
-              <span className="inline-block w-20 text-zinc-600">14:33:02</span>
-              <span className="text-red-400 font-medium">403</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-red-300">POST /admin/users</span>
-              <span className="text-zinc-600 ml-3">• bot detected</span>
-              <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
-                req_ghi789
-              </span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:33:45</span>
-              <span className="text-emerald-400 font-medium">200</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-emerald-300">GET /health</span>
-              <span className="text-zinc-600 ml-3">• allowed</span>
-            </div>
-
-            <div className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded opacity-70">
-              <span className="inline-block w-20 text-zinc-600">14:34:10</span>
-              <span className="text-amber-400 font-medium">429</span>
-              <span className="text-zinc-500 mx-2">→</span>
-              <span className="text-amber-300">GET /api/search?q=..</span>
-              <span className="text-zinc-600 ml-3">• quota exceeded</span>
-            </div>
-
+                  <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
+                    {log.requestId}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
 
