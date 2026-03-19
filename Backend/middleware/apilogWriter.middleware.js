@@ -4,6 +4,13 @@ const getResultType = require("../utils/getResultType");
 const apiLogWriter = (req, res, next) => {
     const startTime = Date.now();
     const requestId = "req_" + Math.random().toString(36).substring(2,8);
+
+    // not including /logs
+    const path = req.originalUrl;
+    if(path.startsWith("/logs")){
+        return next();
+    }
+
     res.on("finish", async () => {
         try{
             const responseTime = Date.now() - startTime;
