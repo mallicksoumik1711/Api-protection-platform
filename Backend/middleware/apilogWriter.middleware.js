@@ -1,5 +1,6 @@
 const ApiLogModel = require("../models/apilog.model");
 const getResultType = require("../utils/getResultType");
+const jwt = require("jsonwebtoken");
 
 const apiLogWriter = (req, res, next) => {
     const startTime = Date.now();
@@ -11,10 +12,24 @@ const apiLogWriter = (req, res, next) => {
         return next();
     }
 
+    //verify user before logging in
+    let userId = null;
+    const token = req.cookies.token;
+
+    if(token){
+        try{
+            const decoded = jwt.verify(token, process.env.JWT_SECRET);
+            userId = decoded.id;
+        } catch (err) {
+            console.log("Token verification error: ", err.message);
+        }
+    }
+
     res.on("finish", async () => {
         try{
             const responseTime = Date.now() - startTime;
             await ApiLogModel.create({
+                userId: userId,
                 method: req.method,
                 path: req.path,
                 query: req.originalUrl.split("?")[1] || "",

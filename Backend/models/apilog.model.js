@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 
 const apiLogSchema = new mongoose.Schema({
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+  },
   method: String,
   path: String,
   query: String,

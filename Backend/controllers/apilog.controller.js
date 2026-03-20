@@ -2,7 +2,9 @@ const ApiLogModel = require("../models/apilog.model");
 
 const getApiLogs = async (req, res) => {
   try {
-    const logs = await ApiLogModel.find()
+    const logs = await ApiLogModel.find({
+      userId: req.user.id,
+    })
       .sort({
         createdAt: -1,
       })
