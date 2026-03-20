@@ -120,6 +120,8 @@ function ApiKeyLogs() {
                   ? "text-emerald-400"
                   : log.status === 429
                     ? "text-amber-400"
+                    : log.status === 304
+                      ? "text-slate-400"
                     : "text-red-400";
 
               const pathColor =
@@ -127,6 +129,8 @@ function ApiKeyLogs() {
                   ? "text-emerald-300"
                   : log.status === 429
                     ? "text-amber-300"
+                    : log.status === 304
+                      ? "text-slate-300"
                     : "text-red-300";
 
               return (
