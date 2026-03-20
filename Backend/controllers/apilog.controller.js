@@ -8,7 +8,7 @@ const getApiLogs = async (req, res) => {
       .sort({
         createdAt: -1,
       })
-      .limit(50);
+      //.limit(50); // pagination instead of a hard limit, maybe later :)
     res.status(200).json(logs);
   } catch (e) {
     res.status(500).json({ message: "Error fetching logs" });
