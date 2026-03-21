@@ -146,11 +146,22 @@ function RateLimit() {
                   Learn more <span aria-hidden>↗</span>
                 </a>
               </div>
-
               <div className="pt-4">
-                <button className="w-full flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-md font-medium text-sm shadow-lg hover:bg-zinc-200 active:scale-98 transition-all">
-                  <Save className="w-4 h-4" />
-                  Save Configuration
+                <button
+                  className="w-full cursor-pointer flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-medium text-sm text-white 
+    backdrop-blur-xl bg-white/[0.06]
+    relative overflow-hidden
+    hover:bg-white/[0.09] hover:border-white/30
+    active:scale-[0.98] transition-all duration-300"
+                >
+                  {/* light reflection layer */}
+                  <span className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                  {/* inner glass edge highlight */}
+                  <span className="absolute inset-0 rounded-md pointer-events-none" />
+
+                  <Save className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">Save Configuration</span>
                 </button>
               </div>
             </div>
@@ -162,7 +173,18 @@ function RateLimit() {
                   Live Preview
                 </span>
 
-                <div className="bg-gradient-to-r from-zinc-950 to-zinc-900 rounded-md px-5 py-3">
+                <div
+                  className="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-medium text-sm text-white 
+    backdrop-blur-xl bg-white/[0.06]
+    relative overflow-hidden
+    hover:bg-white/[0.09] hover:border-white/30
+    active:scale-[0.98] transition-all duration-300"
+                >
+                  {/* light reflection layer */}
+                  <span className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
+
+                  {/* inner glass edge highlight */}
+                  <span className="absolute inset-0 rounded-md pointer-events-none" />
                   <p className="text-base font-medium text-white leading-relaxed">
                     {limit || 0} requests per{" "}
                     <span className="text-zinc-100">
