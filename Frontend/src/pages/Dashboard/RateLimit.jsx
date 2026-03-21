@@ -60,7 +60,7 @@ function RateLimit() {
 
         {/* Main Card */}
 
-        <div className="bg-gradient-to-b from-zinc-900 to-black border border-zinc-800/60 rounded-lg p-8 shadow-2xl shadow-black/40 space-y-10 max-w-6xl mx-auto mb-5">
+        <div className="bg-gradient-to-b from-zinc-900 to-black rounded-lg p-8 shadow-2xl shadow-black/40 space-y-10 max-w-6xl mx-auto mb-5">
           {/* Header + Info pill */}
           <div className="flex items-start justify-between gap-6">
             <div className="space-y-2">
@@ -81,7 +81,7 @@ function RateLimit() {
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Left - Form Fields */}
-            <div className="space-y-6">
+            <div className="flex flex-col justify-between">
               {/* Request Limit + Time Window – side by side */}
               <div className="bg-zinc-900/50 border border-zinc-800 rounded-md p-5 space-y-5">
                 <div className="grid grid-cols-2 gap-6">
@@ -145,6 +145,13 @@ function RateLimit() {
                 >
                   Learn more <span aria-hidden>↗</span>
                 </a>
+              </div>
+
+              <div className="pt-4">
+                <button className="w-full flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-md font-medium text-sm shadow-lg hover:bg-zinc-200 active:scale-98 transition-all">
+                  <Save className="w-4 h-4" />
+                  Save Configuration
+                </button>
               </div>
             </div>
 
@@ -219,13 +226,6 @@ function RateLimit() {
                 </p>
               </div>
             </div>
-          </div>
-
-          <div className="flex justify-end">
-            <button className="flex items-center gap-2 bg-white text-black px-6 py-2.5 rounded-md font-medium text-sm shadow-lg hover:bg-zinc-200 active:scale-98 transition-all">
-              <Save className="w-4 h-4" />
-              Save Configuration
-            </button>
           </div>
         </div>
       </div>
