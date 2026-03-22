@@ -11,6 +11,7 @@ import CreateProject from "../pages/Dashboard/CreateProject";
 import ApiKeysDetails from "../pages/Dashboard/API Keys/API Keys Details/ApiKeysDetails";
 import ApiKeyLogs from "../pages/Dashboard/API Keys/ApiKeyLogs";
 import RateLimit from "../pages/Dashboard/RateLimit";
+import ProtectedApi from "../pages/Dashboard/ProtectedApi";
 
 import { Toaster } from "react-hot-toast";
 
@@ -79,6 +80,16 @@ function RoutePage() {
             <ProtectedRoutes>
               <DashboardLayout>
                 <RateLimit />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/protected-api"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProtectedApi />
               </DashboardLayout>
             </ProtectedRoutes>
           }
