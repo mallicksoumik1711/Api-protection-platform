@@ -1,6 +1,12 @@
 import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
-import { Waypoints, BotOff, ShieldAlert, Link } from "lucide-react";
+import {
+  Waypoints,
+  BotOff,
+  ShieldAlert,
+  Link,
+  FilePlusCorner,
+} from "lucide-react";
 import Dropdown from "../../layouts/Dropdown";
 
 function CreateProject() {
@@ -134,8 +140,9 @@ function CreateProject() {
             />
 
             <div className="flex justify-end">
-              <button className="bg-white text-black px-5 py-2 rounded-md cursor-pointer text-sm font-medium hover:bg-zinc-200 transition">
-                Add Workspace
+              <button className="w-1/3 bg-zinc-950/80 border border-zinc-800 hover:bg-zinc-950/50 text-white font-semibold py-2.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
+                <FilePlusCorner className="w-4 h-4 relative z-10" />
+                <span className="relative z-10">Add Workspace</span>
               </button>
             </div>
           </div>
