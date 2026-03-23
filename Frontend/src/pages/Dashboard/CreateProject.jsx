@@ -58,9 +58,9 @@ function CreateProject() {
 
         <div className="grid grid-cols-2 gap-6 items-start">
           {/* LEFT SIDE */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5 space-y-6 sticky top-6 h-fit">
+          <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 space-y-6 sticky top-6 h-fit">
             {/* Project Name */}
-            <div className="border border-zinc-800 rounded-lg p-5">
+            <div className="border border-zinc-900 rounded-lg p-5">
               <h2 className="text-white font-medium mb-2">Project Name</h2>
 
               <p className="text-sm text-zinc-400 mb-4">
@@ -70,12 +70,12 @@ function CreateProject() {
               <input
                 type="text"
                 placeholder="My CRUD API"
-                className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
+                className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-800"
               />
             </div>
 
             {/* Description */}
-            <div className="border border-zinc-800 rounded-lg p-5">
+            <div className="border border-zinc-900 rounded-lg p-5">
               <h2 className="text-white font-medium mb-2">
                 Project Description{" "}
                 <span className="text-zinc-500">(optional)</span>
@@ -88,12 +88,12 @@ function CreateProject() {
               <textarea
                 rows="3"
                 placeholder="Simple user CRUD API"
-                className="w-full resize-none bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
+                className="w-full resize-none bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-800"
               />
             </div>
 
             {/* Backend URL */}
-            <div className="border border-zinc-800 rounded-lg p-5">
+            <div className="border border-zinc-900 rounded-lg p-5">
               <h2 className="flex items-center gap-2 text-white font-medium mb-2">
                 Backend API Base URL{" "}
                 <span>
@@ -108,7 +108,7 @@ function CreateProject() {
               <input
                 type="text"
                 placeholder="https://api.mycrudapp.com or http://localhost:5000"
-                className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
+                className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
               />
             </div>
 
@@ -140,7 +140,7 @@ function CreateProject() {
             />
 
             <div className="flex justify-end">
-              <button className="w-1/3 bg-zinc-950/80 border border-zinc-800 hover:bg-zinc-950/50 text-white font-semibold py-2.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
+              <button className="w-1/3 bg-zinc-900 border border-zinc-900 hover:bg-zinc-950 text-white font-semibold py-2.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
                 <FilePlusCorner className="w-4 h-4 relative z-10" />
                 <span className="relative z-10">Add Workspace</span>
               </button>

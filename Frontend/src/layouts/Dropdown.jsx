@@ -11,7 +11,7 @@ function Dropdown({
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border border-zinc-800 rounded-lg p-5">
+    <div className="border border-zinc-900 rounded-lg p-5">
       {/* Label */}
       <h2 className="text-white font-medium mb-2">
         {label} {optional && <span className="text-zinc-500">(optional)</span>}
@@ -27,7 +27,7 @@ function Dropdown({
         <button
           type="button"
           onClick={() => setIsOpen(!isOpen)}
-          className="w-full bg-black border border-zinc-800 rounded-md px-3 py-2 text-sm text-left text-zinc-300 flex items-center justify-between"
+          className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm text-left text-zinc-300 flex items-center justify-between"
         >
           <span>{value || "Select option..."}</span>
 
