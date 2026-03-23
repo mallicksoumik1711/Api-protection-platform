@@ -1,4 +1,11 @@
-import { LockKeyhole, Monitor, ShieldCheck, Dot, Plus } from "lucide-react";
+import {
+  LockKeyhole,
+  Monitor,
+  ShieldCheck,
+  Dot,
+  Plus,
+  Trash2,
+} from "lucide-react";
 
 function ProtectedApi() {
   return (
@@ -99,14 +106,14 @@ function ProtectedApi() {
               <div className="flex items-center justify-between bg-black border border-zinc-800 px-4 py-3 rounded-md text-sm text-zinc-300">
                 <span>/apikey/key-details</span>
                 <button className="text-red-400 hover:text-red-500 text-xs">
-                  remove
+                  <Trash2 className="w-4 h-4" />
                 </button>
               </div>
 
               <div className="flex items-center justify-between bg-black border border-zinc-800 px-4 py-3 rounded-md text-sm text-zinc-300">
                 <span>/apikey/key-status</span>
                 <button className="text-red-400 hover:text-red-500 text-xs">
-                  remove
+                  <Trash2 className="w-4 h-4" />
                 </button>
               </div>
             </div>
@@ -138,9 +145,24 @@ function ProtectedApi() {
 
         <div className="flex flex-col h-fit sticky top-6 w-1/2">
           <div className="bg-black border border-zinc-800 rounded-lg px-7 py-4 shadow-inner mb-8">
-            <span className="text-xs text-zinc-500">Added keys</span>
+            <div className="flex items-center justify-between">
+              {/* LEFT */}
+              <div>
+                <p className="text-xs text-zinc-500 uppercase tracking-widest">
+                  Added Protected Routes
+                </p>
+                <p className="text-sm text-white mt-1 font-medium">
+                  Routes secured using the middleware
+                </p>
+              </div>
+
+              {/* RIGHT COUNT BADGE */}
+              <div className="bg-zinc-900 border border-zinc-800 px-3 py-1 rounded-full text-xs text-zinc-400">
+                0 routes
+              </div>
+            </div>
           </div>
-          <div className="bg-black border border-zinc-800 rounded-lg p-7 shadow-inner">
+          <div className="bg-black border border-zinc-800 rounded-lg px-7 py-4 shadow-inner">
             <div>
               <h3 className="text-lg font-semibold text-white mb-4">
                 How to configure protected routes
