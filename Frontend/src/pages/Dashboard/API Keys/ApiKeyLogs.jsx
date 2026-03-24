@@ -111,27 +111,30 @@ function ApiKeyLogs() {
           </div>
 
           <div className="p-4 text-xs font-mono text-zinc-300 max-h-[55vh] overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-950">
-
             {groupedLogs.map((log) => {
               const time = new Date(log.createdAt).toLocaleTimeString();
 
               const statusColor =
                 log.status === 200
                   ? "text-emerald-400"
-                  : log.status === 429
-                    ? "text-amber-400"
-                    : log.status === 304
-                      ? "text-slate-400"
-                    : "text-red-400";
+                  : log.status === 201
+                    ? "text-emerald-400"
+                    : log.status === 429
+                      ? "text-amber-400"
+                      : log.status === 304
+                        ? "text-slate-400"
+                        : "text-red-400";
 
               const pathColor =
                 log.status === 200
                   ? "text-emerald-300"
-                  : log.status === 429
-                    ? "text-amber-300"
-                    : log.status === 304
-                      ? "text-slate-300"
-                    : "text-red-300";
+                  : log.status === 201
+                    ? "text-emerald-300"
+                    : log.status === 429
+                      ? "text-amber-300"
+                      : log.status === 304
+                        ? "text-slate-300"
+                        : "text-red-300";
 
               return (
                 <div
@@ -169,7 +172,8 @@ function ApiKeyLogs() {
         </div>
 
         <p className="mt-2 text-xs text-zinc-600 text-center">
-          These logs are generated from real traffic passing through your protection layer
+          These logs are generated from real traffic passing through your
+          protection layer
         </p>
       </div>
     </div>

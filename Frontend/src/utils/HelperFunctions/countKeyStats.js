@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 
+// for api key stats count up animation
 export default function useCountUp(target, duration = 600) {
   const [value, setValue] = useState(0);
 
