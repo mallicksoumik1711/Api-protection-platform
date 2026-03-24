@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
-import {
-  Waypoints,
-  BotOff,
-  ShieldAlert,
-  Link,
-  FilePlusCorner,
-} from "lucide-react";
+import { Copy, BotOff, ShieldAlert, Link, FilePlusCorner } from "lucide-react";
 import Dropdown from "../../layouts/Dropdown";
 
 function CreateProject() {
@@ -34,16 +28,16 @@ function CreateProject() {
             <div className="flex whitespace-nowrap text-sm text-zinc-400">
               <div className="flex gap-6 mr-6">
                 <div className="flex items-center gap-2">
-                  <Waypoints className="w-4 h-4 text-emerald-400" />
-                  <span>Rate Limiting</span>
+                  <ShieldAlert className="w-4 h-4 text-violet-400" />
+                  <span>Attack Pattern Blocking</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <BotOff className="w-4 h-4 text-amber-400" />
-                  <span>Bot Detection</span>
+                  <Link className="w-4 h-4 text-amber-400" />
+                  <span>Analytics & Insights</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-4 h-4 text-red-400" />
-                  <span>Attack Prevention</span>
+                  <BotOff className="w-4 h-4 text-cyan-400" />
+                  <span>Bot & Crawler Detection</span>
                 </div>
               </div>
             </div>
@@ -174,60 +168,22 @@ function CreateProject() {
             <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
               <div className="space-y-4">
                 <h3 className="text-sm font-medium text-zinc-200">
-                  What gets protected automatically
+                  Project ID (auto-generated)
                 </h3>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                    <Waypoints className="w-5 h-5 text-emerald-400 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-zinc-300 font-medium">Rate Limiting</p>
-                      <p className="text-zinc-500">
-                        Prevents abuse from repeated requests
-                      </p>
-                    </div>
-                  </div>
+                <div className="bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 flex items-center justify-between">
+                  <p className="text-sm text-emerald-300 font-mono">
+                    api-protection-platform-k83hd92k
+                  </p>
 
-                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                    <BotOff className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-zinc-300 font-medium">
-                        Bot & Crawler Detection
-                      </p>
-                      <p className="text-zinc-500">
-                        Blocks malicious automation
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                    <ShieldAlert className="w-5 h-5 text-violet-400 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-zinc-300 font-medium">
-                        Attack Pattern Blocking
-                      </p>
-                      <p className="text-zinc-500">
-                        SQLi, XSS, path traversal & more
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-3 flex items-start gap-3">
-                    <Link className="w-5 h-5 text-amber-400 mt-0.5 flex-shrink-0" />
-                    <div>
-                      <p className="text-zinc-300 font-medium">
-                        Analytics & Insights
-                      </p>
-                      <p className="text-zinc-500">
-                        See blocked requests in dashboard
-                      </p>
-                    </div>
-                  </div>
+                  <button className="text-xs text-zinc-400 hover:text-white transition cursor-pointer ">
+                    <Copy className="w-4 h-4" />
+                  </button>
                 </div>
 
                 <p className="text-xs text-zinc-500 text-center pt-2">
-                  All features enabled by default — customize later in project
-                  settings
+                  This ID will be used to connect API keys, logs and protected
+                  routes to this project.
                 </p>
               </div>
             </div>
