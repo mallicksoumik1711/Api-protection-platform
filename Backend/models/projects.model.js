@@ -5,7 +5,7 @@ const projectSchema = new mongoose.Schema({
     baseUrl: String,
     framework: {
         type: String,
-        enum: ["Node / Express", "FastAPI", "Koa", "Django", "Spring Boot", "Other"],
+        enum: ["Node / Express", "FastAPI", "Django", "Spring Boot", "Other"],
         default: "Node / Express"
     },
     environment: {
