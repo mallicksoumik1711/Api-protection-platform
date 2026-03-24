@@ -60,7 +60,7 @@ function RateLimit() {
 
         {/* Main Card */}
 
-        <div className="bg-gradient-to-b from-zinc-900 to-black rounded-lg p-8 shadow-2xl shadow-black/40 space-y-10 max-w-6xl mx-auto mb-5">
+        <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-8 shadow-2xl shadow-black/40 space-y-10 max-w-6xl mx-auto mb-5">
           {/* Header + Info pill */}
           <div className="flex items-start justify-between gap-6">
             <div className="space-y-2">
@@ -147,19 +147,7 @@ function RateLimit() {
                 </a>
               </div>
               <div className="pt-4">
-                <button
-                  className="w-full cursor-pointer flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-medium text-sm text-white 
-    backdrop-blur-xl bg-white/[0.06]
-    relative overflow-hidden
-    hover:bg-white/[0.09] hover:border-white/30
-    active:scale-[0.98] transition-all duration-300"
-                >
-                  {/* light reflection layer */}
-                  <span className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
-
-                  {/* inner glass edge highlight */}
-                  <span className="absolute inset-0 rounded-md pointer-events-none" />
-
+                <button className="w-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-950/50 text-white font-semibold py-3.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
                   <Save className="w-4 h-4 relative z-10" />
                   <span className="relative z-10">Save Configuration</span>
                 </button>
@@ -173,18 +161,7 @@ function RateLimit() {
                   Live Preview
                 </span>
 
-                <div
-                  className="w-full flex items-center justify-center gap-2 px-6 py-2.5 rounded-md font-medium text-sm text-white 
-    backdrop-blur-xl bg-white/[0.06]
-    relative overflow-hidden
-    hover:bg-white/[0.09] hover:border-white/30
-    active:scale-[0.98] transition-all duration-300"
-                >
-                  {/* light reflection layer */}
-                  <span className="absolute inset-0 bg-gradient-to-br from-white/20 via-transparent to-transparent opacity-40 pointer-events-none" />
-
-                  {/* inner glass edge highlight */}
-                  <span className="absolute inset-0 rounded-md pointer-events-none" />
+                <div className="bg-zinc-950/50 border border-zinc-900 rounded-md p-4">
                   <p className="text-base font-medium text-white leading-relaxed">
                     {limit || 0} requests per{" "}
                     <span className="text-zinc-100">
