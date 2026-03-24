@@ -1,15 +1,17 @@
 require("dotenv").config();
 
-const cors = require('cors');
+const cors = require("cors");
 
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 
-app.use(cors({
+app.use(
+  cors({
     origin: "http://localhost:5173",
     credentials: true,
-}));
+  }),
+);
 
 require("./utils/apiKeyExpiry");
 
@@ -40,6 +42,9 @@ app.use("/anon-apikeys", anonApiKeyRoutes);
 
 const apilogRoutes = require("./routes/apilog.route");
 app.use("/logs", apilogRoutes);
+
+const projectRoutes = require("./routes/projects.route");
+app.use("/projects", projectRoutes);
 
 app.use("/protected", authRoutes);
 
