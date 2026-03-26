@@ -2,10 +2,40 @@ import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
 import { Copy, BotOff, ShieldAlert, Link, FilePlusCorner } from "lucide-react";
 import Dropdown from "../../layouts/Dropdown";
+import { createProject } from "../../api/projects";
+
+import toast from "react-hot-toast";
 
 function CreateProject() {
   const [framework, setFramework] = useState("Node / Express");
   const [environment, setEnvironment] = useState("Development");
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const projectData = {
+      name: formData.get("name"),
+      description: formData.get("description"),
+      baseUrl: formData.get("baseUrl"),
+      framework: formData.get("framework"),
+      environment: formData.get("environment"),
+    };
+
+    if (!projectData.name || !projectData.baseUrl || !projectData.environment) {
+      toast.error("Please fill in all required fields");
+      console.error("Please fill in all required fields");
+      return;
+    }
+
+    try {
+      const res = await createProject(projectData);
+      toast.success("Project created successfully");
+      console.log("Project created:", res);
+    } catch (err) {
+      toast.error(err.message);
+      console.log(err.message);
+    }
+  };
 
   return (
     <div className="bg-black px-6 py-4">
@@ -52,94 +82,104 @@ function CreateProject() {
 
         <div className="grid grid-cols-2 gap-6 items-start">
           {/* LEFT SIDE */}
-          <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 space-y-6 sticky top-6 h-fit">
-            {/* Project Name */}
-            <div className="border border-zinc-900 rounded-lg p-5">
-              <h2 className="text-white font-medium mb-2">Project Name</h2>
+          <form action="" method="post" onSubmit={handleSubmit}>
+            <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 space-y-6 sticky top-6 h-fit">
+              {/* Project Name */}
+              <div className="border border-zinc-900 rounded-lg p-5">
+                <h2 className="text-white font-medium mb-2">Project Name</h2>
 
-              <p className="text-sm text-zinc-400 mb-4">
-                The visible name of your project in the dashboard.
-              </p>
+                <p className="text-sm text-zinc-400 mb-4">
+                  The visible name of your project in the dashboard.
+                </p>
 
-              <input
-                type="text"
-                placeholder="My CRUD API"
-                className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-800"
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="My CRUD API"
+                  className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-800"
+                />
+              </div>
+
+              {/* Description */}
+              <div className="border border-zinc-900 rounded-lg p-5">
+                <h2 className="text-white font-medium mb-2">
+                  Project Description{" "}
+                  <span className="text-zinc-500">(optional)</span>
+                </h2>
+
+                <p className="text-sm text-zinc-400 mb-4">
+                  Short description about what this API project does.
+                </p>
+
+                <textarea
+                  rows="3"
+                  name="description"
+                  placeholder="Simple user CRUD API"
+                  className="w-full resize-none bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-800"
+                />
+              </div>
+
+              {/* Backend URL */}
+              <div className="border border-zinc-900 rounded-lg p-5">
+                <h2 className="flex items-center gap-2 text-white font-medium mb-2">
+                  Backend API Base URL{" "}
+                  <span>
+                    <Link className="w-4 h-4" />
+                  </span>
+                </h2>
+
+                <p className="text-sm text-zinc-400 mb-4">
+                  The base URL where your backend API is running.
+                </p>
+
+                <input
+                  type="text"
+                  name="baseUrl"
+                  placeholder="https://api.mycrudapp.com or http://localhost:5000"
+                  className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
+                />
+              </div>
+
+              {/* Framework */}
+
+              <Dropdown
+                name="framework"
+                label="Framework"
+                optional={true}
+                description="Select the backend framework used for this API."
+                options={[
+                  "Node / Express",
+                  "FastAPI",
+                  "Django",
+                  "Spring Boot",
+                  "Other",
+                ]}
+                value={framework}
+                onChange={setFramework}
               />
-            </div>
 
-            {/* Description */}
-            <div className="border border-zinc-900 rounded-lg p-5">
-              <h2 className="text-white font-medium mb-2">
-                Project Description{" "}
-                <span className="text-zinc-500">(optional)</span>
-              </h2>
+              {/* Environment */}
 
-              <p className="text-sm text-zinc-400 mb-4">
-                Short description about what this API project does.
-              </p>
-
-              <textarea
-                rows="3"
-                placeholder="Simple user CRUD API"
-                className="w-full resize-none bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-800"
+              <Dropdown
+                name="environment"
+                label="Environment"
+                description="Select the environment where this API will run."
+                options={["Development", "Production"]}
+                value={environment}
+                onChange={setEnvironment}
               />
+
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="w-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-950/50 text-white font-semibold py-3.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
+                >
+                  <FilePlusCorner className="w-4 h-4 relative z-10" />
+                  <span className="relative z-10">Add Workspace</span>
+                </button>
+              </div>
             </div>
-
-            {/* Backend URL */}
-            <div className="border border-zinc-900 rounded-lg p-5">
-              <h2 className="flex items-center gap-2 text-white font-medium mb-2">
-                Backend API Base URL{" "}
-                <span>
-                  <Link className="w-4 h-4" />
-                </span>
-              </h2>
-
-              <p className="text-sm text-zinc-400 mb-4">
-                The base URL where your backend API is running.
-              </p>
-
-              <input
-                type="text"
-                placeholder="https://api.mycrudapp.com or http://localhost:5000"
-                className="w-full bg-black border border-zinc-900 rounded-md px-3 py-2 text-sm focus:outline-none focus:border-zinc-700"
-              />
-            </div>
-
-            {/* Framework */}
-
-            <Dropdown
-              label="Framework"
-              optional={true}
-              description="Select the backend framework used for this API."
-              options={[
-                "Node / Express",
-                "FastAPI",
-                "Django",
-                "Spring Boot",
-                "Other",
-              ]}
-              value={framework}
-              onChange={setFramework}
-            />
-
-            {/* Environment */}
-
-            <Dropdown
-              label="Environment"
-              description="Select the environment where this API will run."
-              options={["Development", "Production"]}
-              value={environment}
-              onChange={setEnvironment}
-            />
-
-            <div className="flex justify-end">
-              <button className="w-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-950/50 text-white font-semibold py-3.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
-                <FilePlusCorner className="w-4 h-4 relative z-10" />
-                <span className="relative z-10">Add Workspace</span>
-              </button>
-            </div>
-          </div>
+          </form>
 
           {/* RIGHT SIDE */}
           <div className="space-y-6 sticky top-6 h-fit">

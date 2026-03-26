@@ -7,6 +7,7 @@ function Dropdown({
   value,
   onChange,
   optional = false,
+  name,
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -56,6 +57,7 @@ function Dropdown({
             ${isOpen ? "max-h-60 opacity-100" : "max-h-0 opacity-0 border-0"}
           `}
         >
+          <input type="hidden" name={name} value={value || ""} />
           {options.map((option) => (
             <button
               key={option}
