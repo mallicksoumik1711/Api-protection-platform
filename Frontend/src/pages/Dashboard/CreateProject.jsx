@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
-import { Copy, BotOff, ShieldAlert, Link, FilePlusCorner } from "lucide-react";
+import {
+  Copy,
+  CopyCheck,
+  BotOff,
+  ShieldAlert,
+  Link,
+  FilePlusCorner,
+} from "lucide-react";
 import Dropdown from "../../layouts/Dropdown";
 import { createProject } from "../../api/projects";
 
@@ -9,6 +16,8 @@ import toast from "react-hot-toast";
 function CreateProject() {
   const [framework, setFramework] = useState("Node / Express");
   const [environment, setEnvironment] = useState("Development");
+  const [projectId, setProjectId] = useState(null);
+  const [copied, setCopied] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -31,9 +40,24 @@ function CreateProject() {
       const res = await createProject(projectData);
       toast.success("Project created successfully");
       console.log("Project created:", res);
+      setProjectId(res.projectId);
     } catch (err) {
       toast.error(err.message);
       console.log(err.message);
+    }
+  };
+
+  const handleCopy = async () => {
+    if (projectId) {
+      try {
+        await navigator.clipboard.writeText(projectId);
+        setCopied(true);
+        toast.success("Project ID copied to clipboard");
+        setTimeout(() => setCopied(false), 2000);
+      } catch (err) {
+        toast.error("Failed to copy Project ID");
+        console.error("Failed to copy:", err);
+      }
     }
   };
 
@@ -183,7 +207,7 @@ function CreateProject() {
 
           {/* RIGHT SIDE */}
           <div className="space-y-6 sticky top-6 h-fit">
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+            <div className="bg-black border border-zinc-900 rounded-lg p-5">
               <h2 className="text-white font-medium mb-2">
                 Framework Integration
               </h2>
@@ -193,42 +217,65 @@ function CreateProject() {
                 to start protecting API requests.
               </p>
 
-              <div className="h-10 bg-black/80 border-b border-white/8 px-6 flex items-center rounded-md">
+              <div className="h-10 px-6 flex items-center rounded-md">
                 <span className="text-xs font-medium text-slate-600">
                   {framework} • Integration
                 </span>
               </div>
-              <div className="bg-black border border-zinc-800 rounded-md p-4">
+              <div className="bg-zinc-950 border border-zinc-900 rounded-md p-4">
                 <pre className="text-sm overflow-x-auto">
                   <code>{integrationCode[framework]}</code>
                 </pre>
               </div>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
-              <div className="space-y-4">
-                <h3 className="text-sm font-medium text-zinc-200">
-                  Project ID (auto-generated)
-                </h3>
+            {projectId ? (
+              <div className="bg-black border border-zinc-900 rounded-lg p-5">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-zinc-200">
+                    Project ID (auto-generated)
+                  </h3>
 
-                <div className="bg-zinc-950 border border-zinc-800 rounded-lg px-4 py-3 flex items-center justify-between">
-                  <p className="text-sm text-emerald-300 font-mono">
-                    api-protection-platform-k83hd92k
-                  </p>
+                  <div className="bg-zinc-950/40 border border-zinc-900 rounded-md px-4 py-3 flex items-center justify-between">
+                    <p className="text-sm text-emerald-300 font-mono">
+                      {projectId}
+                    </p>
 
-                  <button className="text-xs text-zinc-400 hover:text-white transition cursor-pointer ">
-                    <Copy className="w-4 h-4" />
-                  </button>
+                    <button
+                      onClick={handleCopy}
+                      className="text-xs text-zinc-400 hover:text-white transition cursor-pointer"
+                    >
+                      {copied ? (
+                        <CopyCheck className="w-4 h-4" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </button>
+                  </div>
                 </div>
-
-                <p className="text-xs text-zinc-500 text-center pt-2">
-                  This ID will be used to connect API keys, logs and protected
-                  routes to this project.
-                </p>
               </div>
-            </div>
+            ) : (
+              <div className="bg-black border border-zinc-800 rounded-lg p-5">
+                <div className="space-y-4">
+                  <h3 className="text-sm font-medium text-zinc-200">
+                    Project ID (auto-generated)
+                  </h3>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+                  <div className="bg-zinc-950/40 border border-zinc-900 rounded-md px-4 py-3 flex items-center justify-between">
+                    <p className="text-sm text-zinc-300 font-mono">
+                      Project-ID will appear here after project creation
+                    </p>
+                  </div>
+                  <p className="text-xs text-zinc-500 text-center">
+                    This ID is used to connect API keys, logs, and protected
+                    routes. You can find it later in the project overview, list,
+                    or URL
+                  </p>
+                </div>
+              </div>
+            )}
+
+            <div className="bg-black border border-zinc-900 rounded-lg p-5">
               <div className="">
                 <h3 className="text-sm font-medium text-zinc-200 mb-4">
                   Next steps after creation
@@ -276,14 +323,14 @@ function CreateProject() {
               </div>
             </div>
 
-            <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+            <div className="bg-black border border-zinc-900 rounded-lg p-5">
               <div className="">
                 <h3 className="text-sm font-medium text-zinc-200 mb-3">
                   Pro Tips
                 </h3>
 
                 <div className="space-y-3">
-                  <div className="bg-zinc-950/40 border-l-4 border-violet-500 pl-3 py-2 text-xs">
+                  <div className="bg-zinc-950 border-l-4 border-violet-500 pl-3 py-2 text-xs">
                     <span className="text-violet-300 font-medium">
                       Start small:{" "}
                     </span>
@@ -292,7 +339,7 @@ function CreateProject() {
                     </span>
                   </div>
 
-                  <div className="bg-zinc-950/40 border-l-4 border-emerald-500 pl-3 py-2 text-xs">
+                  <div className="bg-zinc-950 border-l-4 border-emerald-500 pl-3 py-2 text-xs">
                     <span className="text-emerald-300 font-medium">
                       Zero false positives:{" "}
                     </span>
@@ -301,7 +348,7 @@ function CreateProject() {
                     </span>
                   </div>
 
-                  <div className="bg-zinc-950/40 border-l-4 border-amber-500 pl-3 py-2 text-xs">
+                  <div className="bg-zinc-950 border-l-4 border-amber-500 pl-3 py-2 text-xs">
                     <span className="text-amber-300 font-medium">
                       Customize later:{" "}
                     </span>
