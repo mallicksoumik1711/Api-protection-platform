@@ -25,7 +25,7 @@ export default function ProcessJourney() {
   ];
 
   return (
-    <div className="relative bg-[#0a0a0f] mt-25 text-white py-24 px-5 md:px-10 overflow-hidden">
+    <div className="relative bg-[#0a0a0f] mt-20 md:mt-25 text-white py-16 md:py-24 px-5 md:px-10 overflow-hidden">
       {/* Optional subtle background texture */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_25%,#a855f780_0%,transparent_40%)]" />
@@ -70,18 +70,18 @@ export default function ProcessJourney() {
 
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 md:mb-20">
+        <div className="text-center mb-12 md:mb-20">
           <div className="inline-block px-5 py-2 mb-6 rounded-full bg-white/5 border border-white/10 text-sm font-medium tracking-wider uppercase">
             /PROCESS
           </div>
 
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-5">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-tight mb-5">
             The Step-by-Step Journey
-            <br />
+            <br className="hidden sm:block" />
             of Our Design Process
           </h2>
 
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-white/60">
+          <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-white/60 px-2">
             Every stage is carefully crafted — from research and strategy,
             <br className="hidden md:block" />
             to design and innovation.
@@ -89,13 +89,13 @@ export default function ProcessJourney() {
         </div>
 
         {/* Steps cards */}
-        <div className="relative mt-16 md:mt-35">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-end">
+        <div className="relative mt-20 md:mt-30 lg:mt-35">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-6 items-end">
             {steps.map((step, index) => {
               const translateClasses = [
-                "-translate-y-24",
-                "-translate-y-16",
-                "-translate-y-8",
+                "-translate-y-12 md:-translate-y-24",
+                "-translate-y-8 md:-translate-y-16",
+                "-translate-y-4 md:-translate-y-8",
                 "translate-y-0",
               ];
 
@@ -105,9 +105,9 @@ export default function ProcessJourney() {
                   className={`flex flex-col items-center ${translateClasses[index]}`}
                 >
                   {/* Title + dot OUTSIDE card */}
-                  <div className="mb-3 flex justify-start w-[260px] items-center gap-3">
+                  <div className="mb-4 md:mb-3 flex justify-start w-full max-w-[260px] items-center gap-3 px-1">
                     <span className={`w-3 h-3 rounded-full ${step.dotColor}`} />
-                    <h3 className="text-[16px] font-semibold text-white">
+                    <h3 className="text-base md:text-[16px] font-semibold text-white">
                       {step.title}
                     </h3>
                   </div>
@@ -115,15 +115,17 @@ export default function ProcessJourney() {
                   {/* Card */}
                   <div
                     className="
-              relative w-[260px] h-[420px]
-              rounded-lg
-              border border-white/10
-              bg-gradient-to-b from-[#18142a] to-[#0c0a16]
-              backdrop-blur-lg
-              transition-all duration-300
-              hover:-translate-y-2
-              hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]
-            "
+                      relative 
+                      w-full max-w-[260px] 
+                      h-[380px] md:h-[420px]
+                      rounded-lg
+                      border border-white/10
+                      bg-gradient-to-b from-[#18142a] to-[#0c0a16]
+                      backdrop-blur-lg
+                      transition-all duration-300
+                      hover:-translate-y-2
+                      hover:shadow-[0_20px_60px_-20px_rgba(0,0,0,0.7)]
+                    "
                   >
                     {/* Content pinned to bottom */}
                     <div className="absolute inset-0 px-6 pb-8 flex items-end">
