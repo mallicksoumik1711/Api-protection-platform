@@ -2,17 +2,17 @@ import { useState } from "react";
 import { useNavigate } from "react-router";
 
 export default function SegmentedCTA() {
-  const [hovered, setHovered] = useState("left"); 
+  const [hovered, setHovered] = useState("left");
   const navigate = useNavigate();
 
   return (
-    <div className="mt-10 flex justify-center">
-      {/* OUTER CONTAINER */}
+    <div className="mt-10 sm:mt-12 flex justify-center px-4">
+      {/* OUTER CONTAINER - Made responsive */}
       <div
         className="
           relative
-          w-[620px]
-          h-15
+          w-full max-w-[620px]
+          h-15 sm:h-14
           rounded-lg
           border border-white/10
           bg-black/80
@@ -24,26 +24,28 @@ export default function SegmentedCTA() {
         {/* SLIDING WHITE PILL */}
         <div
           className={`
-            absolute
-            top-1 bottom-1
-            w-1/2
-            rounded-md
-            bg-white
-            transition-all
-            duration-200
-            ease-out
-            ${hovered === "left" ? "left-1" : "left-1/2"}
-          `}
+    absolute
+    top-1 bottom-1 left-1
+    w-[calc(50%-4px)]
+    rounded-md
+    bg-white
+    transition-transform
+    duration-200
+    ease-out
+    ${hovered === "right" ? "translate-x-full" : "translate-x-0"}
+  `}
         />
 
         {/* BUTTONS */}
-        <div className="relative z-10 grid grid-cols-2 h-full">
-          {/* ANALYZE */}
+        <div className="relative z-10 grid grid-cols-2 h-full text-xs sm:text-sm">
+          {/* ANALYZE / Sign In */}
           <button
             onMouseEnter={() => setHovered("left")}
-            onClick={() => navigate("/signin")}
+            onClick={() => {
+              setHovered("left");
+              navigate("/signin");
+            }}
             className={`
-              text-sm
               font-medium
               transition
               ${hovered === "left" ? "text-black" : "text-white/70"}
@@ -52,12 +54,14 @@ export default function SegmentedCTA() {
             Sign In →
           </button>
 
-          {/* COMPARE */}
+          {/* COMPARE / Try Demo */}
           <button
             onMouseEnter={() => setHovered("right")}
-            onClick={() => navigate("/try-demo")}
+            onClick={() => {
+              setHovered("right");
+              navigate("");
+            }}
             className={`
-              text-sm
               font-medium
               transition
               ${hovered === "right" ? "text-black" : "text-white/70"}
