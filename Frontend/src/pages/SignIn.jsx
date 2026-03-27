@@ -1,40 +1,39 @@
 import BackgroundDots from "../components/BackgroundDots";
 import Navbar from "../components/Navbar";
-import {handleLogin} from "../api/auth";
-import {useNavigate} from "react-router-dom";
+import { handleLogin } from "../api/auth";
+import { useNavigate } from "react-router-dom";
 
 import toast from "react-hot-toast";
 
 function SignIn() {
-
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    if(!email || !password){
+    if (!email || !password) {
       toast.error("Email and password are required");
       console.error("Email and password are required");
       return;
     }
-    try{
+    try {
       const submission = await handleLogin(email, password);
       console.log("Login response:", submission);
-      navigate("/frontpage"); 
-    }
-    catch(err){
+      navigate("/frontpage");
+    } catch (err) {
       console.log("Login error:", err);
       toast.error(err.message);
     }
-  }
+  };
 
   return (
     <div className="relative min-h-screen bg-black text-white overflow-hidden font-sans">
       <BackgroundDots />
       <Navbar />
+
       {/* Login Card - centered with glassmorphism */}
-      <div className="min-h-screen flex items-center justify-center px-5 sm:px-0 z-10 pt-32 pb-32">
+      <div className="min-h-screen flex items-center justify-center px-4 sm:px-6 md:px-0 pt-32 pb-32 sm:pt-32">
         <div
           className="
             w-full max-w-md 
@@ -42,14 +41,14 @@ function SignIn() {
             border border-white/10 
             rounded-2xl 
             shadow-2xl shadow-black/40
-            p-8 sm:p-10
+            p-6 sm:p-8 md:p-10
             transition-all duration-300
           "
         >
-          <h1 className="text-3xl font-bold text-center mb-2 tracking-tight">
+          <h1 className="text-2xl sm:text-3xl font-bold text-center mb-2 tracking-tight">
             Welcome back
           </h1>
-          <p className="text-gray-400 text-center mb-8 text-sm">
+          <p className="text-gray-400 text-center mb-8 text-sm sm:text-base">
             Sign in to continue
           </p>
 
@@ -113,6 +112,7 @@ function SignIn() {
                 rounded-lg 
                 hover:bg-white/10 
                 transition-all duration-200
+                text-base font-medium
               "
             >
               Sign In
