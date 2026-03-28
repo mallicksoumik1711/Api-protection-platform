@@ -1,18 +1,23 @@
 import { useState, useEffect } from "react";
 import { getApiKeysDetails } from "../../../../api/apikey";
-import { RefreshCcw } from "lucide-react";
+import { RefreshCcwDot } from "lucide-react";
 
 function GetApiKeysList() {
   const [apiKeys, setApiKeys] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
 
   const fetchKeys = async () => {
     try {
+      setRefreshing(true);
+      // for testing loading state, remove in production
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const data = await getApiKeysDetails();
       setApiKeys(data);
     } catch (error) {
       console.error("Error fetching API keys details:", error);
     } finally {
+      setRefreshing(false);
       setLoading(false);
     }
   };
@@ -34,7 +39,9 @@ function GetApiKeysList() {
           onClick={fetchKeys}
           className="bg-zinc-900 border border-zinc-800 text-white p-2 cursor-pointer rounded-md text-sm hover:bg-zinc-950/50 transition-colors"
         >
-          <RefreshCcw className="w-4 h-4" />
+          <RefreshCcwDot
+            className={`w-4 h-4${refreshing ? " animate-spin" : ""}`}
+          />
         </button>
       </div>
 

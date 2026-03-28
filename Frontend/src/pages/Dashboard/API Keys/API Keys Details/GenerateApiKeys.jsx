@@ -3,6 +3,7 @@ import {
   KeyRound,
   Plus,
   Copy,
+  CopyCheck,
   Info,
   ScanQrCode,
   Eye,
@@ -15,14 +16,21 @@ function GenerateApiKeys() {
   const [keyName, setKeyName] = useState("");
   const [generatedKey, setGeneratedKey] = useState(null);
   const [showKey, setShowKey] = useState(false);
+  const [keyCopied, setKeyCopied] = useState(false);
+
   const handleGenerate = async () => {
     if (!keyName.trim()) {
       toast.error("Please enter a valid key name");
       return;
     }
+    if (generatedKey && !keyCopied) {
+      toast.error("Please copy the generated key before creating a new one");
+      return;
+    }
     try {
       const response = await generateApiKeys(keyName);
       setGeneratedKey(response.apiKey);
+      setKeyCopied(false);
       toast.success(
         "API Key generated successfully! Make sure to copy it now.",
       );
@@ -30,6 +38,18 @@ function GenerateApiKeys() {
     } catch (err) {
       toast.error("Failed to generate API key");
       console.error("Error generating API key:", err);
+    }
+  };
+
+  const handleCopy = async () => {
+    if (!generatedKey) return;
+    try {
+      await navigator.clipboard.writeText(generatedKey);
+      setKeyCopied(true);
+      toast.success("API Key copied to clipboard!");
+    } catch (err) {
+      toast.error("Failed to copy API key");
+      console.error("Error copying API key:", err);
     }
   };
 
@@ -105,16 +125,34 @@ function GenerateApiKeys() {
                   : "••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••"}
               </div>
             </div>
-            <button
-              onClick={toggleShowKey}
-              className="text-emerald-400 hover:text-emerald-300 transition"
-            >
-              {showKey ? (
-                <Eye className="w-4 h-4" />
-              ) : (
-                <EyeOff className="w-4 h-4" />
+
+            <div className="flex items-center gap-4">
+              {/* Eye toggle */}
+              <button
+                onClick={toggleShowKey}
+                className="text-zinc-400 hover:text-emerald-300 transition"
+              >
+                {showKey ? (
+                  <Eye className="w-4 h-4 cursor-pointer" />
+                ) : (
+                  <EyeOff className="w-4 h-4 cursor-pointer" />
+                )}
+              </button>
+
+              {/* Copy button */}
+              {showKey && (
+                <button
+                  onClick={handleCopy}
+                  className="text-emerald-400 hover:text-emerald-300 transition"
+                >
+                  {!keyCopied ? (
+                    <Copy className="w-4 h-4 text-amber-500" />
+                  ) : (
+                    <CopyCheck className="w-4 h-4 text-emerald-500" />
+                  )}
+                </button>
               )}
-            </button>
+            </div>
           </div>
         )}
 
