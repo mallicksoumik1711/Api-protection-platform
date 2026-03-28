@@ -9,7 +9,8 @@ function ProtectedRoutes({ children }) {
 
   useEffect(() => {
     const checkAuth = async () => {
-      // await new Promise((resolve) => setTimeout(resolve, 10000)); 
+      // for testing. remove in production
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       try {
         await axios.get("http://localhost:3000/auth/protected", {
           withCredentials: true,

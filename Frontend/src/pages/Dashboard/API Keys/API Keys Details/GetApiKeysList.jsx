@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { getApiKeysDetails } from "../../../../api/apikey";
 import { RefreshCcwDot } from "lucide-react";
+import GetApiKeysListSkeleton from "../../../../layouts/skeletons/GetApiKeysListSkeleton";
 
 function GetApiKeysList() {
   const [apiKeys, setApiKeys] = useState([]);
@@ -46,7 +47,7 @@ function GetApiKeysList() {
       </div>
 
       {loading ? (
-        <div className="text-center py-12 text-zinc-500">Loading...</div>
+        <GetApiKeysListSkeleton />
       ) : apiKeys.length === 0 ? (
         <div className="text-center py-12 text-zinc-500">
           No API keys found. Generate your key.

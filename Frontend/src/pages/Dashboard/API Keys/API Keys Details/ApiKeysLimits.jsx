@@ -1,6 +1,7 @@
 import { Activity } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getApiKeysDetails } from "../../../../api/apikey";
+import ApiKeysLimitsSkeleton from "../../../../layouts/skeletons/ApiKeysLimitSkeleton";
 
 function ApiKeysLimits() {
   const [apiKeys, setApiKeys] = useState([]);
@@ -8,6 +9,8 @@ function ApiKeysLimits() {
 
   const fetchKeys = async () => {
     try {
+      // for testing, remove in production
+      await new Promise((resolve) => setTimeout(resolve, 1000));
       const data = await getApiKeysDetails();
       setApiKeys(data);
     } catch (error) {
@@ -35,7 +38,7 @@ function ApiKeysLimits() {
 
       {/* Loading */}
       {loading ? (
-        <div className="text-center text-zinc-500 py-10">Loading...</div>
+        <ApiKeysLimitsSkeleton />
       ) : apiKeys.length === 0 ? (
         <div className="text-center text-zinc-500 py-10">
           No API keys found.

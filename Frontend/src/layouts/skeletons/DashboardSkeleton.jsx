@@ -10,6 +10,19 @@ export default function DashboardSkeleton() {
         <BaseSkeleton className="h-6 w-full" />
         <BaseSkeleton className="h-6 w-full" />
         <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
+        <BaseSkeleton className="h-6 w-full" />
       </div>
 
       {/* Main Content */}
@@ -20,6 +33,9 @@ export default function DashboardSkeleton() {
 
         {/* Cards */}
         <div className="grid grid-cols-3 gap-6">
+          <BaseSkeleton className="h-32 w-full" />
+          <BaseSkeleton className="h-32 w-full" />
+          <BaseSkeleton className="h-32 w-full" />
           <BaseSkeleton className="h-32 w-full" />
           <BaseSkeleton className="h-32 w-full" />
           <BaseSkeleton className="h-32 w-full" />
