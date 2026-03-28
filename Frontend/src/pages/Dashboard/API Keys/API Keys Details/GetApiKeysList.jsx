@@ -1,6 +1,6 @@
-
 import { useState, useEffect } from "react";
 import { getApiKeysDetails } from "../../../../api/apikey";
+import { RefreshCcw } from "lucide-react";
 
 function GetApiKeysList() {
   const [apiKeys, setApiKeys] = useState([]);
@@ -23,7 +23,6 @@ function GetApiKeysList() {
 
   return (
     <div className="bg-zinc-950/80 border border-zinc-900/80 rounded-lg flex flex-col min-h-0 p-6 shadow-2xl">
-      
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-white font-medium">Your API Keys</h2>
@@ -33,9 +32,9 @@ function GetApiKeysList() {
         </div>
         <button
           onClick={fetchKeys}
-          className="bg-white text-black px-4 py-2 rounded-md text-sm hover:bg-zinc-200 transition-colors"
+          className="bg-zinc-900 border border-zinc-800 text-white p-2 cursor-pointer rounded-md text-sm hover:bg-zinc-950/50 transition-colors"
         >
-          Fetch / Refresh
+          <RefreshCcw className="w-4 h-4" />
         </button>
       </div>
 
@@ -43,14 +42,12 @@ function GetApiKeysList() {
         <div className="text-center py-12 text-zinc-500">Loading...</div>
       ) : apiKeys.length === 0 ? (
         <div className="text-center py-12 text-zinc-500">
-          No API keys found. Generate your first key above.
+          No API keys found. Generate your key.
         </div>
       ) : (
         <div className="flex-1 min-h-0 border border-zinc-900 rounded-lg overflow-hidden bg-black">
-          
           <div className="overflow-y-auto h-full max-h-[50vh] custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
             <table className="w-full text-sm text-left text-zinc-300">
-              
               <thead className="bg-zinc-950 sticky top-0 z-20 border-b border-zinc-700">
                 <tr>
                   <th className="px-6 py-4 font-medium text-zinc-400">Name</th>
