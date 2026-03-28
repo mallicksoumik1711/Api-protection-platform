@@ -8,6 +8,9 @@ import {
   LockKeyhole,
   CircleCheckBig,
   CopyX,
+  Timer,
+  Dices,
+  Hourglass,
 } from "lucide-react";
 import Dropdown from "../../layouts/Dropdown";
 
@@ -83,36 +86,48 @@ function RateLimit() {
             {/* Left - Form Fields */}
             <div className="flex flex-col justify-between">
               {/* Request Limit + Time Window – side by side */}
-              <div className="bg-zinc-900/50 border border-zinc-800 rounded-md p-5 space-y-5">
+              <div className="bg-zinc-900/50 border border-zinc-800 rounded-md p-5 space-y-2">
                 <div className="grid grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-zinc-300">
                       Request Limit
                     </label>
-                    <input
-                      type="number"
-                      value={limit}
-                      onChange={(e) => setLimit(e.target.value)}
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white text-sm focus:border-zinc-700 outline-none transition"
-                      placeholder="50"
-                    />
+                    <div className="relative">
+                      {/* Icon */}
+                      <Dices className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-amber-400 pointer-events-none" />
+
+                      {/* Input */}
+                      <input
+                        type="number"
+                        value={limit}
+                        onChange={(e) => setLimit(e.target.value)}
+                        placeholder="50"
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 pl-11 text-white text-sm focus:border-zinc-700 outline-none transition"
+                      />
+                    </div>
                   </div>
 
                   <div className="space-y-2">
                     <label className="block text-sm font-medium text-zinc-300">
                       Time Window (seconds)
                     </label>
-                    <input
-                      type="number"
-                      value={windowTime}
-                      onChange={(e) => setWindowTime(e.target.value)}
-                      className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 text-white text-sm focus:border-zinc-700 outline-none transition"
-                      placeholder="60"
-                    />
+                    <div className="relative">
+                      {/* Icon */}
+                      <Hourglass className="absolute left-2 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-400 pointer-events-none" />
+
+                      {/* Input */}
+                      <input
+                        type="number"
+                        value={windowTime}
+                        onChange={(e) => setWindowTime(e.target.value)}
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 pl-11 text-white text-sm focus:border-zinc-700 outline-none transition"
+                        placeholder="60"
+                      />
+                    </div>
                   </div>
                 </div>
 
-                <div className="pt-2">
+                <div>
                   <a
                     href="#"
                     className="text-xs text-zinc-500 hover:text-zinc-300 transition flex items-center gap-1.5"
@@ -134,18 +149,63 @@ function RateLimit() {
                   }
                 />
               </div>
-              <div className="bg-zinc-900/50 border border-zinc-800 rounded-md p-5 space-y-4">
-                <p className="text-xs text-zinc-500">
-                  Choose how the rate limit should be applied.
+
+              <div className="flex flex-wrap bg-zinc-900/50 border border-zinc-900 rounded-md px-5 py-3 gap-2">
+                <p className="w-full text-[11px] text-zinc-500 mb-1">
+                  Not sure what to use? Choose a common rate limit:
                 </p>
 
-                <a
-                  href="#"
-                  className="text-xs text-zinc-500 hover:text-zinc-300 transition flex items-center gap-1.5"
+                <div
+                  onClick={() => {
+                    setLimit(15);
+                    setWindowTime(60);
+                  }}
+                  className="flex-1 min-w-[120px] bg-black text-[11px] px-3 py-2 rounded-md text-center text-zinc-300 hover:bg-zinc-950 transition cursor-pointer"
                 >
-                  Learn more <span aria-hidden>↗</span>
-                </a>
+                  15 req / min
+                </div>
+
+                <div
+                  onClick={() => {
+                    setLimit(30);
+                    setWindowTime(60);
+                  }}
+                  className="flex-1 min-w-[120px] bg-black text-[11px] px-3 py-2 rounded-md text-center text-zinc-300 hover:bg-zinc-950 transition cursor-pointer"
+                >
+                  30 req / min
+                </div>
+
+                <div
+                  onClick={() => {
+                    setLimit(50);
+                    setWindowTime(60);
+                  }}
+                  className="flex-1 min-w-[120px] bg-black text-[11px] px-3 py-2 rounded-md text-center text-zinc-300 hover:bg-zinc-950 transition cursor-pointer"
+                >
+                  50 req / min
+                </div>
+
+                <div
+                  onClick={() => {
+                    setLimit(100);
+                    setWindowTime(60);
+                  }}
+                  className="flex-1 min-w-[120px] bg-black text-[11px] px-3 py-2 rounded-md text-center text-zinc-300 hover:bg-zinc-950 transition cursor-pointer"
+                >
+                  100 req / min
+                </div>
+
+                <div
+                  onClick={() => {
+                    setLimit(200);
+                    setWindowTime(60);
+                  }}
+                  className="flex-1 min-w-[120px] bg-black text-[11px] px-3 py-2 rounded-md text-center text-zinc-300 hover:bg-zinc-950 transition cursor-pointer"
+                >
+                  200 req / min
+                </div>
               </div>
+
               <div className="pt-4">
                 <button className="w-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-950/50 text-white font-semibold py-3.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
                   <Save className="w-4 h-4 relative z-10" />
