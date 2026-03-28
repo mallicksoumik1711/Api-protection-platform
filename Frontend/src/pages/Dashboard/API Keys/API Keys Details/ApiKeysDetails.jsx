@@ -95,7 +95,7 @@ function ApiKeysDetails() {
         <div className="grid lg:grid-cols-12 gap-8 mt-6 flex-1">
           {/* Left – Tabs + Content (main area) */}
           <div className="col-span-12 lg:col-span-9 flex flex-col min-h-0">
-            <div className="flex border-b border-zinc-800 bg-zinc-900 rounded-lg mb-6">
+            <div className="flex bg-zinc-950 rounded-lg mb-6">
               {tabs.map((tab, index) => (
                 <button
                   key={tab.id}
@@ -125,7 +125,7 @@ function ApiKeysDetails() {
             </div>
 
             {/* bottom section */}
-            <div className="bg-zinc-900 mt-5 rounded-lg p-5 border border-zinc-800 flex flex-col justify-between">
+            <div className="bg-zinc-950 mt-2.5 rounded-lg p-5 border border-zinc-900 flex flex-col justify-between">
               <div>
                 <h3 className="text-sm text-zinc-300 font-medium">API Usage</h3>
                 <p className="text-xs text-zinc-500 mt-1">
@@ -165,14 +165,14 @@ function ApiKeysDetails() {
           <div className="hidden lg:block lg:col-span-3 mt-10 lg:mt-0">
             <div className="space-y-4 sticky top-6 h-fit">
               {/* Quick Stats Card */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+              <div className="bg-black border border-zinc-900 rounded-lg p-5">
                 <h3 className="text-sm font-medium text-zinc-200 mb-4">
                   Key Overview
                 </h3>
 
                 <div className="grid grid-cols-2 gap-4 mb-5">
                   {/* Active Keys */}
-                  <div className="bg-emerald-500/5 border border-emerald-500/20 rounded-md p-3 flex items-center justify-between">
+                  <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-md p-3 flex items-center justify-between">
                     <div>
                       <p className="text-xs text-zinc-400">Active Keys</p>
                       <p className="text-xl font-semibold text-emerald-400 mt-0.5">
@@ -182,13 +182,13 @@ function ApiKeysDetails() {
                       </p>
                     </div>
 
-                    <div className="p-2 bg-emerald-500/10 rounded-md">
+                    <div className="p-2 bg-emerald-500/20 rounded-md">
                       <KeyRound className="w-4 h-4 text-emerald-400" />
                     </div>
                   </div>
 
                   {/* Total Keys */}
-                  <div className="bg-violet-500/5 border border-violet-500/20 rounded-md p-3 flex items-center justify-between">
+                  <div className="bg-violet-500/20 border border-violet-500/30 rounded-md p-3 flex items-center justify-between">
                     <div>
                       <p className="text-xs text-zinc-400">Total Keys</p>
                       <p className="text-xl font-semibold text-violet-400 mt-0.5">
@@ -196,13 +196,13 @@ function ApiKeysDetails() {
                       </p>
                     </div>
 
-                    <div className="p-2 bg-violet-500/10 rounded-md">
+                    <div className="p-2 bg-violet-500/20 rounded-md">
                       <Layers className="w-4 h-4 text-violet-400" />
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-red-500/10 text-red-400 border border-red-500/20 rounded-md">
+                <div className="bg-red-500/20 text-red-400 border border-red-500/30 rounded-md">
                   <div className="text-xs px-2 py-1 text-zinc-400">
                     Inactive Keys
                   </div>
@@ -212,7 +212,7 @@ function ApiKeysDetails() {
                         ? apiKeyStatus["Inactive keys"]
                         : inactiveKeys}
                     </div>
-                    <div className="bg-red-500/10 p-2 rounded-md">
+                    <div className="bg-red-500/20 p-2 rounded-md">
                       <PowerOff className="w-4 h-4" />
                     </div>
                   </div>
@@ -230,7 +230,7 @@ function ApiKeysDetails() {
                     </p>
                   </div>
 
-                  <div className="p-2 bg-amber-500/10 rounded-md items-center flex cursor-pointer">
+                  <div className="p-2 bg-amber-500/20 rounded-md items-center flex cursor-pointer">
                     <button onClick={showKeyStatus}>
                       <RotateCw
                         className={`w-4 h-4 text-amber-400 cursor-pointer ${
@@ -243,7 +243,7 @@ function ApiKeysDetails() {
               </div>
 
               {/* Security & Best Practices */}
-              <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
+              <div className="bg-black border border-zinc-900 rounded-lg p-5">
                 <h3 className="text-sm font-medium text-zinc-200 mb-4 flex items-center gap-2">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
                   Security Essentials
@@ -289,7 +289,7 @@ function ApiKeysDetails() {
               </div>
 
               {/* Mini lifecycle hint (compact version) */}
-              <div className="bg-zinc-950/60 border border-zinc-800 rounded-lg p-4 text-xs">
+              <div className="bg-black border border-zinc-900 rounded-lg p-4 text-xs">
                 <p className="text-zinc-400 leading-relaxed">
                   <span className="text-emerald-400 font-medium">
                     Best practice:

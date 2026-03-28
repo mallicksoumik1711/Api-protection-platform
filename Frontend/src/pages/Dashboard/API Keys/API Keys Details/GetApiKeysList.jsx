@@ -22,7 +22,7 @@ function GetApiKeysList() {
   }, []);
 
   return (
-    <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-6 flex flex-col min-h-0">
+    <div className="bg-zinc-950/80 border border-zinc-900/80 rounded-lg flex flex-col min-h-0 p-6 shadow-2xl">
       
       <div className="flex items-center justify-between mb-6">
         <div>
@@ -46,7 +46,7 @@ function GetApiKeysList() {
           No API keys found. Generate your first key above.
         </div>
       ) : (
-        <div className="flex-1 min-h-0 border border-zinc-800 rounded-lg overflow-hidden bg-zinc-950/30">
+        <div className="flex-1 min-h-0 border border-zinc-900 rounded-lg overflow-hidden bg-black">
           
           <div className="overflow-y-auto h-full max-h-[50vh] custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
             <table className="w-full text-sm text-left text-zinc-300">

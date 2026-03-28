@@ -1,4 +1,3 @@
-
 import { Activity } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getApiKeysDetails } from "../../../../api/apikey";
@@ -23,9 +22,9 @@ function ApiKeysLimits() {
   }, []);
 
   return (
-    <div className="flex flex-col bg-zinc-900 border border-zinc-800 rounded-lg p-6">
+    <div className="flex flex-col bg-zinc-950 border border-zinc-900 rounded-lg p-6">
       {/* Header */}
-      <div className="flex items-center gap-2 mb-4">
+      <div className="flex items-center gap-2 mb-3">
         <Activity className="w-5 h-5 text-emerald-400" />
         <h2 className="text-white font-medium">API Usage & Limits</h2>
       </div>
@@ -42,7 +41,7 @@ function ApiKeysLimits() {
           No API keys found.
         </div>
       ) : (
-        <div className="space-y-4 pr-2 max-h-[50vh] overflow-y-auto">
+        <div className="space-y-4 pr-2 max-h-[40vh] overflow-y-auto">
           {apiKeys.map((key) => {
             const percentage =
               key.usage.limit > 0
@@ -52,7 +51,7 @@ function ApiKeysLimits() {
             return (
               <div
                 key={key.id}
-                className="border border-zinc-800 rounded-md p-4 bg-zinc-950/80"
+                className="border border-zinc-900 rounded-md p-4 bg-black"
               >
                 {/* Top Row */}
                 <div className="flex items-center justify-between mb-2">

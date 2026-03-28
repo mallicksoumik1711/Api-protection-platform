@@ -25,3 +25,15 @@ export const getApiKeys = async () => {
     throw error;
   }
 };
+
+export const generateApiKeys = async (name) => {
+  try {
+    const response = await axios.post(`${BASE_URL}/generate`, { name }, {
+      withCredentials: true
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Error generating API key:", error);
+    throw error;
+  }
+};

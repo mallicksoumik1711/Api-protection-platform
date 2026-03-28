@@ -16,7 +16,7 @@ export const handleLogin = async (email, password) => {
     throw new Error("Login failed.");
   }
 };
-
+ 
 export const handleSignup = async (name, email, password) => {
   try {
     const res = await axios.post(
