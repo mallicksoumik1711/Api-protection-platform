@@ -12,6 +12,7 @@ import ApiKeysDetails from "../pages/Dashboard/API Keys/API Keys Details/ApiKeys
 import ApiKeyLogs from "../pages/Dashboard/API Keys/ApiKeyLogs";
 import RateLimit from "../pages/Dashboard/RateLimit";
 import ProtectedApi from "../pages/Dashboard/ProtectedApi";
+import JwtSettings from "../pages/Dashboard/JwtSettings";
 
 import { Toaster } from "react-hot-toast";
 
@@ -90,6 +91,16 @@ function RoutePage() {
             <ProtectedRoutes>
               <DashboardLayout>
                 <ProtectedApi />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/jwt-settings"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <JwtSettings />
               </DashboardLayout>
             </ProtectedRoutes>
           }

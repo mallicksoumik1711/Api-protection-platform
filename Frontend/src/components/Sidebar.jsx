@@ -12,6 +12,7 @@ import {
   TriangleAlert,
   Triangle,
   FileLock,
+  Settings,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -57,6 +58,11 @@ export default function Sidebar() {
           icon={<FileLock size={16} />}
           text="Protected APIs"
           path="/protected-api"
+        />
+        <SidebarItem
+          icon={<Settings size={16} />}
+          text="JWT Settings"
+          path="/jwt-settings"
         />
         <SidebarItem icon={<FileText size={16} />} text="Logs" path="/logs" />
         <SidebarItem

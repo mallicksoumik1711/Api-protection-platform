@@ -85,7 +85,7 @@ function ApiKeyLogs() {
       </div>
 
       <div className="mt-6 max-w-6xl mx-auto">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between mb-3 mr-6">
           <h3 className="text-sm font-medium text-zinc-200">
             All Protected Requests
           </h3>
@@ -102,7 +102,7 @@ function ApiKeyLogs() {
       bg-gradient-to-b from-black/80 to-zinc-950/90 
       border border-zinc-800/70 rounded-lg 
       shadow-inner shadow-black/40 
-      overflow-hidden
+      overflow-hidden mr-6
     "
         >
           <div className="bg-zinc-900/70 px-4 py-1.5 border-b border-zinc-800 flex items-center justify-between text-xs text-zinc-500 font-mono">

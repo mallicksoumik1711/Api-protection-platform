@@ -101,40 +101,27 @@ function ProtectedApi() {
                 <Plus className="w-4 h-4" />
               </button>
             </div>
-
-            <div className="space-y-2">
-              <div className="flex items-center justify-between bg-black border border-zinc-800 px-4 py-3 rounded-md text-sm text-zinc-300">
-                <span>/apikey/key-details</span>
-                <button className="text-red-400 hover:text-red-500 text-xs">
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-
-              <div className="flex items-center justify-between bg-black border border-zinc-800 px-4 py-3 rounded-md text-sm text-zinc-300">
-                <span>/apikey/key-status</span>
-                <button className="text-red-400 hover:text-red-500 text-xs">
-                  <Trash2 className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
           </div>
 
           <div className="space-y-3 mb-6">
             <label className="flex items-center justify-between bg-black border border-zinc-800 rounded-md px-4 py-3">
               <span className="text-sm text-zinc-300">Require API Key</span>
-              <input type="checkbox" className="accent-pink-500 w-5 h-5" />
+              <input type="checkbox" className="accent-amber-300/80 w-5 h-5" />
             </label>
 
             <label className="flex items-center justify-between bg-black border border-zinc-800 rounded-md px-4 py-3">
               <span className="text-sm text-zinc-300">
                 Require JWT Authentication
               </span>
-              <input type="checkbox" className="accent-blue-500 w-5 h-5" />
+              <input type="checkbox" className="accent-blue-300/80 w-5 h-5" />
             </label>
 
             <label className="flex items-center justify-between bg-black border border-zinc-800 rounded-md px-4 py-3">
               <span className="text-sm text-zinc-300">Apply Rate Limiting</span>
-              <input type="checkbox" className="accent-emerald-500 w-5 h-5" />
+              <input
+                type="checkbox"
+                className="accent-emerald-300/80 w-5 h-5"
+              />
             </label>
           </div>
 
