@@ -46,6 +46,9 @@ app.use("/logs", apilogRoutes);
 const projectRoutes = require("./routes/projects.route");
 app.use("/projects", projectRoutes);
 
+const jwtSettingsRoutes = require("./routes/jwtSettings.route");
+app.use("/jwt-settings", jwtSettingsRoutes);
+
 app.use("/protected", authRoutes);
 
 module.exports = app;

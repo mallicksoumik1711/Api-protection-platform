@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const jwtSettingsSchema = new mongoose.model({
+const jwtSettingsSchema = new mongoose.Schema({
   projectId: {
     type: String,
     ref: "Project",
@@ -13,8 +13,8 @@ const jwtSettingsSchema = new mongoose.model({
   secretKey: String,
   algorithm: String,
   expiresIn: {
-    type: Date,
-    default: Date.now + 60 * 60 * 1000, // Default to 1 hour
+    type: String,
+    default: "1h",
   },
   tokenType: {
     type: String,
