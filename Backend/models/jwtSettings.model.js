@@ -12,10 +12,7 @@ const jwtSettingsSchema = new mongoose.Schema({
   },
   secretKey: String,
   algorithm: String,
-  expiresIn: {
-    type: String,
-    default: "1h",
-  },
+  expiresIn: String,
   tokenType: {
     type: String,
     enum: ["header", "cookie"],

@@ -2,7 +2,7 @@ const jwtSettingsModel = require("../models/jwtSettings.model");
 
 const saveJwtSettings = async (req, res) => {
   try {
-    const {
+    let {
       projectId,
       enabled,
       secretKey,
@@ -18,7 +18,7 @@ const saveJwtSettings = async (req, res) => {
         .send({ success: false, message: "Project ID is required." });
     }
 
-    if (enabled === true && !secretKey) {
+    if (enabled && !secretKey) {
       return res.status(400).send({
         success: false,
         message: "Secret key is required when JWT is enabled.",
@@ -30,6 +30,10 @@ const saveJwtSettings = async (req, res) => {
         success: false,
         message: "ExpiresIn must be a string like '1h', '30m', etc.",
       });
+    }
+
+    if(tokenType === "header"){
+        tokenName = "Authorization";
     }
 
     const existingSettings = await jwtSettingsModel.findOneAndUpdate(
