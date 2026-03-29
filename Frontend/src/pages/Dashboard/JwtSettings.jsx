@@ -8,6 +8,9 @@ import {
   FilePlusCorner,
   ChevronDownIcon,
   Check,
+  Braces,
+  FingerprintPattern,
+  Wrench,
 } from "lucide-react";
 import toast from "react-hot-toast";
 
@@ -92,16 +95,16 @@ function JwtSettings() {
             <div className="flex whitespace-nowrap text-sm text-zinc-400">
               <div className="flex gap-6 mr-6">
                 <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-4 h-4 text-violet-400" />
-                  <span>Attack Pattern Blocking</span>
+                  <Braces className="w-4 h-4 text-violet-400" />
+                  <span>Token Security</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Link className="w-4 h-4 text-amber-400" />
-                  <span>Analytics & Insights</span>
+                  <FingerprintPattern className="w-4 h-4 text-amber-400" />
+                  <span>Authentication Controls</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <BotOff className="w-4 h-4 text-cyan-400" />
-                  <span>Bot & Crawler Detection</span>
+                  <Wrench className="w-4 h-4 text-cyan-400" />
+                  <span>Secret and Algorithm Setup</span>
                 </div>
               </div>
             </div>
@@ -153,7 +156,11 @@ function JwtSettings() {
           </label>
         </div>
 
-        <div className="mt-6 bg-zinc-950/90 border border-zinc-900/80 rounded-lg p-7 space-y-7 shadow-inner mr-6 mb-6">
+        <div
+          className={`mt-6 bg-zinc-950/90 border border-zinc-900/80 rounded-lg p-7 space-y-7 shadow-inner mr-6 mb-6 transition-all ${
+            !isEnabled ? "opacity-50 pointer-events-none" : "opacity-100"
+          }`}
+        >
           {/* Secret Key */}
           <div>
             <div className="flex items-center justify-between mb-2">
