@@ -7,13 +7,17 @@ import {
   Link,
   FilePlusCorner,
   ChevronDownIcon,
+  Check,
 } from "lucide-react";
+import toast from "react-hot-toast";
 
 function JwtSettings() {
-  const [isEnabled, setIsEnabled] = useState(false);
+  const [isEnabled, setIsEnabled] = useState(true);
   const [isExpiryOpen, setIsExpiryOpen] = useState(false);
   const [isAlgoOpen, setIsAlgoOpen] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
+  const [isSecretGenerated, setIsSecretGenerated] = useState(false);
+  const [secretCopied, setSecretCopied] = useState(false);
 
   const [formData, setFormData] = useState({
     secretKey: "",
@@ -30,6 +34,21 @@ function JwtSettings() {
       .join("");
 
     setFormData((prev) => ({ ...prev, secretKey: randomSecret }));
+    setIsSecretGenerated(true);
+    setSecretCopied(false);
+  };
+
+  const handleCopy = async () => {
+    if (!formData.secretKey) return;
+
+    try {
+      await navigator.clipboard.writeText(formData.secretKey);
+      setSecretCopied(true);
+      toast.success("Secret key copied to clipboard!");
+    } catch (err) {
+      toast.error("Failed to copy secret key");
+      console.error("Error copying secret key:", err);
+    }
   };
 
   const handleSaveJwtSettings = async () => {
@@ -157,10 +176,18 @@ function JwtSettings() {
               />
               <button
                 type="button"
-                onClick={generateSecretKey}
+                onClick={isSecretGenerated ? handleCopy : generateSecretKey}
                 className="whitespace-nowrap px-6 py-3.5 bg-zinc-900 hover:bg-zinc-950 border border-zinc-800/80 text-white text-xs font-semibold rounded-md transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
               >
-                Generate Secret
+                {!isSecretGenerated ? (
+                  "Generate Secret"
+                ) : secretCopied ? (
+                  <span className="flex items-center gap-2">
+                    Copied <Check className="w-4 h-4 text-emerald-400" />
+                  </span>
+                ) : (
+                  "Copy Secret"
+                )}
               </button>
             </div>
             <p className="mt-2 text-xs text-zinc-500">
