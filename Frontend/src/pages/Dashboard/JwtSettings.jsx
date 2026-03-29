@@ -12,13 +12,15 @@ import {
   FingerprintPattern,
   Wrench,
 } from "lucide-react";
-// import toast from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import JwtToggle from "../../components/JwtDashboard/JwtToggle";
 import JwtSecretKey from "../../components/JwtDashboard/JwtSecretKey";
 import JwtExpiry from "../../components/JwtDashboard/JwtExpiry";
 import JwtTokenLocation from "../../components/JwtDashboard/JwtTokenLocation";
 import JwtAdvancedSettings from "../../components/JwtDashboard/JwtAdvancedSettings";
+
+import { jwtSettings } from "../../api/jwtSettings";
 
 function JwtSettings() {
   const [isEnabled, setIsEnabled] = useState(true);
@@ -29,12 +31,13 @@ function JwtSettings() {
     expiresInUnit: "h",
     tokenType: "cookie",
     tokenName: "authToken",
-    algorithm: "HS256",
+    algorithm: "HS256", //if no need remove from here
   });
 
   const handleSaveJwtSettings = async () => {
     try {
       const payload = {
+        projectId: "project-qwerty001", //for testing, later it will be fetched
         enabled: isEnabled,
         secretKey: formData.secretKey,
         expiresIn: `${formData.expiresInValue}${formData.expiresInUnit}`,
@@ -43,11 +46,12 @@ function JwtSettings() {
         algorithm: formData.algorithm,
       };
 
-      console.log("Saving JWT Settings:", payload);
-
-      // later we will call backend here
-      // await axios.post("/api/jwt-settings", payload);
+      const response = await jwtSettings(payload);
+      toast.success("JWT settings saved successfully!");
+      console.log("Saving JWT response:", response);
+      console.log("Saving JWT payload:", payload);
     } catch (error) {
+      toast.error("Failed to save JWT settings.");
       console.error("Failed to save JWT settings", error);
     }
   };
@@ -106,10 +110,10 @@ function JwtSettings() {
           }`}
         >
           {/* Secret Key */}
-          <JwtSecretKey />
+          <JwtSecretKey formData={formData} setFormData={setFormData} />
 
           {/* expiry */}
-          <JwtExpiry />
+          <JwtExpiry formData={formData} setFormData={setFormData} />
 
           {/* Token Location */}
           <JwtTokenLocation formData={formData} setFormData={setFormData} />

@@ -2,17 +2,9 @@ import { useState } from "react";
 import { Check } from "lucide-react";
 import toast from "react-hot-toast";
 
-function JwtSecretKey() {
+function JwtSecretKey({ formData, setFormData }) {
   const [isSecretGenerated, setIsSecretGenerated] = useState(false);
   const [secretCopied, setSecretCopied] = useState(false);
-  const [formData, setFormData] = useState({
-    secretKey: "",
-    expiresInValue: "1",
-    expiresInUnit: "h",
-    tokenType: "cookie",
-    tokenName: "authToken",
-    algorithm: "HS256",
-  });
 
   const handleCopy = async () => {
     if (!formData.secretKey) return;
@@ -28,11 +20,13 @@ function JwtSecretKey() {
   };
 
   const generateSecretKey = () => {
-    const randomSecret = Array.from(crypto.getRandomValues(new Uint8Array(32)))
-      .map((b) => b.toString(16).padStart(2, "0"))
-      .join("");
+    const randomKey = Math.random().toString(36).substring(2) + Date.now();
 
-    setFormData((prev) => ({ ...prev, secretKey: randomSecret }));
+    setFormData((prev) => ({
+      ...prev,
+      secretKey: randomKey,
+    }));
+
     setIsSecretGenerated(true);
     setSecretCopied(false);
   };
@@ -75,7 +69,11 @@ function JwtSecretKey() {
       </div>
       <p className="mt-2 text-xs text-zinc-500">
         Used to sign and verify tokens. A strong random secret prevents token
-        forgery.
+        forgery.{" "}
+        <span className="text-amber-500/80">
+          {" "}
+          Make sure to keep it safe and do not share it with anyone.
+        </span>
       </p>
     </div>
   );

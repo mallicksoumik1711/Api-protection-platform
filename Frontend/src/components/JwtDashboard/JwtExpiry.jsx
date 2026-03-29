@@ -1,15 +1,7 @@
 import { useState } from "react";
 
-function JwtExpiry() {
+function JwtExpiry({formData, setFormData}) {
   const [isExpiryOpen, setIsExpiryOpen] = useState(false);
-  const [formData, setFormData] = useState({
-    secretKey: "",
-    expiresInValue: "1",
-    expiresInUnit: "h",
-    tokenType: "cookie",
-    tokenName: "authToken",
-    algorithm: "HS256",
-  });
   return (
     <div>
       <label className="block text-xs font-medium text-zinc-300 mb-2">
