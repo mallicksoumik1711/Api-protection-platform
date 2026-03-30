@@ -4,10 +4,10 @@ const saveRateLimitSettings = async (req, res) => {
   try {
     let { projectId, limit, windowTime, type } = req.body;
 
-    if (!projectId) {
+    if (!projectId || !limit || !windowTime) {
       return res
         .status(400)
-        .send({ success: false, message: "Project ID is required." });
+        .send({ success: false, message: "Required fields missing." });
     }
 
     const rateLimitData = await rateLimitModel.findOneAndUpdate(
