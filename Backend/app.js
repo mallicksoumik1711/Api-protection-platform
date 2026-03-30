@@ -49,6 +49,9 @@ app.use("/projects", projectRoutes);
 const jwtSettingsRoutes = require("./routes/jwtSettings.route");
 app.use("/jwt-settings", jwtSettingsRoutes);
 
+const rateLimitRoutes = require("./routes/rateLimit.route");
+app.use("/rate-limit", rateLimitRoutes);
+
 app.use("/protected", authRoutes);
 
 module.exports = app;
