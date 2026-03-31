@@ -1,6 +1,6 @@
 const redisClient = require("../config/redis");
 const RATE_LIMIT_WINDOW = 60;
-const MAX_REQUESTS = 5;
+const MAX_REQUESTS = 50;
 
 const rateLimit = async (req, res, next) => {
     try{
