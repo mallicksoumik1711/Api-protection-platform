@@ -52,6 +52,10 @@ app.use("/jwt-settings", jwtSettingsRoutes);
 const rateLimitRoutes = require("./routes/rateLimit.route");
 app.use("/rate-limit", rateLimitRoutes);
 
+//testing rl for projects, as a service. remove in production
+const TestProjectRateLimitRoute = require("./routes/TestProjectRateLimit.route");
+app.use("/test", TestProjectRateLimitRoute);
+
 app.use("/protected", authRoutes);
 
 module.exports = app;
