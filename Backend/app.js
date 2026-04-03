@@ -56,6 +56,9 @@ app.use("/rate-limit", rateLimitRoutes);
 const TestProjectRateLimitRoute = require("./routes/TestProjectRateLimit.route");
 app.use("/test", TestProjectRateLimitRoute);
 
+const protectedRouteRoutes = require("./routes/protectedRoute.route");
+app.use("/protection-routes", protectedRouteRoutes);
+
 app.use("/protected", authRoutes);
 
 module.exports = app;
