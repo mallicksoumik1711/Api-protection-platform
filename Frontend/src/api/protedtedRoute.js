@@ -19,3 +19,20 @@ export const createProtectedRoute = async (protectedRouteData) => {
     throw new Error("An error occurred while creating the protected route.");
   }
 };
+
+export const getProtectedRoutes = async (projectId) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/protection-routes/${projectId}`,
+      {
+        withCredentials: true,
+      },
+    );
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("An error occurred while fetching the protected routes.");
+  }
+};

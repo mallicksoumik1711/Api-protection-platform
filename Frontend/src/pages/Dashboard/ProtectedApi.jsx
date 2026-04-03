@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LockKeyhole, Monitor, ShieldCheck } from "lucide-react";
-import { createProtectedRoute } from "../../api/protedtedRoute";
+import {
+  createProtectedRoute,
+  getProtectedRoutes,
+} from "../../api/protedtedRoute";
 import toast from "react-hot-toast";
 
 import RouteSetup from "../../components/ProtectedRouteDashboard/RouteSetup";
@@ -11,6 +14,7 @@ import SecurityFeatures from "../../components/ProtectedRouteDashboard/SecurityF
 import RoutePriority from "../../components/ProtectedRouteDashboard/RoutePriority";
 import RouteStructure from "../../components/ProtectedRouteDashboard/RouteStructure";
 import ConfigureRoute from "../../components/ProtectedRouteDashboard/ConfigureRoute";
+import FinalRoutePreview from "../../components/ProtectedRouteDashboard/FinalRoutePreview";
 
 function ProtectedApi() {
   const [formData, setFormData] = useState({
@@ -39,6 +43,22 @@ function ProtectedApi() {
     description: "",
   });
 
+  const [routes, setRoutes] = useState([]);
+
+  useEffect(() => {
+    const fetchRoutes = async () => {
+      try {
+        const res = await getProtectedRoutes("dummyprojectId12345");
+        setRoutes(res.data || []);
+      } catch (error) {
+        console.error("Error fetching protected routes:", error);
+        toast.error("Failed to fetch protected routes.");
+      }
+    };
+
+    fetchRoutes();
+  }, []);
+
   const handleSubmit = async () => {
     try {
       const payload = {
@@ -47,6 +67,7 @@ function ProtectedApi() {
       };
 
       const response = await createProtectedRoute(payload);
+      setRoutes((prev) => [response.data, ...prev]);
       console.log("Protected route created:", response);
       toast.success("Protected route created successfully!");
     } catch (error) {
@@ -98,7 +119,7 @@ function ProtectedApi() {
         </p>
       </div>
 
-      <div className="mt-10 max-w-6xl mx-auto flex justify-between gap-10">
+      <div className="mt-10 max-w-6xl mx-auto flex justify-between gap-10 mb-5">
         <div className="h-fit top-6 sticky w-1/2 bg-zinc-950 border border-zinc-800 rounded-lg p-7 shadow-lg">
           <h2 className="font-semibold text-white mb-1">Add Protected Route</h2>
           <p className="text-sm text-zinc-500 mb-8">
@@ -113,6 +134,17 @@ function ProtectedApi() {
             {/* HTTP Method */}
             <HttpMethods formData={formData} setFormData={setFormData} />
 
+            <div className="mb-5">
+              <label className="text-xs uppercase tracking-widest text-white block mb-4">
+                Route Description{" "}
+                <span className="text-zinc-500">(optional)</span>
+              </label>
+              <textarea
+                placeholder="Protect user profile and settings endpoints"
+                className="w-full bg-black border border-zinc-900 rounded-md px-4 py-3 text-sm text-zinc-300 placeholder-zinc-600 outline-none resize-none h-24"
+              />
+            </div>
+
             {/* Nested Route Toggle */}
             <NestedRouteToggle formData={formData} setFormData={setFormData} />
           </div>
@@ -121,25 +153,13 @@ function ProtectedApi() {
           <ProtectionRules formData={formData} setFormData={setFormData} />
 
           {/* Security Features */}
-          <SecurityFeatures formData={formData} setFormData={setFormData}/>
+          <SecurityFeatures formData={formData} setFormData={setFormData} />
 
           {/* Route Priority */}
           <RoutePriority formData={formData} setFormData={setFormData} />
 
           {/* FINAL ROUTE PREVIEW */}
-          <div className="mb-8 bg-zinc-900 border border-zinc-800 rounded-md px-5 py-4">
-            <div className="text-xs uppercase tracking-widest text-zinc-500 mb-1">
-              Final Route Preview
-            </div>
-            <div className="font-mono text-white flex items-center gap-3">
-              <span className="text-emerald-400">GET</span>
-              <span>/api/users/profile</span>
-            </div>
-            <div className="mt-1 text-sm text-zinc-400">
-              Protection: <span className="text-amber-400">API Key + JWT</span>{" "}
-              • Rate Limited • Bots Blocked
-            </div>
-          </div>
+          {/* <FinalRoutePreview routes={routes} /> */}
 
           <button
             onClick={handleSubmit}
@@ -154,20 +174,9 @@ function ProtectedApi() {
           {/* route structure static for now */}
           <RouteStructure />
 
-          <div className="bg-black border border-zinc-800 rounded-lg px-7 py-4 shadow-inner mb-5">
-            <div className="">
-              <label className="text-xs uppercase tracking-widest text-white block mb-4">
-                Route Description{" "}
-                <span className="text-zinc-500">(optional)</span>
-              </label>
-              <textarea
-                placeholder="Protect user profile and settings endpoints"
-                className="w-full bg-black border border-zinc-900 rounded-md px-4 py-3 text-sm text-zinc-300 placeholder-zinc-600 outline-none resize-none h-24"
-              />
-            </div>
-          </div>
-
           {/* route configuration static always */}
+          <FinalRoutePreview routes={routes} />
+          {/* <ConfigureRoute /> */}
           <ConfigureRoute />
         </div>
       </div>
