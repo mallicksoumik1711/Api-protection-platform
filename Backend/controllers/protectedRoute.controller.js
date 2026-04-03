@@ -70,6 +70,34 @@ const createProtectedRoute = async (req, res) => {
   }
 };
 
+const getProtectedRoutes = async (req, res) => {
+  try {
+    const { projectId } = req.params;
+    if (!projectId) {
+      return res.status(400).json({
+        success: false,
+        message: "ProjectId is required",
+      });
+    }
+    const routes = await protectedRouteModel
+      .find({ projectId })
+      .sort({ createdAt: -1 });
+    return res.status(200).json({
+      success: true,
+      message: "Protected routes fetched successfully",
+      data: routes,
+    });
+  } catch (error) {
+    console.error("Error fetching protected routes: ", error);
+    return res.status(500).json({
+      success: false,
+      message: "An error occurred while fetching protected routes",
+      error: error.message,
+    });
+  }
+};
+
 module.exports = {
   createProtectedRoute,
+  getProtectedRoutes,
 };
