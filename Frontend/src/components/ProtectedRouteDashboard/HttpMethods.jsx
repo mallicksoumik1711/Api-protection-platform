@@ -16,7 +16,7 @@ function HttpMethods({ formData, setFormData }) {
           className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3.5 text-sm text-left text-zinc-100 flex items-center justify-between transition-colors"
         >
           <span>
-            {formData.method === "ALL" ? "All Methods" : formData.method}
+            {formData.request.method === "ALL" ? "All Methods" : formData.request.method}
           </span>
 
           <svg
@@ -49,7 +49,13 @@ function HttpMethods({ formData, setFormData }) {
               key={method}
               type="button"
               onClick={() => {
-                setFormData({ ...formData, method });
+                setFormData((prev) => ({
+                  ...prev,
+                  request: {
+                    ...prev.request,
+                    method: method,
+                  },
+                }));
                 setIsOpen(false);
               }}
               className="w-full text-left px-4 py-2 text-zinc-300 hover:bg-zinc-900 transition-colors"

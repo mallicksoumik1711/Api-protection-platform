@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { LockKeyhole, Monitor, ShieldCheck } from "lucide-react";
+import { createProtectedRoute } from "../../api/protedtedRoute";
+import toast from "react-hot-toast";
 
 import RouteSetup from "../../components/ProtectedRouteDashboard/RouteSetup";
 import HttpMethods from "../../components/ProtectedRouteDashboard/HttpMethods";
@@ -12,9 +14,46 @@ import ConfigureRoute from "../../components/ProtectedRouteDashboard/ConfigureRo
 
 function ProtectedApi() {
   const [formData, setFormData] = useState({
-    method: "ALL",
-    priority: "Normal",
+    route: {
+      base: "",
+      sub: "",
+      child: "",
+      protectNestedRoute: false,
+    },
+
+    request: {
+      method: "ALL",
+      priority: "Normal",
+    },
+
+    protection: {
+      rules: "API_KEY",
+    },
+
+    security: {
+      rateLimiting: { enabled: true },
+      botProtection: { enabled: false },
+      protectionEnabled: true,
+    },
+
+    description: "",
   });
+
+  const handleSubmit = async () => {
+    try {
+      const payload = {
+        projectId: "dummyprojectId12345",
+        ...formData,
+      };
+
+      const response = await createProtectedRoute(payload);
+      console.log("Protected route created:", response);
+      toast.success("Protected route created successfully!");
+    } catch (error) {
+      console.error("Error creating protected route:", error);
+      toast.error("Failed to create protected route.");
+    }
+  };
   return (
     <div className="bg-black px-6 py-4">
       <div className="max-w-6xl mx-auto">
@@ -69,20 +108,20 @@ function ProtectedApi() {
 
           <div className="mb-8">
             {/* Route Setup */}
-            <RouteSetup />
+            <RouteSetup formData={formData} setFormData={setFormData} />
 
             {/* HTTP Method */}
             <HttpMethods formData={formData} setFormData={setFormData} />
 
             {/* Nested Route Toggle */}
-            <NestedRouteToggle />
+            <NestedRouteToggle formData={formData} setFormData={setFormData} />
           </div>
 
           {/* Protection Rules */}
-          <ProtectionRules />
+          <ProtectionRules formData={formData} setFormData={setFormData} />
 
           {/* Security Features */}
-          <SecurityFeatures />
+          <SecurityFeatures formData={formData} setFormData={setFormData}/>
 
           {/* Route Priority */}
           <RoutePriority formData={formData} setFormData={setFormData} />
@@ -102,7 +141,10 @@ function ProtectedApi() {
             </div>
           </div>
 
-          <button className="w-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-950/50 hover:border-zinc-700 text-white font-semibold py-3.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer">
+          <button
+            onClick={handleSubmit}
+            className="w-full bg-zinc-900 border border-zinc-800 hover:bg-zinc-950/50 hover:border-zinc-700 text-white font-semibold py-3.5 rounded-md text-sm flex items-center justify-center gap-2 transition-all duration-200 cursor-pointer"
+          >
             <LockKeyhole className="w-4 h-4" />
             Save Protected Route
           </button>
@@ -120,7 +162,7 @@ function ProtectedApi() {
               </label>
               <textarea
                 placeholder="Protect user profile and settings endpoints"
-                className="w-full bg-black border border-zinc-900 rounded-md px-4 py-3 text-sm text-zinc-300 placeholder-zinc-600 outline-none"
+                className="w-full bg-black border border-zinc-900 rounded-md px-4 py-3 text-sm text-zinc-300 placeholder-zinc-600 outline-none resize-none h-24"
               />
             </div>
           </div>

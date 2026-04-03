@@ -1,6 +1,6 @@
 import { GlobeLock } from "lucide-react";
 
-function NestedRouteToggle() {
+function NestedRouteToggle({ formData, setFormData }) {
   return (
     <div className="mb-6">
       <label className="group flex items-center justify-between bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-5 py-4 cursor-pointer transition-all duration-200">
@@ -20,7 +20,20 @@ function NestedRouteToggle() {
           </div>
         </div>
         <div className="relative">
-          <input type="checkbox" className="peer sr-only" />
+          <input
+            type="checkbox"
+            checked={formData.route.protectNestedRoute}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                route: {
+                  ...prev.route,
+                  protectNestedRoute: e.target.checked,
+                },
+              }))
+            }
+            className="peer sr-only"
+          />
           <div className="w-11 h-6 bg-zinc-800 peer-checked:bg-emerald-600 rounded-full transition-all duration-300"></div>
           <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 peer-checked:translate-x-5"></div>
         </div>

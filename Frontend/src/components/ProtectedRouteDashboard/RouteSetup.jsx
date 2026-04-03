@@ -1,4 +1,4 @@
-function RouteSetup() {
+function RouteSetup({ formData, setFormData }) {
   return (
     <div>
       <h3 className="text-xs uppercase tracking-widest text-zinc-200 mb-4 font-medium">
@@ -16,6 +16,16 @@ function RouteSetup() {
             type="text"
             placeholder="api"
             className="bg-transparent outline-none text-white w-full placeholder-zinc-600"
+            value={formData.route.base}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                route: {
+                  ...prev.route,
+                  base: e.target.value,
+                },
+              }))
+            }
           />
         </div>
         <p className="text-xs text-zinc-600 mt-2">
@@ -34,6 +44,16 @@ function RouteSetup() {
             type="text"
             placeholder="users"
             className="bg-transparent outline-none text-white w-full placeholder-zinc-600"
+            value={formData.route.sub}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                route: {
+                  ...prev.route,
+                  sub: e.target.value,
+                },
+              }))
+            }
           />
         </div>
         <p className="text-xs text-zinc-600 mt-2">
@@ -52,6 +72,16 @@ function RouteSetup() {
             type="text"
             placeholder="profile"
             className="bg-transparent outline-none text-white w-full placeholder-zinc-600"
+            value={formData.route.child}
+            onChange={(e) =>
+              setFormData((prev) => ({
+                ...prev,
+                route: {
+                  ...prev.route,
+                  child: e.target.value,
+                },
+              }))
+            }
           />
         </div>
         <p className="text-xs text-zinc-600 mt-1">
