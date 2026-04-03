@@ -172,7 +172,7 @@ function ProtectedApi() {
 
         <div className="flex flex-col h-fit sticky top-6 w-1/2">
           {/* route structure static for now */}
-          <RouteStructure />
+          <RouteStructure routes={routes} />
 
           {/* route configuration static always */}
           <FinalRoutePreview routes={routes} />
