@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Search,
   Grid,
@@ -10,6 +11,12 @@ import {
   Package,
   Pyramid,
   UserCheck,
+  HeartMinus,
+  Copy,
+  Cog,
+  Link2,
+  ChartSpline,
+  Trash2,
 } from "lucide-react";
 
 function FrontPage() {
@@ -30,9 +37,13 @@ function FrontPage() {
       createdAt: "Dec 15",
     },
   ];
+  const [openMenuId, setOpenMenuId] = useState(null);
 
   return (
-    <div className="bg-black min-h-screen px-6 py-4 text-white">
+    <div
+      className="bg-black min-h-screen px-6 py-4 text-white"
+      onClick={() => setOpenMenuId(null)}
+    >
       <div className="max-w-6xl mx-auto">
         <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
           Overview
@@ -108,9 +119,78 @@ function FrontPage() {
               >
                 <div className="flex justify-between items-start mb-2">
                   <h3 className="text-sm font-medium">{project.name}</h3>
-                  <button className="cursor-pointer hover:bg-zinc-900 p-1 rounded-md">
-                    <MoreHorizontal size={16} className="text-zinc-400" />
-                  </button>
+                  <div className="relative">
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setOpenMenuId(
+                          openMenuId === project.id ? null : project.id,
+                        );
+                      }}
+                      className="cursor-pointer hover:bg-zinc-900 p-1 rounded-md"
+                    >
+                      <MoreHorizontal size={16} className="text-zinc-400" />
+                    </button>
+
+                    {/* Dropdown */}
+                    {openMenuId === project.id && (
+                      <div
+                        onClick={(e) => e.stopPropagation()}
+                        className={`absolute right-0 w-56 bg-zinc-950 border border-zinc-900 rounded-lg shadow-lg z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
+                      >
+                        <div className="text-sm">
+                          <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 hover:rounded-t-md flex items-center gap-2">
+                            <div className="cursor-pointer">
+                              <HeartMinus size={18} />
+                            </div>
+                            <div>Add to Favourite</div>
+                          </button>
+
+                          <div className="px-4 py-2 text-zinc-500 text-xs border-t border-zinc-800">
+                            Project ID
+                          </div>
+                          <div className="px-4 pb-2 text-xs text-zinc-300 break-all">
+                            {project.id}
+                          </div>
+
+                          <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 border-t border-zinc-800 flex items-center gap-2">
+                            <div className="cursor-pointer">
+                              <Copy size={18} />
+                            </div>
+                            <div>Copy Project ID</div>
+                          </button>
+
+                          <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
+                            <div className="cursor-pointer">
+                              <Cog size={18} />
+                            </div>
+                            <div>Project Settings</div>
+                          </button>
+
+                          <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
+                            <div className="cursor-pointer">
+                              <Link2 size={18} />
+                            </div>
+                            <div>Open Deployment</div>
+                          </button>
+
+                          <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
+                            <div className="cursor-pointer">
+                              <ChartSpline size={18} />
+                            </div>
+                            <div>View Analytics</div>
+                          </button>
+
+                          <button className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 border-t border-zinc-800 flex items-center gap-2">
+                            <div className="cursor-pointer">
+                              <Trash2 size={18} />
+                            </div>
+                            <div>Delete Project</div>
+                          </button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
                 <p className="text-xs text-zinc-500 mb-3">{project.url}</p>
@@ -130,6 +210,12 @@ function FrontPage() {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="">
+          <p className="text-xs pt-12 text-center text-zinc-600 lowercase">
+            All the projects are listed above.
+          </p>
         </div>
       </div>
     </div>
