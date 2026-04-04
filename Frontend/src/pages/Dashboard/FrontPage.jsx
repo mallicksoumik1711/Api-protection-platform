@@ -29,34 +29,6 @@ function FrontPage() {
       status: "building",
       createdAt: "Dec 15",
     },
-    {
-      id: 3,
-      name: "drawly-vercel-backend",
-      url: "drawly-vercel-backend.vercel.app",
-      status: "building",
-      createdAt: "Dec 15",
-    },
-    {
-      id: 4,
-      name: "drawly-vercel-backend",
-      url: "drawly-vercel-backend.vercel.app",
-      status: "building",
-      createdAt: "Dec 15",
-    },
-    {
-      id: 5,
-      name: "drawly-vercel-backend",
-      url: "drawly-vercel-backend.vercel.app",
-      status: "building",
-      createdAt: "Dec 15",
-    },
-    {
-      id: 6,
-      name: "drawly-vercel-backend",
-      url: "drawly-vercel-backend.vercel.app",
-      status: "building",
-      createdAt: "Dec 15",
-    },
   ];
 
   return (
@@ -99,11 +71,19 @@ function FrontPage() {
           request logged and accessible for analysis.
         </p>
       </div>
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="text-sm font-semibold">All Projects</h1>
-
+      <div className="max-w-6xl mx-auto pr-6">
+        <div className="flex items-center justify-between mb-10">
+          {/* Search */}
+          <div className="w-2/3">
+            <div className="flex items-center bg-zinc-950/80 border border-zinc-800 rounded-md px-3 py-2">
+              <Search size={16} className="text-zinc-400 mr-2" />
+              <input
+                type="text"
+                placeholder="Search Projects..."
+                className="bg-transparent outline-none text-sm w-full placeholder:text-zinc-500"
+              />
+            </div>
+          </div>
           <div className="flex items-center gap-3">
             {/* View toggle */}
             <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
@@ -115,52 +95,40 @@ function FrontPage() {
           </div>
         </div>
 
-        {/* Search */}
-        <div className="mb-6">
-          <div className="flex items-center bg-zinc-900 border border-zinc-800 rounded-md px-3 py-2">
-            <Search size={16} className="text-zinc-400 mr-2" />
-            <input
-              type="text"
-              placeholder="Search Projects..."
-              className="bg-transparent outline-none text-sm w-full placeholder:text-zinc-500"
-            />
-          </div>
-        </div>
-
         {/* Main Grid */}
         <div className="grid lg:grid-cols-1 gap-6">
           {/* Projects Card */}
-          <div className="bg-zinc-900 border border-zinc-800 rounded-lg p-5">
-            <h2 className="text-sm font-medium mb-4">Projects</h2>
+          <h2 className="text-sm font-medium uppercase">Projects</h2>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              {projects.map((project) => (
-                <div
-                  key={project.id}
-                  className="bg-black border border-zinc-800 rounded-md p-4 hover:border-zinc-700 transition"
-                >
-                  <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-sm font-medium">{project.name}</h3>
+          <div className="grid sm:grid-cols-2 gap-4">
+            {projects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-black border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/80 hover:border-zinc-800 transition cursor-pointer"
+              >
+                <div className="flex justify-between items-start mb-2">
+                  <h3 className="text-sm font-medium">{project.name}</h3>
+                  <button className="cursor-pointer hover:bg-zinc-900 p-1 rounded-md">
                     <MoreHorizontal size={16} className="text-zinc-400" />
-                  </div>
-
-                  <p className="text-xs text-zinc-500 mb-3">{project.url}</p>
-
-                  <div className="flex justify-between text-xs">
-                    <span
-                      className={`${
-                        project.status === "active"
-                          ? "text-green-400"
-                          : "text-yellow-400"
-                      }`}
-                    >
-                      ● {project.status}
-                    </span>
-                    <span className="text-zinc-500">{project.createdAt}</span>
-                  </div>
+                  </button>
                 </div>
-              ))}
-            </div>
+
+                <p className="text-xs text-zinc-500 mb-3">{project.url}</p>
+
+                <div className="flex justify-between text-xs">
+                  <span
+                    className={`${
+                      project.status === "active"
+                        ? "text-green-400"
+                        : "text-yellow-400"
+                    }`}
+                  >
+                    ● {project.status}
+                  </span>
+                  <span className="text-zinc-500">{project.createdAt}</span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
