@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Search,
   Grid,
@@ -29,6 +29,7 @@ function FrontPage() {
   const [openMenuId, setOpenMenuId] = useState(null);
   const [projects, setProjects] = useState([]);
   const [searchProject, setSearchProject] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -132,6 +133,7 @@ function FrontPage() {
                 {filteredProjects.map((project) => (
                   <div
                     key={project.projectId}
+                    onClick={() => navigate(`/project/${project.projectId}`)}
                     className="bg-zinc-950/80 border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/20 hover:border-zinc-800 transition cursor-pointer"
                   >
                     <div className="flex justify-between items-start">
