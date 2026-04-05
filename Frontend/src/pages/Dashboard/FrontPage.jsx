@@ -21,6 +21,7 @@ import {
   Ghost,
   Package2,
   Box,
+  ChevronsUpDown,
 } from "lucide-react";
 import { getProjects } from "../../api/projects";
 
@@ -61,7 +62,7 @@ function FrontPage() {
             <div className="flex whitespace-nowrap text-sm text-zinc-400">
               <div className="flex gap-6 mr-6">
                 <div className="flex items-center gap-2">
-                  <Package className="w-4 h-4 text-purple-400" />
+                  <Package className="w-4 h-4 text-sky-400" />
                   <span>Realtime Monitoring</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -113,18 +114,18 @@ function FrontPage() {
             {/* Main Grid */}
             <div className="grid lg:grid-cols-1 gap-6">
               {/* Projects Card */}
-              <h2 className="text-sm font-medium uppercase">Projects</h2>
+              <h2 className="text-xs font-medium uppercase">Projects</h2>
 
               <div className="grid sm:grid-cols-2 gap-4">
                 {projects.map((project) => (
                   <div
                     key={project.projectId}
-                    className="bg-black border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/80 hover:border-zinc-800 transition cursor-pointer"
+                    className="bg-zinc-950/80 border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/20 hover:border-zinc-800 transition cursor-pointer"
                   >
                     <div className="flex justify-between items-start">
                       <div className="flex gap-5 items-center">
                         <div className="flex items-center justify-center">
-                          <Box size={18} className="text-purple-400" />
+                          <Box size={18} className="text-zinc-400" />
                         </div>
                         <h3 className="text-sm font-medium">{project.name}</h3>
                       </div>
