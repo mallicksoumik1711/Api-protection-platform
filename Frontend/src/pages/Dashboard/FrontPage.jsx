@@ -28,6 +28,7 @@ import { getProjects } from "../../api/projects";
 function FrontPage() {
   const [openMenuId, setOpenMenuId] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [searchProject, setSearchProject] = useState("");
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -40,6 +41,15 @@ function FrontPage() {
     };
     fetchProjects();
   }, []);
+
+  const filteredProjects = projects.filter((project) => {
+    const term = searchProject.toLowerCase();
+    return (
+      project.name.toLowerCase().includes(term) ||
+      project.baseUrl.toLowerCase().includes(term) ||
+      project.framework.toLowerCase().includes(term)
+    );
+  });
 
   return (
     <div
@@ -86,38 +96,40 @@ function FrontPage() {
       </div>
 
       <div className="max-w-6xl mx-auto pr-6">
-        {projects.length > 0 ? (
-          <div>
-            <div className="flex items-center justify-between mb-10">
-              {/* Search */}
-              <div className="w-2/3">
-                <div className="flex items-center bg-zinc-950/80 border border-zinc-800 rounded-md px-3 py-2">
-                  <Search size={16} className="text-zinc-400 mr-2" />
-                  <input
-                    type="text"
-                    placeholder="Search Projects..."
-                    className="bg-transparent outline-none text-sm w-full placeholder:text-zinc-500"
-                  />
-                </div>
-              </div>
-              <div className="flex items-center gap-3">
-                {/* View toggle */}
-                <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
-                  <Grid size={16} />
-                </button>
-                <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
-                  <List size={16} />
-                </button>
+        <div>
+          <div className="flex items-center justify-between mb-10">
+            {/* Search */}
+            <div className="w-2/3">
+              <div className="flex items-center bg-zinc-950/80 border border-zinc-800 rounded-md px-3 py-2">
+                <Search size={16} className="text-zinc-400 mr-2" />
+                <input
+                  type="text"
+                  placeholder="Search Projects..."
+                  className="bg-transparent outline-none text-sm w-full placeholder:text-zinc-500"
+                  value={searchProject}
+                  onChange={(e) => setSearchProject(e.target.value)}
+                />
               </div>
             </div>
+            <div className="flex items-center gap-3">
+              {/* View toggle */}
+              <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
+                <Grid size={16} />
+              </button>
+              <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
+                <List size={16} />
+              </button>
+            </div>
+          </div>
 
-            {/* Main Grid */}
-            <div className="grid lg:grid-cols-1 gap-6">
-              {/* Projects Card */}
-              <h2 className="text-xs font-medium uppercase">Projects</h2>
+          {/* Main Grid */}
+          <div className="grid lg:grid-cols-1 gap-6">
+            {/* Projects Card */}
+            <h2 className="text-xs font-medium uppercase">Projects</h2>
 
+            {filteredProjects.length > 0 ? (
               <div className="grid sm:grid-cols-2 gap-4">
-                {projects.map((project) => (
+                {filteredProjects.map((project) => (
                   <div
                     key={project.projectId}
                     className="bg-zinc-950/80 border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/20 hover:border-zinc-800 transition cursor-pointer"
@@ -242,30 +254,30 @@ function FrontPage() {
                   </div>
                 ))}
               </div>
-            </div>
+            ) : (
+              <div className="bg-zinc-950 border border-zinc-900 flex justify-center items-center lg:py-30 rounded-lg text-zinc-500 gap-5">
+                <div>
+                  <Ghost />
+                </div>
+                <p>
+                  No projects yet.{" "}
+                  <Link
+                    to="/create-project"
+                    className="hover:text-blue-400/60 transition"
+                  >
+                    Create your first project
+                  </Link>{" "}
+                  and start monitoring, securing, and controlling your API
+                  traffic in real time.
+                </p>
+              </div>
+            )}
+          </div>
 
-            <p className="text-xs pt-12 text-center text-zinc-600 lowercase">
-              All the projects are listed above.
-            </p>
-          </div>
-        ) : (
-          <div className="lg:mt-20 bg-zinc-950 border border-zinc-900 flex justify-center items-center lg:py-40 rounded-lg text-zinc-500 gap-5">
-            <div>
-              <Ghost />
-            </div>
-            <p>
-              No projects yet.{" "}
-              <Link
-                to="/create-project"
-                className="hover:text-blue-400/60 transition"
-              >
-                Create your first project
-              </Link>{" "}
-              and start monitoring, securing, and controlling your API traffic
-              in real time.
-            </p>
-          </div>
-        )}
+          <p className="text-xs pt-12 text-center text-zinc-600 lowercase">
+            All the projects are listed above.
+          </p>
+        </div>
       </div>
     </div>
   );
