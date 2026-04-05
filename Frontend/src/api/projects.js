@@ -19,3 +19,17 @@ export const createProject = async (projectData) => {
     throw new Error("An error occurred while creating the project.");
   }
 };
+
+export const getProjects = async () => {
+  try {
+    const response = await axios.get(`${BASE_URL}/projects/get-project`, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("An error occurred while fetching the projects.");
+  }
+};

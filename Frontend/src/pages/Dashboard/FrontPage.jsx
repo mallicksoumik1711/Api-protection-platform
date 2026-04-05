@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
   Search,
@@ -19,27 +19,26 @@ import {
   ChartSpline,
   Trash2,
   Ghost,
+  Package2,
+  Box,
 } from "lucide-react";
+import { getProjects } from "../../api/projects";
 
 function FrontPage() {
-  // Dummy data (replace with API later)
-  const projects = [
-    {
-      id: 1,
-      name: "project-91kjv",
-      url: "project-91kjv.vercel.app",
-      status: "active",
-      createdAt: "Mar 12",
-    },
-    {
-      id: 2,
-      name: "drawly-vercel-backend",
-      url: "drawly-vercel-backend.vercel.app",
-      status: "building",
-      createdAt: "Dec 15",
-    },
-  ];
   const [openMenuId, setOpenMenuId] = useState(null);
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await getProjects();
+        setProjects(res.projects);
+      } catch (error) {
+        console.error("Error fetching projects:", error);
+      }
+    };
+    fetchProjects();
+  }, []);
 
   return (
     <div
@@ -119,17 +118,24 @@ function FrontPage() {
               <div className="grid sm:grid-cols-2 gap-4">
                 {projects.map((project) => (
                   <div
-                    key={project.id}
+                    key={project.projectId}
                     className="bg-black border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/80 hover:border-zinc-800 transition cursor-pointer"
                   >
-                    <div className="flex justify-between items-start mb-2">
-                      <h3 className="text-sm font-medium">{project.name}</h3>
+                    <div className="flex justify-between items-start">
+                      <div className="flex gap-5 items-center">
+                        <div className="flex items-center justify-center">
+                          <Box size={18} className="text-purple-400" />
+                        </div>
+                        <h3 className="text-sm font-medium">{project.name}</h3>
+                      </div>
                       <div className="relative">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
                             setOpenMenuId(
-                              openMenuId === project.id ? null : project.id,
+                              openMenuId === project.projectId
+                                ? null
+                                : project.projectId,
                             );
                           }}
                           className="cursor-pointer hover:bg-zinc-900 p-1 rounded-md"
@@ -138,7 +144,7 @@ function FrontPage() {
                         </button>
 
                         {/* Dropdown */}
-                        {openMenuId === project.id && (
+                        {openMenuId === project.projectId && (
                           <div
                             onClick={(e) => e.stopPropagation()}
                             className={`absolute right-0 w-56 bg-zinc-950 border border-zinc-900 rounded-lg shadow-lg z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
@@ -155,7 +161,7 @@ function FrontPage() {
                                 Project ID
                               </div>
                               <div className="px-4 pb-2 text-xs text-zinc-300 break-all">
-                                {project.id}
+                                {project.projectId}
                               </div>
 
                               <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 border-t border-zinc-800 flex items-center gap-2">
@@ -198,7 +204,25 @@ function FrontPage() {
                       </div>
                     </div>
 
-                    <p className="text-xs text-zinc-500 mb-3">{project.url}</p>
+                    <div className="flex justify-between items-center">
+                      <div>
+                        <p className="text-xs text-zinc-500 mb-3">
+                          {project.baseUrl}
+                        </p>
+                        <div className="flex gap-2 mb-2">
+                          <span className="text-[10px] px-2 py-0.5 bg-zinc-800 rounded text-zinc-300">
+                            {project.framework}
+                          </span>
+                          <span className="text-[10px] px-2 py-0.5 bg-zinc-800 rounded text-zinc-400">
+                            {project.environment}
+                          </span>
+                        </div>
+                      </div>
+                      <div className="flex text-[11px] text-zinc-500 gap-1 mt-2 gap-4">
+                        <span>Last activity: 2h ago</span>
+                        <span>Protection: Enabled</span>
+                      </div>
+                    </div>
 
                     <div className="flex justify-between text-xs">
                       <span
@@ -210,7 +234,9 @@ function FrontPage() {
                       >
                         ● {project.status}
                       </span>
-                      <span className="text-zinc-500">{project.createdAt}</span>
+                      <span className="text-zinc-500">
+                        {new Date(project.createdAt).toLocaleDateString()}
+                      </span>
                     </div>
                   </div>
                 ))}
