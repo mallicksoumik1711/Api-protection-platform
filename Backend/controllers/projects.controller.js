@@ -37,6 +37,18 @@ const createProject = async (req, res) => {
   }
 };
 
+const getProjects = async (req, res) => {
+  try {
+    const projects = await projectModel.find({ ownerId: req.user.id });
+    res.status(200).send({ success: true, projects });
+  } catch (error) {
+    res
+      .status(500)
+      .send({ message: "Internal server error.", error: error.message });
+  }
+};
+
 module.exports = {
   createProject,
+  getProjects,
 };
