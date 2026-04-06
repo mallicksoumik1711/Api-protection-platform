@@ -106,7 +106,21 @@ function RoutePage() {
           element={
             <ProtectedRoutes>
               <DashboardLayout>
-                <ProtectedApi />
+                <ProjectRouteGuard>
+                  <ProtectedApi />
+                </ProjectRouteGuard>
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/project/:projectId/protected-api"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProjectRouteGuard>
+                  <ProtectedApi />
+                </ProjectRouteGuard>
               </DashboardLayout>
             </ProtectedRoutes>
           }

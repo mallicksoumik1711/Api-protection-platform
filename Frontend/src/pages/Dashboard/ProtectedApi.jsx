@@ -5,6 +5,7 @@ import {
   getProtectedRoutes,
 } from "../../api/protedtedRoute";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 import RouteSetup from "../../components/ProtectedRouteDashboard/RouteSetup";
 import HttpMethods from "../../components/ProtectedRouteDashboard/HttpMethods";
@@ -45,10 +46,17 @@ function ProtectedApi() {
 
   const [routes, setRoutes] = useState([]);
 
+  const projectId = useSelector((state) => state.project.selectedProjectId);
+  if (!projectId) {
+    toast.error(
+      "No project selected. Please select a project to manage protected routes.",
+    );
+  }
+
   useEffect(() => {
     const fetchRoutes = async () => {
       try {
-        const res = await getProtectedRoutes("dummyprojectId12345");
+        const res = await getProtectedRoutes(projectId);
         setRoutes(res.data || []);
       } catch (error) {
         console.error("Error fetching protected routes:", error);
@@ -56,13 +64,15 @@ function ProtectedApi() {
       }
     };
 
-    fetchRoutes();
-  }, []);
+    if (projectId) {
+      fetchRoutes();
+    }
+  }, [projectId]);
 
   const handleSubmit = async () => {
     try {
       const payload = {
-        projectId: "dummyprojectId12345",
+        projectId,
         ...formData,
       };
 
