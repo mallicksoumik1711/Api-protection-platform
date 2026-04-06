@@ -45,16 +45,6 @@ export default function Sidebar() {
           path="/api-keys"
         />
         <SidebarItem
-          icon={<FilePen size={16} />}
-          text="API Logs"
-          path="/api-logs"
-        />
-        <SidebarItem
-          icon={<TriangleAlert size={16} />}
-          text="Rate Limit"
-          path="/rate-limit"
-        />
-        <SidebarItem
           icon={<FileLock size={16} />}
           text="Protected APIs"
           path="/protected-api"
@@ -63,6 +53,16 @@ export default function Sidebar() {
           icon={<Settings size={16} />}
           text="JWT Settings"
           path="/jwt-settings"
+        />
+        <SidebarItem
+          icon={<TriangleAlert size={16} />}
+          text="Rate Limit"
+          path="/rate-limit"
+        />
+        <SidebarItem
+          icon={<FilePen size={16} />}
+          text="API Logs"
+          path="/api-logs"
         />
         <SidebarItem icon={<FileText size={16} />} text="Logs" path="/logs" />
         <SidebarItem
