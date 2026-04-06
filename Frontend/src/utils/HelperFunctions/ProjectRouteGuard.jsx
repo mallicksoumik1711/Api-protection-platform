@@ -24,7 +24,7 @@ function ProjectRouteGuard({ children }) {
         replace: true,
       });
     }
-  }, [projectId, location.pathname]);
+  }, [projectId, location.pathname, navigate, dispatch]);
 
   return children;
 }
