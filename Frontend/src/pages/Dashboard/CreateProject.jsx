@@ -13,7 +13,15 @@ import { createProject } from "../../api/projects";
 
 import toast from "react-hot-toast";
 
+import { useDispatch } from "react-redux";
+import { setProject } from "../../store/projectSlice";
+import { useNavigate } from "react-router-dom";
+
 function CreateProject() {
+  // redux
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [framework, setFramework] = useState("Node / Express");
   const [environment, setEnvironment] = useState("Development");
   const [projectId, setProjectId] = useState(null);
@@ -40,7 +48,12 @@ function CreateProject() {
       const res = await createProject(projectData);
       toast.success("Project created successfully");
       console.log("Project created:", res);
-      setProjectId(res.projectId);
+      const projectId = res.projectId;
+      setProjectId(projectId);
+      dispatch(setProject(projectId));
+      setTimeout(() => {
+        navigate(`/project/${projectId}`);
+      }, 1000); //navigate to other page after creating
     } catch (err) {
       toast.error(err.message);
       console.log(err.message);
