@@ -79,6 +79,18 @@ function RoutePage() {
           }
         />
         <Route
+          path="/project/:projectId/api-keys"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProjectRouteGuard>
+                  <ApiKeysDetails />
+                </ProjectRouteGuard>
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
           path="/api-logs"
           element={
             <ProtectedRoutes>

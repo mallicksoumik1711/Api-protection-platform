@@ -20,7 +20,7 @@ import { getApiKeys } from "../../../../api/apikey";
 import useCountUp from "../../../../utils/HelperFunctions/countKeyStats";
 
 function ApiKeysDetails() {
-  const [activeTab, setActiveTab] = useState("list");
+  const [activeTab, setActiveTab] = useState("generate");
   const [apiKeyStatus, setApiKeyStatus] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(true);
 

@@ -52,7 +52,7 @@ function CreateProject() {
       setProjectId(projectId);
       dispatch(setProject(projectId));
       setTimeout(() => {
-        navigate(`/project/${projectId}`);
+        navigate(`/project/${projectId}/api-keys`);
       }, 1000); //navigate to other page after creating
     } catch (err) {
       toast.error(err.message);
