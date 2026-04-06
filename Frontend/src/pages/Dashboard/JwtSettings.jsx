@@ -1,18 +1,7 @@
-import { useState } from "react";
-import {
-  Copy,
-  CopyCheck,
-  BotOff,
-  ShieldAlert,
-  Link,
-  FilePlusCorner,
-  ChevronDownIcon,
-  Check,
-  Braces,
-  FingerprintPattern,
-  Wrench,
-} from "lucide-react";
+import { useState, useEffect } from "react";
+import { Braces, FingerprintPattern, Wrench } from "lucide-react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 import JwtToggle from "../../components/JwtDashboard/JwtToggle";
 import JwtSecretKey from "../../components/JwtDashboard/JwtSecretKey";
@@ -34,10 +23,21 @@ function JwtSettings() {
     algorithm: "HS256", //if no need remove from here
   });
 
+  const projectId = useSelector((state) => state.project.selectedProjectId);
+
+  useEffect(() => {
+    if (!projectId) {
+      (async () => setIsEnabled(false))();
+      toast.error(
+        "No project selected. Please select a project to manage JWT settings.",
+      );
+    }
+  }, [projectId]);
+
   const handleSaveJwtSettings = async () => {
     try {
       const payload = {
-        projectId: "project-qwerty001", //for testing, later it will be fetched
+        projectId,
         enabled: isEnabled,
         secretKey: formData.secretKey,
         expiresIn: `${formData.expiresInValue}${formData.expiresInUnit}`,

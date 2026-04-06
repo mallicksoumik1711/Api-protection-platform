@@ -130,7 +130,21 @@ function RoutePage() {
           element={
             <ProtectedRoutes>
               <DashboardLayout>
-                <JwtSettings />
+                <ProjectRouteGuard>
+                  <JwtSettings />
+                </ProjectRouteGuard>
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/project/:projectId/jwt-settings"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProjectRouteGuard>
+                  <JwtSettings />
+                </ProjectRouteGuard>
               </DashboardLayout>
             </ProtectedRoutes>
           }
