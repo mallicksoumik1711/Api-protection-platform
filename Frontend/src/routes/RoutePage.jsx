@@ -8,6 +8,7 @@ import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
+import SetUpGuide from "../pages/Dashboard/SetUpGuide";
 import CreateProject from "../pages/Dashboard/CreateProject";
 import ApiKeysDetails from "../pages/Dashboard/API Keys/API Keys Details/ApiKeysDetails";
 import ApiKeyLogs from "../pages/Dashboard/API Keys/ApiKeyLogs";
@@ -43,6 +44,16 @@ function RoutePage() {
             <ProtectedRoutes>
               <DashboardLayout>
                 <FrontPage />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/setup-guide"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <SetUpGuide />
               </DashboardLayout>
             </ProtectedRoutes>
           }

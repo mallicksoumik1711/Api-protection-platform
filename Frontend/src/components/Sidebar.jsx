@@ -13,6 +13,9 @@ import {
   Triangle,
   FileLock,
   Settings,
+  Key,
+  BookKey,
+  MonitorCheck
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -33,14 +36,18 @@ export default function Sidebar() {
           path="/frontpage"
           active
         />
-
+        <SidebarItem
+          icon={<Box size={16} />}
+          text="SetUp Guide"
+          path="/setup-guide"
+        />
         <SidebarItem
           icon={<Box size={16} />}
           text="Create Project"
           path="/create-project"
         />
         <SidebarItem
-          icon={<FileCodeCorner size={16} />}
+          icon={<BookKey size={16} />}
           text="API Keys"
           path="/api-keys"
         />
@@ -60,7 +67,7 @@ export default function Sidebar() {
           path="/rate-limit"
         />
         <SidebarItem
-          icon={<FilePen size={16} />}
+          icon={<MonitorCheck size={16} />}
           text="API Logs"
           path="/api-logs"
         />
