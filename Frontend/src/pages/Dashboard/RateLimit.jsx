@@ -14,16 +14,24 @@ import {
 } from "lucide-react";
 import { rateLimit } from "../../api/rateLimit";
 import { toast } from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 function RateLimit() {
   const [limit, setLimit] = useState(50);
   const [windowTime, setWindowTime] = useState(60);
   const [type, setType] = useState("sliding");
 
+  const projectId = useSelector((state) => state.project.selectedProjectId);
+  if (!projectId) {
+    toast.error(
+      "No project selected. Please select a project to configure rate limits.",
+    );
+  }
+
   const handleSubmit = async () => {
     try {
       const rateLimitData = {
-        projectId: "project123", // dummy rn. will change to dynamic later
+        projectId,
         limit,
         windowTime,
         type,

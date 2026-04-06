@@ -4,6 +4,7 @@ import SignUp from "../pages/SignUp";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "../utils/HelperFunctions/ProtectedRoutes";
 import DashboardLayout from "../layouts/DashboardLayout";
+import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -81,7 +82,21 @@ function RoutePage() {
           element={
             <ProtectedRoutes>
               <DashboardLayout>
-                <RateLimit />
+                <ProjectRouteGuard>
+                  <RateLimit />
+                </ProjectRouteGuard>
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/project/:projectId/rate-limit"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProjectRouteGuard>
+                  <RateLimit />
+                </ProjectRouteGuard>
               </DashboardLayout>
             </ProtectedRoutes>
           }
