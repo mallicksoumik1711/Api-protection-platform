@@ -22,6 +22,7 @@ import {
   Package2,
   Box,
   ChevronsUpDown,
+  CheckCircle,
 } from "lucide-react";
 import { getProjects } from "../../api/projects";
 
@@ -219,12 +220,13 @@ function FrontPage() {
                       </div>
                     </div>
 
-                    <div className="flex justify-between items-center">
-                      <div>
-                        <p className="text-xs text-zinc-500 mb-3">
-                          {project.baseUrl}
-                        </p>
-                        <div className="flex gap-2 mb-2">
+                    <div className="">
+                      <p className="text-xs text-zinc-500 mb-2">
+                        {project.baseUrl}
+                      </p>
+
+                      <div className="flex justify-between items-center mb-3">
+                        <div className="flex gap-2">
                           <span className="text-[10px] px-2 py-0.5 bg-zinc-800 rounded text-zinc-300">
                             {project.framework}
                           </span>
@@ -232,10 +234,17 @@ function FrontPage() {
                             {project.environment}
                           </span>
                         </div>
-                      </div>
-                      <div className="flex text-[11px] text-zinc-500 gap-1 mt-2 gap-4">
-                        <span>Last activity: 2h ago</span>
-                        <span>Protection: Enabled</span>
+                        <div className="flex items-center">
+                          {project.isSelected ? (
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20">
+                              Selected
+                            </span>
+                          ) : (
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-zinc-800 text-zinc-500 border border-zinc-700">
+                              Not Selected
+                            </span>
+                          )}
+                        </div>
                       </div>
                     </div>
 

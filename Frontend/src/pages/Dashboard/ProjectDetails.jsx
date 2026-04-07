@@ -6,6 +6,7 @@ import {
   Copy,
   Globe,
   NotebookPen,
+  SquareMousePointer,
   Stethoscope,
   Unlink2,
   User,
@@ -38,6 +39,10 @@ function ProjectDetails() {
   if (!project) {
     return <div className="text-white p-6">Loading...</div>;
   }
+
+  const handleSelect = () => {
+    alert("Project selected! This would set the active project in a real app.");
+  };
 
   return (
     <div className="bg-black min-h-screen text-white px-6 py-4">
@@ -150,6 +155,31 @@ function ProjectDetails() {
             <div className="flex gap-5 items-center">
               <div className="text-sm text-zinc-400">{project.projectId}</div>
               <Copy size={16} className="cursor-pointer" />
+            </div>
+          </div>
+
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-4">
+              <div className="w-9 h-9 rounded-lg bg-pink-500/10 flex items-center justify-center">
+                <span className="text-pink-400 text-sm">
+                  <SquareMousePointer size={18} />
+                </span>
+              </div>
+              <div>
+                <p className="text-sm font-medium text-white">Select Project</p>
+                <p className="text-xs text-zinc-500">
+                  Set the project you want to work on
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <button
+                onClick={handleSelect}
+                className="px-3 py-1.5 text-xs font-medium rounded-md border border-zinc-800 bg-zinc-900 text-zinc-300 hover:bg-zinc-800 hover:text-white transition cursor-pointer"
+              >
+                Select Active
+              </button>
             </div>
           </div>
 
