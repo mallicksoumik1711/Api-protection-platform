@@ -18,6 +18,10 @@ import {
   ChartNoAxesCombinedIcon,
   Bug,
   Cctv,
+  ListFilterPlus,
+  ListFilterPlusIcon,
+  HandshakeIcon,
+  Layers2,
 } from "lucide-react";
 
 const DashboardHeaderValues = {
@@ -49,22 +53,22 @@ const DashboardHeaderValues = {
     tag: "Setup Guide",
     title: "Set your project up",
     description:
-      "This is your workspace where all your API protection projects will live. Create and manage projects to monitor traffic and keep every request logged and accessible for analysis.",
+      "Set up your project by adding your API, configuring rules, and enabling monitoring to keep everything secure and under control.",
     features: [
       {
-        icon: Package,
-        label: "Realtime Monitoring",
-        color: "text-sky-400",
+        icon: ListFilterPlusIcon,
+        label: "Quick Integration",
+        color: "text-yellow-400",
       },
       {
-        icon: Pyramid,
-        label: "Centralized Request Logs",
-        color: "text-orange-400",
+        icon: HandshakeIcon,
+        label: "Security Rules",
+        color: "text-violet-400",
       },
       {
-        icon: UserCheck,
-        label: "Enforce Security Rules",
-        color: "text-rose-400",
+        icon: Layers2,
+        label: "Set Protocols",
+        color: "text-emerald-400",
       },
     ],
   },
