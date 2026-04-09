@@ -114,11 +114,14 @@ export default function Sidebar() {
   );
 }
 
-function SidebarItem({ icon, text, active, path }) {
+function SidebarItem({ icon, text, path }) {
   const navigate = useNavigate();
   const location = useLocation();
 
-  active = location.pathname === path;
+  const active =
+    location.pathname === path ||
+    (location.pathname.startsWith(`/project/`) &&
+      location.pathname.endsWith(path));
 
   return (
     <div
