@@ -25,24 +25,50 @@ import {
   CheckCircle,
 } from "lucide-react";
 import { getProjects } from "../../api/projects";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { setProject } from "../../store/projectSlice";
 
 function FrontPage() {
   const [openMenuId, setOpenMenuId] = useState(null);
   const [projects, setProjects] = useState([]);
   const [searchProject, setSearchProject] = useState("");
   const navigate = useNavigate();
+  const selectedProject = useSelector(
+    (state) => state.project.selectedProjectId,
+  );
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchProjects = async () => {
       try {
         const res = await getProjects();
-        setProjects(res.projects);
+
+        let activeProjectId = selectedProject;
+
+        if (!activeProjectId && res.projects.length > 0) {
+          const latestProject = res.projects.sort(
+            (a, b) => new Date(b.createdAt) - new Date(a.createdAt),
+          )[0];
+
+          activeProjectId = latestProject.projectId;
+
+          dispatch(setProject(activeProjectId));
+        }
+
+        const updatedProjects = res.projects.map((p) => ({
+          ...p,
+          isSelected: p.projectId === activeProjectId,
+        }));
+
+        setProjects(updatedProjects);
       } catch (error) {
         console.error("Error fetching projects:", error);
       }
     };
+
     fetchProjects();
-  }, []);
+  }, [selectedProject, dispatch]);
 
   const filteredProjects = projects.filter((project) => {
     const term = searchProject.toLowerCase();
@@ -134,7 +160,10 @@ function FrontPage() {
                 {filteredProjects.map((project) => (
                   <div
                     key={project.projectId}
-                    onClick={() => navigate(`/project/${project.projectId}`)}
+                    onClick={() => {
+                      dispatch(setProject(project.projectId)); 
+                      navigate(`/project/${project.projectId}`);
+                    }}
                     className="bg-zinc-950/80 border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/20 hover:border-zinc-800 transition cursor-pointer"
                   >
                     <div className="flex justify-between items-start">
