@@ -1,6 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
 import {
-  ArrowLeft,
   ChevronsLeft,
   CircleUserRound,
   Copy,
@@ -14,7 +13,6 @@ import {
 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { getProjects } from "../../api/projects";
-import { Package, Pyramid, UserCheck } from "lucide-react";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 

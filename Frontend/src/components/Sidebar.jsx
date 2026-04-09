@@ -7,24 +7,23 @@ import {
   Eye,
   Shield,
   Globe,
-  FileCodeCorner,
-  FilePen,
   TriangleAlert,
-  Triangle,
   FileLock,
   Settings,
-  Key,
   BookKey,
-  MonitorCheck,
   Wrench,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Sidebar() {
+  const navigate = useNavigate();
   return (
     <aside className="h-screen w-1/5 bg-black border-r border-zinc-800 flex flex-col overflow-y-auto scrollbar scrollbar-thumb-zinc-800 scrollbar-track-black">
       {/* PROJECT HEADER */}
-      <div className="px-4 py-4 border-b border-zinc-800 flex items-center gap-2">
+      <div
+        onClick={() => navigate("/frontpage")}
+        className="px-4 py-4 border-b border-zinc-800 flex items-center gap-2 cursor-pointer"
+      >
         <img className="w-6 h-6" src="/asset/Images/bouncer.png" alt="Logo" />
         <p className="text-sm font-medium text-zinc-200">Soumik's projects</p>
       </div>

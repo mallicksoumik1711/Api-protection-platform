@@ -3,7 +3,7 @@ import {
   Pyramid,
   UserCheck,
   ShieldAlert,
-  Link,
+  Link2,
   BotOff,
   Key,
   BarChart3,
@@ -18,13 +18,13 @@ import {
   ChartNoAxesCombinedIcon,
   Bug,
   Cctv,
-  ListFilterPlus,
   ListFilterPlusIcon,
   HandshakeIcon,
   Layers2,
 } from "lucide-react";
 
 const DashboardHeaderValues = {
+  
   frontpage: {
     tag: "Overview",
     title: "View Workspace",
@@ -85,7 +85,7 @@ const DashboardHeaderValues = {
         color: "text-violet-400",
       },
       {
-        icon: Link,
+        icon: Link2,
         label: "Analytics & Insights",
         color: "text-amber-400",
       },
