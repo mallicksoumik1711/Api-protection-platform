@@ -15,7 +15,8 @@ import {
   Settings,
   Key,
   BookKey,
-  MonitorCheck
+  MonitorCheck,
+  Wrench
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 
@@ -37,7 +38,7 @@ export default function Sidebar() {
           active
         />
         <SidebarItem
-          icon={<Box size={16} />}
+          icon={<Wrench size={16} />}
           text="SetUp Guide"
           path="/setup-guide"
         />
@@ -67,11 +68,10 @@ export default function Sidebar() {
           path="/rate-limit"
         />
         <SidebarItem
-          icon={<MonitorCheck size={16} />}
-          text="API Logs"
+          icon={<FileText size={16} />}
+          text="Logs"
           path="/api-logs"
         />
-        <SidebarItem icon={<FileText size={16} />} text="Logs" path="/logs" />
         <SidebarItem
           icon={<BarChart2 size={16} />}
           text="Analytics"
