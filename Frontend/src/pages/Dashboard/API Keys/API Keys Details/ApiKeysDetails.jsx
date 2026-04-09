@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { getApiKeys } from "../../../../api/apikey";
 import useCountUp from "../../../../utils/HelperFunctions/countKeyStats";
+import DashboardHeader from "../../../../components/DashboardHeader";
+import DashboardHeaderValues from "../../../../utils/HelperFunctions/DashboardHeaderValues";
 
 function ApiKeysDetails() {
   const [activeTab, setActiveTab] = useState("generate");
@@ -56,43 +58,18 @@ function ApiKeysDetails() {
 
   return (
     <div className="bg-black min-h-screen flex flex-col px-6 py-4">
+      <div>
+        <DashboardHeader
+          tag={DashboardHeaderValues.apiKeys.tag}
+          title={DashboardHeaderValues.apiKeys.title}
+          description={DashboardHeaderValues.apiKeys.description}
+          features={DashboardHeaderValues.apiKeys.features}
+        />
+      </div>
+
       <div className="max-w-6xl mx-auto flex-1 flex flex-col">
-        {/* Header */}
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-3">
-          API Keys
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div className="mb-4">
-            <h1 className="text-3xl font-semibold text-white py-2">
-              API Keys Management
-            </h1>
-          </div>
-
-          {/* RIGHT HEADER FEATURES */}
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                {/* slightly wider gaps for better readability */}
-                <div className="flex items-center gap-2">
-                  <Key className="w-4 h-4 text-emerald-400" />
-                  <span>Secure Key Generation</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <BarChart3 className="w-4 h-4 text-purple-400" />
-                  <span>Usage Monitoring</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Lock className="w-4 h-4 text-cyan-400" />
-                  <span>Least Privilege</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Main content – two column layout with premium lifecycle path on right */}
-        <div className="grid lg:grid-cols-12 gap-8 mt-6 flex-1">
+        <div className="grid lg:grid-cols-12 gap-8 mt-6 flex-1 mr-6">
           {/* Left – Tabs + Content (main area) */}
           <div className="col-span-12 lg:col-span-9 flex flex-col min-h-0">
             <div className="flex bg-zinc-950 rounded-lg mb-6">

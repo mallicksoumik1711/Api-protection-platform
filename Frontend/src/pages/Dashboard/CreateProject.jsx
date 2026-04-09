@@ -1,13 +1,8 @@
 import { useState } from "react";
 import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
-import {
-  Copy,
-  CopyCheck,
-  BotOff,
-  ShieldAlert,
-  Link,
-  FilePlusCorner,
-} from "lucide-react";
+import { Copy, CopyCheck, Link, FilePlusCorner } from "lucide-react";
+import DashboardHeader from "../../components/DashboardHeader";
+import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import Dropdown from "../../layouts/Dropdown";
 import { createProject } from "../../api/projects";
 
@@ -76,47 +71,14 @@ function CreateProject() {
 
   return (
     <div className="bg-black px-6 py-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+      <DashboardHeader
+        tag={DashboardHeaderValues.createProject.tag}
+        title={DashboardHeaderValues.createProject.title}
+        description={DashboardHeaderValues.createProject.description}
+        features={DashboardHeaderValues.createProject.features}
+      />
 
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
-          Project Setup
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-white py-2">
-              New Workspace
-            </h1>
-          </div>
-
-          {/* RIGHT HEADER FEATURES */}
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-4 h-4 text-violet-400" />
-                  <span>Attack Pattern Blocking</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Link className="w-4 h-4 text-amber-400" />
-                  <span>Analytics & Insights</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <BotOff className="w-4 h-4 text-cyan-400" />
-                  <span>Bot & Crawler Detection</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-zinc-400 max-w-2xl mb-8">
-          Create a project to start protecting and monitoring your APIs. After
-          creating the project, integrate the middleware into your backend to
-          enable request protection and analytics.
-        </p>
-
+      <div className="max-w-6xl mx-auto pr-6">
         <div className="grid grid-cols-2 gap-6 items-start">
           {/* LEFT SIDE */}
           <form action="" method="post" onSubmit={handleSubmit}>

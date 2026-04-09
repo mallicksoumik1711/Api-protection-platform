@@ -1,20 +1,18 @@
 import { useState } from "react";
 import {
-  TriangleAlert,
-  BotOff,
-  ShieldAlert,
   Info,
   Save,
   LockKeyhole,
   CircleCheckBig,
   CopyX,
-  Timer,
   Dices,
   Hourglass,
 } from "lucide-react";
 import { rateLimit } from "../../api/rateLimit";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
+import DashboardHeader from "../../components/DashboardHeader";
+import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 
 function RateLimit() {
   const [limit, setLimit] = useState(50);
@@ -47,49 +45,15 @@ function RateLimit() {
 
   return (
     <div className="bg-black px-6 py-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
+      <DashboardHeader
+        tag={DashboardHeaderValues.rateLimit.tag}
+        title={DashboardHeaderValues.rateLimit.title}
+        description={DashboardHeaderValues.rateLimit.description}
+        features={DashboardHeaderValues.rateLimit.features}
+      />
 
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
-          Rate limit
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-white py-2">
-              Abuse Protection
-            </h1>
-          </div>
-
-          {/* RIGHT HEADER FEATURES */}
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                <div className="flex items-center gap-2">
-                  <TriangleAlert className="w-4 h-4 text-amber-400" />
-                  <span>Rate Limiting</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <BotOff className="w-4 h-4 text-red-400" />
-                  <span>Bot Detection</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldAlert className="w-4 h-4 text-emerald-400" />
-                  <span>Attack Prevention</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-zinc-400 max-w-2xl mb-8">
-          Configure rate limits to control the number of requests your APIs can
-          handle. This helps prevent abuse and ensures fair usage across all
-          clients.
-        </p>
-
+      <div className="">
         {/* Main Card */}
-
         <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-8 shadow-2xl shadow-black/40 space-y-10 max-w-6xl mx-auto mb-5">
           {/* Header + Info pill */}
           <div className="flex items-start justify-between gap-6">

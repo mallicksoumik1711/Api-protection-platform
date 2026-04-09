@@ -1,6 +1,7 @@
-import { Bug, Cctv, ChartNoAxesCombinedIcon } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getApiLogs } from "../../../api/apilogs";
+import DashboardHeader from "../../../components/DashboardHeader";
+import DashboardHeaderValues from "../../../utils/HelperFunctions/DashboardHeaderValues";
 
 function ApiKeyLogs() {
   const [logs, setLogs] = useState([]);
@@ -45,44 +46,12 @@ function ApiKeyLogs() {
 
   return (
     <div className="bg-black px-6 py-4">
-      <div className="max-w-6xl mx-auto">
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
-          API Logs
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-white py-2">
-              API Logs Management
-            </h1>
-          </div>
-
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                <div className="flex items-center gap-2">
-                  <ChartNoAxesCombinedIcon className="w-4 h-4 text-green-400" />
-                  <span>Track API usage</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Bug className="w-4 h-4 text-red-400" />
-                  <span>Monitor Errors</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Cctv className="w-4 h-4 text-violet-400" />
-                  <span>Improve Security</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-zinc-400 max-w-2xl mb-8">
-          Create a project to start monitoring and securely storing your API
-          logs. Integrate log collection in your backend to keep all requests
-          safely recorded and easily accessible for analysis.
-        </p>
-      </div>
+      <DashboardHeader
+        tag={DashboardHeaderValues.apiLogs.tag}
+        title={DashboardHeaderValues.apiLogs.title}
+        description={DashboardHeaderValues.apiLogs.description}
+        features={DashboardHeaderValues.apiLogs.features}
+      />
 
       <div className="mt-6 max-w-6xl mx-auto">
         <div className="flex items-center justify-between mb-3 mr-6">

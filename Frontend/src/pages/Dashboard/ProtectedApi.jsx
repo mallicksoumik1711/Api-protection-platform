@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
-import { LockKeyhole, Monitor, ShieldCheck } from "lucide-react";
+import { LockKeyhole } from "lucide-react";
 import {
   createProtectedRoute,
   getProtectedRoutes,
 } from "../../api/protedtedRoute";
+
+import DashboardHeader from "../../components/DashboardHeader";
+import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
+
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
 
@@ -87,47 +91,12 @@ function ProtectedApi() {
   };
   return (
     <div className="bg-black px-6 py-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
-          Protected Apis
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-white py-2">
-              Protected Requests
-            </h1>
-          </div>
-
-          {/* RIGHT HEADER FEATURES */}
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                <div className="flex items-center gap-2">
-                  <LockKeyhole className="w-4 h-4 text-pink-400" />
-                  <span>Secure API Routes</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Monitor className="w-4 h-4 text-blue-400" />
-                  <span>Monitor Traffic</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  <span>Realtime Protection</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-zinc-400 max-w-2xl mb-8">
-          Protected APIs are the routes in your backend that are secured using
-          our middleware. Once added, these APIs will automatically apply rate
-          limiting and block malicious traffic.
-        </p>
-      </div>
+      <DashboardHeader
+        tag={DashboardHeaderValues.protectedApi.tag}
+        title={DashboardHeaderValues.protectedApi.title}
+        description={DashboardHeaderValues.protectedApi.description}
+        features={DashboardHeaderValues.protectedApi.features}
+      />
 
       <div className="mt-10 max-w-6xl mx-auto flex justify-between gap-10 mb-5">
         <div className="h-fit top-6 sticky w-1/2 bg-zinc-950 border border-zinc-800 rounded-lg p-7 shadow-lg">

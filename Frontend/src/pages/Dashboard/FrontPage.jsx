@@ -4,14 +4,7 @@ import {
   Search,
   Grid,
   List,
-  Plus,
   MoreHorizontal,
-  ChartNoAxesCombinedIcon,
-  Bug,
-  Cctv,
-  Package,
-  Pyramid,
-  UserCheck,
   HeartMinus,
   Copy,
   Cog,
@@ -19,11 +12,10 @@ import {
   ChartSpline,
   Trash2,
   Ghost,
-  Package2,
   Box,
-  ChevronsUpDown,
-  CheckCircle,
 } from "lucide-react";
+import DashboardHeader from "../../components/DashboardHeader";
+import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import { getProjects } from "../../api/projects";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -84,44 +76,12 @@ function FrontPage() {
       className="bg-black min-h-screen px-6 py-4 text-white"
       onClick={() => setOpenMenuId(null)}
     >
-      <div className="max-w-6xl mx-auto">
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
-          Overview
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-white py-2">
-              View Workspace
-            </h1>
-          </div>
-
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                <div className="flex items-center gap-2">
-                  <Package className="w-4 h-4 text-sky-400" />
-                  <span>Realtime Monitoring</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Pyramid className="w-4 h-4 text-orange-400" />
-                  <span>Centralized Request Logs</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <UserCheck className="w-4 h-4 text-rose-400" />
-                  <span>Enforce Security Rules</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-zinc-400 max-w-2xl mb-8">
-          This is your workspace where all your API protection projects will
-          live. Create and manage projects to monitor traffic and keep every
-          request logged and accessible for analysis.
-        </p>
-      </div>
+      <DashboardHeader
+        tag={DashboardHeaderValues.frontpage.tag}
+        title={DashboardHeaderValues.frontpage.title}
+        description={DashboardHeaderValues.frontpage.description}
+        features={DashboardHeaderValues.frontpage.features}
+      />
 
       <div className="max-w-6xl mx-auto pr-6">
         <div>
@@ -161,7 +121,7 @@ function FrontPage() {
                   <div
                     key={project.projectId}
                     onClick={() => {
-                      dispatch(setProject(project.projectId)); 
+                      dispatch(setProject(project.projectId));
                       navigate(`/project/${project.projectId}`);
                     }}
                     className="bg-zinc-950/80 border border-zinc-900 rounded-md p-4 hover:bg-zinc-950/20 hover:border-zinc-800 transition cursor-pointer"

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
-import { Braces, FingerprintPattern, Wrench } from "lucide-react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+
+import DashboardHeader from "../../components/DashboardHeader";
+import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 
 import JwtToggle from "../../components/JwtDashboard/JwtToggle";
 import JwtSecretKey from "../../components/JwtDashboard/JwtSecretKey";
@@ -58,47 +60,12 @@ function JwtSettings() {
 
   return (
     <div className="bg-black px-6 py-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-
-        <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
-          jwt settings
-        </p>
-
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-semibold text-white py-2">
-              JWT Authentication Settings
-            </h1>
-          </div>
-
-          {/* RIGHT HEADER FEATURES */}
-          <div className="hidden lg:block overflow-hidden">
-            <div className="flex whitespace-nowrap text-sm text-zinc-400">
-              <div className="flex gap-6 mr-6">
-                <div className="flex items-center gap-2">
-                  <Braces className="w-4 h-4 text-violet-400" />
-                  <span>Token Security</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <FingerprintPattern className="w-4 h-4 text-amber-400" />
-                  <span>Authentication Controls</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Wrench className="w-4 h-4 text-cyan-400" />
-                  <span>Secret and Algorithm Setup</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <p className="text-zinc-400 max-w-2xl mb-8">
-          Configure your JWT authentication settings to secure your API
-          endpoints, protect your routes, set your secret key, choose the
-          signing algorithm, and specify token expiration.
-        </p>
-      </div>
+      <DashboardHeader
+        tag={DashboardHeaderValues.jwtSettings.tag}
+        title={DashboardHeaderValues.jwtSettings.title}
+        description={DashboardHeaderValues.jwtSettings.description}
+        features={DashboardHeaderValues.jwtSettings.features}
+      />
 
       <div className="mt-6 max-w-6xl mx-auto">
         {/* Jwt toggle */}
