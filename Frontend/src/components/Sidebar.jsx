@@ -13,6 +13,7 @@ import {
   Settings,
   BookKey,
   Wrench,
+  HeartPlusIcon,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getUser } from "../api/auth";
@@ -89,6 +90,11 @@ export default function Sidebar() {
           icon={<FileText size={16} />}
           text="Logs"
           path="/api-logs"
+        />
+        <SidebarItem
+          icon={<HeartPlusIcon size={16} />}
+          text="Favourites"
+          path="/favourites"
         />
         <SidebarItem
           icon={<BarChart2 size={16} />}

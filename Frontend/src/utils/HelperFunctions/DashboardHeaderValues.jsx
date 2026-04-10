@@ -21,10 +21,12 @@ import {
   ListFilterPlusIcon,
   HandshakeIcon,
   Layers2,
+  Star,
+  Heart,
+  Bookmark,
 } from "lucide-react";
 
 const DashboardHeaderValues = {
-  
   frontpage: {
     tag: "Overview",
     title: "View Workspace",
@@ -213,6 +215,29 @@ const DashboardHeaderValues = {
         icon: Cctv,
         label: "Monitor Security",
         color: "text-violet-400",
+      },
+    ],
+  },
+
+  favourites: {
+    tag: "Favourites",
+    title: "Starred Projects",
+    description: "Mark your most important projects to keep them easily accessible. Stay focused, and maintain better control over your workflow with a personalized collection of your favorite builds.",
+    features: [
+      {
+        icon: Star,
+        label: "Quick Access",
+        color: "text-yellow-400",
+      },
+      {
+        icon: Heart,
+        label: "Personalized",
+        color: "text-pink-400",
+      },
+      {
+        icon: Bookmark,
+        label: "Faster Workflow",
+        color: "text-blue-400",
       },
     ],
   },

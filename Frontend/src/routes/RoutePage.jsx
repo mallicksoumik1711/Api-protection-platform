@@ -16,6 +16,7 @@ import RateLimit from "../pages/Dashboard/RateLimit";
 import ProtectedApi from "../pages/Dashboard/ProtectedApi";
 import JwtSettings from "../pages/Dashboard/JwtSettings";
 import ProjectDetails from "../pages/Dashboard/ProjectDetails";
+import Favourites from "../pages/Dashboard/Favourites";
 
 import { Toaster } from "react-hot-toast";
 
@@ -178,6 +179,16 @@ function RoutePage() {
             <ProtectedRoutes>
               <DashboardLayout>
                 <ProjectDetails />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/favourites"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <Favourites />
               </DashboardLayout>
             </ProtectedRoutes>
           }
