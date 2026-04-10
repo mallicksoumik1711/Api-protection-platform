@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   LayoutDashboard,
   Box,
@@ -14,9 +15,25 @@ import {
   Wrench,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { getUser } from "../api/auth";
 
 export default function Sidebar() {
   const navigate = useNavigate();
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUser();
+        setUser(data);
+      } catch (error) {
+        console.log("Error fetching user:", error.message);
+      }
+    };
+    fetchUser();
+  }, []);
+  const capitalize = (str) =>
+    str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
+
   return (
     <aside className="h-screen w-1/5 bg-black border-r border-zinc-800 flex flex-col overflow-y-auto scrollbar scrollbar-thumb-zinc-800 scrollbar-track-black">
       {/* PROJECT HEADER */}
@@ -25,7 +42,9 @@ export default function Sidebar() {
         className="px-4 py-4 border-b border-zinc-800 flex items-center gap-2 cursor-pointer"
       >
         <img className="w-6 h-6" src="/asset/Images/bouncer.png" alt="Logo" />
-        <p className="text-sm font-medium text-zinc-200">Soumik's projects</p>
+        <p className="text-sm font-medium text-zinc-200 ">
+          {user?.name ? `${capitalize(user.name)}'s projects` : "BOUNCER"}
+        </p>
       </div>
 
       {/* MENU */}
@@ -106,8 +125,13 @@ export default function Sidebar() {
 
       {/* USER */}
       <div className="p-3 flex items-center gap-2 mt-5">
-        <img src="https://i.pravatar.cc/32" className="w-7 h-7 rounded-full" />
-        <span className="text-sm text-zinc-300">Soumik</span>
+        <img
+          src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user?.name}`}
+          className="w-8 h-8 rounded-full"
+        />
+        <span className="text-sm text-zinc-300">
+          {user?.name ? capitalize(user.name) : "User"}
+        </span>
       </div>
     </aside>
   );
