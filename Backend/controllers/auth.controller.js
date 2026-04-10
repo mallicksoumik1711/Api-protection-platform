@@ -28,7 +28,7 @@ const registerUser = async (req, res) => {
     const newUser = await User.create({
       name,
       email,
-      password: hashedPassword, 
+      password: hashedPassword,
     });
 
     const token = generateToken(newUser);
@@ -59,7 +59,7 @@ const loginUser = async (req, res) => {
 
     const isValidPassword = await bcrypt.compare(
       password,
-      checkUserWithEmail.password
+      checkUserWithEmail.password,
     );
 
     if (!isValidPassword) {
@@ -85,6 +85,19 @@ const loginUser = async (req, res) => {
 const logoutUser = async (req, res) => {
   res.clearCookie("token");
   return res.status(200).send({ message: "Logout successful." });
-}
+};
 
-module.exports = { registerUser, loginUser, logoutUser };
+const getUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select("name email");
+    if (!user) {
+      return res.status(404).send({ message: "User not found." });
+    }
+    return res.status(200).send({ user });
+  } catch (error) {
+    console.log("Error fetching user:", error.message);
+    res.status(500).send({ message: error.message });
+  }
+};
+
+module.exports = { registerUser, loginUser, logoutUser, getUser };
