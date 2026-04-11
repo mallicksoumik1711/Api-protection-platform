@@ -58,7 +58,7 @@ export default function Sidebar() {
         />
         <SidebarItem
           icon={<Wrench size={16} />}
-          text="SetUp Guide"
+          text="Setup Guide"
           path="/setup-guide"
         />
         <SidebarItem
@@ -85,6 +85,11 @@ export default function Sidebar() {
           icon={<TriangleAlert size={16} />}
           text="Rate Limit"
           path="/rate-limit"
+        />
+        <SidebarItem
+          icon={<TriangleAlert size={16} />}
+          text="Integration"
+          path="/integration"
         />
         <SidebarItem
           icon={<FileText size={16} />}

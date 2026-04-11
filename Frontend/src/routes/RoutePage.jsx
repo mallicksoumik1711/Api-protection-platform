@@ -17,6 +17,7 @@ import ProtectedApi from "../pages/Dashboard/ProtectedApi";
 import JwtSettings from "../pages/Dashboard/JwtSettings";
 import ProjectDetails from "../pages/Dashboard/ProjectDetails";
 import Favourites from "../pages/Dashboard/Favourites";
+import Integration from "../pages/Dashboard/Integration";
 
 import { Toaster } from "react-hot-toast";
 
@@ -168,6 +169,30 @@ function RoutePage() {
               <DashboardLayout>
                 <ProjectRouteGuard>
                   <JwtSettings />
+                </ProjectRouteGuard>
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/integration"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProjectRouteGuard>
+                  <Integration />
+                </ProjectRouteGuard>
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/project/:projectId/integration"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProjectRouteGuard>
+                  <Integration />
                 </ProjectRouteGuard>
               </DashboardLayout>
             </ProtectedRoutes>

@@ -241,6 +241,30 @@ const DashboardHeaderValues = {
       },
     ],
   },
+
+  integration: {
+    tag: "Integration",
+    title: "Integrate Your Project",
+    description:
+      "Create a project to start monitoring and securely storing your API logs. Integrate log collection in your backend to keep all requests safely recorded and easily accessible for analysis.",
+    features: [
+      {
+        icon: ChartNoAxesCombinedIcon,
+        label: "Track API usage",
+        color: "text-green-400",
+      },
+      {
+        icon: Bug,
+        label: "Track Errors",
+        color: "text-red-400",
+      },
+      {
+        icon: Cctv,
+        label: "Monitor Security",
+        color: "text-violet-400",
+      },
+    ],
+  },
 };
 
 export default DashboardHeaderValues;
