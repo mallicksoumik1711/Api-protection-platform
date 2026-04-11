@@ -14,6 +14,7 @@ import {
   BookKey,
   Wrench,
   HeartPlusIcon,
+  FolderCog,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getUser } from "../api/auth";
@@ -87,7 +88,7 @@ export default function Sidebar() {
           path="/rate-limit"
         />
         <SidebarItem
-          icon={<TriangleAlert size={16} />}
+          icon={<FolderCog size={16} />}
           text="Integration"
           path="/integration"
         />

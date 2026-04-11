@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
@@ -14,6 +15,7 @@ import JwtAdvancedSettings from "../../components/JwtDashboard/JwtAdvancedSettin
 import { jwtSettings } from "../../api/jwtSettings";
 
 function JwtSettings() {
+  const navigate = useNavigate();
   const [isEnabled, setIsEnabled] = useState(true);
 
   const [formData, setFormData] = useState({
@@ -50,6 +52,9 @@ function JwtSettings() {
 
       const response = await jwtSettings(payload);
       toast.success("JWT settings saved successfully!");
+      setTimeout(() => {
+        navigate(`/project/${projectId}/rate-limit`);
+      }, 1000);
       console.log("Saving JWT response:", response);
       console.log("Saving JWT payload:", payload);
     } catch (error) {

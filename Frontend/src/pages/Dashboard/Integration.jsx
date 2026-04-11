@@ -43,19 +43,15 @@ function Integration() {
   const rateLimits = data?.rateLimits;
   const rateLimit = rateLimits?.[0];
 
-  if (!data) {
-    return <div className="text-white p-6">Loading...</div>; //skeleton dashboard
-  }
-
   const middlewareCode = `app.use(async (req, res, next) => {
-  const response = await fetch("${project.baseUrl}/validate", {
+  const response = await fetch("${project ? project.baseUrl : "http://localhost/YOUR_PORT"}/validate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "x-api-key": "Enter your API key here",
     },
     body: JSON.stringify({
-      projectId: "${project.projectId}",
+      projectId: "${project?.projectId ?? "your_project_id"}",
       path: req.path,
       method: req.method,
       token: req.headers.authorization,
@@ -96,7 +92,9 @@ function Integration() {
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">{project?.name}</div>
+            <div className="text-sm text-zinc-400">
+              {project?.name ?? "No name available"}
+            </div>
           </div>
 
           <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
@@ -115,7 +113,7 @@ function Integration() {
             </div>
 
             <div className="text-sm text-zinc-400">
-              {project?.description || "No description available"}
+              {project?.description ?? "No description available"}
             </div>
           </div>
 
@@ -135,8 +133,12 @@ function Integration() {
             </div>
 
             <div className="flex gap-5 items-center">
-              <div className="text-sm text-zinc-400">{project?.projectId}</div>
-              <Copy size={16} className="cursor-pointer" />
+              <div className="text-sm text-zinc-400">
+                {project?.projectId ?? "No project ID available"}
+              </div>
+              {project?.projectId && (
+                <Copy size={16} className="cursor-pointer" />
+              )}
             </div>
           </div>
 
@@ -163,7 +165,9 @@ function Integration() {
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">{project?.baseUrl}</div>
+            <div className="text-sm text-zinc-400">
+              {project?.baseUrl ?? "No base URL available"}
+            </div>
           </div>
 
           <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
@@ -182,7 +186,7 @@ function Integration() {
             </div>
 
             <div className="text-sm text-zinc-400">
-              {project?.framework || "No framework specified"}
+              {project?.framework ?? "No framework specified"}
             </div>
           </div>
 
@@ -201,7 +205,9 @@ function Integration() {
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">{project?.environment}</div>
+            <div className="text-sm text-zinc-400">
+              {project?.environment ?? "No environment specified"}
+            </div>
           </div>
 
           <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
@@ -219,7 +225,9 @@ function Integration() {
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">{project?.status}</div>
+            <div className="text-sm text-zinc-400">
+              {project?.status ?? "No status available"}
+            </div>
           </div>
 
           <div className="flex items-center justify-between mb-3">
@@ -249,7 +257,7 @@ function Integration() {
 
             <div className="text-sm text-zinc-400">
               {" "}
-              {protectedRoutes?.length || 0} APIs protected
+              {protectedRoutes?.length ?? 0} APIs protected
             </div>
           </div>
 

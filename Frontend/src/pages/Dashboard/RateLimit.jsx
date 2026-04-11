@@ -8,6 +8,7 @@ import {
   Dices,
   Hourglass,
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import { rateLimit } from "../../api/rateLimit";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
@@ -15,6 +16,7 @@ import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 
 function RateLimit() {
+  const navigate = useNavigate();
   const [limit, setLimit] = useState(50);
   const [windowTime, setWindowTime] = useState(60);
   const [type, setType] = useState("sliding");
@@ -36,6 +38,9 @@ function RateLimit() {
       };
       const response = await rateLimit(rateLimitData);
       toast.success("Rate limits saved successfully!");
+      setTimeout(() => {
+        navigate(`/project/${projectId}/integration`);
+      }, 1000);
       console.log(response);
     } catch (error) {
       toast.error(error.message);

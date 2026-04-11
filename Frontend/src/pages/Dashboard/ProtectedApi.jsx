@@ -4,6 +4,7 @@ import {
   createProtectedRoute,
   getProtectedRoutes,
 } from "../../api/protedtedRoute";
+import { useNavigate } from "react-router-dom";
 
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
@@ -22,6 +23,7 @@ import ConfigureRoute from "../../components/ProtectedRouteDashboard/ConfigureRo
 import FinalRoutePreview from "../../components/ProtectedRouteDashboard/FinalRoutePreview";
 
 function ProtectedApi() {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     route: {
       base: "",
@@ -84,6 +86,9 @@ function ProtectedApi() {
       setRoutes((prev) => [response.data, ...prev]);
       console.log("Protected route created:", response);
       toast.success("Protected route created successfully!");
+      setTimeout(() => {
+        navigate(`/project/${projectId}/jwt-settings`);
+      }, 1000);
     } catch (error) {
       console.error("Error creating protected route:", error);
       toast.error("Failed to create protected route.");
