@@ -44,7 +44,7 @@ function Integration() {
   const rateLimit = rateLimits?.[0];
 
   const middlewareCode = `app.use(async (req, res, next) => {
-  const response = await fetch("${project ? project.baseUrl : "http://localhost/YOUR_PORT"}/validate", {
+  const response = await fetch("http://localhost:3000/validate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
