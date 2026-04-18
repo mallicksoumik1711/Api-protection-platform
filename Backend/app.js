@@ -62,6 +62,9 @@ app.use("/protection-routes", protectedRouteRoutes);
 const integrationRoutes = require("./routes/integration.route");
 app.use("/integration", integrationRoutes);
 
+const validatorRoute = require("./routes/validator.route");
+app.use("", validatorRoute);
+
 app.use("/protected", authRoutes);
 
 module.exports = app;
