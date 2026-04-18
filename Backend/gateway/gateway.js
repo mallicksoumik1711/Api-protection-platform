@@ -14,13 +14,6 @@ const runMiddleware = (middleware, req, res) => {
   });
 };
 
-// this is for test token for api validation
-const token = jwt.sign(
-  { userId: 1 }, // any payload
-  "nzcaar1yq91775922235894", // DB secret
-);
-console.log("Sample JWT for testing:", token);
-
 const gateway = async (req, res, next) => {
   console.log("GATEWAY HIT:", req.path);
   try {

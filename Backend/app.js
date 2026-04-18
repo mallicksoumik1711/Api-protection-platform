@@ -65,6 +65,9 @@ app.use("/integration", integrationRoutes);
 const validatorRoute = require("./routes/validator.route");
 app.use("", validatorRoute);
 
+const apiAuthRoutes = require("./routes/apiAuth.route");
+app.use("/apiauth", apiAuthRoutes);
+
 app.use("/protected", authRoutes);
 
 module.exports = app;
