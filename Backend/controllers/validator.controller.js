@@ -114,7 +114,7 @@ const validateRequest = async (req, res) => {
       }
     }
 
-    if (rateLimits?.enabled) {
+    if (matchedRoute?.security?.rateLimiting?.enabled && rateLimits) {
       const key = `${projectId}:${apiKey || "anonymous"}`;
       let current = 1;
       if (redisClient) {
