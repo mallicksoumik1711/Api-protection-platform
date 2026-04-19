@@ -361,6 +361,10 @@ function RateLimit() {
                   These rules apply instantly once saved.
                 </p>
               </div>
+              <p className="text-[11px] text-zinc-500">
+                Follow up: Currently only Fixed Window is active. Sliding and
+                Leaky strategies will be implemented later.
+              </p>
             </div>
           </div>
         </div>
