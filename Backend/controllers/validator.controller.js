@@ -3,14 +3,22 @@ const projectModel = require("../models/projects.model");
 const protectedRouteModel = require("../models/protectedRoute.model");
 const jwtModel = require("../models/jwtSettings.model");
 const rateLimitModel = require("../models/rateLimit.model");
+const apiKeyModel = require("../models/apikey.model");
 
 const redisClient = require("../config/redis");
 
+const { getSecurityFlags } = require("../utils/securityFlags");
+
 const validateRequest = async (req, res) => {
   try {
-    const { projectId, path, method, token: apiToken } = req.body;
+    const { projectId, path, method } = req.body;
     const authHeader = req.headers["authorization"];
+    const apiToken = authHeader?.startsWith("Bearer ")
+      ? authHeader.split(" ")[1]
+      : null;
     const apiKey = req.headers["x-api-key"];
+
+    // input validation
     if (!projectId || !path || !method) {
       return res.json({
         allowed: false,
@@ -18,6 +26,8 @@ const validateRequest = async (req, res) => {
         step: "INPUT_VALIDATION",
       });
     }
+
+    // project validation
     const project = await projectModel.findOne({ projectId });
     if (!project) {
       return res.json({
@@ -26,30 +36,12 @@ const validateRequest = async (req, res) => {
         step: "PROJECT_VALIDATION",
       });
     }
-    try {
-      const loginToken = authHeader?.startsWith("Bearer ")
-        ? authHeader.split(" ")[1]
-        : authHeader;
 
-      if (!loginToken) {
-        return res.json({
-          allowed: false,
-          reason: "Auth token missing",
-          step: "AUTH_VALIDATION",
-        });
-      }
-
-      jwt.verify(loginToken, process.env.JWT_SECRET);
-    } catch (err) {
-      return res.json({
-        allowed: false,
-        reason: "Unauthorized user",
-        step: "AUTH_VALIDATION",
-      });
-    }
-    const routes = await protectedRouteModel.find({ projectId });
-    const jwtSettings = await jwtModel.findOne({ projectId });
-    const rateLimits = await rateLimitModel.findOne({ projectId });
+    const [routes, jwtSettings, rateLimits] = await Promise.all([
+      protectedRouteModel.find({ projectId }),
+      jwtModel.findOne({ projectId }),
+      rateLimitModel.findOne({ projectId }),
+    ]);
 
     const matchRoute = (routes, requestPath, method) => {
       return routes.find((r) => {
@@ -82,67 +74,93 @@ const validateRequest = async (req, res) => {
       });
     }
 
-    if (jwtSettings?.enabled) {
+    const { requireApiKey, requireJWT } = getSecurityFlags(
+      matchedRoute.protection?.rules || "",
+    );
+
+    if (requireApiKey) {
+      if (!apiKey) {
+        return res.json({
+          allowed: false,
+          reason: "API key missing",
+          step: "API_KEY_VALIDATION",
+        });
+      }
+
+      const apiKeyRecord = await apiKeyModel.findOne({
+        key: apiKey,
+      });
+
+      if (!apiKeyRecord || !apiKeyRecord.isActive) {
+        return res.json({
+          allowed: false,
+          reason: "Invalid or inactive API key",
+          step: "API_KEY_VALIDATION",
+        });
+      }
+    }
+
+    if (requireJWT) {
       if (!apiToken) {
         return res.json({
           allowed: false,
-          reason: "Token missing",
+          reason: "JWT token missing",
           step: "JWT_VALIDATION",
         });
       }
 
+      console.log("Jwt validation start");
       try {
-        const rawToken = apiToken?.startsWith("Bearer ")
+        const rawToken = apiToken.startsWith("Bearer ")
           ? apiToken.split(" ")[1]
           : apiToken;
-
-        if (!rawToken) {
-          return res.json({
-            allowed: false,
-            reason: "Invalid token format",
-            step: "JWT_VALIDATION",
-          });
-        }
-
-        jwt.verify(rawToken, jwtSettings.secretKey);
-      } catch (err) {
+        console.log("Raw JWT token:", rawToken);
+        const decoded = jwt.verify(rawToken, jwtSettings.secretKey);
+        console.log("Decoded JWT token:", decoded);
+      } catch (error) {
         return res.json({
           allowed: false,
-          reason: "Invalid token",
+          reason: "Invalid JWT token",
           step: "JWT_VALIDATION",
         });
       }
     }
 
-    if (matchedRoute?.security?.rateLimiting?.enabled && rateLimits) {
+    if (matchedRoute.security?.rateLimiting?.enabled && rateLimits) {
       const key = `${projectId}:${apiKey || "anonymous"}`;
       let current = 1;
       if (redisClient) {
         current = await redisClient.incr(key);
-        if (current === 1) {
+        const ttl = await redisClient.ttl(key);
+
+        if (current === 1 || ttl === -1) {
           await redisClient.expire(key, rateLimits.windowTime);
         }
       }
+
+      console.log("Rate limit key:", key);
+      console.log("Current count:", current);
+      console.log("Limit:", rateLimits.limit);
+
       if (current > rateLimits.limit) {
         return res.json({
           allowed: false,
           reason: "Rate limit exceeded",
-          step: "RATE_LIMIT",
+          step: "RATE_LIMITING",
         });
       }
     }
-
     return res.json({
       allowed: true,
       message: "Request allowed",
       step: "SUCCESS",
     });
-  } catch (err) {
-    console.error("Validation error:", err);
+  } catch (error) {
+    console.error("Validation error:", error);
     return res.json({
       allowed: false,
       message: "Internal server error",
-      step: "SERVER_ERROR",
+      step: "ERROR",
     });
   }
 };
