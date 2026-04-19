@@ -43,29 +43,70 @@ function Integration() {
   const rateLimits = data?.rateLimits;
   const rateLimit = rateLimits?.[0];
 
-  const middlewareCode = `app.use(async (req, res, next) => {
-  const response = await fetch("http://localhost:3000/validate", {
+  const middlewareCode = `const excludedRoutes = ["/login", "/signup"];
+
+app.use(async (req, res, next) => {
+  if (excludedRoutes.includes(req.path)) {
+    return next();
+  }
+
+  try {
+    const response = await fetch("http://localhost:3000/validate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "YOUR_API_KEY",
+        "Authorization": req.headers.authorization || "",
+      },
+      body: JSON.stringify({
+        projectId: "${project?.projectId ?? "your_project_id"}",
+        path: req.path,
+        method: req.method,
+      }),
+    });
+
+    const data = await response.json();
+
+    if (!data.allowed) {
+      return res.status(403).json({
+        message: data.reason || data.message,
+      });
+    }
+
+    next();
+  } catch (err) {
+    return res.status(500).json({
+      message: "Auth service unavailable",
+    });
+  }
+});`;
+
+  const tokenCode = `// Call this after user login/signup
+
+const generateToken = async (userId) => {
+  const response = await fetch("http://localhost:3000/apiauth/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      "x-api-key": "Enter your API key here",
+      "x-api-key": "YOUR_API_KEY",
     },
     body: JSON.stringify({
       projectId: "${project?.projectId ?? "your_project_id"}",
-      path: req.path,
-      method: req.method,
-      token: req.headers.authorization,
+      userId: userId,
     }),
   });
 
   const data = await response.json();
-
-  if (!data.allowed) {
-    return res.status(403).json({ message: data.reason });
+  if (!data.success) {
+    throw new Error("Token generation failed");
   }
+  return data.token;
+};
 
-  next();
-});`;
+// Example usage
+const token = await generateToken(user.id);
+console.log("JWT Token:", token);
+`;
 
   return (
     <div className="bg-black px-6 py-4">
@@ -78,7 +119,7 @@ function Integration() {
 
       <div className="mt-6 max-w-6xl mx-auto flex pr-6 gap-6">
         {/* Project Info */}
-        <div className="w-1/2">
+        <div className="w-1/2 h-fit top-6 sticky">
           <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
               <div className="w-8 h-8 rounded-lg flex items-center justify-center">
@@ -329,11 +370,11 @@ function Integration() {
             </div>
 
             <div className="text-sm text-zinc-400">
-              http://localhost:3000/validation
+              http://localhost:3000/validate
             </div>
           </div>
         </div>
-        <div className="w-1/2 bg-zinc-950 rounded-md p-6 border border-zinc-900">
+        <div className="w-1/2 bg-zinc-950 rounded-md p-6 border border-zinc-900 h-fit top-6 sticky">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-sm font-semibold text-white">
               Integration Middleware
@@ -355,6 +396,35 @@ function Integration() {
             <code>{middlewareCode}</code>
           </pre>
 
+          <div className="flex items-center justify-between mt-4">
+            <h3 className="text-sm font-semibold text-white">
+              Token generation
+            </h3>
+
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(tokenCode);
+                toast.success("Copied to clipboard!");
+              }}
+              className="text-xs text-zinc-400 hover:text-white flex items-center gap-1"
+            >
+              <Copy size={14} />
+              Copy
+            </button>
+          </div>
+
+          <p className="text-[11px] text-yellow-500 mt-1 flex items-center gap-1">
+            <div>
+              <TriangleAlert size={12} />
+            </div>
+            Run this on your backend after user login/signup. Do not run this in
+            frontend.
+          </p>
+
+          <pre className="text-xs text-zinc-300 bg-black rounded-md p-4 overflow-x-auto border border-zinc-800 mt-4">
+            <code>{tokenCode}</code>
+          </pre>
+
           <div className="bg-zinc-950 rounded-md p-6 border border-zinc-900 mt-4">
             <h3 className="text-sm font-semibold text-white mb-4">
               How to Setup
@@ -370,29 +440,38 @@ function Integration() {
               </div>
 
               <div>
-                <p className="text-white font-medium">2. Place Before Routes</p>
-                <p>
-                  Make sure this middleware is added before your protected
-                  routes.
+                <p className="text-white font-medium">
+                  2. Exclude Public Routes
                 </p>
-              </div>
-
-              <div>
-                <p className="text-white font-medium">3. Start Your Server</p>
                 <p>
-                  Run your backend and ensure requests pass through the
+                  Ensure routes like /login or /signup are excluded from
                   middleware.
                 </p>
               </div>
 
               <div>
                 <p className="text-white font-medium">
-                  4. Test a Protected Route
+                  3. Generate Token After Login
                 </p>
                 <p>
-                  Try accessing a protected API. If JWT or rules fail, request
-                  will be blocked.
+                  Call /apiauth/token from your backend after user
+                  authentication.
                 </p>
+              </div>
+
+              <div>
+                <p className="text-white font-medium">
+                  4. Send Token in Requests
+                </p>
+                <p>
+                  Include Authorization: Bearer "your-token" in your API
+                  requests.
+                </p>
+              </div>
+
+              <div>
+                <p className="text-white font-medium">5. Start your server</p>
+                <p>Run your backend and test protected routes.</p>
               </div>
             </div>
           </div>
