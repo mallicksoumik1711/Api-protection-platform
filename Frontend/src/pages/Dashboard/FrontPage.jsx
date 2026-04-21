@@ -73,7 +73,7 @@ function FrontPage() {
 
   return (
     <div
-      className="bg-black min-h-screen px-6 py-4 text-white"
+      className="bg-black min-h-screen px-4 sm:px-6 py-4 text-white"
       onClick={() => setOpenMenuId(null)}
     >
       <DashboardHeader
@@ -83,11 +83,11 @@ function FrontPage() {
         features={DashboardHeaderValues.frontpage.features}
       />
 
-      <div className="max-w-6xl mx-auto pr-6">
+      <div className="max-w-6xl mx-auto pr-0 sm:pr-6">
         <div>
-          <div className="flex items-center justify-between mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
             {/* Search */}
-            <div className="w-2/3">
+            <div className="w-full sm:w-2/3">
               <div className="flex items-center bg-zinc-950/80 border border-zinc-800 rounded-md px-3 py-2">
                 <Search size={16} className="text-zinc-400 mr-2" />
                 <input
@@ -99,7 +99,7 @@ function FrontPage() {
                 />
               </div>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-3 self-end sm:self-auto">
               {/* View toggle */}
               <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
                 <Grid size={16} />
@@ -255,7 +255,7 @@ function FrontPage() {
                 ))}
               </div>
             ) : (
-              <div className="bg-zinc-950 border border-zinc-900 flex justify-center items-center lg:py-30 rounded-lg text-zinc-500 gap-5">
+              <div className="bg-zinc-950 border border-zinc-900 flex flex-col sm:flex-row text-center sm:text-left justify-center items-center py-10 lg:py-30 rounded-lg text-zinc-500 gap-5 px-4">
                 <div>
                   <Ghost />
                 </div>
