@@ -57,7 +57,7 @@ function ApiKeysDetails() {
   }, []);
 
   return (
-    <div className="bg-black min-h-screen flex flex-col px-6 py-4">
+    <div className="bg-black min-h-screen flex flex-col px-4 sm:px-6 py-4">
       <div>
         <DashboardHeader
           tag={DashboardHeaderValues.apiKeys.tag}
@@ -67,12 +67,12 @@ function ApiKeysDetails() {
         />
       </div>
 
-      <div className="max-w-6xl mx-auto flex-1 flex flex-col">
+      <div className="max-w-6xl mx-auto flex-1 flex flex-col px-0 sm:pr-6">
         {/* Main content – two column layout with premium lifecycle path on right */}
-        <div className="grid lg:grid-cols-12 gap-8 mt-6 flex-1 mr-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mt-6 flex-1 mr-0 sm:mr-6">
           {/* Left – Tabs + Content (main area) */}
           <div className="col-span-12 lg:col-span-9 flex flex-col min-h-0">
-            <div className="flex bg-zinc-950 rounded-lg mb-6">
+            <div className="flex overflow-x-auto bg-zinc-950 rounded-lg mb-6">
               {tabs.map((tab, index) => (
                 <button
                   key={tab.id}
@@ -93,7 +93,7 @@ function ApiKeysDetails() {
             </div>
 
             {/* Tab Content */}
-            <div className="">
+            <div className="flex-1 min-h-0 overflow-y-auto pb-2 custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
               <div>
                 {activeTab === "list" && <GetApiKeysList />}
                 {activeTab === "generate" && <GenerateApiKeys />}
@@ -102,7 +102,7 @@ function ApiKeysDetails() {
             </div>
 
             {/* bottom section */}
-            <div className="bg-zinc-950 mt-2.5 rounded-lg p-5 border border-zinc-900 flex flex-col justify-between">
+            <div className="bg-zinc-950 mt-2.5 rounded-lg p-4 sm:p-5 border border-zinc-900 flex flex-col justify-between">
               <div>
                 <h3 className="text-sm text-zinc-300 font-medium">API Usage</h3>
                 <p className="text-xs text-zinc-500 mt-1">
@@ -140,7 +140,7 @@ function ApiKeysDetails() {
 
           {/* Right sidebar – aligned style like CreateProject.jsx */}
           <div className="hidden lg:block lg:col-span-3 mt-10 lg:mt-0">
-            <div className="space-y-4 sticky top-6 h-fit">
+            <div className="space-y-4 lg:sticky lg:top-6 h-fit">
               {/* Quick Stats Card */}
               <div className="bg-black border border-zinc-900 rounded-lg p-5">
                 <h3 className="text-sm font-medium text-zinc-200 mb-4">

@@ -25,7 +25,7 @@ function ApiKeysLimits() {
   }, []);
 
   return (
-    <div className="flex flex-col bg-zinc-950 border border-zinc-900 rounded-lg p-6">
+    <div className="flex flex-col bg-zinc-950 border border-zinc-900 rounded-lg p-4 sm:p-6">
       {/* Header */}
       <div className="flex items-center gap-2 mb-3">
         <Activity className="w-5 h-5 text-emerald-400" />
@@ -44,7 +44,7 @@ function ApiKeysLimits() {
           No API keys found.
         </div>
       ) : (
-        <div className="space-y-4 pr-2 max-h-[40vh] overflow-y-auto">
+        <div className="space-y-4 pr-1 sm:pr-2 max-h-[50vh] sm:max-h-[40vh] overflow-y-auto">
           {apiKeys.map((key) => {
             const percentage =
               key.usage.limit > 0

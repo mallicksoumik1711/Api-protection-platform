@@ -28,7 +28,7 @@ function GetApiKeysList() {
   }, []);
 
   return (
-    <div className="bg-zinc-950/80 border border-zinc-900/80 rounded-lg flex flex-col min-h-0 p-6 shadow-2xl">
+    <div className="bg-zinc-950/80 border border-zinc-900/80 rounded-lg flex flex-col min-h-0 p-4 sm:p-6 shadow-2xl">
       <div className="flex items-center justify-between mb-6">
         <div>
           <h2 className="text-white font-medium">Your API Keys</h2>
@@ -54,8 +54,9 @@ function GetApiKeysList() {
         </div>
       ) : (
         <div className="flex-1 min-h-0 border border-zinc-900 rounded-lg overflow-hidden bg-black">
+          <div className="overflow-x-auto">
           <div className="overflow-y-auto h-full max-h-[50vh] custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
-            <table className="w-full text-sm text-left text-zinc-300">
+            <table className="w-full min-w-[700px] text-sm text-left text-zinc-300">
               <thead className="bg-zinc-950 sticky top-0 z-20 border-b border-zinc-700">
                 <tr>
                   <th className="px-6 py-4 font-medium text-zinc-400">Name</th>
@@ -131,6 +132,7 @@ function GetApiKeysList() {
                 ))}
               </tbody>
             </table>
+          </div>
           </div>
         </div>
       )}

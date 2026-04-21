@@ -45,7 +45,7 @@ function ApiKeyLogs() {
   });
 
   return (
-    <div className="bg-black px-6 py-4">
+    <div className="bg-black px-4 sm:px-6 py-4">
       <DashboardHeader
         tag={DashboardHeaderValues.apiLogs.tag}
         title={DashboardHeaderValues.apiLogs.title}
@@ -58,7 +58,7 @@ function ApiKeyLogs() {
           <h3 className="text-sm font-medium text-zinc-200">
             All Protected Requests
           </h3>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 mr-0 sm:mr-6">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-950/40 text-emerald-400 border border-emerald-800/50">
               Live Preview
             </span>
@@ -68,18 +68,18 @@ function ApiKeyLogs() {
 
         <div
           className="
-      bg-gradient-to-b from-black/80 to-zinc-950/90 
-      border border-zinc-800/70 rounded-lg 
-      shadow-inner shadow-black/40 
-      overflow-hidden mr-6
-    "
+    bg-gradient-to-b from-black/80 to-zinc-950/90 
+    border border-zinc-800/70 rounded-lg 
+    shadow-inner shadow-black/40 
+    overflow-hidden mr-0 sm:mr-6
+  "
         >
           <div className="bg-zinc-900/70 px-4 py-1.5 border-b border-zinc-800 flex items-center justify-between text-xs text-zinc-500 font-mono">
             <span>protect-middleware • request-log</span>
             <span>showing last 5 mins requests</span>
           </div>
 
-          <div className="p-4 text-xs font-mono text-zinc-300 max-h-[55vh] overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-950">
+          <div className="p-4 pb-6 text-xs font-mono text-zinc-300 max-h-[55vh] overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-950">
             {groupedLogs.map((log) => {
               const time = new Date(log.createdAt).toLocaleTimeString();
 
@@ -108,9 +108,9 @@ function ApiKeyLogs() {
               return (
                 <div
                   key={log._id}
-                  className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded"
+                  className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded flex flex-wrap sm:flex-nowrap items-center gap-x-2"
                 >
-                  <span className="inline-block w-20 text-zinc-600">
+                  <span className="inline-block w-16 sm:w-20 text-zinc-600 flex-shrink-0">
                     {time}
                   </span>
 
@@ -120,7 +120,7 @@ function ApiKeyLogs() {
 
                   <span className="text-zinc-500 mx-2">→</span>
 
-                  <span className={pathColor}>
+                  <span className={`${pathColor} break-all`}>
                     {log.method} {log.path}
                     {log.status === 304 && log.count > 1 && (
                       <span className="text-zinc-500 ml-2">
@@ -131,7 +131,7 @@ function ApiKeyLogs() {
 
                   <span className="text-zinc-600 ml-3">• {log.result}</span>
 
-                  <span className="ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity">
+                  <span className="ml-2 sm:ml-4 text-zinc-700 text-[10px] opacity-0 group-hover:opacity-100 transition-opacity break-all">
                     {log.requestId}
                   </span>
                 </div>

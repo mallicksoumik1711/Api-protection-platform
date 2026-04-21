@@ -70,7 +70,7 @@ function CreateProject() {
   };
 
   return (
-    <div className="bg-black px-6 py-4">
+    <div className="bg-black px-4 sm:px-6 py-4">
       <DashboardHeader
         tag={DashboardHeaderValues.createProject.tag}
         title={DashboardHeaderValues.createProject.title}
@@ -78,11 +78,11 @@ function CreateProject() {
         features={DashboardHeaderValues.createProject.features}
       />
 
-      <div className="max-w-6xl mx-auto pr-6">
-        <div className="grid grid-cols-2 gap-6 items-start">
+      <div className="max-w-6xl mx-auto pr-0 sm:pr-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
           {/* LEFT SIDE */}
           <form action="" method="post" onSubmit={handleSubmit}>
-            <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 space-y-6 sticky top-6 h-fit">
+            <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 space-y-6 lg:sticky lg:top-6 h-fit">
               {/* Project Name */}
               <div className="border border-zinc-900 rounded-lg p-5">
                 <h2 className="text-white font-medium mb-2">Project Name</h2>
@@ -181,8 +181,8 @@ function CreateProject() {
           </form>
 
           {/* RIGHT SIDE */}
-          <div className="space-y-6 sticky top-6 h-fit">
-            <div className="bg-black border border-zinc-900 rounded-lg p-5">
+          <div className="space-y-6 lg:sticky lg:top-6 h-fit">
+            <div className="bg-black border border-zinc-900 rounded-lg p-4 sm:p-5">
               <h2 className="text-white font-medium mb-2">
                 Framework Integration
               </h2>
@@ -198,7 +198,7 @@ function CreateProject() {
                 </span>
               </div>
               <div className="bg-zinc-950 border border-zinc-900 rounded-md p-4">
-                <pre className="text-sm overflow-x-auto">
+                <pre className="text-xs sm:text-sm overflow-x-auto">
                   <code>{integrationCode[framework]}</code>
                 </pre>
               </div>
@@ -212,7 +212,7 @@ function CreateProject() {
                   </h3>
 
                   <div className="bg-zinc-950/40 border border-zinc-900 rounded-md px-4 py-3 flex items-center justify-between">
-                    <p className="text-sm text-emerald-300 font-mono">
+                    <p className="text-xs sm:text-sm text-emerald-300 font-mono break-all">
                       {projectId}
                     </p>
 

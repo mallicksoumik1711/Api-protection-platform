@@ -58,9 +58,9 @@ function GenerateApiKeys() {
   };
 
   return (
-    <div className="w-full max-w-4xl bg-zinc-950/80 border border-zinc-900/80 rounded-lg shadow-2xl">
+    <div className="w-full w-full max-w-4xl bg-zinc-950/80 border border-zinc-900/80 rounded-lg shadow-2xl">
       {/* Header */}
-      <div className="p-6 border-b border-zinc-900">
+      <div className="p-4 sm:p-6 border-b border-zinc-900">
         <div className="flex items-center gap-3">
           <div className="w-9 h-9 rounded-md bg-emerald-500/10 flex items-center justify-center">
             <KeyRound className="w-4 h-4 text-emerald-400" />
@@ -77,7 +77,7 @@ function GenerateApiKeys() {
       </div>
 
       {/* Form Content */}
-      <div className="p-6 space-y-5">
+      <div className="p-4 sm:p-6 space-y-5">
         <div className="space-y-3">
           <label className="text-xs font-medium text-zinc-400 flex items-center gap-1.5">
             KEY NAME
@@ -99,7 +99,7 @@ function GenerateApiKeys() {
           <div className="text-amber-400">
             <Info className="w-4 h-4" />
           </div>
-          <div className="text-xs text-zinc-400">
+          <div className="text-xs text-zinc-400 break-all">
             This key will have full access to your middleware. Store it securely
             and never expose it in client-side code.
           </div>
@@ -119,7 +119,7 @@ function GenerateApiKeys() {
               <div className="text-emerald-400">
                 <ScanQrCode className="w-4 h-4" />
               </div>
-              <div className="text-xs text-zinc-400">
+              <div className="text-xs text-zinc-400 break-all">
                 {showKey
                   ? generatedKey
                   : "••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••••"}

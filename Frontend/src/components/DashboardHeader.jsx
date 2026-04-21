@@ -1,7 +1,7 @@
 function DashboardHeader({ tag, title, features, description }) {
   return (
     <div className="max-w-6xl mx-auto">
-      <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4">
+      <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4 pl-12 sm:pl-0">
         {tag}
       </p>
 

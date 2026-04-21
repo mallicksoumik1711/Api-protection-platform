@@ -109,7 +109,7 @@ console.log("JWT Token:", token);
 `;
 
   return (
-    <div className="bg-black px-6 py-4">
+    <div className="bg-black px-4 sm:px-6 py-4">
       <DashboardHeader
         tag={DashboardHeaderValues.integration.tag}
         title={DashboardHeaderValues.integration.title}
@@ -117,12 +117,12 @@ console.log("JWT Token:", token);
         features={DashboardHeaderValues.integration.features}
       />
 
-      <div className="mt-6 max-w-6xl mx-auto flex pr-6 gap-6">
+      <div className="mt-6 max-w-6xl mx-auto flex flex-col lg:flex-row pr-0 sm:pr-6 gap-6">
         {/* Project Info */}
-        <div className="w-1/2 h-fit top-6 sticky">
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+        <div className="w-full lg:w-1/2 h-fit lg:sticky lg:top-6">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className=" flex-shrink-0">
                 <span className="">
                   <User size={18} />
                 </span>
@@ -138,9 +138,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <NotebookPen size={18} />
                 </span>
@@ -158,9 +158,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className=" text-sm">
                   <SquareMousePointer size={18} />
                 </span>
@@ -183,7 +183,7 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
             <h3 className="text-sm font-semibold text-white">
               Project core details
             </h3>
@@ -193,9 +193,9 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <Unlink2 size={18} />
                 </span>
@@ -211,9 +211,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className=" text-sm">
                   <Workflow size={18} />
                 </span>
@@ -231,9 +231,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className=" text-sm">
                   <Globe size={18} />
                 </span>
@@ -251,9 +251,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <Stethoscope size={18} />
                 </span>
@@ -271,7 +271,7 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
             <h3 className="text-sm font-semibold text-white">
               Middleware settings
             </h3>
@@ -281,9 +281,9 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <ShieldCheck size={18} />
                 </span>
@@ -302,9 +302,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <Braces size={18} />
                 </span>
@@ -324,9 +324,9 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between mb-3 hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <TriangleAlert size={18} />
                 </span>
@@ -346,7 +346,7 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="flex items-center justify-between mb-3">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
             <h3 className="text-sm font-semibold text-white">Validation URL</h3>
 
             <button className="text-xs text-zinc-500 hover:text-white flex items-center gap-1">
@@ -354,9 +354,9 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3 flex items-center justify-between hover:border-zinc-800 transition">
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 hover:border-zinc-800 transition">
             <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center">
+              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                 <span className="text-sm">
                   <UngroupIcon size={18} />
                 </span>
@@ -369,13 +369,13 @@ console.log("JWT Token:", token);
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-sm text-zinc-400 break-all text-right max-w-[140px] sm:max-w-none">
               http://localhost:3000/validate
             </div>
           </div>
         </div>
-        <div className="w-1/2 bg-zinc-950 rounded-md p-6 border border-zinc-900 h-fit top-6 sticky">
-          <div className="flex items-center justify-between mb-4">
+        <div className="w-full lg:w-1/2 bg-zinc-950 rounded-md p-4 sm:p-6 border border-zinc-900 h-fit lg:sticky lg:top-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
             <h3 className="text-sm font-semibold text-white">
               Integration Middleware
             </h3>
@@ -392,11 +392,11 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <pre className="text-xs text-zinc-300 bg-black rounded-md p-4 overflow-x-auto border border-zinc-800">
+          <pre className="text-[10px] sm:text-xs text-zinc-300 bg-black rounded-md p-3 sm:p-4 overflow-x-auto border border-zinc-800">
             <code>{middlewareCode}</code>
           </pre>
 
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-4">
             <h3 className="text-sm font-semibold text-white">
               Token generation
             </h3>
@@ -406,14 +406,14 @@ console.log("JWT Token:", token);
                 navigator.clipboard.writeText(tokenCode);
                 toast.success("Copied to clipboard!");
               }}
-              className="text-xs text-zinc-400 hover:text-white flex items-center gap-1"
+              className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 flex-shrink-0"
             >
               <Copy size={14} />
               Copy
             </button>
           </div>
 
-          <p className="text-[11px] text-yellow-500 mt-1 flex items-center gap-1">
+          <p className="text-[11px] text-yellow-500 mt-1 flex items-start gap-1">
             <div>
               <TriangleAlert size={12} />
             </div>
@@ -430,7 +430,7 @@ console.log("JWT Token:", token);
               How to Setup
             </h3>
 
-            <div className="space-y-4 text-xs text-zinc-400">
+            <div className="space-y-3 sm:space-y-4 text-xs text-zinc-400">
               <div>
                 <p className="text-white font-medium">1. Add Middleware</p>
                 <p>
