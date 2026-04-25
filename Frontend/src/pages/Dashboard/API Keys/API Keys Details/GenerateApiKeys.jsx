@@ -97,7 +97,7 @@ function GenerateApiKeys() {
 
         <div className="bg-black border border-amber-500/20 rounded-md p-4 flex gap-3">
           <div className="text-amber-400">
-            <Info className="w-4 h-4" />
+            <Info className="w-4 h-4 " />
           </div>
           <div className="text-xs text-zinc-400 break-all">
             This key will have full access to your middleware. Store it securely

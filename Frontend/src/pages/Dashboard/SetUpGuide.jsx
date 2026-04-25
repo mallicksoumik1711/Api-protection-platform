@@ -8,12 +8,12 @@ function StepCard({ step, title, description, image, route }) {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 items-center bg-zinc-950 border border-zinc-900 rounded-lg px-4 sm:px-6 lg:px-8 py-4 transition-all duration-300">
-      <div className="lg:col-span-5 space-y-6">
-        <div className="flex items-center gap-4">
-          <div className="w-10 h-10 rounded-lg bg-zinc-900/40 border border-zinc-800 flex items-center justify-center text-zinc-300 font-semibold text-lg flex-shrink-0">
+      <div className="lg:col-span-5 space-y-3 sm:space-y-6">
+        <div className="flex items-center gap-2 sm:gap-4">
+          <div className="w-6 h-6 sm:w-10 sm:h-10 rounded-md bg-zinc-900/40 border border-zinc-800 flex items-center justify-center text-zinc-300 font-semibold text-xs sm:text-lg flex-shrink-0">
             {step}
           </div>
-          <h3 className="text-xl sm:text-2xl font-semibold text-white tracking-tight">
+          <h3 className="text-sm sm:text-2xl font-semibold text-white tracking-tight">
             {title}
           </h3>
         </div>
@@ -148,7 +148,7 @@ export default function SetUpGuide() {
         <div className="space-y-8">
           {/* SECTION 1 */}
           <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
-            <h2 className=" text-lg sm:text-xl font-semibold text-white">
+            <h2 className="text-sm sm:text-lg sm:text-xl font-semibold text-white">
               1. Where to put the MAIN middleware
             </h2>
 
@@ -181,7 +181,7 @@ app.use("/api/users", userRoute);`}
 
           {/* SECTION 2 */}
           <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
-            <h2 className="text-lg sm:text-xl font-semibold text-white">
+            <h2 className="text-sm sm:text-lg sm:text-xl font-semibold text-white">
               2. Where to generate token
             </h2>
 
@@ -216,7 +216,7 @@ app.use("/api/users", userRoute);`}
 
           {/* SECTION 3 */}
           <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
-            <h2 className="text-lg sm:text-xl font-semibold text-white">
+            <h2 className="text-sm sm:text-lg sm:text-xl font-semibold text-white">
               3. Token generation logic
             </h2>
 
@@ -261,7 +261,7 @@ module.exports = generateToken;`}
 
           {/* SECTION 4 */}
           <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
-            <h2 className="text-lg sm:text-xl font-semibold text-white">
+            <h2 className="text-sm sm:text-lg sm:text-xl font-semibold text-white">
               4. Using Bearer Token
             </h2>
 

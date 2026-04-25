@@ -1,13 +1,15 @@
 function DashboardHeader({ tag, title, features, description }) {
   return (
     <div className="max-w-6xl mx-auto">
-      <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4 pl-12 sm:pl-0">
+      <p className="text-xs py-2 uppercase tracking-widest text-zinc-500 mb-4 pl-12 sm:pl-0 flex justify-end sm:justify-start">
         {tag}
       </p>
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-lg sm:text-3xl font-semibold text-white py-2">{title}</h1>
+          <h1 className="text-lg sm:text-3xl font-semibold text-white py-2">
+            {title}
+          </h1>
         </div>
 
         {/* RIGHT SIDE FEATURES */}
@@ -25,7 +27,9 @@ function DashboardHeader({ tag, title, features, description }) {
         </div>
       </div>
 
-      <p className="text-zinc-400 max-w-2xl mb-8 hidden sm:block">{description}</p>
+      <p className="text-zinc-400 max-w-2xl mb-8 hidden sm:block">
+        {description}
+      </p>
     </div>
   );
 }

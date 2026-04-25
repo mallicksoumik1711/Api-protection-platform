@@ -85,7 +85,7 @@ function FrontPage() {
 
       <div className="max-w-6xl mx-auto pr-0 sm:pr-6">
         <div>
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-10 gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 sm:mb-10 gap-4">
             {/* Search */}
             <div className="w-full sm:w-2/3">
               <div className="flex items-center bg-zinc-950/80 border border-zinc-800 rounded-md px-3 py-2">
