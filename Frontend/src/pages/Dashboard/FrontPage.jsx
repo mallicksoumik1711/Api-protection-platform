@@ -99,7 +99,7 @@ function FrontPage() {
                 />
               </div>
             </div>
-            <div className="flex items-center gap-3 self-end sm:self-auto">
+            <div className="flex items-center gap-3 self-end sm:self-auto hidden sm:block">
               {/* View toggle */}
               <button className="p-2 bg-zinc-900 border border-zinc-800 rounded-md">
                 <Grid size={16} />

@@ -7,7 +7,7 @@ function DashboardHeader({ tag, title, features, description }) {
 
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-white py-2">{title}</h1>
+          <h1 className="text-lg sm:text-3xl font-semibold text-white py-2">{title}</h1>
         </div>
 
         {/* RIGHT SIDE FEATURES */}
@@ -25,7 +25,7 @@ function DashboardHeader({ tag, title, features, description }) {
         </div>
       </div>
 
-      <p className="text-zinc-400 max-w-2xl mb-8">{description}</p>
+      <p className="text-zinc-400 max-w-2xl mb-8 hidden sm:block">{description}</p>
     </div>
   );
 }
