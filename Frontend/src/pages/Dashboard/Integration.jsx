@@ -413,7 +413,7 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <p className="text-[11px] text-yellow-500 mt-1 flex items-start gap-1">
+          <p className="text-[11px] text-yellow-500 mt-1 flex items-center gap-1">
             <div>
               <TriangleAlert size={12} />
             </div>
