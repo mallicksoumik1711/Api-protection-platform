@@ -273,14 +273,14 @@ module.exports = generateToken;`}
 
             <div className="space-y-2">
               <p className="text-sm text-zinc-300">Store token</p>
-              <pre className="bg-black border border-zinc-800 p-3 rounded-md text-xs text-zinc-300">
+              <pre className="bg-black border border-zinc-800 p-3 rounded-md text-xs text-zinc-300 overflow-x-auto">
                 {`localStorage.setItem("token", data.token);`}
               </pre>
             </div>
 
             <div className="space-y-2">
               <p className="text-sm text-zinc-300">Use token</p>
-              <pre className="bg-black border border-zinc-800 p-3 rounded-md text-xs text-zinc-300">
+              <pre className="bg-black border border-zinc-800 p-3 rounded-md text-xs text-zinc-300 overflow-x-auto">
                 {`fetch("/api/users/show", {
   headers: {
     Authorization: \`Bearer \${localStorage.getItem("token")}\`,
