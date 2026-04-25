@@ -1,4 +1,4 @@
-import { MoveRight } from "lucide-react";
+import { Landmark, Lightbulb, MoveRight, Pointer } from "lucide-react";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import { useNavigate } from "react-router-dom";
@@ -141,6 +141,160 @@ export default function SetUpGuide() {
           {steps.map((s) => (
             <StepCard key={s.step} {...s} />
           ))}
+        </div>
+      </div>
+
+      <div className="max-w-6xl mx-auto pr-0 sm:pr-6 mt-8">
+        <div className="space-y-8">
+          {/* SECTION 1 */}
+          <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
+            <h2 className=" text-lg sm:text-xl font-semibold text-white">
+              1. Where to put the MAIN middleware
+            </h2>
+
+            <p className="text-zinc-400 text-sm">
+              File:{" "}
+              <span className="text-white font-medium">app.js / server.js</span>
+            </p>
+
+            <p className="text-sm text-red-400 font-medium">
+              Middleware must be placed BEFORE your routes
+            </p>
+
+            <pre className="bg-black border border-zinc-800 p-4 rounded-md text-xs sm:text-sm text-zinc-300 overflow-x-auto">
+              {`app.use(cors());
+app.use(express.json());
+
+//  BOUNCER MIDDLEWARE
+app.use(async (req, res, next) => {
+  // validation logic
+});
+
+//  AFTER middleware
+app.use("/api/users", userRoute);`}
+            </pre>
+
+            <p className="text-xs text-zinc-500">
+              If placed after routes → middleware won’t run → security bypass
+            </p>
+          </div>
+
+          {/* SECTION 2 */}
+          <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-white">
+              2. Where to generate token
+            </h2>
+
+            <p className="text-zinc-400 text-sm">
+              File: Controller (login/signup/create)
+            </p>
+
+            <p className="text-sm text-red-400 font-medium">
+              Generate token ONLY after user creation/login
+            </p>
+
+            <pre className="bg-black border border-zinc-800 p-4 rounded-md text-xs sm:text-sm text-zinc-300 overflow-x-auto">
+              {`const createUsers = async (req, res) => {
+  const newUser = {
+    id: Date.now(),
+    ...
+  };
+
+  const token = await generateToken(newUser.id);
+
+  res.json({
+    user: newUser,
+    token,
+  });
+};`}
+            </pre>
+
+            <p className="text-xs text-zinc-500">
+              Token represents identity → must be created after user exists
+            </p>
+          </div>
+
+          {/* SECTION 3 */}
+          <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-white">
+              3. Token generation logic
+            </h2>
+
+            <p className="text-zinc-400 text-sm">
+              File:{" "}
+              <span className="text-white font-medium">
+                /utils/generateToken.js
+              </span>
+            </p>
+
+            <p className="text-sm text-red-400 font-medium">
+              Keep this separate from controller
+            </p>
+
+            <pre className="bg-black border border-zinc-800 p-4 rounded-md text-xs sm:text-sm text-zinc-300 overflow-x-auto">
+              {`const generateToken = async (userId) => {
+  const response = await fetch("http://localhost:3000/apiauth/token", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": "YOUR_API_KEY",
+    },
+    body: JSON.stringify({
+      projectId: "YOUR_PROJECT_ID",
+      userId,
+    }),
+  });
+
+  const data = await response.json();
+  return data.token;
+};
+
+module.exports = generateToken;`}
+            </pre>
+
+            <ul className="text-xs text-zinc-500 space-y-1">
+              <li>• Reusable for login/signup</li>
+              <li>• Cleaner controllers</li>
+              <li>• Easy to replace auth service</li>
+            </ul>
+          </div>
+
+          {/* SECTION 4 */}
+          <div className="bg-zinc-950 border border-zinc-900 rounded-lg p-6 space-y-4">
+            <h2 className="text-lg sm:text-xl font-semibold text-white">
+              4. Using Bearer Token
+            </h2>
+
+            <p className="text-zinc-400 text-sm">File: Frontend (React)</p>
+
+            <p className="text-sm text-red-400 font-medium">
+              Send token in every protected request
+            </p>
+
+            <div className="space-y-2">
+              <p className="text-sm text-zinc-300">Store token</p>
+              <pre className="bg-black border border-zinc-800 p-3 rounded-md text-xs text-zinc-300">
+                {`localStorage.setItem("token", data.token);`}
+              </pre>
+            </div>
+
+            <div className="space-y-2">
+              <p className="text-sm text-zinc-300">Use token</p>
+              <pre className="bg-black border border-zinc-800 p-3 rounded-md text-xs text-zinc-300">
+                {`fetch("/api/users/show", {
+  headers: {
+    Authorization: \`Bearer \${localStorage.getItem("token")}\`,
+  },
+});`}
+              </pre>
+            </div>
+
+            <ul className="text-xs text-zinc-500 space-y-1">
+              <li>• Must include "Bearer"</li>
+              <li>• Must match backend token</li>
+              <li>• Must not be empty</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
