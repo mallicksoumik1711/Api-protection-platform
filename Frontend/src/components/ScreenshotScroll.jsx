@@ -19,35 +19,41 @@ export default function ScreenshotSection() {
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: `
-      linear-gradient(to right, rgba(255,255,255,0.25) 1px, transparent 1px),
-      linear-gradient(to bottom, rgba(255,255,255,0.25) 1px, transparent 1px)
-    `,
-          backgroundSize: "50px 50px",
-          WebkitMaskImage: `radial-gradient(200px circle at ${pos.x}px ${pos.y}px, white, transparent 70%)`,
-          maskImage: `radial-gradient(200px circle at ${pos.x}px ${pos.y}px, white, transparent 70%)`,
+          WebkitMaskImage: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, white 0%, rgba(255,255,255,0.6) 40%, transparent 75%)`,
+          maskImage: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, white 0%, rgba(255,255,255,0.6) 40%, transparent 75%)`,
         }}
-      />
+      >
+        <svg
+          className="w-full h-full opacity-[0.35]"
+          viewBox="0 0 1200 800"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <defs>
+            <pattern
+              id="triangles-screenshot"
+              width="80"
+              height="70"
+              patternUnits="userSpaceOnUse"
+            >
+              <polygon
+                points="40,0 80,70 0,70"
+                fill="none"
+                stroke="rgba(255,255,255,0.7)"
+                strokeWidth="0.8"
+              />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#triangles-screenshot)" />
+        </svg>
+      </div>
 
       <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 
-                    w-[800px] h-[500px] 
-                    bg-purple-500/20 blur-[120px] rounded-full"
-        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-purple-500/20 blur-[120px] rounded-full" />
       </div>
 
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[400px] h-[300px] bg-blue-500/15 blur-[120px] rounded-full" />
         <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px] bg-pink-500/10 blur-[120px] rounded-full" />
-      </div>
-
-      <div className="absolute inset-0 opacity-[0.12] pointer-events-none">
-        <div
-          className="w-full h-full 
-      bg-[linear-gradient(to_right,white_1px,transparent_1px),linear-gradient(to_bottom,white_1px,transparent_1px)] 
-      bg-[size:50px_50px]"
-        />
       </div>
 
       <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/80 via-transparent to-[#07070a]/80 pointer-events-none" />
