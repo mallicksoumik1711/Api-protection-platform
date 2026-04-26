@@ -25,7 +25,7 @@ export default function ProcessJourney() {
   ];
 
   return (
-    <div className="relative bg-[#0a0a0f] mt-20 md:mt-25 text-white py-16 md:py-24 px-5 md:px-10 overflow-hidden">
+    <div className="relative bg-[#0a0a0f] text-white py-16 md:py-24 px-5 md:px-10 overflow-hidden">
       {/* Optional subtle background texture */}
       <div className="absolute inset-0 pointer-events-none opacity-10">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_15%_25%,#a855f780_0%,transparent_40%)]" />
