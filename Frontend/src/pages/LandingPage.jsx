@@ -40,7 +40,7 @@ export default function LandingPage() {
 
       {/* <ScrollRevealSection direction="up" duration="800" delay="0">
         <ProductPreview>
-          <DashboardPreview />
+          <ScreenshotScroll />
         </ProductPreview>
       </ScrollRevealSection> */}
 
@@ -49,9 +49,6 @@ export default function LandingPage() {
       <ScrollRevealSection direction="up" duration="800" delay="0">
         <ProcessJourney />
       </ScrollRevealSection>
-
-      {/* bottom space */}
-      <div className="h-32" />
     </div>
   );
 }
