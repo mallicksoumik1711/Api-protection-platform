@@ -23,7 +23,7 @@ const features = [
     title: "Realtime Logs",
     description:
       "Monitor your API activity in real-time with detailed logs and analytics.",
-    image: "/screens/api-key.PNG",
+    image: "/screens/logs.PNG",
   },
 ];
 
