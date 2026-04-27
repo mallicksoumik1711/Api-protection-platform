@@ -6,32 +6,32 @@ export default function ProcessJourney() {
       number: "01",
       title: "Enter Your Project Credentials",
       description:
-        "Describe the full-stack web app or site you want in plain words or refine your prompt for more powerful results.",
+        "Create a project and define your application details to start securing your APIs with middleware protection.",
     },
     {
       number: "02",
       title: "Generate API keys and secrets",
       description:
-        "Meku instantly builds a beautiful, working version of your project — fully functional and ready in less than a minute.",
+        "Create secure API keys and JWT tokens to authenticate requests and control access to your backend services.",
     },
     {
       number: "03",
       title: "Customize your Protected routes",
       description:
-        "Continue conversation, reference files and styles to customize, extend, and perfect your app until it matches your expectations.",
+        "Define rate limits, IP restrictions, and validation rules to protect your routes from unauthorized access.",
     },
     {
       number: "04",
       title: "Integrate with Project",
       description:
-        "Your project is production-ready and optimized. Connect your domain or push code to GitHub instantly.",
+        "Plug middleware into your application and start filtering, monitoring, and securing every incoming request in real time.",
     },
   ];
 
   return (
-    <section className="relative bg-zinc-950 text-white py-20 md:py-28 px-6 md:px-10 overflow-hidden">
+    <section className="relative bg-zinc-950 text-white py-20 md:py-28 px-6 md:px-10 overflow-hidden min-h-screen flex items-center">
       <div className="absolute inset-0 pointer-events-none">
-        {/* Base + texture */}
+        {/* texture */}
         <div
           className="absolute inset-0 opacity-[1]"
           style={{
@@ -50,24 +50,24 @@ export default function ProcessJourney() {
             <p className="text-sm text-white/40 mb-6">// How It Works</p>
 
             <h2 className="text-4xl md:text-5xl font-bold leading-tight mb-6">
-              Describe It. Build It.
+              Secure Every Request.
               <br />
-              Launch and Scale It.
+              Trust Every Response.
             </h2>
 
             <p className="text-white/60 max-w-md mb-8">
-              Turn your ideas into full-stack production-ready web apps and
-              sites in minutes.
+              Add a powerful middleware layer to your backend. Authenticate,
+              authorize, and protect your APIs without complexity.
             </p>
 
             <div className="relative inline-flex rounded-full border border-white/15 bg-white/5 backdrop-blur-md p-1 overflow-hidden">
               <div className="absolute top-1 bottom-1 left-1 w-1/2 bg-white rounded-full transition-all duration-300 ease-in-out" />
 
-              <button className="relative z-10 px-6 py-2.5 text-sm font-medium text-black">
-                Start Building
+              <button className="relative z-10 px-6 py-1 sm:px-6 sm:py-2.5 text-sm font-medium text-black">
+                Start Protecting
               </button>
 
-              <button className="relative z-10 px-6 py-2.5 text-sm font-medium text-white transition-colors duration-300">
+              <button className="relative z-10 px-6 py-1 sm:px-6 sm:py-2.5 text-sm font-medium text-white transition-colors duration-300">
                 View Pricing
               </button>
             </div>
@@ -76,7 +76,7 @@ export default function ProcessJourney() {
           {/* RIGHT TIMELINE */}
           <div className="relative">
             {/* Vertical line */}
-            <div className="absolute left-4 sm:left-5 top-0 bottom-0 w-px bg-white/10" />
+            <div className="absolute left-4 sm:left-5 top-0 bottom-18 w-px bg-white/10" />
 
             <div className="space-y-10 sm:space-y-12">
               {steps.map((step, index) => (

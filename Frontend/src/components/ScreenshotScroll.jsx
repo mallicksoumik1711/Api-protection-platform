@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const screenshot = "/screens/api-key.PNG";
+const screenshot = "/screens/Frontpage.PNG";
 
 export default function ScreenshotSection() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
