@@ -74,7 +74,7 @@ export default function FeaturesPage() {
 
       {/* Content */}
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-16">
-        {/* 🔥 Grid Layout */}
+        {/* Grid Layout */}
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-6">
           {/* Row 1 */}
           <div className="sm:col-span-2">
