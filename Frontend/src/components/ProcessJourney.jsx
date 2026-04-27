@@ -29,7 +29,7 @@ export default function ProcessJourney() {
   ];
 
   return (
-    <section className="relative bg-zinc-950 text-white py-20 md:py-28 px-6 md:px-10 overflow-hidden min-h-screen flex items-center">
+    <section className="relative bg-zinc-950 text-white py-10 md:py-18 px-6 md:px-10 overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
         {/* texture */}
         <div
@@ -43,7 +43,7 @@ export default function ProcessJourney() {
         <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black/80" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 gap-16 items-start">
           {/* LEFT */}
           <div>

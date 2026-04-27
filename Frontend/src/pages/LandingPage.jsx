@@ -1,11 +1,11 @@
 import BackgroundDots from "../components/BackgroundDots";
 import SegmentedCTA from "../components/Buttons";
 import ProductPreview from "../components/ProductPreview";
-// import DashboardPreview from "../components/DashboardPreview";
 import ProcessJourney from "../components/ProcessJourney";
 import Navbar from "../components/Navbar";
 import ScrollRevealSection from "../components/ScrollRevealSection";
 import ScreenshotScroll from "../components/ScreenshotScroll";
+import FeaturesPage from "./FeaturesPage";
 
 export default function LandingPage() {
   return (
@@ -38,16 +38,16 @@ export default function LandingPage() {
         </section>
       </ScrollRevealSection>
 
-      {/* <ScrollRevealSection direction="up" duration="800" delay="0">
-        <ProductPreview>
-          <ScreenshotScroll />
-        </ProductPreview>
-      </ScrollRevealSection> */}
-
-      <ScreenshotScroll />
+      <ScrollRevealSection direction="up" duration="800" delay="0">
+        <ScreenshotScroll />
+      </ScrollRevealSection>
 
       <ScrollRevealSection direction="up" duration="800" delay="0">
         <ProcessJourney />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection direction="up" duration="800" delay="0">
+        <FeaturesPage />
       </ScrollRevealSection>
     </div>
   );
