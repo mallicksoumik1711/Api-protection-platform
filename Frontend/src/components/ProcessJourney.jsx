@@ -4,25 +4,25 @@ export default function ProcessJourney() {
   const steps = [
     {
       number: "01",
-      title: "Enter Your Idea or Prompt",
+      title: "Enter Your Project Credentials",
       description:
         "Describe the full-stack web app or site you want in plain words or refine your prompt for more powerful results.",
     },
     {
       number: "02",
-      title: "Get First Version",
+      title: "Generate API keys and secrets",
       description:
         "Meku instantly builds a beautiful, working version of your project — fully functional and ready in less than a minute.",
     },
     {
       number: "03",
-      title: "Customize and Improve",
+      title: "Customize your Protected routes",
       description:
         "Continue conversation, reference files and styles to customize, extend, and perfect your app until it matches your expectations.",
     },
     {
       number: "04",
-      title: "Deploy & Go Live",
+      title: "Integrate with Project",
       description:
         "Your project is production-ready and optimized. Connect your domain or push code to GitHub instantly.",
     },
@@ -75,20 +75,33 @@ export default function ProcessJourney() {
 
           {/* RIGHT TIMELINE */}
           <div className="relative">
-            <div className="absolute left-5 top-0 bottom-0 w-px bg-white/10" />
+            {/* Vertical line */}
+            <div className="absolute left-4 sm:left-5 top-0 bottom-0 w-px bg-white/10" />
 
-            <div className="space-y-12">
+            <div className="space-y-10 sm:space-y-12">
               {steps.map((step, index) => (
-                <div key={index} className="flex items-start gap-6 group">
-                  <div className="relative z-10 flex items-center justify-center w-10 h-10 rounded-full bg-[#111116] border border-white/10 text-sm font-medium">
+                <div
+                  key={index}
+                  className="flex items-start gap-4 sm:gap-6 group"
+                >
+                  {/* Step circle */}
+                  <div
+                    className="relative z-10 flex items-center justify-center 
+          w-9 h-9 sm:w-10 sm:h-10 
+          text-xs sm:text-sm 
+          rounded-full bg-[#111116] border border-white/10
+          shrink-0"
+                  >
                     {step.number}
                   </div>
 
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2">
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h3 className="text-base sm:text-lg font-semibold mb-1 sm:mb-2">
                       {step.title}
                     </h3>
-                    <p className="text-white/60 text-sm leading-relaxed max-w-md">
+
+                    <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
                       {step.description}
                     </p>
                   </div>

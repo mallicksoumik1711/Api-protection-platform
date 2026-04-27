@@ -48,18 +48,18 @@ export default function ScreenshotSection() {
       </div>
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-purple-500/20 blur-[120px] rounded-full" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] blur-[120px] rounded-full" />
       </div>
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[300px] bg-blue-500/15 blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px] bg-pink-500/10 blur-[120px] rounded-full" />
+        <div className="absolute top-1/4 left-1/4 w-[400px] h-[300px]  blur-[120px] rounded-full" />
+        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px]  blur-[120px] rounded-full" />
       </div>
 
-      <div className="absolute inset-0 bg-gradient-to-b from-[#07070a]/80 via-transparent to-[#07070a]/80 pointer-events-none" />
+      <div className="absolute inset-0 pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="relative w-full rounded-3xl overflow-hidden border border-white/15 bg-zinc-900 shadow-2xl group">
+        <div className="relative w-full rounded-3xl overflow-hidden border border-white/15 bg-zinc-900">
           <img
             src={screenshot}
             alt="Dashboard Screenshot"
