@@ -62,7 +62,7 @@ function Card({ feature }) {
 
 export default function FeaturesPage() {
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden shadow-lg shadow-white">
+    <div className="relative min-h-screen bg-black text-white overflow-hidden">
       {/* Background texture */}
       <div className="absolute inset-0 pointer-events-none">
         <div

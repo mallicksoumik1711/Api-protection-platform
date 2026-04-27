@@ -59,7 +59,7 @@ export default function ScreenshotSection() {
       <div className="absolute inset-0 pointer-events-none" />
 
       <div className="relative max-w-6xl mx-auto px-6">
-        <div className="relative w-full rounded-3xl overflow-hidden border border-white/15 bg-zinc-900">
+        <div className="relative w-full rounded-lg sm:rounded-3xl overflow-hidden border border-white/15 bg-zinc-900">
           <img
             src={screenshot}
             alt="Dashboard Screenshot"
@@ -68,7 +68,7 @@ export default function ScreenshotSection() {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
 
-          <div className="absolute inset-0 ring-1 ring-white/20 rounded-3xl pointer-events-none" />
+          <div className="absolute inset-0 ring-1 ring-white/20 rounded-lg sm:rounded-3xl pointer-events-none" />
         </div>
       </div>
     </section>
