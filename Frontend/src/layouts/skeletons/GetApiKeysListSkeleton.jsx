@@ -38,7 +38,7 @@ export default function GetApiKeysListSkeleton() {
                   
                   {/* Name */}
                   <td className="px-6 py-4">
-                    <BaseSkeleton className="h-4 w-32" />
+                    <BaseSkeleton className="h-4 w-24 sm:w-32" />
                   </td>
 
                   {/* Created */}

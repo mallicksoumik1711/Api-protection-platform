@@ -5,7 +5,7 @@ export default function DashboardSkeleton() {
     <div className="min-h-screen bg-black flex">
 
       {/* Sidebar */}
-      <div className="w-64 border-r border-zinc-800 p-4 space-y-4">
+      <div className="hidden md:block w-64 border-r border-zinc-800 p-4 space-y-4">
         <BaseSkeleton className="h-8 w-32" />
         <BaseSkeleton className="h-6 w-full" />
         <BaseSkeleton className="h-6 w-full" />
@@ -32,7 +32,7 @@ export default function DashboardSkeleton() {
         <BaseSkeleton className="h-10 w-64" />
 
         {/* Cards */}
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           <BaseSkeleton className="h-32 w-full" />
           <BaseSkeleton className="h-32 w-full" />
           <BaseSkeleton className="h-32 w-full" />
