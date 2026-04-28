@@ -6,9 +6,9 @@ const generateApiKey = async (req, res) => {
     const MAX_KEY_PER_USER = 5;
     const EXPIRY_DAY = 1;
 
-    const {name} = req.body;
-    if(!name || !name.trim()){
-        return res.status(400).json({message: "Name is required"})
+    const { name } = req.body;
+    if (!name || !name.trim()) {
+      return res.status(400).json({ message: "Name is required" });
     }
 
     const expiresAt = new Date(Date.now() + EXPIRY_DAY * 24 * 60 * 60 * 1000);
@@ -35,7 +35,7 @@ const generateApiKey = async (req, res) => {
       usage: {
         used: 0,
         limit: 100,
-      }
+      },
     });
 
     res.status(201).json({
@@ -67,7 +67,7 @@ const getApiKeys = async (req, res) => {
 };
 
 const getApiKeysDetails = async (req, res) => {
-  try{
+  try {
     const keys = await apiKeyModel.find({
       ownerId: req.user.id,
     });
@@ -81,7 +81,7 @@ const getApiKeysDetails = async (req, res) => {
       expiresAt: key.expiresAt,
       usage: {
         used: key.usage?.used || 0,
-        limit: key.usage?.limit || 100
+        limit: key.usage?.limit || 100,
       },
     }));
     res.status(200).json(allKeysDetails);
@@ -90,6 +90,40 @@ const getApiKeysDetails = async (req, res) => {
       .status(500)
       .json({ message: "Internal server error", error: err.message });
   }
-}
+};
 
-module.exports = { generateApiKey, getApiKeys, getApiKeysDetails };
+const getUsageStats = async (req, res) => {
+  try {
+    const keys = await apiKeyModel.find({
+      ownerId: req.user.id,
+      isActive: true,
+    });
+
+    let totalUsed = 0;
+    let totalLimit = 0;
+
+    keys.forEach((key) => {
+      totalUsed += key.usage?.used || 0;
+      totalLimit += key.usage?.limit || 100;
+    });
+
+    res.status(200).json({
+      used: totalUsed,
+      limit: totalLimit,
+      percentageUsed: totalLimit
+        ? Math.round((totalUsed / totalLimit) * 100)
+        : 0,
+    });
+  } catch (err) {
+    res
+      .status(500)
+      .json({ message: "Internal server error", error: err.message });
+  }
+};
+
+module.exports = {
+  generateApiKey,
+  getApiKeys,
+  getApiKeysDetails,
+  getUsageStats,
+};

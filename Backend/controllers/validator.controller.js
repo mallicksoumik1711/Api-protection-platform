@@ -78,6 +78,8 @@ const validateRequest = async (req, res) => {
       matchedRoute.protection?.rules || "",
     );
 
+    let apiKeyRecord = null;
+
     if (requireApiKey) {
       if (!apiKey) {
         return res.json({
@@ -87,9 +89,7 @@ const validateRequest = async (req, res) => {
         });
       }
 
-      const apiKeyRecord = await apiKeyModel.findOne({
-        key: apiKey,
-      });
+      apiKeyRecord = await apiKeyModel.findOne({ key: apiKey });
 
       if (!apiKeyRecord || !apiKeyRecord.isActive) {
         return res.json({
@@ -148,6 +148,16 @@ const validateRequest = async (req, res) => {
           reason: "Rate limit exceeded",
           step: "RATE_LIMITING",
         });
+      }
+
+      if (requireApiKey && apiKeyRecord) {
+        await apiKeyModel.updateOne(
+          { _id: apiKeyRecord._id },
+          {
+            $inc: { "usage.used": 1 },
+            $set: { lastUsed: new Date() },
+          },
+        );
       }
     }
     return res.json({
