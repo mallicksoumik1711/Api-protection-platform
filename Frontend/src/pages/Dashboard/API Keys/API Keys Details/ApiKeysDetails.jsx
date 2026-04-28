@@ -94,7 +94,7 @@ function ApiKeysDetails() {
         {/* Main content – two column layout with premium lifecycle path on right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 mt-6 flex-1 mr-0 sm:mr-6">
           {/* Left – Tabs + Content (main area) */}
-          <div className="col-span-12 lg:col-span-9 flex flex-col min-h-0">
+          <div className="col-span-12 lg:col-span-9 flex flex-col h-fit lg:sticky lg:top-6">
             <div className="flex overflow-x-auto bg-zinc-950 rounded-lg mb-6">
               {tabs.map((tab, index) => (
                 <button
@@ -116,7 +116,7 @@ function ApiKeysDetails() {
             </div>
 
             {/* Tab Content */}
-            <div className="flex-1 min-h-0 overflow-y-auto pb-2 custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
+            <div className="overflow-y-auto pb-2 custom-scroll scrollbar-thin scrollbar-thumb-zinc-600 scrollbar-track-zinc-900">
               <div>
                 {activeTab === "list" && <GetApiKeysList />}
                 {activeTab === "generate" && <GenerateApiKeys />}
@@ -147,9 +147,7 @@ function ApiKeysDetails() {
                   <div
                     className="h-full bg-gradient-to-r from-emerald-400 to-green-500 transition-all duration-500"
                     style={{
-                      width: loadingUsage
-                        ? "0%"
-                        : `${percentage}%`,
+                      width: loadingUsage ? "0%" : `${percentage}%`,
                     }}
                   ></div>
                 </div>
@@ -173,7 +171,7 @@ function ApiKeysDetails() {
           </div>
 
           {/* Right sidebar – aligned style like CreateProject.jsx */}
-          <div className="hidden lg:block lg:col-span-3 mt-10 lg:mt-0">
+          <div className="hidden lg:block lg:col-span-3 mt-10 lg:mt-0 h-fit lg:sticky lg:top-6">
             <div className="space-y-4 lg:sticky lg:top-6 h-fit">
               {/* Quick Stats Card */}
               <div className="bg-black border border-zinc-900 rounded-lg p-5">
@@ -181,9 +179,9 @@ function ApiKeysDetails() {
                   Key Overview
                 </h3>
 
-                <div className="grid grid-cols-2 gap-4 mb-5">
+                <div className="grid grid-cols-2 gap-2 mb-2">
                   {/* Active Keys */}
-                  <div className="bg-emerald-500/20 border border-emerald-500/30 rounded-md p-3 flex items-center justify-between">
+                  <div className="bg-gradient-to-br from-emerald-500/10 to-transparent border border-emerald-500/30 rounded-md p-3 flex items-center justify-between transition-all duration-300 hover:border-emerald-400/40">
                     <div>
                       <p className="text-xs text-zinc-400">Active Keys</p>
                       <p className="text-xl font-semibold text-emerald-400 mt-0.5">
@@ -193,13 +191,13 @@ function ApiKeysDetails() {
                       </p>
                     </div>
 
-                    <div className="p-2 bg-emerald-500/20 rounded-md">
+                    <div className="p-2 bg-emerald-500/10 rounded-md">
                       <KeyRound className="w-4 h-4 text-emerald-400" />
                     </div>
                   </div>
 
                   {/* Total Keys */}
-                  <div className="bg-violet-500/20 border border-violet-500/30 rounded-md p-3 flex items-center justify-between">
+                  <div className="bg-gradient-to-br from-violet-500/10 to-transparent border border-violet-500/30 rounded-md p-3 flex items-center justify-between transition-all duration-300 hover:border-violet-400/40">
                     <div>
                       <p className="text-xs text-zinc-400">Total Keys</p>
                       <p className="text-xl font-semibold text-violet-400 mt-0.5">
@@ -207,33 +205,36 @@ function ApiKeysDetails() {
                       </p>
                     </div>
 
-                    <div className="p-2 bg-violet-500/20 rounded-md">
+                    <div className="p-2 bg-violet-500/10 rounded-md">
                       <Layers className="w-4 h-4 text-violet-400" />
                     </div>
                   </div>
                 </div>
 
-                <div className="bg-red-500/20 text-red-400 border border-red-500/30 rounded-md">
+                <div className="bg-gradient-to-br from-red-500/10 to-transparent text-red-400 border border-red-500/30 rounded-md transition-all duration-300 hover:border-red-400/40">
                   <div className="text-xs px-2 py-1 text-zinc-400">
                     Inactive Keys
                   </div>
+
                   <div className="flex justify-between px-2 items-center">
                     <div className="text-xl">
                       {apiKeyStatus
                         ? apiKeyStatus["Inactive keys"]
                         : inactiveKeys}
                     </div>
-                    <div className="bg-red-500/20 p-2 rounded-md">
+
+                    <div className="bg-red-500/10 p-2 rounded-md">
                       <PowerOff className="w-4 h-4" />
                     </div>
                   </div>
+
                   <p className="text-xs text-zinc-600 px-2 py-1">
                     Consider revoking unused keys for better security
                   </p>
                 </div>
 
                 {/* Rotation */}
-                <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
+                <div className="mt-3 flex items-center justify-between">
                   <div>
                     <p className="text-xs text-zinc-500">Data maybe outdated</p>
                     <p className="text-sm text-zinc-300 mt-0.5">
