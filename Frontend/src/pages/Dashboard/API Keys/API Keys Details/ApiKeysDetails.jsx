@@ -16,7 +16,7 @@ import {
   ArrowRight,
   PowerOff,
 } from "lucide-react";
-import { getApiKeys } from "../../../../api/apikey";
+import { getApiKeys, getUsageStats } from "../../../../api/apikey";
 import useCountUp from "../../../../utils/HelperFunctions/countKeyStats";
 import DashboardHeader from "../../../../components/DashboardHeader";
 import DashboardHeaderValues from "../../../../utils/HelperFunctions/DashboardHeaderValues";
@@ -25,6 +25,8 @@ function ApiKeysDetails() {
   const [activeTab, setActiveTab] = useState("generate");
   const [apiKeyStatus, setApiKeyStatus] = useState(null);
   const [loadingStatus, setLoadingStatus] = useState(true);
+  const [usageStats, setUsageStats] = useState(null);
+  const [loadingUsage, setLoadingUsage] = useState(true);
 
   const activeKeys = useCountUp(apiKeyStatus?.["Active keys"], 500);
   const totalKeys = useCountUp(apiKeyStatus?.["Total keys"], 600);
@@ -52,9 +54,30 @@ function ApiKeysDetails() {
     }
   };
 
+  const fetchUsage = async () => {
+    try {
+      setLoadingUsage(true);
+      const data = await getUsageStats();
+      setUsageStats(data);
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setLoadingUsage(false);
+    }
+  };
+
   useEffect(() => {
+    fetchUsage();
     showKeyStatus();
   }, []);
+
+  const percentage = usageStats?.limit
+    ? Math.min(100, Math.round((usageStats.used / usageStats.limit) * 100))
+    : 0;
+
+  // useEffect(() => {
+  //   showKeyStatus();
+  // }, []);
 
   return (
     <div className="bg-black min-h-screen flex flex-col px-4 sm:px-6 py-4">
@@ -113,11 +136,22 @@ function ApiKeysDetails() {
               <div className="mt-4">
                 <div className="flex justify-between text-xs text-zinc-400 mb-1">
                   <span>Requests used</span>
-                  <span>8,420 / 10,000</span>
+                  <span>
+                    {loadingUsage
+                      ? "Loading..."
+                      : `${usageStats?.used || 0} / ${usageStats?.limit || 100}`}
+                  </span>
                 </div>
 
                 <div className="w-full h-2 bg-zinc-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-emerald-400 to-green-500 w-[84%]"></div>
+                  <div
+                    className="h-full bg-gradient-to-r from-emerald-400 to-green-500 transition-all duration-500"
+                    style={{
+                      width: loadingUsage
+                        ? "0%"
+                        : `${percentage}%`,
+                    }}
+                  ></div>
                 </div>
               </div>
 
@@ -126,7 +160,7 @@ function ApiKeysDetails() {
                   <div>
                     <Clock className="w-3 h-3" />
                   </div>
-                  <div>Resets in 12 days</div>
+                  <div>Resets in 1 day</div>
                 </span>
                 <button className="flex items-center justify-center gap-1 text-emerald-400 hover:text-emerald-300">
                   <div>View details</div>
@@ -246,7 +280,7 @@ function ApiKeysDetails() {
                         Rotate regularly
                       </p>
                       <p className="text-zinc-500">
-                        Every 60–90 days recommended
+                        Every 60-90 days recommended
                       </p>
                     </div>
                   </div>
