@@ -162,25 +162,11 @@ function FrontPage() {
                                 <div>Add to Favourite</div>
                               </button>
 
-                              <div className="px-4 py-2 text-zinc-500 text-xs border-t border-zinc-800">
-                                Project ID
-                              </div>
-                              <div className="px-4 pb-2 text-xs text-zinc-300 break-all">
-                                {project.projectId}
-                              </div>
-
                               <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 border-t border-zinc-800 flex items-center gap-2">
                                 <div className="cursor-pointer">
                                   <Copy size={18} />
                                 </div>
                                 <div>Copy Project ID</div>
-                              </button>
-
-                              <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
-                                <div className="cursor-pointer">
-                                  <Cog size={18} />
-                                </div>
-                                <div>Project Settings</div>
                               </button>
 
                               <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
