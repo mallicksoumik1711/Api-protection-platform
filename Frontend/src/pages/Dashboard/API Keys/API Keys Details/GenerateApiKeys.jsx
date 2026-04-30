@@ -10,6 +10,7 @@ import {
   EyeOff,
 } from "lucide-react";
 import { generateApiKeys } from "../../../../api/apikey";
+import handleCopy from "../../../../utils/HelperFunctions/handleCopy";
 import { toast } from "react-hot-toast";
 
 function GenerateApiKeys() {
@@ -38,18 +39,6 @@ function GenerateApiKeys() {
     } catch (err) {
       toast.error("Failed to generate API key");
       console.error("Error generating API key:", err);
-    }
-  };
-
-  const handleCopy = async () => {
-    if (!generatedKey) return;
-    try {
-      await navigator.clipboard.writeText(generatedKey);
-      setKeyCopied(true);
-      toast.success("API Key copied to clipboard!");
-    } catch (err) {
-      toast.error("Failed to copy API key");
-      console.error("Error copying API key:", err);
     }
   };
 
@@ -130,7 +119,7 @@ function GenerateApiKeys() {
               {/* Eye toggle */}
               <button
                 onClick={toggleShowKey}
-                className="text-zinc-400 hover:text-emerald-300 transition"
+                className="text-zinc-400 transition"
               >
                 {showKey ? (
                   <Eye className="w-4 h-4 cursor-pointer" />
@@ -142,13 +131,13 @@ function GenerateApiKeys() {
               {/* Copy button */}
               {showKey && (
                 <button
-                  onClick={handleCopy}
-                  className="text-emerald-400 hover:text-emerald-300 transition"
+                  onClick={() => handleCopy(generatedKey, setKeyCopied)}
+                  className="transition"
                 >
                   {!keyCopied ? (
-                    <Copy className="w-4 h-4 text-amber-500" />
+                    <Copy className="w-4 h-4 text-zinc-400" />
                   ) : (
-                    <CopyCheck className="w-4 h-4 text-emerald-500" />
+                    <CopyCheck className="w-4 h-4 text-zinc-400" />
                   )}
                 </button>
               )}

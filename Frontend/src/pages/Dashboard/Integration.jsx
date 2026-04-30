@@ -6,6 +6,7 @@ import { getIntegrationData } from "../../api/integration";
 import {
   Braces,
   Copy,
+  CopyCheck,
   Globe,
   NotebookPen,
   ShieldCheck,
@@ -17,11 +18,15 @@ import {
   Workflow,
   UngroupIcon,
 } from "lucide-react";
+import handleCopy from "../../utils/HelperFunctions/handleCopy";
 import toast from "react-hot-toast";
 
 function Integration() {
   const projectId = useSelector((state) => state.project.selectedProjectId);
   const [data, setData] = useState(null);
+  const [projectCopied, setProjectCopied] = useState(false);
+  const [middlewareCopied, setMiddlewareCopied] = useState(false);
+  const [tokenCopied, setTokenCopied] = useState(false);
   useEffect(() => {
     const fetchIntegration = async () => {
       try {
@@ -178,7 +183,18 @@ console.log("JWT Token:", token);
                 {project?.projectId ?? "No project ID available"}
               </div>
               {project?.projectId && (
-                <Copy size={16} className="cursor-pointer" />
+                <div
+                  onClick={() =>
+                    handleCopy(project?.projectId, setProjectCopied)
+                  }
+                  className="cursor-pointer"
+                >
+                  {projectCopied ? (
+                    <CopyCheck size={16} className="text-zinc-400" />
+                  ) : (
+                    <Copy size={16} className="text-zinc-400" />
+                  )}
+                </div>
               )}
             </div>
           </div>
@@ -381,13 +397,14 @@ console.log("JWT Token:", token);
             </h3>
 
             <button
-              onClick={() => {
-                navigator.clipboard.writeText(middlewareCode);
-                toast.success("Copied to clipboard!");
-              }}
-              className="text-xs text-zinc-400 hover:text-white flex items-center gap-1"
+              onClick={() => handleCopy(middlewareCode, setMiddlewareCopied)}
+              className="cursor-pointer text-xs text-zinc-400 hover:text-white flex items-center gap-1"
             >
-              <Copy size={14} />
+              {middlewareCopied ? (
+                <CopyCheck size={16} className="text-zinc-400" />
+              ) : (
+                <Copy size={16} className="text-zinc-400" />
+              )}
               Copy
             </button>
           </div>
@@ -402,13 +419,14 @@ console.log("JWT Token:", token);
             </h3>
 
             <button
-              onClick={() => {
-                navigator.clipboard.writeText(tokenCode);
-                toast.success("Copied to clipboard!");
-              }}
-              className="text-xs text-zinc-400 hover:text-white flex items-center gap-1 flex-shrink-0"
+              onClick={() => handleCopy(tokenCode, setTokenCopied)}
+              className="cursor-pointer text-xs text-zinc-400 hover:text-white flex items-center gap-1 flex-shrink-0"
             >
-              <Copy size={14} />
+              {tokenCopied ? (
+                <CopyCheck size={14} className="text-zinc-400" />
+              ) : (
+                <Copy size={14} className="text-zinc-400" />
+              )}
               Copy
             </button>
           </div>

@@ -7,6 +7,7 @@ import {
   MoreHorizontal,
   HeartMinus,
   Copy,
+  CopyCheck,
   Cog,
   Link2,
   ChartSpline,
@@ -20,11 +21,13 @@ import { getProjects } from "../../api/projects";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setProject } from "../../store/projectSlice";
+import handleCopy from "../../utils/HelperFunctions/handleCopy";
 
 function FrontPage() {
   const [openMenuId, setOpenMenuId] = useState(null);
   const [projects, setProjects] = useState([]);
   const [searchProject, setSearchProject] = useState("");
+  const [copied, setCopied] = useState(null);
   const navigate = useNavigate();
   const selectedProject = useSelector(
     (state) => state.project.selectedProjectId,
@@ -162,9 +165,20 @@ function FrontPage() {
                                 <div>Add to Favourite</div>
                               </button>
 
-                              <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 border-t border-zinc-800 flex items-center gap-2">
+                              <button
+                                onClick={() =>
+                                  handleCopy(project.projectId, (val) =>
+                                    setCopied(val ? project.projectId : null),
+                                  )
+                                }
+                                className="w-full text-left px-4 py-2 hover:bg-zinc-800 border-t border-zinc-800 flex items-center gap-2"
+                              >
                                 <div className="cursor-pointer">
-                                  <Copy size={18} />
+                                  {copied === project.projectId ? (
+                                    <CopyCheck size={18} />
+                                  ) : (
+                                    <Copy size={18} />
+                                  )}
                                 </div>
                                 <div>Copy Project ID</div>
                               </button>
