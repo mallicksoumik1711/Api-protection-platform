@@ -13,7 +13,7 @@ function SecurityFeatures({ formData, setFormData }) {
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 flex items-center justify-center">
               <span className="text-amber-400">
-                <TriangleAlert className="w-5 h-5" />
+                <TriangleAlert className="w-4 h-4" />
               </span>
             </div>
             <div>
@@ -51,8 +51,8 @@ function SecurityFeatures({ formData, setFormData }) {
         <label className="group flex items-center justify-between bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-5 py-2 cursor-pointer transition-all duration-200">
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 flex items-center justify-center">
-              <span className="text-red-600">
-                <Construction className="w-5 h-5" />
+              <span className="text-red-400">
+                <Construction className="w-4 h-4" />
               </span>
             </div>
             <div>
@@ -91,7 +91,7 @@ function SecurityFeatures({ formData, setFormData }) {
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-md flex items-center justify-center">
               <span className="text-sky-400 text-xl">
-                <LockKeyhole className="w-5 h-5" />
+                <LockKeyhole className="w-4 h-4" />
               </span>
             </div>
             <div>

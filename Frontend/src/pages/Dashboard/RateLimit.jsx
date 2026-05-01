@@ -98,7 +98,7 @@ function RateLimit() {
                         value={limit}
                         onChange={(e) => setLimit(e.target.value)}
                         placeholder="50"
-                        className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 pl-11 text-white text-sm focus:border-zinc-700 outline-none transition"
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 pl-11 text-zinc-500 text-sm focus:border-zinc-700 outline-none transition"
                       />
                     </div>
                   </div>
@@ -116,7 +116,7 @@ function RateLimit() {
                         type="number"
                         value={windowTime}
                         onChange={(e) => setWindowTime(e.target.value)}
-                        className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 pl-11 text-white text-sm focus:border-zinc-700 outline-none transition"
+                        className="w-full bg-zinc-950 border border-zinc-800 rounded-md px-4 py-2.5 pl-11 text-zinc-500 text-sm focus:border-zinc-700 outline-none transition"
                         placeholder="60"
                       />
                     </div>

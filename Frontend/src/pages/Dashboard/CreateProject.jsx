@@ -82,7 +82,7 @@ function CreateProject() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
           {/* LEFT SIDE */}
           <form action="" method="post" onSubmit={handleSubmit}>
-            <div className="bg-zinc-950 border border-zinc-800 rounded-lg p-5 space-y-6 lg:sticky lg:top-6 h-fit">
+            <div className="space-y-6 lg:sticky lg:top-6 h-fit">
               {/* Project Name */}
               <div className="border border-zinc-900 rounded-lg p-5">
                 <h2 className="text-white font-medium mb-2">Project Name</h2>
