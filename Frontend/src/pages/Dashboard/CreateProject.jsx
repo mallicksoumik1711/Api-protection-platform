@@ -1,10 +1,16 @@
 import { useState } from "react";
-import { integrationCode } from "../../utils/HelperFunctions/integrationCode";
-import { Copy, CopyCheck, Link, FilePlusCorner } from "lucide-react";
+import {
+  Copy,
+  CopyCheck,
+  Link,
+  FilePlusCorner,
+  SquareCheck,
+} from "lucide-react";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import Dropdown from "../../layouts/Dropdown";
 import { createProject } from "../../api/projects";
+import handleCopy from "../../utils/HelperFunctions/handleCopy";
 
 import toast from "react-hot-toast";
 
@@ -46,26 +52,12 @@ function CreateProject() {
       const projectId = res.projectId;
       setProjectId(projectId);
       dispatch(setProject(projectId));
-      setTimeout(() => {
-        navigate(`/project/${projectId}/api-keys`);
-      }, 1000); //navigate to other page after creating
+      // setTimeout(() => {
+      //   navigate(`/project/${projectId}/api-keys`);
+      // }, 1000); //navigate to other page after creating
     } catch (err) {
       toast.error(err.message);
       console.log(err.message);
-    }
-  };
-
-  const handleCopy = async () => {
-    if (projectId) {
-      try {
-        await navigator.clipboard.writeText(projectId);
-        setCopied(true);
-        toast.success("Project ID copied to clipboard");
-        setTimeout(() => setCopied(false), 2000);
-      } catch (err) {
-        toast.error("Failed to copy Project ID");
-        console.error("Failed to copy:", err);
-      }
     }
   };
 
@@ -182,25 +174,38 @@ function CreateProject() {
 
           {/* RIGHT SIDE */}
           <div className="space-y-6 lg:sticky lg:top-6 h-fit">
-            <div className="bg-black border border-zinc-900 rounded-lg p-4 sm:p-5">
-              <h2 className="text-white font-medium mb-2">
-                Framework Integration
-              </h2>
-
-              <p className="text-sm text-zinc-400 mb-4">
-                After creating your project, add this middleware to your backend
-                to start protecting API requests.
-              </p>
-
-              <div className="h-10 px-6 flex items-center rounded-md">
-                <span className="text-xs font-medium text-slate-600">
-                  {framework} • Integration
-                </span>
+            <div className="space-y-3 text-sm border border-zinc-800 rounded-lg p-5">
+              <h2 className="text-white font-medium mb-3">What You Get</h2>
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded flex items-center justify-center text-emerald-400 text-xs">
+                  <SquareCheck size={18} />
+                </div>
+                <p className="text-zinc-300">
+                  Unique Project ID for API tracking
+                </p>
               </div>
-              <div className="bg-zinc-950 border border-zinc-900 rounded-md p-4">
-                <pre className="text-xs sm:text-sm overflow-x-auto">
-                  <code>{integrationCode[framework]}</code>
-                </pre>
+
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded flex items-center justify-center text-emerald-400 text-xs">
+                  <SquareCheck size={18} />
+                </div>
+                <p className="text-zinc-300">
+                  Secure token generation & validation
+                </p>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded flex items-center justify-center text-emerald-400 text-xs">
+                  <SquareCheck size={18} />
+                </div>
+                <p className="text-zinc-300">Request monitoring & analytics</p>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded flex items-center justify-center text-emerald-400 text-xs">
+                  <SquareCheck size={18} />
+                </div>
+                <p className="text-zinc-300">Protection against abuse & bots</p>
               </div>
             </div>
 
@@ -212,13 +217,13 @@ function CreateProject() {
                   </h3>
 
                   <div className="bg-zinc-950/40 border border-zinc-900 rounded-md px-4 py-3 flex items-center justify-between">
-                    <p className="text-xs sm:text-sm text-emerald-300 font-mono break-all">
+                    <p className="text-xs sm:text-sm text-zinc-500 font-mono break-all">
                       {projectId}
                     </p>
 
                     <button
-                      onClick={handleCopy}
-                      className="text-xs text-zinc-400 hover:text-white transition cursor-pointer"
+                      onClick={() => handleCopy(projectId, setCopied)}
+                      className="text-xs text-zinc-400 transition cursor-pointer"
                     >
                       {copied ? (
                         <CopyCheck className="w-4 h-4" />
