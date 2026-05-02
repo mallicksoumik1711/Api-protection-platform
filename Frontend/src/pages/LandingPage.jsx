@@ -51,7 +51,9 @@ export default function LandingPage() {
         <FeaturesPage />
       </ScrollRevealSection>
 
-      <Footer/>
+      <ScrollRevealSection direction="up" duration="800" delay="0">
+        <Footer />
+      </ScrollRevealSection>
     </div>
   );
 }
