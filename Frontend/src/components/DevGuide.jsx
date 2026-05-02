@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import { BadgeAlert, MoveRight, Triangle } from "lucide-react";
 
 function DevGuide() {
   const [active, setActive] = useState("middleware");
+  const navigate = useNavigate();
 
   const tabs = {
     middleware: {
       title: "Middleware Placement",
       desc: "Add middleware before defining routes.",
+      note: "This code is provided in the Integration section.",
+      route: "/integration",
       code: `app.use(cors());
 app.use(express.json());
 
@@ -33,6 +38,8 @@ res.json({
     logic: {
       title: "Token Utility",
       desc: "Keep token logic separate from controllers.",
+      note: "You can find this utility in the Integration section.",
+      route: "/integration",
       code: `const generateToken = async (userId) => {
   const res = await fetch("/apiauth/token", {
     method: "POST",
@@ -81,6 +88,22 @@ res.json({
           </button>
         ))}
       </div>
+
+      {tabs[active].note && (
+        <div className="flex items-center justify-between gap-3 bg-zinc-900/60 border border-zinc-800 rounded-md px-3 py-2 text-xs text-zinc-400 mt-2">
+            <div className="flex items-center gap-2">
+                <BadgeAlert size={14} className="text-amber-500/90"/>
+          <span>{tabs[active].note}</span>
+            </div>
+
+          <button
+            onClick={() => navigate(tabs[active].route)}
+            className="text-white hover:underline text-xs flex items-center gap-1 cursor-pointer"
+          >
+            <span>Integration</span> <MoveRight size={14} />
+          </button>
+        </div>
+      )}
 
       {/* CONTENT */}
       <div className="bg-zinc-950/60 border border-zinc-800 rounded-lg p-5 mt-4 space-y-4">
