@@ -16,12 +16,10 @@ import toast from "react-hot-toast";
 
 import { useDispatch } from "react-redux";
 import { setProject } from "../../store/projectSlice";
-import { useNavigate } from "react-router-dom";
 
 function CreateProject() {
   // redux
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [framework, setFramework] = useState("Node / Express");
   const [environment, setEnvironment] = useState("Development");

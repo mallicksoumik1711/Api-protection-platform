@@ -3,6 +3,7 @@ import {
   ChevronsLeft,
   CircleUserRound,
   Copy,
+  CopyCheck,
   Globe,
   NotebookPen,
   SquareMousePointer,
@@ -15,11 +16,13 @@ import { useEffect, useState } from "react";
 import { getProjects } from "../../api/projects";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
+import handleCopy from "../../utils/HelperFunctions/handleCopy";
 
 function ProjectDetails() {
   const { projectId } = useParams();
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
+  const [projectCopied, setProjectCopied] = useState(false);
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -116,7 +119,16 @@ function ProjectDetails() {
                 <div className="flex items-center gap-3 text-sm text-zinc-400 break-all">
                   <span>{item.value}</span>
                   {item.copy && (
-                    <Copy size={16} className="cursor-pointer shrink-0" />
+                    <button
+                      onClick={() => handleCopy(projectId, setProjectCopied)}
+                      className="text-xs text-zinc-400 transition cursor-pointer"
+                    >
+                      {projectCopied ? (
+                        <CopyCheck className="w-4 h-4" />
+                      ) : (
+                        <Copy className="w-4 h-4" />
+                      )}
+                    </button>
                   )}
                 </div>
               </div>
