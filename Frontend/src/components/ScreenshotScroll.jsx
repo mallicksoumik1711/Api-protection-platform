@@ -14,7 +14,7 @@ export default function ScreenshotSection() {
           y: e.clientY - rect.top,
         });
       }}
-      className="relative py-24 md:py-32 bg-[#07070a] overflow-hidden"
+      className="relative py-24 md:py-32 bg-[#07070a] overflow-hidden w-3/4 mx-auto m-20"
     >
       <div
         className="pointer-events-none absolute inset-0"

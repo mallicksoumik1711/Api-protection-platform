@@ -1,100 +1,98 @@
-import React from "react";
-
-const features = [
-  {
-    title: "JWT Authentication",
-    description:
-      "Secure your APIs with JSON Web Tokens for robust authentication.",
-    image: "/screens/jwt-configuration.PNG",
-  },
-  {
-    title: "Rate Limiting",
-    description:
-      "Easily customize and modify rate limits to control API usage.",
-    image: "/screens/rate-limiting.PNG",
-  },
-  {
-    title: "Protected Routes",
-    description:
-      "Define and secure your API routes with custom rules and permissions.",
-    image: "/screens/protected-api.PNG",
-  },
-  {
-    title: "Realtime Logs",
-    description:
-      "Monitor your API activity in real-time with detailed logs and analytics.",
-    image: "/screens/logs.PNG",
-  },
-];
-
-function Card({ feature }) {
-  return (
-    <div className="relative w-full h-[250px] sm:h-[300px] group overflow-hidden rounded-2xl border border-white/10">
-      {/* Image */}
-      <img
-        src={feature.image}
-        alt={feature.title}
-        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-      />
-
-      {/* Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
-
-      {/* Noise */}
-      <div
-        className="absolute inset-0 opacity-10 mix-blend-overlay"
-        style={{
-          backgroundImage: "url('/textures/otis-redding.png')",
-        }}
-      />
-
-      {/* Text */}
-      <div className="absolute bottom-4 left-4 right-4 z-10">
-        <h3 className="text-sm font-semibold lowercase">{feature.title}</h3>
-        <p className="text-xs text-white/70 mt-1">{feature.description}</p>
-      </div>
-
-      {/* Hover ring */}
-      <div className="absolute inset-0 rounded-2xl ring-1 ring-white/10 group-hover:ring-white/20 transition" />
-    </div>
-  );
-}
-
 export default function FeaturesPage() {
+  const steps = [
+    {
+      id: "01",
+      title: "Create a project with all required details",
+      desc: "Select the flexible or premium plan that suits your business needs.",
+    },
+    {
+      id: "02",
+      title: "Create API Keys for the activated Project",
+      desc: "Activate your subscription with just a click — no forms, no hassle.",
+    },
+    {
+      id: "03",
+      title: "Apply rules & Protected routes for your APIs",
+      desc: "Receive personalized protection and support for your APIs.",
+    },
+    {
+      id: "04",
+      title: "Integrate Middleware with your Backend",
+      desc: "Sit back while your APIs are monitored, protected, and optimized.",
+    },
+  ];
+
   return (
-    <div className="relative min-h-screen bg-black text-white overflow-hidden">
-      {/* Background texture */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div
-          className="absolute inset-0"
-          style={{ backgroundImage: "url('/textures/otis-redding.png')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black/80" />
-      </div>
+    <section className="relative z-10 bg-black text-white py-16 md:py-24 px-4 sm:px-6 w-full md:w-3/4 mx-auto md:my-20">
+      <div className="max-w-6xl mx-auto">
+        {/* Heading */}
+        <div className="mb-10 md:mb-16">
+          <p className="text-[10px] sm:text-xs text-white/40 tracking-widest mb-3 md:mb-4">
+            4 SIMPLE STEPS
+          </p>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-10 py-16">
-        {/* Grid Layout */}
-        <div className="grid grid-cols-2 sm:grid-cols-6 gap-6">
-          {/* Row 1 */}
-          <div className="sm:col-span-2">
-            <Card feature={features[0]} />
-          </div>
+          <div className="flex flex-col md:flex-row md:items-center md:gap-10">
+            <h2 className="text-xl sm:text-2xl md:text-5xl font-semibold leading-tight">
+              Effortless Process,
+              <br />
+              Continuous Protection
+            </h2>
 
-          <div className="sm:col-span-4">
-            <Card feature={features[1]} />
-          </div>
-
-          {/* Row 2 */}
-          <div className="sm:col-span-4">
-            <Card feature={features[2]} />
-          </div>
-
-          <div className="sm:col-span-2">
-            <Card feature={features[3]} />
+            <div className="hidden md:block flex-1 h-[1px] bg-white/10 mt-4 md:mt-0" />
           </div>
         </div>
+
+        {/* Cards */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+          {steps.map((step, i) => (
+            <div
+              key={i}
+              className="group relative rounded-lg border border-white/10 bg-gradient-to-b from-white/[0.03] to-white/[0.01] p-4 sm:p-5 md:p-6 transition duration-300 hover:border-white/20 hover:bg-white/[0.04]"
+            >
+              {/* glow */}
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.08),transparent_70%)] rounded-lg" />
+
+              <div className="relative z-10 flex flex-col justify-between sm:h-92 min-h-[180px] sm:min-h-[200px] md:min-h-[260px]">
+                <div>
+                  <p className="text-sm sm:text-base text-white/40 mb-2 sm:mb-3">
+                    {step.id}.
+                  </p>
+                  <h3 className="text-xs sm:text-lg md:text-2xl font-medium mb-2 sm:mb-3">
+                    {step.title}
+                  </h3>
+                </div>
+                <p className="text-xs sm:text-sm text-white/50 leading-relaxed">
+                  {step.desc}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 bg-white/[0.03] border border-white/10 rounded-xl px-4 sm:px-6 py-4">
+          {/* Left */}
+          <div className="flex items-center gap-3 sm:gap-4">
+            <div className="flex -space-x-2">
+              {[1, 2, 3, 4].map((i) => (
+                <div
+                  key={i}
+                  className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 border border-black"
+                />
+              ))}
+            </div>
+
+            <p className="text-xs sm:text-sm text-white/60">
+              Trusted by teams building modern APIs
+            </p>
+          </div>
+
+          {/* Right */}
+          <button className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black text-xs sm:text-sm font-medium hover:bg-white/90 transition">
+            Start Now →
+          </button>
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
