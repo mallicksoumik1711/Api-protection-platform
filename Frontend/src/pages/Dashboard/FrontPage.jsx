@@ -118,7 +118,7 @@ function FrontPage() {
           {/* Main Grid */}
           <div className="grid lg:grid-cols-1 gap-6">
             {/* Projects Card */}
-            <h2 className="text-xs font-medium uppercase">Projects</h2>
+            <h2 className="text-xs font-medium uppercase sm:mt-0 mt-2">Projects</h2>
 
             {filteredProjects.length > 0 ? (
               <div className="grid sm:grid-cols-2 gap-4">
@@ -287,7 +287,7 @@ function FrontPage() {
                 ))}
               </div>
             ) : (
-              <div className="bg-zinc-950 border border-zinc-900 flex flex-col sm:flex-row text-center sm:text-left justify-center items-center py-10 lg:py-30 rounded-lg text-zinc-500 gap-5 px-4">
+              <div className="bg-zinc-950 border border-zinc-900 flex flex-col sm:flex-row text-center sm:text-left justify-center items-center py-10 lg:py-30 rounded-lg text-zinc-500 gap-5 px-4 sm:mt-0 mt-10">
                 <div>
                   <Ghost />
                 </div>

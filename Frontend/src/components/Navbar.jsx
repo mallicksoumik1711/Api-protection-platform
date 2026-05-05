@@ -1,4 +1,5 @@
-import { Github, ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, X } from "lucide-react";
+import { FaGithub } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { useEffect, useState, useRef } from "react";
 
@@ -88,7 +89,7 @@ export default function Navbar() {
             </button>
 
             <button className="w-9 h-9 flex items-center justify-center rounded-md border border-white/10 text-white hover:bg-white/10">
-              <Github size={18} />
+              <FaGithub size={18} />
             </button>
           </div>
 
@@ -131,7 +132,7 @@ export default function Navbar() {
               }}
               className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full"
             >
-              <Github size={18} />
+              <FaGithub size={18} />
               GitHub
             </button>
           </div>

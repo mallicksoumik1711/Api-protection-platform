@@ -1,6 +1,7 @@
 import { useState } from "react";
 
 const screenshot = "/screens/Frontpage.PNG";
+const screenshotResponsive = "/screens/Frontpage-mobile.PNG";
 
 export default function ScreenshotSection() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
@@ -92,33 +93,23 @@ export default function ScreenshotSection() {
       </div>
 
       {/* Content */}
-      <div className="relative max-w-6xl mx-auto">
-        <div
-          className="
-          relative 
-          w-full 
-          rounded-lg sm:rounded-2xl md:rounded-3xl 
-          overflow-hidden 
-          border border-white/15 
-          bg-zinc-900
-        "
-        >
-          <img
-            src={screenshot}
-            alt="Dashboard Screenshot"
-            className="
-              w-full 
-              h-auto 
-              object-contain 
-              transition-transform duration-700 
-              hover:scale-[1.02]
-            "
-          />
+      <div className="relative w-full rounded-lg sm:rounded-2xl md:rounded-3xl overflow-hidden border border-white/15 bg-zinc-900">
+        {/* Mobile Image */}
+        <img
+          src={screenshotResponsive}
+          alt="Dashboard Mobile Screenshot"
+          className="block md:hidden w-full h-auto object-contain transition-transform duration-700 hover:scale-[1.02]"
+        />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        {/* Desktop Image */}
+        <img
+          src={screenshot}
+          alt="Dashboard Screenshot"
+          className="hidden md:block w-full h-auto object-contain transition-transform duration-700 hover:scale-[1.02]"
+        />
 
-          <div className="absolute inset-0 ring-1 ring-white/20 rounded-lg sm:rounded-2xl md:rounded-3xl pointer-events-none" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+        <div className="absolute inset-0 ring-1 ring-white/20 rounded-lg sm:rounded-2xl md:rounded-3xl pointer-events-none" />
       </div>
     </section>
   );
