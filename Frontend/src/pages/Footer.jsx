@@ -17,13 +17,13 @@ export default function Footer() {
           flex flex-col 
           md:flex-row 
           justify-between 
-          items-start md:items-center 
+          items-center 
           gap-8 sm:gap-10
         "
         >
           {/* Left - Brand */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 text-center sm:text-left">
-            <h1 className="text-2xl sm:text-3xl font-semibold tracking-wide">
+            <h1 className="text-3xl sm:text-3xl font-bold tracking-wide">
               BOUNCER
             </h1>
             <p className="text-xs sm:text-sm text-white/60 max-w-xs">
@@ -45,23 +45,23 @@ export default function Footer() {
           >
             <FaSquareXTwitter
               size={18}
-              className="hover:text-white cursor-pointer transition"
+              className="hover:text-white cursor-pointer transition sm:w-6 sm:h-6 h-8 w-8"
             />
             <FaSquareGithub
               size={18}
-              className="hover:text-white cursor-pointer transition"
+              className="hover:text-white cursor-pointer transition sm:w-6 sm:h-6 h-8 w-8"
             />
             <FaLinkedin
               size={18}
-              className="hover:text-white cursor-pointer transition"
+              className="hover:text-white cursor-pointer transition sm:w-6 sm:h-6 h-8 w-8"
             />
             <FaSquareInstagram
               size={18}
-              className="hover:text-white cursor-pointer transition"
+              className="hover:text-white cursor-pointer transition sm:w-6 sm:h-6 h-8 w-8"
             />
             <SiGmail
               size={18}
-              className="hover:text-white cursor-pointer transition"
+              className="hover:text-white cursor-pointer transition sm:w-6 sm:h-6 h-8 w-8"
             />
           </div>
         </div>
@@ -97,7 +97,7 @@ export default function Footer() {
           {/* Right */}
           <div className="text-zinc-500 text-center md:text-right">
             <p>
-              For press: <span className="text-white">yet to deploy</span>
+              For press: <span className="text-white">Yet to deploy</span>
             </p>
           </div>
         </div>

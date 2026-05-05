@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from "react";
-import clsx from "clsx"; 
+import clsx from "clsx";
 
 export default function ScrollRevealSection({
   children,
   className = "",
   threshold = 0.1,
-  delay = "0", 
+  delay = "0",
   duration = "700",
   direction = "up",
-  once = false, // animate only once?
+  once = true, // animate only once?
 }) {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
