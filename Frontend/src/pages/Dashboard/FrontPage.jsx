@@ -14,14 +14,16 @@ import {
   Trash2,
   Ghost,
   Box,
+  HeartPlus,
 } from "lucide-react";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
-import { getProjects } from "../../api/projects";
+import { getProjects, toggleFavourite } from "../../api/projects";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setProject } from "../../store/projectSlice";
 import handleCopy from "../../utils/HelperFunctions/handleCopy";
+import { toast } from "react-hot-toast";
 
 function FrontPage() {
   const [openMenuId, setOpenMenuId] = useState(null);
@@ -158,11 +160,41 @@ function FrontPage() {
                             className={`absolute right-0 w-56 bg-zinc-950 border border-zinc-900 rounded-lg shadow-lg z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
                           >
                             <div className="text-sm">
-                              <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 hover:rounded-t-md flex items-center gap-2">
-                                <div className="cursor-pointer">
-                                  <HeartMinus size={18} />
+                              <button
+                                onClick={async (e) => {
+                                  e.stopPropagation();
+
+                                  try {
+                                    const isNowFavourite = !project.isFavourite;
+                                    await toggleFavourite(project.projectId);
+
+                                    setProjects((prev) =>
+                                      prev.map((p) =>
+                                        p.projectId === project.projectId
+                                          ? {
+                                              ...p,
+                                              isFavourite: !p.isFavourite,
+                                            }
+                                          : p,
+                                      ),
+                                    );
+                                    if (isNowFavourite) {
+                                      toast.success("Added to favourites");
+                                    } else {
+                                      toast("Removed from favourites");
+                                    }
+                                  } catch (err) {
+                                    console.error(err);
+                                  }
+                                }}
+                                className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2"
+                              >
+                                <HeartPlus size={18} />
+                                <div>
+                                  {project.isFavourite
+                                    ? "Remove from Favourite"
+                                    : "Add to Favourite"}
                                 </div>
-                                <div>Add to Favourite</div>
                               </button>
 
                               <button

@@ -20,9 +20,10 @@ export const createProject = async (projectData) => {
   }
 };
 
-export const getProjects = async () => {
+export const getProjects = async (params = {}) => {
   try {
     const response = await axios.get(`${BASE_URL}/projects/get-project`, {
+      params,
       withCredentials: true,
     });
     return response.data;
@@ -32,4 +33,13 @@ export const getProjects = async () => {
     }
     throw new Error("An error occurred while fetching the projects.");
   }
+};
+
+export const toggleFavourite = async (projectId) => {
+  const res = await axios.put(
+    `${BASE_URL}/projects/${projectId}/favourite`,
+    {},
+    { withCredentials: true }
+  );
+  return res.data;
 };

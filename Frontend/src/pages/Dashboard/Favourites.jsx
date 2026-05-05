@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getProjects } from "../../api/projects";
+import { getProjects, toggleFavourite } from "../../api/projects"; // ✅ added
 import { setProject } from "../../store/projectSlice";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
@@ -20,6 +20,7 @@ import {
   Ghost,
   Box,
 } from "lucide-react";
+import { toast } from "react-hot-toast";
 
 function Favourites() {
   const [openMenuId, setOpenMenuId] = useState(null);
@@ -34,11 +35,11 @@ function Favourites() {
     (state) => state.project.selectedProjectId,
   );
 
-  // Fetch projects
+  // Fetch favourite projects
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await getProjects();
+        const res = await getProjects({ favourite: true });
 
         let activeProjectId = selectedProject;
 
@@ -54,7 +55,7 @@ function Favourites() {
         const updatedProjects = res.projects.map((p) => ({
           ...p,
           isSelected: p.projectId === activeProjectId,
-          isFavourite: p.isFavourite || false, // fallback
+          isFavourite: p.isFavourite || false,
         }));
 
         setProjects(updatedProjects);
@@ -66,26 +67,15 @@ function Favourites() {
     fetchProjects();
   }, [selectedProject, dispatch]);
 
-  // Toggle favourite
-  const toggleFavourite = (projectId) => {
-    setProjects((prev) =>
-      prev.map((p) =>
-        p.projectId === projectId ? { ...p, isFavourite: !p.isFavourite } : p,
-      ),
+  // Search filter ONLY (no need to filter favourite again)
+  const filteredProjects = projects.filter((project) => {
+    const term = searchProject.toLowerCase();
+    return (
+      project.name.toLowerCase().includes(term) ||
+      project.baseUrl.toLowerCase().includes(term) ||
+      project.framework.toLowerCase().includes(term)
     );
-  };
-
-  // ONLY favourite projects
-  const filteredProjects = projects
-    .filter((project) => project.isFavourite)
-    .filter((project) => {
-      const term = searchProject.toLowerCase();
-      return (
-        project.name.toLowerCase().includes(term) ||
-        project.baseUrl.toLowerCase().includes(term) ||
-        project.framework.toLowerCase().includes(term)
-      );
-    });
+  });
 
   return (
     <div
@@ -167,46 +157,91 @@ function Favourites() {
                         {openMenuId === project.projectId && (
                           <div
                             onClick={(e) => e.stopPropagation()}
-                            className="absolute right-0 w-56 bg-zinc-950 border border-zinc-900 rounded-lg shadow-lg z-50"
+                            className={`absolute right-0 w-56 bg-zinc-950 border border-zinc-900 rounded-lg shadow-lg z-50 overflow-hidden animate-in fade-in zoom-in-95 duration-100`}
                           >
-                            <button
-                              onClick={() => toggleFavourite(project.projectId)}
-                              className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2"
-                            >
-                              <HeartMinus size={18} />
-                              <span>Remove from Favourite</span>
-                            </button>
+                            <div className="text-sm">
+                              <button
+                                onClick={async (e) => {
+                                  e.stopPropagation();
 
-                            <button
-                              onClick={() =>
-                                handleCopy(project.projectId, (val) =>
-                                  setCopied(val ? project.projectId : null),
-                                )
-                              }
-                              className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2"
-                            >
-                              {copied === project.projectId ? (
-                                <CopyCheck size={18} />
-                              ) : (
-                                <Copy size={18} />
-                              )}
-                              <span>Copy Project ID</span>
-                            </button>
+                                  try {
+                                    const isNowFavourite = !project.isFavourite;
+                                    await toggleFavourite(project.projectId);
+                                    setProjects((prev) =>
+                                      prev.filter(
+                                        (p) =>
+                                          p.projectId !== project.projectId,
+                                      ),
+                                    );
 
-                            <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
-                              <Link2 size={18} />
-                              <span>Open Deployment</span>
-                            </button>
+                                    setProjects((prev) =>
+                                      prev.map((p) =>
+                                        p.projectId === project.projectId
+                                          ? {
+                                              ...p,
+                                              isFavourite: !p.isFavourite,
+                                            }
+                                          : p,
+                                      ),
+                                    );
+                                    if (isNowFavourite) {
+                                      toast.success("Added to favourites");
+                                    } else {
+                                      toast("Removed from favourites");
+                                    }
+                                  } catch (err) {
+                                    console.error(err);
+                                  }
+                                }}
+                                className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2"
+                              >
+                                <HeartMinus size={18} />
+                                <div>
+                                  {project.isFavourite
+                                    ? "Remove from Favourite"
+                                    : "Add to Favourite"}
+                                </div>
+                              </button>
 
-                            <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
-                              <ChartSpline size={18} />
-                              <span>View Analytics</span>
-                            </button>
+                              <button
+                                onClick={() =>
+                                  handleCopy(project.projectId, (val) =>
+                                    setCopied(val ? project.projectId : null),
+                                  )
+                                }
+                                className="w-full text-left px-4 py-2 hover:bg-zinc-800 border-t border-zinc-800 flex items-center gap-2"
+                              >
+                                <div className="cursor-pointer">
+                                  {copied === project.projectId ? (
+                                    <CopyCheck size={18} />
+                                  ) : (
+                                    <Copy size={18} />
+                                  )}
+                                </div>
+                                <div>Copy Project ID</div>
+                              </button>
 
-                            <button className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 flex items-center gap-2">
-                              <Trash2 size={18} />
-                              <span>Delete Project</span>
-                            </button>
+                              <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
+                                <div className="cursor-pointer">
+                                  <Link2 size={18} />
+                                </div>
+                                <div>Open Deployment</div>
+                              </button>
+
+                              <button className="w-full text-left px-4 py-2 hover:bg-zinc-800 flex items-center gap-2">
+                                <div className="cursor-pointer">
+                                  <ChartSpline size={18} />
+                                </div>
+                                <div>View Analytics</div>
+                              </button>
+
+                              <button className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 border-t border-zinc-800 flex items-center gap-2">
+                                <div className="cursor-pointer">
+                                  <Trash2 size={18} />
+                                </div>
+                                <div>Delete Project</div>
+                              </button>
+                            </div>
                           </div>
                         )}
                       </div>
