@@ -30,6 +30,10 @@ const projectSchema = new mongoose.Schema({
         enum: ["active", "inactive"],
         default: "active"
     },
+    isFavourite: {
+        type: Boolean,
+        default: false
+    },
     createdAt: {
         type: Date,
         default: Date.now
