@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
+
 export default function FeaturesPage() {
+  const navigate = useNavigate();
   const steps = [
     {
       id: "01",
@@ -24,6 +27,7 @@ export default function FeaturesPage() {
 
   return (
     <section className="relative z-10 bg-black text-white py-16 md:py-24 px-4 sm:px-6 w-full md:w-3/4 mx-auto md:my-20">
+      
       <div className="max-w-6xl mx-auto">
         {/* Heading */}
         <div className="mb-10 md:mb-16">
@@ -73,22 +77,16 @@ export default function FeaturesPage() {
         <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 bg-white/[0.03] border border-white/10 rounded-xl px-4 sm:px-6 py-4">
           {/* Left */}
           <div className="flex items-center gap-3 sm:gap-4">
-            <div className="flex -space-x-2">
-              {[1, 2, 3, 4].map((i) => (
-                <div
-                  key={i}
-                  className="w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-white/20 border border-black"
-                />
-              ))}
-            </div>
-
             <p className="text-xs sm:text-sm text-white/60">
               Trusted by teams building modern APIs
             </p>
           </div>
 
           {/* Right */}
-          <button className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black text-xs sm:text-sm font-medium hover:bg-white/90 transition">
+          <button
+            onClick={() => navigate("/signin")}
+            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black text-xs sm:text-sm font-medium hover:bg-white/90 transition"
+          >
             Start Now →
           </button>
         </div>
