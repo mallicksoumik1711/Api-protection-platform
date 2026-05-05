@@ -14,17 +14,26 @@ export default function ScreenshotSection() {
           y: e.clientY - rect.top,
         });
       }}
-      className="relative py-24 md:py-32 bg-[#07070a] overflow-hidden w-3/4 mx-auto m-20"
+      className="
+        relative 
+        py-16 sm:py-20 md:py-28 
+        bg-[#07070a] 
+        overflow-hidden 
+        w-full md:w-3/4 
+        mx-auto 
+        px-4 sm:px-6
+      "
     >
+      {/* Interactive grid mask */}
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          WebkitMaskImage: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, white 0%, rgba(255,255,255,0.6) 40%, transparent 75%)`,
-          maskImage: `radial-gradient(400px circle at ${pos.x}px ${pos.y}px, white 0%, rgba(255,255,255,0.6) 40%, transparent 75%)`,
+          WebkitMaskImage: `radial-gradient(250px circle at ${pos.x}px ${pos.y}px, white 0%, rgba(255,255,255,0.6) 40%, transparent 75%)`,
+          maskImage: `radial-gradient(250px circle at ${pos.x}px ${pos.y}px, white 0%, rgba(255,255,255,0.6) 40%, transparent 75%)`,
         }}
       >
         <svg
-          className="w-full h-full opacity-[0.35]"
+          className="w-full h-full opacity-[0.25] sm:opacity-[0.3]"
           viewBox="0 0 1200 800"
           preserveAspectRatio="xMidYMid slice"
         >
@@ -39,7 +48,7 @@ export default function ScreenshotSection() {
                 points="40,0 80,70 0,70"
                 fill="none"
                 stroke="rgba(255,255,255,0.7)"
-                strokeWidth="0.8"
+                strokeWidth="0.6"
               />
             </pattern>
           </defs>
@@ -47,28 +56,68 @@ export default function ScreenshotSection() {
         </svg>
       </div>
 
+      {/* Glow layers (responsive) */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] blur-[120px] rounded-full" />
+        <div
+          className="absolute top-1/2 left-1/2 
+          -translate-x-1/2 -translate-y-1/2 
+          w-[300px] h-[200px] 
+          sm:w-[500px] sm:h-[300px] 
+          md:w-[800px] md:h-[500px] 
+          blur-[80px] md:blur-[120px] 
+          rounded-full 
+        "
+        />
       </div>
 
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-[400px] h-[300px]  blur-[120px] rounded-full" />
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[300px]  blur-[120px] rounded-full" />
+        <div
+          className="absolute top-1/4 left-1/4 
+          w-[200px] h-[150px] 
+          sm:w-[300px] sm:h-[200px] 
+          md:w-[400px] md:h-[300px] 
+          blur-[80px] md:blur-[120px] 
+          rounded-full 
+        "
+        />
+        <div
+          className="absolute bottom-1/4 right-1/4 
+          w-[200px] h-[150px] 
+          sm:w-[300px] sm:h-[200px] 
+          md:w-[400px] md:h-[300px] 
+          blur-[80px] md:blur-[120px] 
+          rounded-full 
+        "
+        />
       </div>
 
-      <div className="absolute inset-0 pointer-events-none" />
-
-      <div className="relative max-w-6xl mx-auto px-6">
-        <div className="relative w-full rounded-lg sm:rounded-3xl overflow-hidden border border-white/15 bg-zinc-900">
+      {/* Content */}
+      <div className="relative max-w-6xl mx-auto">
+        <div
+          className="
+          relative 
+          w-full 
+          rounded-lg sm:rounded-2xl md:rounded-3xl 
+          overflow-hidden 
+          border border-white/15 
+          bg-zinc-900
+        "
+        >
           <img
             src={screenshot}
             alt="Dashboard Screenshot"
-            className="w-full h-auto object-contain transition-transform duration-700 group-hover:scale-[1.02]"
+            className="
+              w-full 
+              h-auto 
+              object-contain 
+              transition-transform duration-700 
+              hover:scale-[1.02]
+            "
           />
 
-          <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
 
-          <div className="absolute inset-0 ring-1 ring-white/20 rounded-lg sm:rounded-3xl pointer-events-none" />
+          <div className="absolute inset-0 ring-1 ring-white/20 rounded-lg sm:rounded-2xl md:rounded-3xl pointer-events-none" />
         </div>
       </div>
     </section>
