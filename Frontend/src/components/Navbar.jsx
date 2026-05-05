@@ -79,12 +79,15 @@ export default function Navbar() {
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center justify-center gap-3">
-            <button className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/20 text-white hover:bg-white/10">
-              Analyze
+            <button
+              onClick={() => navigate("/signin")}
+              className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/10 text-white hover:bg-white/10"
+            >
+              Start Securing
               <ArrowRight size={14} />
             </button>
 
-            <button className="w-9 h-9 flex items-center justify-center rounded-md border border-white/20 text-white hover:bg-white/10">
+            <button className="w-9 h-9 flex items-center justify-center rounded-md border border-white/10 text-white hover:bg-white/10">
               <Github size={18} />
             </button>
           </div>
@@ -92,7 +95,7 @@ export default function Navbar() {
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden w-9 h-9 flex items-center justify-center rounded-md border border-white/20 text-white hover:bg-white/10"
+            className="md:hidden w-9 h-9 flex items-center justify-center rounded-md border border-white/10 text-white hover:bg-white/10"
           >
             {isMenuOpen ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -107,26 +110,26 @@ export default function Navbar() {
         >
           <div
             ref={menuRef}
-            className="bg-black/50 border-b border-white/10 py-8 px-6 flex flex-col gap-4 rounded-xl shadow-2xl shadow-black/50"
+            className="bg-zinc-950/80 py-8 px-6 shadow-xl shadow-black/50"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside menu
           >
             <button
               onClick={() => {
                 setIsMenuOpen(false);
-                // Add your Analyze navigation logic here if needed
+                navigate("/signin");
               }}
-              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/20 text-white hover:bg-white/10 w-full"
+              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full mb-2"
             >
-              Analyze
+              Start Securing
               <ArrowRight size={14} />
             </button>
 
             <button
               onClick={() => {
                 setIsMenuOpen(false);
-                // Add GitHub link logic here if needed (e.g. window.open)
+                window.open("https://github.com/mallicksoumik1711/Api-protection-platform", "_blank");
               }}
-              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/20 text-white hover:bg-white/10 w-full"
+              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full"
             >
               <Github size={18} />
               GitHub
