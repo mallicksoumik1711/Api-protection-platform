@@ -9,7 +9,7 @@ import { SiGmail } from "react-icons/si";
 
 export default function Footer() {
   return (
-    <footer className="relative z-10 bg-black text-white py-10 sm:py-12 md:py-16 px-4 sm:px-6 w-full md:w-3/4 mx-auto">
+    <footer className="relative z-10 bg-gradient-to-br from-black via-slate-900 to-black text-white py-10 sm:py-12 md:py-16 px-4 sm:px-6 w-full md:w-3/4 mx-auto">
       <div className="max-w-6xl mx-auto">
         {/* Top Section */}
         <div

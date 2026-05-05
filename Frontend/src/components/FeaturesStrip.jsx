@@ -99,7 +99,7 @@ export default function FeaturesStrip() {
   ];
 
   return (
-    <section className="relative z-10 bg-black text-white py-16 md:py-24 px-4 sm:px-6 w-full md:w-3/4 mx-auto md:my-20">
+    <section className="relative z-10 bg-gradient-to-br from-black via-slate-900 to-black text-white py-16 md:py-24 px-4 sm:px-6 w-full md:w-3/4 mx-auto md:my-20">
       
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3">
         {features.map((item, i) => (
