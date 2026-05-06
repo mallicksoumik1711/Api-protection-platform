@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   LayoutDashboard,
   Box,
@@ -18,15 +18,19 @@ import {
   Menu,
   CircleChevronLeft,
   CircleChevronRight,
+  MoreHorizontal,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getUser } from "../api/auth";
+import UserMenu from "./UserMenu";
 
 export default function Sidebar() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef();
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -38,6 +42,18 @@ export default function Sidebar() {
     };
     fetchUser();
   }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuRef.current && !menuRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const capitalize = (str) =>
     str ? str.charAt(0).toUpperCase() + str.slice(1) : "";
 
@@ -178,16 +194,17 @@ export default function Sidebar() {
               {user?.name ? capitalize(user.name) : "User"}
             </span>
           </div>
-          <button
-            onClick={() => setCollapsed((prev) => !prev)}
-            className="cursor-pointer text-zinc-400"
-          >
-            {collapsed ? (
-              <CircleChevronRight size={18} />
-            ) : (
-              <CircleChevronLeft size={18} />
-            )}
-          </button>
+
+          <div ref={menuRef} className="relative">
+            <button
+              onClick={() => setShowMenu((prev) => !prev)}
+              className="p-1 hover:rounded-full hover:bg-zinc-900 cursor-pointer"
+            >
+              <MoreHorizontal size={18} />
+            </button>
+
+            {showMenu && <UserMenu />}
+          </div>
         </div>
       </aside>
     </>
