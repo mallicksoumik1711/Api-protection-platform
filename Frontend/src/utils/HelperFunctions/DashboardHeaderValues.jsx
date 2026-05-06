@@ -265,6 +265,30 @@ const DashboardHeaderValues = {
       },
     ],
   },
+
+  profilePage: {
+    tag: "Profile Page",
+    title: "User Profile",
+    description:
+      "View and manage your user profile information, including personal details, account settings, and preferences.",
+    features: [
+      {
+        icon: ChartNoAxesCombinedIcon,
+        label: "Track API usage",
+        color: "text-green-400",
+      },
+      {
+        icon: Bug,
+        label: "Track Errors",
+        color: "text-red-400",
+      },
+      {
+        icon: Cctv,
+        label: "Monitor Security",
+        color: "text-violet-400",
+      },
+    ],
+  },
 };
 
 export default DashboardHeaderValues;

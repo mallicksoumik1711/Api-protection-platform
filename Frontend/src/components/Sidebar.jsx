@@ -114,6 +114,7 @@ export default function Sidebar() {
             icon={<BookKey size={16} />}
             text="API Keys"
             path="/api-keys"
+            setIsOpen={setIsOpen}
           />
           <SidebarItem
             icon={<FileLock size={16} />}

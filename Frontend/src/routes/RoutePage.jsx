@@ -18,6 +18,7 @@ import JwtSettings from "../pages/Dashboard/JwtSettings";
 import ProjectDetails from "../pages/Dashboard/ProjectDetails";
 import Favourites from "../pages/Dashboard/Favourites";
 import Integration from "../pages/Dashboard/Integration";
+import ProfilePage from "../pages/Dashboard/ProfilePage";
 
 import { Toaster } from "react-hot-toast";
 
@@ -214,6 +215,16 @@ function RoutePage() {
             <ProtectedRoutes>
               <DashboardLayout>
                 <Favourites />
+              </DashboardLayout>
+            </ProtectedRoutes>
+          }
+        />
+        <Route
+          path="/profile-page"
+          element={
+            <ProtectedRoutes>
+              <DashboardLayout>
+                <ProfilePage />
               </DashboardLayout>
             </ProtectedRoutes>
           }

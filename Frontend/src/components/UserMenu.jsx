@@ -13,7 +13,7 @@ export default function UserMenu({ user, capitalize }) {
     >
       {/* User Info */}
       <div
-        onClick={() => navigate("/user-menu")}
+        onClick={() => navigate("/profile-page")}
         className="px-3 py-2 flex justify-between items-center hover:bg-zinc-800 rounded-lg cursor-pointer"
       >
         <div>
