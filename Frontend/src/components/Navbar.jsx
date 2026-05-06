@@ -88,7 +88,15 @@ export default function Navbar() {
               <ArrowRight size={14} />
             </button>
 
-            <button className="w-9 h-9 flex items-center justify-center rounded-md border border-white/10 text-white hover:bg-white/10">
+            <button
+              onClick={() =>
+                window.open(
+                  "https://github.com/mallicksoumik1711/Api-protection-platform",
+                  "_blank",
+                )
+              }
+              className="w-9 h-9 flex items-center justify-center rounded-md border border-white/10 text-white hover:bg-white/10"
+            >
               <FaGithub size={18} />
             </button>
           </div>
@@ -128,7 +136,10 @@ export default function Navbar() {
             <button
               onClick={() => {
                 setIsMenuOpen(false);
-                window.open("https://github.com/mallicksoumik1711/Api-protection-platform", "_blank");
+                window.open(
+                  "https://github.com/mallicksoumik1711/Api-protection-platform",
+                  "_blank",
+                );
               }}
               className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full"
             >

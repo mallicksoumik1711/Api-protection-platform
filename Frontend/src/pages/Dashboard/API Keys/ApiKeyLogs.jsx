@@ -108,7 +108,14 @@ function ApiKeyLogs() {
               return (
                 <div
                   key={log._id}
-                  className="group hover:bg-zinc-900/40 transition-colors -mx-1 px-2 py-1 rounded flex flex-wrap sm:flex-nowrap items-center gap-x-2"
+                  className="
+    group 
+    hover:bg-zinc-900/40 
+    transition-colors 
+    -mx-1 px-2 py-1 rounded 
+    flex items-center gap-x-2
+    whitespace-nowrap
+  "
                 >
                   <span className="inline-block w-16 sm:w-20 text-zinc-600 flex-shrink-0">
                     {time}
@@ -120,7 +127,7 @@ function ApiKeyLogs() {
 
                   <span className="text-zinc-500 mx-2">→</span>
 
-                  <span className={`${pathColor} break-all`}>
+                  <span className={`${pathColor}`}>
                     {log.method} {log.path}
                     {log.status === 304 && log.count > 1 && (
                       <span className="text-zinc-500 ml-2">

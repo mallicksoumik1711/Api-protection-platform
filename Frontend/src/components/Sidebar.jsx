@@ -16,6 +16,8 @@ import {
   HeartPlusIcon,
   FolderCog,
   Menu,
+  CircleChevronLeft,
+  CircleChevronRight,
 } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { getUser } from "../api/auth";
@@ -24,6 +26,7 @@ export default function Sidebar() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -165,14 +168,26 @@ export default function Sidebar() {
         </div>
 
         {/* USER */}
-        <div className="p-3 flex items-center gap-2 mt-5">
-          <img
-            src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user?.name}`}
-            className="w-8 h-8 rounded-full"
-          />
-          <span className="text-sm text-zinc-300">
-            {user?.name ? capitalize(user.name) : "User"}
-          </span>
+        <div className="flex px-3 py-2 justify-between items-center mb-2">
+          <div className="flex items-center gap-2 cursor-pointer">
+            <img
+              src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user?.name}`}
+              className="w-8 h-8 rounded-full"
+            />
+            <span className="text-sm text-zinc-300">
+              {user?.name ? capitalize(user.name) : "User"}
+            </span>
+          </div>
+          <button
+            onClick={() => setCollapsed((prev) => !prev)}
+            className="cursor-pointer text-zinc-400"
+          >
+            {collapsed ? (
+              <CircleChevronRight size={18} />
+            ) : (
+              <CircleChevronLeft size={18} />
+            )}
+          </button>
         </div>
       </aside>
     </>
