@@ -1,6 +1,8 @@
 import { LogOut, Settings } from "lucide-react";
+import { useNavigate } from "react-router";
 
-export default function UserMenu() {
+export default function UserMenu({ user, capitalize }) {
+  const navigate = useNavigate();
   return (
     <div
       className="
@@ -10,10 +12,15 @@ export default function UserMenu() {
     "
     >
       {/* User Info */}
-      <div className="px-1 py-2 flex justify-between items-center hover:bg-zinc-800 rounded-lg cursor-pointer">
+      <div
+        onClick={() => navigate("/user-menu")}
+        className="px-3 py-2 flex justify-between items-center hover:bg-zinc-800 rounded-lg cursor-pointer"
+      >
         <div>
-          <p className="text-sm font-semibold text-white">Soumik</p>
-          <p className="text-xs text-zinc-400">email@gmail.com</p>
+          <p className="text-sm font-semibold text-white">
+            {user?.name ? capitalize(user.name) : "User"}
+          </p>
+          <p className="text-xs text-zinc-400">{user?.email || "user.email"}</p>
         </div>
         <div>
           <Settings size={16} />
@@ -46,8 +53,8 @@ function Item({ text, danger, icon }) {
           : "text-zinc-300 hover:bg-zinc-800"
       }`}
     >
-      <div>{text}</div>
-      <div className="">{icon}</div>
+      <div className="px-2">{text}</div>
+      <div className="px-2">{icon}</div>
     </div>
   );
 }

@@ -203,7 +203,7 @@ export default function Sidebar() {
               <MoreHorizontal size={18} />
             </button>
 
-            {showMenu && <UserMenu />}
+            {showMenu && <UserMenu user={user} capitalize={capitalize} />}
           </div>
         </div>
       </aside>
