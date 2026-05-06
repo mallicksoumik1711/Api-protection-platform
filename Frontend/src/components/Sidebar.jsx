@@ -74,7 +74,7 @@ export default function Sidebar() {
       <aside
         className={`fixed md:static top-0 left-0 z-50 h-screen 
   w-64 md:w-1/5 bg-black border-r border-zinc-800 
-  flex flex-col overflow-y-auto scrollbar scrollbar-thumb-zinc-800 scrollbar-track-black
+  flex flex-col scrollbar scrollbar-thumb-zinc-800 scrollbar-track-black
   transform transition-transform duration-300
   ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
       >
@@ -90,7 +90,7 @@ export default function Sidebar() {
         </div>
 
         {/* MENU */}
-        <div className="flex-1 px-2 py-3 space-y-2 text-sm">
+        <div className="flex-1 px-2 py-3 space-y-2 text-sm overflow-y-auto">
           <SidebarItem
             icon={<LayoutDashboard size={16} />}
             text="Projects"
@@ -184,7 +184,7 @@ export default function Sidebar() {
         </div>
 
         {/* USER */}
-        <div className="flex px-3 py-2 justify-between items-center mb-2">
+        <div className="flex px-3 py-2 justify-between items-center mb-2 mt-1">
           <div className="flex items-center gap-2 cursor-pointer">
             <img
               src={`https://api.dicebear.com/7.x/shapes/svg?seed=${user?.name}`}
