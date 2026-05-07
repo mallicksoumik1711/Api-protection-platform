@@ -20,7 +20,8 @@ function JwtSecretKey({ formData, setFormData }) {
   };
 
   const generateSecretKey = () => {
-    const randomKey = Math.random().toString(36).substring(2) + Date.now();
+    const randomKey =
+      Math.random().toString(36).substring(2) + Date.now();
 
     setFormData((prev) => ({
       ...prev,
@@ -33,28 +34,36 @@ function JwtSecretKey({ formData, setFormData }) {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-2">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 mb-2">
         <label className="text-xs font-medium text-zinc-300">
           JWT Secret Key
         </label>
+
         <span className="text-xs lowercase text-zinc-500/70">
           Required • Keep it secret
         </span>
       </div>
-      <div className="flex gap-3">
+
+      <div className="flex flex-col sm:flex-row gap-3">
+        {/* Input */}
         <input
           type="text"
           value={formData.secretKey}
           onChange={(e) =>
-            setFormData({ ...formData, secretKey: e.target.value })
+            setFormData({
+              ...formData,
+              secretKey: e.target.value,
+            })
           }
           placeholder="e.g. superlongrandomstring12345..."
-          className="flex-1 bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none transition-all"
+          className="flex-1 bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none transition-all"
         />
+
+        {/* Button */}
         <button
           type="button"
           onClick={isSecretGenerated ? handleCopy : generateSecretKey}
-          className="whitespace-nowrap px-6 py-3.5 bg-zinc-900 hover:bg-zinc-950 border border-zinc-800/80 text-white text-xs font-semibold rounded-md transition-all active:scale-95 flex items-center gap-2 cursor-pointer"
+          className="w-full sm:w-auto whitespace-nowrap px-6 py-3.5 bg-zinc-900 hover:bg-zinc-950 border border-zinc-800/80 text-white text-xs font-semibold rounded-md transition-all active:scale-95 flex items-center justify-center gap-2 cursor-pointer"
         >
           {!isSecretGenerated ? (
             "Generate Secret"
@@ -67,9 +76,10 @@ function JwtSecretKey({ formData, setFormData }) {
           )}
         </button>
       </div>
-      <p className="mt-2 text-xs text-zinc-500">
-        Used to sign and verify tokens. A strong random secret prevents token
-        forgery.{" "}
+
+      <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
+        Used to sign and verify tokens. A strong random secret prevents
+        token forgery.
         <span className="text-amber-500/80">
           {" "}
           Make sure to keep it safe and do not share it with anyone.

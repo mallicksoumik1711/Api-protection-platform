@@ -64,7 +64,7 @@ function JwtSettings() {
   };
 
   return (
-    <div className="bg-black px-6 py-4">
+    <div className="bg-black px-3 sm:px-5 lg:px-6 py-4">
       <DashboardHeader
         tag={DashboardHeaderValues.jwtSettings.tag}
         title={DashboardHeaderValues.jwtSettings.title}
@@ -77,7 +77,7 @@ function JwtSettings() {
         <JwtToggle isEnabled={isEnabled} setIsEnabled={setIsEnabled} />
 
         <div
-          className={`mt-6 bg-zinc-950/90 border border-zinc-900/80 rounded-lg p-7 space-y-7 shadow-inner mr-6 mb-6 transition-all ${
+          className={`mt-6 bg-zinc-950/90 border border-zinc-900/80 rounded-lg p-4 sm:p-6 lg:p-7 space-y-7 shadow-inner mb-6 transition-all ${
             !isEnabled ? "opacity-50 pointer-events-none" : "opacity-100"
           }`}
         >
@@ -96,6 +96,7 @@ function JwtSettings() {
               <label className="block text-xs font-medium text-zinc-300 mb-2">
                 Cookie Name
               </label>
+
               <input
                 type="text"
                 value={formData.tokenName}
@@ -103,8 +104,9 @@ function JwtSettings() {
                   setFormData({ ...formData, tokenName: e.target.value })
                 }
                 placeholder="authToken"
-                className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
+                className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3.5 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none"
               />
+
               <p className="mt-2 text-xs text-zinc-500">
                 Recommended: authToken or jwt_token
               </p>
@@ -115,8 +117,8 @@ function JwtSettings() {
           <JwtAdvancedSettings />
 
           {/* save */}
-          <div className="pt-4 border-t border-zinc-800 flex items-center justify-between">
-            <p className="text-xs text-zinc-500">
+          <div className="pt-4 border-t border-zinc-800 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-xs text-zinc-500 leading-relaxed">
               These settings will be used to generate and verify JWT tokens for
               this project.
             </p>
@@ -124,7 +126,7 @@ function JwtSettings() {
             <button
               type="button"
               onClick={handleSaveJwtSettings}
-              className="px-7 py-3 bg-zinc-900 hover:bg-zinc-950/80 border border-zinc-800 text-white text-sm font-semibold rounded-md transition-all cursor-pointer"
+              className="w-full sm:w-auto px-7 py-3 bg-zinc-900 hover:bg-zinc-950/80 border border-zinc-800 text-white text-sm font-semibold rounded-md transition-all cursor-pointer"
             >
               Save Configuration
             </button>

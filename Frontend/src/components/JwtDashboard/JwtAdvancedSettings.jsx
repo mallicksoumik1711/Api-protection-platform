@@ -10,8 +10,10 @@ function JwtAdvancedSettings() {
     tokenName: "authToken",
     algorithm: "HS256",
   });
+
   const [isAlgoOpen, setIsAlgoOpen] = useState(false);
   const [showAdvanced, setShowAdvanced] = useState(false);
+
   return (
     <div className="pt-4 border-t border-zinc-800">
       <button
@@ -20,8 +22,11 @@ function JwtAdvancedSettings() {
         className="flex items-center gap-2 text-xs font-medium text-zinc-400 hover:text-zinc-300 transition-colors"
       >
         Advanced Settings
+
         <span
-          className={`transition-transform duration-300 ${showAdvanced ? "rotate-180" : ""}`}
+          className={`transition-transform duration-300 ${
+            showAdvanced ? "rotate-180" : ""
+          }`}
         >
           <ChevronDownIcon className="w-4 h-4" />
         </span>
@@ -38,9 +43,9 @@ function JwtAdvancedSettings() {
               <button
                 type="button"
                 onClick={() => setIsAlgoOpen(!isAlgoOpen)}
-                className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3.5 text-sm text-left text-zinc-100 flex items-center justify-between transition-colors"
+                className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3.5 text-sm text-left text-zinc-100 flex items-center justify-between gap-3 transition-colors"
               >
-                <span>
+                <span className="truncate">
                   {formData.algorithm === "HS256"
                     ? "HS256 (Recommended for most cases)"
                     : formData.algorithm === "HS384"
@@ -49,7 +54,7 @@ function JwtAdvancedSettings() {
                 </span>
 
                 <svg
-                  className={`w-4 h-4 transition-transform duration-300 ${
+                  className={`w-4 h-4 shrink-0 transition-transform duration-300 ${
                     isAlgoOpen ? "rotate-180" : ""
                   }`}
                   fill="none"
@@ -66,7 +71,7 @@ function JwtAdvancedSettings() {
               </button>
 
               <div
-                className={`absolute left-0 bottom-full mb-1 w-full bg-zinc-950 border border-zinc-800 rounded-md overflow-hidden text-sm transition-all duration-300 ${
+                className={`absolute z-20 left-0 bottom-full mb-1 w-full bg-zinc-950 border border-zinc-800 rounded-md overflow-hidden text-sm transition-all duration-300 ${
                   isAlgoOpen
                     ? "opacity-100 scale-100"
                     : "opacity-0 scale-95 pointer-events-none"

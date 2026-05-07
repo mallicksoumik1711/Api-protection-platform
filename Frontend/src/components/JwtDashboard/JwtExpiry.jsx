@@ -1,29 +1,35 @@
 import { useState } from "react";
 
-function JwtExpiry({formData, setFormData}) {
+function JwtExpiry({ formData, setFormData }) {
   const [isExpiryOpen, setIsExpiryOpen] = useState(false);
+
   return (
     <div>
       <label className="block text-xs font-medium text-zinc-300 mb-2">
         Token Expiry Time
       </label>
 
-      <div className="flex gap-3">
+      <div className="flex flex-col sm:flex-row gap-3">
+        {/* Expiry Value */}
         <input
           type="number"
           min="1"
           value={formData.expiresInValue}
           onChange={(e) =>
-            setFormData({ ...formData, expiresInValue: e.target.value })
+            setFormData({
+              ...formData,
+              expiresInValue: e.target.value,
+            })
           }
-          className="w-28 bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3.5 text-sm text-zinc-100 focus:outline-none"
+          className="w-full sm:w-28 bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3.5 text-sm text-zinc-100 focus:outline-none"
         />
 
-        <div className="relative w-40">
+        {/* Expiry Unit */}
+        <div className="relative w-full sm:w-40">
           <button
             type="button"
             onClick={() => setIsExpiryOpen(!isExpiryOpen)}
-            className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-5 py-3.5 text-sm text-left text-zinc-100 flex items-center justify-between transition-colors"
+            className="w-full bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3.5 text-sm text-left text-zinc-100 flex items-center justify-between transition-colors"
           >
             <span>
               {formData.expiresInUnit === "m"
@@ -50,9 +56,9 @@ function JwtExpiry({formData, setFormData}) {
             </svg>
           </button>
 
-          {/* dropdown options */}
+          {/* Dropdown */}
           <div
-            className={`absolute left-0 w-full mt-1 bg-zinc-950 border border-zinc-800 rounded-md overflow-hidden text-sm transition-all duration-300 ${
+            className={`absolute z-20 left-0 w-full mt-1 bg-zinc-950 border border-zinc-800 rounded-md overflow-hidden text-sm transition-all duration-300 ${
               isExpiryOpen
                 ? "opacity-100 scale-100"
                 : "opacity-0 scale-95 pointer-events-none"
@@ -61,7 +67,10 @@ function JwtExpiry({formData, setFormData}) {
             <button
               type="button"
               onClick={() => {
-                setFormData({ ...formData, expiresInUnit: "m" });
+                setFormData({
+                  ...formData,
+                  expiresInUnit: "m",
+                });
                 setIsExpiryOpen(false);
               }}
               className="w-full text-left px-4 py-2 text-zinc-300 hover:bg-zinc-900 transition-colors"
@@ -72,7 +81,10 @@ function JwtExpiry({formData, setFormData}) {
             <button
               type="button"
               onClick={() => {
-                setFormData({ ...formData, expiresInUnit: "h" });
+                setFormData({
+                  ...formData,
+                  expiresInUnit: "h",
+                });
                 setIsExpiryOpen(false);
               }}
               className="w-full text-left px-4 py-2 text-zinc-300 hover:bg-zinc-900 transition-colors"
@@ -83,7 +95,10 @@ function JwtExpiry({formData, setFormData}) {
             <button
               type="button"
               onClick={() => {
-                setFormData({ ...formData, expiresInUnit: "d" });
+                setFormData({
+                  ...formData,
+                  expiresInUnit: "d",
+                });
                 setIsExpiryOpen(false);
               }}
               className="w-full text-left px-4 py-2 text-zinc-300 hover:bg-zinc-900 transition-colors"
@@ -94,7 +109,7 @@ function JwtExpiry({formData, setFormData}) {
         </div>
       </div>
 
-      <p className="mt-2 text-xs text-zinc-500">
+      <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
         Short expiry (e.g. 15m–1h) is recommended for better security.
       </p>
     </div>
