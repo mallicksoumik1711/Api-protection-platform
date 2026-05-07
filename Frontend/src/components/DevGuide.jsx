@@ -72,7 +72,7 @@ res.json({
   return (
     <div className="max-w-6xl mx-auto mt-12">
       {/* TAB HEADER */}
-      <div className="flex gap-2 border-b border-zinc-800 overflow-x-auto">
+      <div className="flex gap-2 overflow-x-auto">
         {Object.keys(tabs).map((key) => (
           <button
             key={key}
@@ -80,7 +80,7 @@ res.json({
             className={`px-4 py-2 text-sm whitespace-nowrap transition
               ${
                 active === key
-                  ? "text-white border-b-2 border-white"
+                  ? "text-white border-b-1 border-white"
                   : "text-zinc-500 hover:text-white"
               }`}
           >
@@ -90,11 +90,11 @@ res.json({
       </div>
 
       {tabs[active].note && (
-        <div className="flex items-center justify-between gap-3 bg-zinc-900/60 border border-zinc-800 rounded-md px-3 py-2 text-xs text-zinc-400 mt-2">
-            <div className="flex items-center gap-2">
-                <BadgeAlert size={14} className="text-amber-500/90"/>
-          <span>{tabs[active].note}</span>
-            </div>
+        <div className="flex items-center justify-between gap-3 bg-zinc-900/60 border border-zinc-900 rounded-md px-3 py-2 text-xs text-zinc-400 mt-5">
+          <div className="flex items-center gap-2">
+            <BadgeAlert size={14} className="text-amber-500/90" />
+            <span>{tabs[active].note}</span>
+          </div>
 
           <button
             onClick={() => navigate(tabs[active].route)}
@@ -106,10 +106,10 @@ res.json({
       )}
 
       {/* CONTENT */}
-      <div className="bg-zinc-950/60 border border-zinc-800 rounded-lg p-5 mt-4 space-y-4">
+      <div className="rounded-lg mt-4 space-y-4 mb-5">
         <p className="text-sm text-zinc-400">{tabs[active].desc}</p>
 
-        <pre className="bg-zinc-950/80 border border-zinc-800 rounded-md p-4 text-[13px] text-zinc-300 overflow-x-auto">
+        <pre className="bg-zinc-950/90 rounded-md p-4 text-[13px] text-zinc-300 overflow-x-auto">
           {tabs[active].code}
         </pre>
       </div>
