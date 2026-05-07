@@ -138,6 +138,7 @@ export default function Sidebar() {
             icon={<FolderCog size={16} />}
             text="Integration"
             path="/integration"
+            setIsOpen={setIsOpen}
           />
           <SidebarItem
             icon={<FileText size={16} />}

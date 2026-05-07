@@ -4,13 +4,7 @@ import { useNavigate } from "react-router";
 export default function UserMenu({ user, capitalize }) {
   const navigate = useNavigate();
   return (
-    <div
-      className="
-      absolute bottom-12 right-0 
-      w-64 bg-zinc-950 border border-zinc-800 
-      rounded-xl shadow-2xl p-2 z-50
-    "
-    >
+    <div className="absolute bottom-12 right-0 w-58 sm:w-64 bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl p-2 z-50">
       {/* User Info */}
       <div
         onClick={() => navigate("/profile-page")}
