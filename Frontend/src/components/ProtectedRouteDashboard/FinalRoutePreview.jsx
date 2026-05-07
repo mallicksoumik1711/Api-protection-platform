@@ -34,7 +34,7 @@ function FinalRoutePreview({ routes }) {
             {routes.map((routeItem, index) => (
               <div
                 key={index}
-                className="group flex items-center gap-2 overflow-hidden hover:bg-zinc-900/40 px-2 py-1 rounded transition"
+                className="group flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-2 overflow-hidden hover:bg-zinc-900/40 px-2 py-2 rounded transition"
               >
                 {/* METHOD */}
                 <span
@@ -49,13 +49,13 @@ function FinalRoutePreview({ routes }) {
                 {/* PATH */}
                 <span
                   title={buildRoute(routeItem.route)}
-                  className="text-zinc-300 truncate max-w-[40%]"
+                  className="text-zinc-300 break-all sm:truncate sm:max-w-[40%]"
                 >
                   {buildRoute(routeItem.route)}
                 </span>
 
                 {/* META INFO */}
-                <span className="text-zinc-600 ml-3">
+                <span className="text-zinc-600 sm:ml-3 text-[11px] sm:text-xs">
                   • {routeItem.protection?.rules || "None"}
                   {routeItem.security?.rateLimiting?.enabled && " • RL"}
                   {routeItem.security?.botProtection?.enabled && " • BOT"}

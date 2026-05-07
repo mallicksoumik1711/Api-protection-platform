@@ -103,8 +103,8 @@ function ProtectedApi() {
         features={DashboardHeaderValues.protectedApi.features}
       />
 
-      <div className="mt-10 max-w-6xl mx-auto flex justify-between gap-10 mb-5">
-        <div className="h-fit top-6 sticky w-1/2 bg-zinc-950 border border-zinc-800 rounded-lg p-7 shadow-lg">
+      <div className="mt-10 max-w-6xl mx-auto flex flex-col xl:flex-row gap-6 xl:gap-10 mb-5">
+        <div className="h-fit xl:sticky xl:top-6 w-full xl:w-1/2 bg-zinc-950 border border-zinc-800 rounded-lg p-4 sm:p-6 lg:p-7 shadow-lg">
           <h2 className="font-semibold text-white mb-1">Add Protected Route</h2>
           <p className="text-sm text-zinc-500 mb-8">
             Configure how this specific route should be protected by the
@@ -154,7 +154,7 @@ function ProtectedApi() {
           </button>
         </div>
 
-        <div className="flex flex-col h-fit sticky top-6 w-1/2">
+        <div className="flex flex-col h-fit xl:sticky xl:top-6 w-full xl:w-1/2">
           {/* route structure static for now */}
           <RouteStructure routes={routes} />
 

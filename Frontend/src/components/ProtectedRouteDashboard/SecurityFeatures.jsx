@@ -8,24 +8,31 @@ function SecurityFeatures({ formData, setFormData }) {
       </h3>
 
       <div className="space-y-3">
+
         {/* Rate Limiting */}
-        <label className="group flex items-center justify-between bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-5 py-2 cursor-pointer transition-all duration-200">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 flex items-center justify-center">
+        <label className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-4 sm:px-5 py-3 cursor-pointer transition-all duration-200">
+          
+          {/* LEFT CONTENT */}
+          <div className="flex items-start sm:items-center gap-3 min-w-0">
+            <div className="w-8 h-8 flex items-center justify-center shrink-0">
               <span className="text-amber-400">
                 <TriangleAlert className="w-4 h-4" />
               </span>
             </div>
-            <div>
-              <span className="text-sm text-white font-medium">
+
+            <div className="min-w-0">
+              <span className="text-sm text-white font-medium block">
                 Apply Rate Limiting
               </span>
-              <p className="text-xs text-zinc-500 mt-0.5">
+
+              <p className="text-xs text-zinc-500 mt-0.5 leading-relaxed break-words">
                 Limit requests per minute
               </p>
             </div>
           </div>
-          <div className="relative">
+
+          {/* TOGGLE */}
+          <div className="relative self-end sm:self-auto shrink-0 w-full sm:w-auto">
             <input
               type="checkbox"
               checked={formData.security.rateLimiting.enabled}
@@ -42,29 +49,37 @@ function SecurityFeatures({ formData, setFormData }) {
               }
               className="peer sr-only"
             />
+
             <div className="w-11 h-6 bg-zinc-800 peer-checked:bg-emerald-600 rounded-full transition-all duration-300"></div>
+
             <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 peer-checked:translate-x-5"></div>
           </div>
         </label>
 
         {/* Block Bots */}
-        <label className="group flex items-center justify-between bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-5 py-2 cursor-pointer transition-all duration-200">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 flex items-center justify-center">
+        <label className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-4 sm:px-5 py-3 cursor-pointer transition-all duration-200">
+          
+          {/* LEFT CONTENT */}
+          <div className="flex items-start sm:items-center gap-3 min-w-0">
+            <div className="w-8 h-8 flex items-center justify-center shrink-0">
               <span className="text-red-400">
                 <Construction className="w-4 h-4" />
               </span>
             </div>
-            <div>
-              <span className="text-sm text-white font-medium">
+
+            <div className="min-w-0">
+              <span className="text-sm text-white font-medium block">
                 Block Bots &amp; Crawlers
               </span>
-              <p className="text-xs text-zinc-500 mt-0.5">
+
+              <p className="text-xs text-zinc-500 mt-0.5 leading-relaxed break-words">
                 Block malicious automated traffic
               </p>
             </div>
           </div>
-          <div className="relative">
+
+          {/* TOGGLE */}
+          <div className="relative self-end sm:self-auto shrink-0 w-full sm:w-auto">
             <input
               type="checkbox"
               checked={formData.security.botProtection.enabled}
@@ -81,29 +96,37 @@ function SecurityFeatures({ formData, setFormData }) {
               }
               className="peer sr-only"
             />
+
             <div className="w-11 h-6 bg-zinc-800 peer-checked:bg-emerald-600 rounded-full transition-all duration-300"></div>
+
             <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 peer-checked:translate-x-5"></div>
           </div>
         </label>
 
         {/* Enable Protection */}
-        <label className="group flex items-center justify-between bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-5 py-2 cursor-pointer transition-all duration-200">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-md flex items-center justify-center">
+        <label className="group flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 bg-black border border-zinc-800 hover:bg-zinc-900/20 rounded-md px-4 sm:px-5 py-3 cursor-pointer transition-all duration-200">
+          
+          {/* LEFT CONTENT */}
+          <div className="flex items-start sm:items-center gap-3 min-w-0">
+            <div className="w-8 h-8 rounded-md flex items-center justify-center shrink-0">
               <span className="text-sky-400 text-xl">
                 <LockKeyhole className="w-4 h-4" />
               </span>
             </div>
-            <div>
-              <span className="text-sm text-white font-medium">
+
+            <div className="min-w-0">
+              <span className="text-sm text-white font-medium block">
                 Enable Protection
               </span>
-              <p className="text-xs text-zinc-500 mt-0.5">
+
+              <p className="text-xs text-zinc-500 mt-0.5 leading-relaxed break-words">
                 Activate middleware for this route
               </p>
             </div>
           </div>
-          <div className="relative">
+
+          {/* TOGGLE */}
+          <div className="relative self-end sm:self-auto shrink-0 w-full sm:w-auto">
             <input
               type="checkbox"
               checked={formData.security.protectionEnabled}
@@ -118,10 +141,13 @@ function SecurityFeatures({ formData, setFormData }) {
               }
               className="peer sr-only"
             />
+
             <div className="w-11 h-6 bg-zinc-800 peer-checked:bg-emerald-600 rounded-full transition-all duration-300"></div>
+
             <div className="absolute left-0.5 top-0.5 w-5 h-5 bg-white rounded-full shadow-md transition-all duration-300 peer-checked:translate-x-5"></div>
           </div>
         </label>
+
       </div>
     </div>
   );

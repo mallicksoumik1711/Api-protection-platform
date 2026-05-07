@@ -10,7 +10,7 @@ function RouteSetup({ formData, setFormData }) {
         <label className="text-xs uppercase tracking-widest text-zinc-300 block mb-2">
           Base Route <span className="text-red-400">*</span>
         </label>
-        <div className="flex items-center bg-black border border-zinc-900 rounded-md px-3 py-3 text-sm text-zinc-300">
+        <div className="flex items-center bg-black border border-zinc-900 rounded-md px-3 sm:px-4 py-3 text-sm text-zinc-300">
           <span className="text-zinc-500 mr-1">/</span>
           <input
             type="text"
@@ -38,7 +38,7 @@ function RouteSetup({ formData, setFormData }) {
         <label className="text-xs uppercase tracking-widest text-zinc-300 block mb-2">
           Sub Route <span className="text-zinc-500">(optional)</span>
         </label>
-        <div className="flex items-center bg-black border border-zinc-900 rounded-md px-3 py-3 text-sm text-zinc-300">
+        <div className="flex items-center bg-black border border-zinc-900 rounded-md px-3 sm:px-4 py-3 text-sm text-zinc-300">
           <span className="text-zinc-500 mr-1">/</span>
           <input
             type="text"
@@ -66,7 +66,7 @@ function RouteSetup({ formData, setFormData }) {
         <label className="text-xs uppercase tracking-widest text-zinc-300 block mb-2">
           Child Route <span className="text-zinc-500">(optional)</span>
         </label>
-        <div className="flex items-center bg-black border border-zinc-900 rounded-md px-3 py-3 text-sm text-zinc-300">
+        <div className="flex items-center bg-black border border-zinc-900 rounded-md px-3 sm:px-4 py-3 text-sm text-zinc-300">
           <span className="text-zinc-500 mr-1">/</span>
           <input
             type="text"

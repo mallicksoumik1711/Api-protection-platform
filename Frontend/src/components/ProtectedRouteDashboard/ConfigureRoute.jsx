@@ -61,8 +61,8 @@ function ConfigureRoute() {
         </div>
       </div>
 
-      <div className="flex items-center justify-between mt-8 pt-6 border-t border-zinc-800 text-xs text-zinc-500">
-        <div className="flex items-center gap-4">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mt-8 pt-6 border-t border-zinc-800 text-xs text-zinc-500">
+        <div className="flex flex-wrap items-center gap-2 sm:gap-4">
           <span>Secure APIs</span>
           <span>
             <Dot className="w-4" />
