@@ -125,69 +125,69 @@ console.log("JWT Token:", token);
       <div className="mt-6 max-w-6xl mx-auto flex flex-col lg:flex-row pr-0 sm:pr-6 gap-6">
         {/* Project Info */}
         <div className="w-full lg:w-1/2 h-fit lg:sticky lg:top-6">
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className=" flex-shrink-0">
-                <span className="">
-                  <User size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <User size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Name</p>
-                <p className="text-xs text-zinc-500">Project display name</p>
+                <p className="text-xs text-zinc-500 hidden sm:block">
+                  Project display name
+                </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {project?.name ?? "No name available"}
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <NotebookPen size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <NotebookPen size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Description</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Short summary of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {project?.description ?? "No description available"}
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className=" text-sm">
-                  <SquareMousePointer size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <SquareMousePointer size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">ProjectId</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Unique identifier for the project
                 </p>
               </div>
             </div>
 
-            <div className="flex gap-5 items-center">
-              <div className="text-sm text-zinc-400">
+            <div className="flex items-center gap-2 sm:gap-3 min-w-0 max-w-[45%]">
+              <div className="text-xs sm:text-sm text-zinc-400 truncate text-right">
                 {project?.projectId ?? "No project ID available"}
               </div>
+
               {project?.projectId && (
                 <div
                   onClick={() =>
                     handleCopy(project?.projectId, setProjectCopied)
                   }
-                  className="cursor-pointer"
+                  className="cursor-pointer flex-shrink-0"
                 >
                   {projectCopied ? (
                     <CopyCheck size={16} className="text-zinc-400" />
@@ -199,7 +199,7 @@ console.log("JWT Token:", token);
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+          <div className="flex items-center justify-between gap-2 mb-3">
             <h3 className="text-sm font-semibold text-white">
               Project core details
             </h3>
@@ -209,85 +209,83 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <Unlink2 size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <Unlink2 size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Base URL</p>
-                <p className="text-xs text-zinc-500">Primary API endpoint</p>
+                <p className="text-xs text-zinc-500 hidden sm:block">
+                  Primary API endpoint
+                </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {project?.baseUrl ?? "No base URL available"}
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className=" text-sm">
-                  <Workflow size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <Workflow size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Framework</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Technology stack used in the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {project?.framework ?? "No framework specified"}
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className=" text-sm">
-                  <Globe size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <Globe size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Environment</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Deployment environment of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {project?.environment ?? "No environment specified"}
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <Stethoscope size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <Stethoscope size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Status</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Current status of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {project?.status ?? "No status available"}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+          <div className="flex items-center justify-between gap-2 mb-3">
             <h3 className="text-sm font-semibold text-white">
               Middleware settings
             </h3>
@@ -297,72 +295,68 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <ShieldCheck size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <ShieldCheck size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Protected APIs</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Current status of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
-              {" "}
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {protectedRoutes?.length ?? 0} APIs protected
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <Braces size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <Braces size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">JWT Setting</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Current status of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {jwtSettings?.enabled
                 ? `${jwtSettings.algorithm} • ${jwtSettings.expiresIn}`
                 : "Disabled"}
             </div>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <TriangleAlert size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 mb-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <TriangleAlert size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Rate Limits</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Current status of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               {rateLimit
                 ? `${rateLimit.limit} req / ${rateLimit.windowTime}s`
                 : "Disabled"}
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+          <div className="flex items-center justify-between gap-2 mb-3">
             <h3 className="text-sm font-semibold text-white">Validation URL</h3>
 
             <button className="text-xs text-zinc-500 hover:text-white flex items-center gap-1">
@@ -370,35 +364,35 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 hover:border-zinc-800 transition">
-            <div className="flex items-center gap-4">
-              <div className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-sm">
-                  <UngroupIcon size={18} />
-                </span>
+          <div className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 flex items-center justify-between gap-3 hover:border-zinc-800 transition">
+            <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+              <div className="w-8 h-8 flex items-center justify-center flex-shrink-0 bg-zinc-700/30 rounded-full">
+                <UngroupIcon size={18} />
               </div>
-              <div>
+
+              <div className="min-w-0">
                 <p className="text-sm font-medium text-white">Validation URL</p>
-                <p className="text-xs text-zinc-500">
+                <p className="text-xs text-zinc-500 hidden sm:block">
                   Current status of the project
                 </p>
               </div>
             </div>
 
-            <div className="text-sm text-zinc-400 break-all text-right max-w-[140px] sm:max-w-none">
+            <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
               http://localhost:3000/validate
             </div>
           </div>
         </div>
-        <div className="w-full lg:w-1/2 bg-zinc-950 rounded-md p-4 sm:p-6 border border-zinc-900 h-fit lg:sticky lg:top-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-4">
-            <h3 className="text-sm font-semibold text-white">
+        {/* Middleware Integration */}
+        <div className="w-full lg:w-1/2 bg-zinc-950 rounded-md p-3 sm:p-4 lg:p-6 border border-zinc-900 h-fit lg:sticky lg:top-6 overflow-hidden">
+          <div className="flex items-center justify-between gap-2 mb-4">
+            <h3 className="text-sm sm:text-base font-semibold text-white">
               Integration Middleware
             </h3>
 
             <button
               onClick={() => handleCopy(middlewareCode, setMiddlewareCopied)}
-              className="cursor-pointer text-xs text-zinc-400 hover:text-white flex items-center gap-1"
+              className="cursor-pointer text-xs text-zinc-400 hover:text-white flex items-center gap-1 self-start sm:self-auto flex-shrink-0"
             >
               {middlewareCopied ? (
                 <CopyCheck size={16} className="text-zinc-400" />
@@ -409,18 +403,18 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <pre className="text-[10px] sm:text-xs text-zinc-300 bg-black rounded-md p-3 sm:p-4 overflow-x-auto border border-zinc-800">
+          <pre className="text-[10px] sm:text-xs text-zinc-300 bg-black rounded-md p-3 sm:p-4 overflow-x-auto border border-zinc-800 whitespace-pre-wrap break-words max-w-full">
             <code>{middlewareCode}</code>
           </pre>
 
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mt-4">
-            <h3 className="text-sm font-semibold text-white">
+          <div className="flex items-center justify-between gap-2 mt-4">
+            <h3 className="text-sm sm:text-base font-semibold text-white">
               Token generation
             </h3>
 
             <button
               onClick={() => handleCopy(tokenCode, setTokenCopied)}
-              className="cursor-pointer text-xs text-zinc-400 hover:text-white flex items-center gap-1 flex-shrink-0"
+              className="cursor-pointer text-xs text-zinc-400 hover:text-white flex items-center gap-1 flex-shrink-0 self-start sm:self-auto"
             >
               {tokenCopied ? (
                 <CopyCheck size={14} className="text-zinc-400" />
@@ -431,26 +425,30 @@ console.log("JWT Token:", token);
             </button>
           </div>
 
-          <p className="text-[11px] text-yellow-500 mt-1 flex items-center gap-1">
-            <div>
+          <p className="text-[10px] sm:text-[11px] text-yellow-500 mt-2 flex items-start gap-2 leading-relaxed">
+            <span className="mt-[2px] flex-shrink-0">
               <TriangleAlert size={12} />
-            </div>
-            Run this on your backend after user login/signup. Do not run this in
-            frontend.
+            </span>
+
+            <span>
+              Run this on your backend after user login/signup. Do not run this
+              in frontend.
+            </span>
           </p>
 
-          <pre className="text-xs text-zinc-300 bg-black rounded-md p-4 overflow-x-auto border border-zinc-800 mt-4">
+          <pre className="text-[10px] sm:text-xs text-zinc-300 bg-black rounded-md p-3 sm:p-4 overflow-x-auto border border-zinc-800 mt-4 whitespace-pre-wrap break-words max-w-full">
             <code>{tokenCode}</code>
           </pre>
 
-          <div className="bg-zinc-950 rounded-md p-6 border border-zinc-900 mt-4">
-            <h3 className="text-sm font-semibold text-white mb-4">
+          <div className="bg-zinc-950 rounded-md p-4 sm:p-5 lg:p-6 border border-zinc-900 mt-4">
+            <h3 className="text-sm sm:text-base font-semibold text-white mb-4">
               How to Setup
             </h3>
 
-            <div className="space-y-3 sm:space-y-4 text-xs text-zinc-400">
+            <div className="space-y-3 sm:space-y-4 text-[11px] sm:text-xs text-zinc-400 leading-relaxed">
               <div>
                 <p className="text-white font-medium">1. Add Middleware</p>
+
                 <p>
                   Copy the middleware above and paste it in your backend
                   (Express, Node.js).
@@ -461,6 +459,7 @@ console.log("JWT Token:", token);
                 <p className="text-white font-medium">
                   2. Exclude Public Routes
                 </p>
+
                 <p>
                   Ensure routes like /login or /signup are excluded from
                   middleware.
@@ -471,6 +470,7 @@ console.log("JWT Token:", token);
                 <p className="text-white font-medium">
                   3. Generate Token After Login
                 </p>
+
                 <p>
                   Call /apiauth/token from your backend after user
                   authentication.
@@ -481,6 +481,7 @@ console.log("JWT Token:", token);
                 <p className="text-white font-medium">
                   4. Send Token in Requests
                 </p>
+
                 <p>
                   Include Authorization: Bearer "your-token" in your API
                   requests.
@@ -489,27 +490,34 @@ console.log("JWT Token:", token);
 
               <div>
                 <p className="text-white font-medium">5. Start your server</p>
+
                 <p>Run your backend and test protected routes.</p>
               </div>
             </div>
           </div>
 
-          <div className="text-xs text-zinc-400 mt-4">
+          <div className="text-[11px] sm:text-xs text-zinc-400 mt-4 leading-relaxed">
             <p className="text-white font-medium mb-2">What Happens Next?</p>
+
             <p>
               Every request will first go through our validation system. If it
               passes all checks (JWT, rate limits, etc.), your API will execute.
               Otherwise, it will be blocked.
             </p>
           </div>
-          <p className="text-[11px] text-yellow-500 mt-3 flex items-center gap-1">
-            <div>
+
+          <p className="text-[10px] sm:text-[11px] text-yellow-500 mt-3 flex items-start gap-2 leading-relaxed">
+            <span className="mt-[2px] flex-shrink-0">
               <TriangleAlert size={12} />
-            </div>
-            Make sure to keep your API key secure. Do not expose it in frontend
-            code.
+            </span>
+
+            <span>
+              Make sure to keep your API key secure. Do not expose it in
+              frontend code.
+            </span>
           </p>
-          <p className="text-[11px] text-zinc-500 mt-2">
+
+          <p className="text-[10px] sm:text-[11px] text-zinc-500 mt-2 leading-relaxed">
             Tip: Use Postman or curl to test your protected endpoints.
           </p>
         </div>
