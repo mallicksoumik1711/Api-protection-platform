@@ -61,7 +61,7 @@ export default function Sidebar() {
     <>
       <button
         onClick={() => setIsOpen(true)}
-        className="md:hidden fixed top-4 left-4 z-50 bg-zinc-900 p-2 rounded-md border border-zinc-800"
+        className="md:hidden fixed top-3 left-3 z-50 p-2"
       >
         <Menu size={20} />
       </button>
@@ -205,7 +205,14 @@ export default function Sidebar() {
               <MoreHorizontal size={18} />
             </button>
 
-            {showMenu && <UserMenu user={user} capitalize={capitalize} setIsOpen={setIsOpen} setShowMenu={setShowMenu} />}
+            {showMenu && (
+              <UserMenu
+                user={user}
+                capitalize={capitalize}
+                setIsOpen={setIsOpen}
+                setShowMenu={setShowMenu}
+              />
+            )}
           </div>
         </div>
       </aside>
