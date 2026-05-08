@@ -1,13 +1,17 @@
 import { LogOut, Settings } from "lucide-react";
 import { useNavigate } from "react-router";
 
-export default function UserMenu({ user, capitalize }) {
+export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
   const navigate = useNavigate();
   return (
     <div className="absolute bottom-12 right-0 w-58 sm:w-64 bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl p-2 z-50">
       {/* User Info */}
       <div
-        onClick={() => navigate("/profile-page")}
+        onClick={() => {
+          navigate("/profile-page");
+          setIsOpen(false);
+          setShowMenu(false);
+        }}
         className="px-3 py-2 flex justify-between items-center hover:bg-zinc-800 rounded-lg cursor-pointer"
       >
         <div>
@@ -37,9 +41,10 @@ export default function UserMenu({ user, capitalize }) {
   );
 }
 
-function Item({ text, danger, icon }) {
+function Item({ text, danger, icon, onClick }) {
   return (
     <div
+      onClick={onClick}
       className={`px-1 py-2 rounded-md cursor-pointer flex items-center justify-between
       ${
         danger

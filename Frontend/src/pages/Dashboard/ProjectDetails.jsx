@@ -94,37 +94,44 @@ function ProjectDetails() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 hover:border-zinc-800 transition"
+              className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 hover:border-zinc-800 transition"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
+              <div className="flex items-center justify-between gap-3">
                 {/* LEFT */}
-                <div className="flex items-start sm:items-center gap-3 sm:gap-4">
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                   <div
-                    className={`w-9 h-9 rounded-lg bg-${item.color}-500/10 flex items-center justify-center`}
+                    className={`min-w-8 min-h-8 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-${item.color}-500/10 flex items-center justify-center`}
                   >
                     <span className={`text-${item.color}-400`}>
                       {item.icon}
                     </span>
                   </div>
 
-                  <div>
-                    <p className="text-sm font-medium text-white">
+                  <div className="min-w-0">
+                    <p className="text-sm sm:font-medium text-white truncate">
                       {item.title}
                     </p>
-                    <p className="text-xs text-zinc-500">{item.desc}</p>
+
+                    {/* Hide desc on mobile */}
+                    <p className="hidden sm:block text-xs text-zinc-500">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
 
                 {/* RIGHT */}
-                <div className="flex items-center gap-3 text-sm text-zinc-400 break-all">
-                  <span>{item.value}</span>
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0 max-w-[45%] sm:max-w-none">
+                  <span className="text-xs sm:text-sm text-zinc-400 truncate">
+                    {item.value}
+                  </span>
+
                   {item.copy && (
                     <button
                       onClick={() => handleCopy(projectId, setProjectCopied)}
-                      className="text-xs text-zinc-400 transition cursor-pointer"
+                      className="flex-shrink-0 text-zinc-400 hover:text-white transition cursor-pointer"
                     >
                       {projectCopied ? (
-                        <CopyCheck className="w-4 h-4" />
+                        <CopyCheck className="w-4 h-4 text-emerald-400" />
                       ) : (
                         <Copy className="w-4 h-4" />
                       )}
@@ -138,7 +145,7 @@ function ProjectDetails() {
           {/* SECTION HEADER */}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-4">
             <h3 className="text-sm font-semibold text-white">
-              Internal details by the company
+              Core description of the Project
             </h3>
 
             <button className="text-xs text-zinc-500 hover:text-white flex items-center gap-1">
@@ -186,28 +193,35 @@ function ProjectDetails() {
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-zinc-950 border border-zinc-900 rounded-md px-4 sm:px-5 py-3 hover:border-zinc-800 transition"
+              className="bg-zinc-950 border border-zinc-900 rounded-md px-3 sm:px-5 py-3 hover:border-zinc-800 transition"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-0">
-                <div className="flex items-start sm:items-center gap-3 sm:gap-4">
+              <div className="flex items-center justify-between gap-3">
+                {/* LEFT */}
+                <div className="flex items-center gap-3 sm:gap-4 min-w-0">
                   <div
-                    className={`w-9 h-9 rounded-lg bg-${item.color}-500/10 flex items-center justify-center`}
+                    className={`min-w-8 min-h-8 w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-${item.color}-500/10 flex items-center justify-center`}
                   >
                     <span className={`text-${item.color}-400`}>
                       {item.icon}
                     </span>
                   </div>
 
-                  <div>
-                    <p className="text-sm font-medium text-white">
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium text-white truncate">
                       {item.title}
                     </p>
-                    <p className="text-xs text-zinc-500">{item.desc}</p>
+
+                    <p className="hidden sm:block text-xs text-zinc-500">
+                      {item.desc}
+                    </p>
                   </div>
                 </div>
 
-                <div className="text-sm text-zinc-400 break-all">
-                  {item.value}
+                {/* RIGHT */}
+                <div className="min-w-0 max-w-[45%] sm:max-w-none">
+                  <p className="text-xs sm:text-sm text-zinc-400 truncate text-right">
+                    {item.value}
+                  </p>
                 </div>
               </div>
             </div>
