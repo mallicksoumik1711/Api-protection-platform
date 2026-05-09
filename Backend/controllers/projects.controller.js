@@ -62,6 +62,43 @@ const getProjects = async (req, res) => {
   }
 };
 
+const deleteProject = async (req, res) => {
+  try {
+    const project = await projectModel.findOneAndDelete({
+      projectId: req.params.id,
+      ownerId: req.user.id,
+    });
+
+    if (!project) {
+      return res.status(404).send({
+        success: false,
+        message: "Project not found.",
+      });
+    }
+
+    // future:
+    // delete api keys
+    // delete logs
+    // delete analytics
+    // delete jwt settings
+    // delete rate limits
+    // delete integrations
+    // etc.
+
+    res.status(200).send({
+      success: true,
+      message: "Project deleted successfully.",
+      deletedProjectId: project.projectId,
+    });
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      message: "Internal server error.",
+      error: error.message,
+    });
+  }
+};
+
 const toggleFavourite = async (req, res) => {
   try {
     const project = await projectModel.findOne({
@@ -95,4 +132,5 @@ module.exports = {
   createProject,
   getProjects,
   toggleFavourite,
+  deleteProject,
 };
