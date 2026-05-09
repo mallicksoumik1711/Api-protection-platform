@@ -5,10 +5,8 @@ import {
   Grid,
   List,
   MoreHorizontal,
-  HeartMinus,
   Copy,
   CopyCheck,
-  Cog,
   Link2,
   ChartSpline,
   Trash2,
@@ -18,11 +16,11 @@ import {
 } from "lucide-react";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
-import { getProjects, toggleFavourite } from "../../api/projects";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { setProject } from "../../store/projectSlice";
+import { getProjects, deleteProject, toggleFavourite } from "../../api/projects";
+import { useSelector, useDispatch } from "react-redux";
+import { setProject, clearProject } from "../../store/projectSlice";
 import handleCopy from "../../utils/HelperFunctions/handleCopy";
+import DeleteProjectPopup from "../../components/DeleteProjectPopup";
 import { toast } from "react-hot-toast";
 
 function FrontPage() {
@@ -31,6 +29,7 @@ function FrontPage() {
   const [searchProject, setSearchProject] = useState("");
   const [copied, setCopied] = useState(null);
   const navigate = useNavigate();
+  const [projectToDelete, setProjectToDelete] = useState(null);
   const selectedProject = useSelector(
     (state) => state.project.selectedProjectId,
   );
@@ -118,7 +117,9 @@ function FrontPage() {
           {/* Main Grid */}
           <div className="grid lg:grid-cols-1 gap-6">
             {/* Projects Card */}
-            <h2 className="text-xs font-medium uppercase sm:mt-0 mt-2">Projects</h2>
+            <h2 className="text-xs font-medium uppercase sm:mt-0 mt-2">
+              Projects
+            </h2>
 
             {filteredProjects.length > 0 ? (
               <div className="grid sm:grid-cols-2 gap-4">
@@ -181,7 +182,7 @@ function FrontPage() {
                                     if (isNowFavourite) {
                                       toast.success("Added to favourites");
                                     } else {
-                                      toast("Removed from favourites");
+                                      toast.success("Removed from favourites");
                                     }
                                   } catch (err) {
                                     console.error(err);
@@ -229,7 +230,14 @@ function FrontPage() {
                                 <div>View Analytics</div>
                               </button>
 
-                              <button className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 border-t border-zinc-800 flex items-center gap-2">
+                              <button
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setProjectToDelete(project);
+                                  setOpenMenuId(null);
+                                }}
+                                className="w-full text-left px-4 py-2 text-red-400 hover:bg-red-500/10 border-t border-zinc-800 flex items-center gap-2"
+                              >
                                 <div className="cursor-pointer">
                                   <Trash2 size={18} />
                                 </div>
@@ -311,6 +319,28 @@ function FrontPage() {
           </p>
         </div>
       </div>
+
+      {projectToDelete && (
+        <DeleteProjectPopup
+          project={projectToDelete}
+          onClose={() => setProjectToDelete(null)}
+          onConfirm={async () => {
+            try{
+              await deleteProject(projectToDelete.projectId);
+              setProjects((prev) => prev.filter((p) => p.projectId !== projectToDelete.projectId));
+              if(selectedProject === projectToDelete.projectId){
+                dispatch(clearProject());
+              }
+              toast.success("Project deleted successfully");
+              navigate("/frontpage");
+            } catch (error) {
+              console.error("Error deleting project:", error);
+              toast.error("Failed to delete project");
+            }
+            setProjectToDelete(null);
+          }}
+        />
+      )}
     </div>
   );
 }
