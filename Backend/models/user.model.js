@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema({
     status: {
         type: String,
         enum: ["Active", "Inactive"],
-        default: "Inactive"
+        default: "Active"
     },
     lastLogin: {
         type: Date
