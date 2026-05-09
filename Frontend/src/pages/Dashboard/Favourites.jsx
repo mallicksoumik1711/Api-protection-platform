@@ -288,7 +288,7 @@ function Favourites() {
                 ))}
               </div>
             ) : (
-              <div className="bg-zinc-950 border border-zinc-900 flex flex-col items-center py-10 rounded-lg text-zinc-500 gap-5">
+              <div className="bg-zinc-950 border border-zinc-900 flex flex-col sm:flex-row text-center sm:text-left justify-center items-center py-10 lg:py-30 rounded-lg text-zinc-500 gap-5 px-4 sm:mt-0 mt-10">
                 <Ghost />
                 <p>No favourite projects yet.</p>
                 <Link to="/create-project" className="text-blue-400">
