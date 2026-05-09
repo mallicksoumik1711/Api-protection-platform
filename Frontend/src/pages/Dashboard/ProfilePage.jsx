@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   Copy,
   CopyCheck,
@@ -13,21 +13,23 @@ import {
 
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
+import { getUser } from "../../api/auth";
 
 function ProfilePage() {
   const [copiedField, setCopiedField] = useState("");
+  const [user, setUser] = useState(null);
 
-  // USER DATA
-  const userData = {
-    _id: "6953efef879395f2afb22559",
-    name: "test1",
-    email: "test1@test.com",
-    password: "$2b$10$rGnN.j.hgHA7YS70GlyXBuFgAgyQtoNihCaxgqBMKCAO64yAho3W2",
-    status: "Inactive",
-    createdAt: "2025-12-30T15:29:51.985+00:00",
-    updatedAt: "2025-12-30T15:29:51.985+00:00",
-    __v: 0,
-  };
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const data = await getUser();
+        setUser(data);
+      } catch (error) {
+        console.log("Error fetching user:", error.message);
+      }
+    };
+    fetchUser();
+  }, []);
 
   const handleCopy = async (text, field) => {
     await navigator.clipboard.writeText(text);
@@ -45,21 +47,21 @@ function ProfilePage() {
       color: "purple",
       title: "Name",
       desc: "Username of the account",
-      value: userData.name,
+      value: user?.name,
     },
     {
       icon: <Mail size={18} />,
       color: "amber",
       title: "Email",
       desc: "User email address",
-      value: userData.email,
+      value: user?.email,
     },
     {
       icon: <SquareMousePointer size={18} />,
       color: "emerald",
       title: "User ID",
       desc: "Unique identifier for the user",
-      value: userData._id,
+      value: user?._id,
       copy: true,
       field: "_id",
     },
@@ -68,38 +70,38 @@ function ProfilePage() {
       color: "blue",
       title: "Account Status",
       desc: "Current status of the user account",
-      value: userData.status,
+      value: user?.status,
     },
     {
       icon: <KeyRound size={18} />,
       color: "rose",
       title: "Password Hash",
       desc: "Encrypted user password",
-      value: `${userData.password.slice(0, 25)}...`,
+      value: `${user?.password.slice(0, 25)}...`,
       copy: true,
       field: "password",
-      fullValue: userData.password,
+      fullValue: user?.password,
     },
     {
       icon: <CalendarDays size={18} />,
       color: "cyan",
       title: "Created At",
       desc: "Account creation timestamp",
-      value: new Date(userData.createdAt).toLocaleString(),
+      value: new Date(user?.createdAt).toLocaleString(),
     },
     {
       icon: <CalendarDays size={18} />,
       color: "orange",
       title: "Updated At",
       desc: "Last updated timestamp",
-      value: new Date(userData.updatedAt).toLocaleString(),
+      value: new Date(user?.updatedAt).toLocaleString(),
     },
     {
       icon: <Database size={18} />,
       color: "pink",
       title: "Schema Version",
       desc: "MongoDB document version",
-      value: userData.__v,
+      value: user?.__v,
     },
   ];
 

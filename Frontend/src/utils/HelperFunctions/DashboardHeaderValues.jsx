@@ -24,6 +24,9 @@ import {
   Star,
   Heart,
   Bookmark,
+  UserPen,
+  SquareAsterisk,
+  ChartCandlestick,
 } from "lucide-react";
 
 const DashboardHeaderValues = {
@@ -222,7 +225,8 @@ const DashboardHeaderValues = {
   favourites: {
     tag: "Favourites",
     title: "Starred Projects",
-    description: "Mark your most important projects to keep them easily accessible. Stay focused, and maintain better control over your workflow with a personalized collection of your favorite builds.",
+    description:
+      "Mark your most important projects to keep them easily accessible. Stay focused, and maintain better control over your workflow with a personalized collection of your favorite builds.",
     features: [
       {
         icon: Star,
@@ -273,19 +277,19 @@ const DashboardHeaderValues = {
       "View and manage your user profile information, including personal details, account settings, and preferences.",
     features: [
       {
-        icon: ChartNoAxesCombinedIcon,
-        label: "Track API usage",
+        icon: UserPen,
+        label: "Manage Profile",
         color: "text-green-400",
       },
       {
-        icon: Bug,
-        label: "Track Errors",
-        color: "text-red-400",
+        icon: SquareAsterisk,
+        label: "Access Details",
+        color: "text-purple-400",
       },
       {
-        icon: Cctv,
-        label: "Monitor Security",
-        color: "text-violet-400",
+        icon: ChartCandlestick,
+        label: "Account Analytics",
+        color: "text-sky-400",
       },
     ],
   },
