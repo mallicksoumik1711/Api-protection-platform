@@ -1,4 +1,7 @@
 const projectModel = require("../models/projects.model");
+const jwtSettingsModel = require("../models/jwtSettings.model");
+const rateLimitModel = require("../models/rateLimit.model");
+const protectedRouteModel = require("../models/protectedRoute.model");
 
 const createProject = async (req, res) => {
   try {
@@ -64,7 +67,7 @@ const getProjects = async (req, res) => {
 
 const deleteProject = async (req, res) => {
   try {
-    const project = await projectModel.findOneAndDelete({
+    const project = await projectModel.findOne({
       projectId: req.params.id,
       ownerId: req.user.id,
     });
@@ -76,18 +79,27 @@ const deleteProject = async (req, res) => {
       });
     }
 
-    // future:
-    // delete api keys
-    // delete logs
-    // delete analytics
-    // delete jwt settings
-    // delete rate limits
-    // delete integrations
-    // etc.
+    // Delete JWT settings
+    await jwtSettingsModel.deleteOne({
+      projectId: project.projectId,
+    });
+
+    // Delete rate limit settings
+    await rateLimitModel.deleteOne({
+      projectId: project.projectId,
+    });
+
+    // Delete all protected routes
+    await protectedRouteModel.deleteMany({
+      projectId: project.projectId,
+    });
+
+    // Finally delete project
+    await project.deleteOne();
 
     res.status(200).send({
       success: true,
-      message: "Project deleted successfully.",
+      message: "Project and related configurations deleted successfully.",
       deletedProjectId: project.projectId,
     });
   } catch (error) {
