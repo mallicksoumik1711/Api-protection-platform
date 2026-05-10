@@ -6,6 +6,7 @@ import {
   CopyCheck,
   Globe,
   NotebookPen,
+  Pencil,
   SquareMousePointer,
   Stethoscope,
   Unlink2,
@@ -17,12 +18,21 @@ import { getProjects } from "../../api/projects";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import handleCopy from "../../utils/HelperFunctions/handleCopy";
+import UpdateMenu from "../../components/UpdateMenu";
 
 function ProjectDetails() {
   const { projectId } = useParams();
   const navigate = useNavigate();
   const [project, setProject] = useState(null);
   const [projectCopied, setProjectCopied] = useState(false);
+  const [updateMenu, setUpdateMenu] = useState({
+    open: false,
+    title: "",
+    description: "",
+    value: "",
+    type: "input",
+    options: [],
+  });
 
   useEffect(() => {
     const fetchProject = async () => {
@@ -75,6 +85,8 @@ function ProjectDetails() {
               title: "Name",
               desc: "Project display name",
               value: project.name,
+              isUpdate: true,
+              type: "input",
             },
             {
               icon: <NotebookPen size={18} />,
@@ -82,6 +94,8 @@ function ProjectDetails() {
               title: "Description",
               desc: "Short summary of the project",
               value: project.description || "No description available",
+              isUpdate: true,
+              type: "textarea",
             },
             {
               icon: <SquareMousePointer size={18} />,
@@ -137,6 +151,24 @@ function ProjectDetails() {
                       )}
                     </button>
                   )}
+
+                  {item.isUpdate && (
+                    <button
+                      onClick={() =>
+                        setUpdateMenu({
+                          open: true,
+                          title: `Update ${item.title}`,
+                          description: item.desc,
+                          value: item.value,
+                          type: item.type || "input",
+                          options: item.options || [],
+                        })
+                      }
+                      className="flex-shrink-0 text-zinc-400 hover:text-white transition cursor-pointer"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -161,6 +193,8 @@ function ProjectDetails() {
               title: "Base URL",
               desc: "Primary API endpoint",
               value: project.baseUrl,
+              isUpdate: true,
+              type: "input",
             },
             {
               icon: <Workflow size={18} />,
@@ -168,6 +202,8 @@ function ProjectDetails() {
               title: "Framework",
               desc: "Technology stack used",
               value: project.framework || "No framework specified",
+              isUpdate: true,
+              type: "input",
             },
             {
               icon: <Globe size={18} />,
@@ -175,6 +211,9 @@ function ProjectDetails() {
               title: "Environment",
               desc: "Deployment environment",
               value: project.environment,
+              isUpdate: true,
+              type: "select",
+              options: ["Development", "Production"],
             },
             {
               icon: <CircleUserRound size={18} />,
@@ -189,6 +228,9 @@ function ProjectDetails() {
               title: "Status",
               desc: "Current status",
               value: project.status,
+              isUpdate: true,
+              type: "select",
+              options: ["Active", "Inactive"],
             },
           ].map((item, idx) => (
             <div
@@ -218,16 +260,48 @@ function ProjectDetails() {
                 </div>
 
                 {/* RIGHT */}
-                <div className="min-w-0 max-w-[45%] sm:max-w-none">
+                <div className="min-w-0 max-w-[45%] sm:max-w-none flex items-center gap-2 sm:gap-3">
                   <p className="text-xs sm:text-sm text-zinc-400 truncate text-right">
                     {item.value}
                   </p>
+                  {item.isUpdate && (
+                    <button
+                      onClick={() =>
+                        setUpdateMenu({
+                          open: true,
+                          title: `Update ${item.title}`,
+                          description: item.desc,
+                          value: item.value,
+                          type: item.type || "input",
+                          options: item.options || [],
+                        })
+                      }
+                      className="flex-shrink-0 text-zinc-400 hover:text-white transition cursor-pointer"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <UpdateMenu
+        key={updateMenu.title}
+        open={updateMenu.open}
+        onClose={() =>
+          setUpdateMenu((prev) => ({
+            ...prev,
+            open: false,
+          }))
+        }
+        title={updateMenu.title}
+        description={updateMenu.description}
+        value={updateMenu.value}
+        type={updateMenu.type}
+        options={updateMenu.options}
+      />
     </div>
   );
 }
