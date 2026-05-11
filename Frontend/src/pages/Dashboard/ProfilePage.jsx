@@ -9,15 +9,25 @@ import {
   KeyRound,
   SquareMousePointer,
   Database,
+  Pencil,
 } from "lucide-react";
 
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
-import { getUser } from "../../api/auth";
+import { getUser, updateUser } from "../../api/auth";
+import UpdateMenu from "../../components/UpdateMenu";
 
 function ProfilePage() {
   const [copiedField, setCopiedField] = useState("");
   const [user, setUser] = useState(null);
+  const [updateMenu, setUpdateMenu] = useState({
+    open: false,
+    title: "",
+    description: "",
+    value: "",
+    type: "input",
+    options: [],
+  });
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -30,6 +40,21 @@ function ProfilePage() {
     };
     fetchUser();
   }, []);
+
+  const handleUserUpdate = async (newValue) => {
+    try {
+      const res = await updateUser(updateMenu.field, newValue);
+
+      setUser(res.user);
+
+      setUpdateMenu((prev) => ({
+        ...prev,
+        open: false,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleCopy = async (text, field) => {
     await navigator.clipboard.writeText(text);
@@ -48,6 +73,9 @@ function ProfilePage() {
       title: "Name",
       desc: "Username of the account",
       value: user?.name,
+      isUpdate: true,
+      type: "input",
+      field: "name",
     },
     {
       icon: <Mail size={18} />,
@@ -71,6 +99,10 @@ function ProfilePage() {
       title: "Account Status",
       desc: "Current status of the user account",
       value: user?.status,
+      isUpdate: true,
+      type: "select",
+      options: ["Active", "Inactive"],
+      field: "status",
     },
     {
       icon: <KeyRound size={18} />,
@@ -163,12 +195,47 @@ function ProfilePage() {
                       )}
                     </button>
                   )}
+
+                  {item.isUpdate && (
+                    <button
+                      onClick={() =>
+                        setUpdateMenu({
+                          open: true,
+                          title: `Update ${item.title}`,
+                          description: item.desc,
+                          value: item.value,
+                          field: item.field,
+                          type: item.type || "input",
+                          options: item.options || [],
+                        })
+                      }
+                      className="flex-shrink-0 text-zinc-400 hover:text-white transition cursor-pointer"
+                    >
+                      <Pencil className="w-4 h-4" />
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
           ))}
         </div>
       </div>
+      <UpdateMenu
+        key={updateMenu.title}
+        open={updateMenu.open}
+        onClose={() =>
+          setUpdateMenu((prev) => ({
+            ...prev,
+            open: false,
+          }))
+        }
+        onSave={handleUserUpdate}
+        title={updateMenu.title}
+        description={updateMenu.description}
+        value={updateMenu.value}
+        type={updateMenu.type}
+        options={updateMenu.options}
+      />
     </div>
   );
 }

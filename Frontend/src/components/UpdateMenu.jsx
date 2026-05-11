@@ -1,5 +1,6 @@
 import { X } from "lucide-react";
 import { useState } from "react";
+import toast from "react-hot-toast";
 
 function UpdateMenu({
   open,
@@ -9,10 +10,21 @@ function UpdateMenu({
   value,
   type = "input",
   options = [],
+  onSave,
 }) {
   const [inputValue, setInputValue] = useState(value || "");
 
   if (!open) return null;
+
+  const handleSave = () => {
+    try {
+      onSave(inputValue);
+      toast.success("Updated successfully!");
+    } catch (err) {
+      toast.error(err.message || "An error occurred while updating.");
+      console.error("Error in handleSave:", err);
+    }
+  };
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4">
@@ -39,7 +51,6 @@ function UpdateMenu({
 
         {/* BODY */}
         <div className="px-5 py-5">
-          {/* INPUT */}
           {type === "input" && (
             <input
               type="text"
@@ -50,7 +61,6 @@ function UpdateMenu({
             />
           )}
 
-          {/* TEXTAREA */}
           {type === "textarea" && (
             <textarea
               rows={5}
@@ -61,7 +71,6 @@ function UpdateMenu({
             />
           )}
 
-          {/* SELECT */}
           {type === "select" && (
             <select
               value={inputValue}
@@ -86,7 +95,10 @@ function UpdateMenu({
             Cancel
           </button>
 
-          <button className="px-4 py-2 text-sm rounded-md bg-zinc-900 hover:bg-zinc-950 border border-zinc-900 font-medium transition cursor-pointer">
+          <button
+            onClick={handleSave}
+            className="px-4 py-2 text-sm rounded-md bg-zinc-900 hover:bg-zinc-950 border border-zinc-900 font-medium transition cursor-pointer"
+          >
             Save Changes
           </button>
         </div>

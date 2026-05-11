@@ -14,7 +14,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { getProjects } from "../../api/projects";
+import { getProjects, updateProject } from "../../api/projects";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import handleCopy from "../../utils/HelperFunctions/handleCopy";
@@ -30,6 +30,7 @@ function ProjectDetails() {
     title: "",
     description: "",
     value: "",
+    field: "",
     type: "input",
     options: [],
   });
@@ -51,6 +52,21 @@ function ProjectDetails() {
   if (!project) {
     return <div className="text-white p-6">Loading...</div>;
   }
+
+  const handleProjectUpdate = async (newValue) => {
+    try {
+      const res = await updateProject(projectId, updateMenu.field, newValue);
+
+      setProject(res.project);
+
+      setUpdateMenu((prev) => ({
+        ...prev,
+        open: false,
+      }));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="bg-black min-h-screen text-white px-4 sm:px-6 py-4">
@@ -87,6 +103,7 @@ function ProjectDetails() {
               value: project.name,
               isUpdate: true,
               type: "input",
+              field: "name",
             },
             {
               icon: <NotebookPen size={18} />,
@@ -96,6 +113,7 @@ function ProjectDetails() {
               value: project.description || "No description available",
               isUpdate: true,
               type: "textarea",
+              field: "description",
             },
             {
               icon: <SquareMousePointer size={18} />,
@@ -160,6 +178,7 @@ function ProjectDetails() {
                           title: `Update ${item.title}`,
                           description: item.desc,
                           value: item.value,
+                          field: item.field,
                           type: item.type || "input",
                           options: item.options || [],
                         })
@@ -194,6 +213,7 @@ function ProjectDetails() {
               desc: "Primary API endpoint",
               value: project.baseUrl,
               isUpdate: true,
+              field: "baseUrl",
               type: "input",
             },
             {
@@ -204,6 +224,7 @@ function ProjectDetails() {
               value: project.framework || "No framework specified",
               isUpdate: true,
               type: "input",
+              field: "framework",
             },
             {
               icon: <Globe size={18} />,
@@ -214,6 +235,7 @@ function ProjectDetails() {
               isUpdate: true,
               type: "select",
               options: ["Development", "Production"],
+              field: "environment",
             },
             {
               icon: <CircleUserRound size={18} />,
@@ -231,6 +253,7 @@ function ProjectDetails() {
               isUpdate: true,
               type: "select",
               options: ["Active", "Inactive"],
+              field: "status",
             },
           ].map((item, idx) => (
             <div
@@ -274,6 +297,7 @@ function ProjectDetails() {
                           value: item.value,
                           type: item.type || "input",
                           options: item.options || [],
+                          field: item.field || "",
                         })
                       }
                       className="flex-shrink-0 text-zinc-400 hover:text-white transition cursor-pointer"
@@ -296,6 +320,7 @@ function ProjectDetails() {
             open: false,
           }))
         }
+        onSave={handleProjectUpdate}
         title={updateMenu.title}
         description={updateMenu.description}
         value={updateMenu.value}

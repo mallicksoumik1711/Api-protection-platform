@@ -21,12 +21,12 @@ export const createProject = async (projectData) => {
 };
 
 export const deleteProject = async (projectId) => {
-  try{
+  try {
     const response = await axios.delete(
       `${BASE_URL}/projects/delete-project/${projectId}`,
       {
         withCredentials: true,
-      }
+      },
     );
     return response.data;
   } catch (error) {
@@ -52,11 +52,34 @@ export const getProjects = async (params = {}) => {
   }
 };
 
+export const updateProject = async (projectId, field, value) => {
+  try {
+    const response = await axios.put(
+      `${BASE_URL}/projects/update-project/${projectId}`,
+      {
+        field,
+        value,
+      },
+      {
+        withCredentials: true,
+      },
+    );
+
+    return response.data;
+  } catch (error) {
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+
+    throw new Error("An error occurred while updating the project.");
+  }
+};
+
 export const toggleFavourite = async (projectId) => {
   const res = await axios.put(
     `${BASE_URL}/projects/${projectId}/favourite`,
     {},
-    { withCredentials: true }
+    { withCredentials: true },
   );
   return res.data;
 };

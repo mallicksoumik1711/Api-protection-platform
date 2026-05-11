@@ -51,3 +51,26 @@ export const getUser = async () => {
     throw new Error("Failed to fetch user.");
   }
 };
+
+export const updateUser = async (field, value) => {
+  try {
+    const res = await axios.put(
+      "http://localhost:3000/auth/update-me",
+      {
+        field,
+        value,
+      },
+      {
+        withCredentials: true,
+      },
+    );
+
+    return res.data;
+  } catch (error) {
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+
+    throw new Error("Failed to update user.");
+  }
+};
