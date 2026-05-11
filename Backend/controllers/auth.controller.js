@@ -100,4 +100,53 @@ const getUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser, logoutUser, getUser };
+const updateUser = async (req, res) => {
+  try {
+    const { field, value } = req.body;
+
+    const allowedFields = ["name", "status"];
+
+    if (!field || value === undefined) {
+      return res.status(400).send({
+        success: false,
+        message: "Field and value are required.",
+      });
+    }
+
+    if (!allowedFields.includes(field)) {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid field update.",
+      });
+    }
+
+    const user = await User.findById(req.user.id);
+
+    if (!user) {
+      return res.status(404).send({
+        success: false,
+        message: "User not found.",
+      });
+    }
+
+    user[field] = value;
+    user.updatedAt = new Date();
+
+    await user.save();
+
+    res.status(200).send({
+      success: true,
+      message: "User updated successfully.",
+      user,
+    });
+  } catch (error) {
+    console.log("Error updating user:", error.message);
+
+    res.status(500).send({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
+module.exports = { registerUser, loginUser, logoutUser, getUser, updateUser };

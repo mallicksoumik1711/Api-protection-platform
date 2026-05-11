@@ -5,6 +5,7 @@ const {
   loginUser,
   logoutUser,
   getUser,
+  updateUser,
 } = require("../controllers/auth.controller");
 const authMiddleware = require("../middleware/auth.middleware");
 
@@ -12,6 +13,7 @@ router.post("/register", registerUser);
 router.post("/login", loginUser);
 router.post("/logout", logoutUser);
 router.get("/me", authMiddleware, getUser);
+router.put("/update-me", authMiddleware, updateUser);
 
 router.get("/protected", authMiddleware, (req, res) => {
   res.status(200).json({ message: "Authenticated", user: req.user });

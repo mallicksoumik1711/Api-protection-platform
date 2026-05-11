@@ -65,6 +65,64 @@ const getProjects = async (req, res) => {
   }
 };
 
+const updateProject = async (req, res) => {
+  try {
+    const { field, value } = req.body;
+
+    if (!field) {
+      return res.status(400).send({
+        success: false,
+        message: "Field is required.",
+      });
+    }
+
+    const allowedFields = [
+      "name",
+      "description",
+      "baseUrl",
+      "framework",
+      "environment",
+      "status",
+    ];
+
+    if (!allowedFields.includes(field)) {
+      return res.status(400).send({
+        success: false,
+        message: "Invalid field update request.",
+      });
+    }
+
+    const project = await projectModel.findOne({
+      projectId: req.params.id,
+      ownerId: req.user.id,
+    });
+
+    if (!project) {
+      return res.status(404).send({
+        success: false,
+        message: "Project not found.",
+      });
+    }
+
+    project[field] = value;
+    project.updatedAt = new Date();
+
+    await project.save();
+
+    return res.status(200).send({
+      success: true,
+      message: `${field} updated successfully.`,
+      project,
+    });
+  } catch (error) {
+    return res.status(500).send({
+      success: false,
+      message: "Internal server error.",
+      error: error.message,
+    });
+  }
+};
+
 const deleteProject = async (req, res) => {
   try {
     const project = await projectModel.findOne({
@@ -144,5 +202,6 @@ module.exports = {
   createProject,
   getProjects,
   toggleFavourite,
+  updateProject,
   deleteProject,
 };
