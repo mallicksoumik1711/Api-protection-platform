@@ -156,6 +156,7 @@ export default function Sidebar() {
             icon={<BarChart2 size={16} />}
             text="Analytics"
             path=""
+            setIsOpen={setIsOpen}
           />
           <SidebarItem
             icon={<Gauge size={16} />}
