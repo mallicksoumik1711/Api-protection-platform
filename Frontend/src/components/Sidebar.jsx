@@ -155,34 +155,26 @@ export default function Sidebar() {
           <SidebarItem
             icon={<BarChart2 size={16} />}
             text="Analytics"
-            path="/analytics"
+            path=""
           />
           <SidebarItem
             icon={<Gauge size={16} />}
             text="Speed Insights"
-            path="/speed-insights"
+            path=""
           />
-          <SidebarItem
-            icon={<Eye size={16} />}
-            text="Observability"
-            path="/observability"
-          />
-          <SidebarItem
-            icon={<Shield size={16} />}
-            text="Firewall"
-            path="/firewall"
-          />
-          <SidebarItem icon={<Globe size={16} />} text="CDN" path="/cdn" />
+          <SidebarItem icon={<Eye size={16} />} text="Observability" path="" />
+          <SidebarItem icon={<Shield size={16} />} text="Firewall" path="" />
+          <SidebarItem icon={<Globe size={16} />} text="CDN" path="" />
 
           <div className="my-4 border-t border-zinc-800"></div>
 
-          <SidebarItem text="Domains" path="/domains" />
-          <SidebarItem text="Integrations" path="/integrations" />
-          <SidebarItem text="Storage" path="/storage" />
-          <SidebarItem text="Flags" path="/flags" />
-          <SidebarItem text="Agent" path="/agent" />
-          <SidebarItem text="AI Gateway" path="/ai-gateway" />
-          <SidebarItem text="Sandboxes" path="/sandboxes" />
+          <SidebarItem text="Domains" path="" />
+          <SidebarItem text="Integrations" path="" />
+          <SidebarItem text="Storage" path="" />
+          <SidebarItem text="Flags" path="" />
+          <SidebarItem text="Agent" path="" />
+          <SidebarItem text="AI Gateway" path="" />
+          <SidebarItem text="Sandboxes" path="" />
         </div>
 
         {/* USER */}
