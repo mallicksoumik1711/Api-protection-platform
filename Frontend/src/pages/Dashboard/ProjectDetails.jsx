@@ -19,6 +19,7 @@ import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
 import handleCopy from "../../utils/HelperFunctions/handleCopy";
 import UpdateMenu from "../../components/UpdateMenu";
+import ProjectDetailsSkeleton from "../../layouts/skeletons/ProjectDetailsSkeleton";
 
 function ProjectDetails() {
   const { projectId } = useParams();
@@ -50,7 +51,7 @@ function ProjectDetails() {
   }, [projectId]);
 
   if (!project) {
-    return <div className="text-white p-6">Loading...</div>;
+    return <ProjectDetailsSkeleton />;
   }
 
   const handleProjectUpdate = async (newValue) => {
