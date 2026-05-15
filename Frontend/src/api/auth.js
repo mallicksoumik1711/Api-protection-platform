@@ -38,6 +38,24 @@ export const handleSignup = async (name, email, password) => {
   }
 };
 
+export const logoutUser = async () => {
+  try {
+    const res = await axios.post(
+      "http://localhost:3000/auth/logout",
+      {},
+      {
+        withCredentials: true,
+      },
+    );
+    return res.data;
+  } catch (error) {
+    if (error.response && error.response.data?.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error("Logout failed.");
+  }
+};
+
 export const getUser = async () => {
   try {
     const res = await axios.get("http://localhost:3000/auth/me", {

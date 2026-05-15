@@ -1,8 +1,25 @@
 import { LogOut, Settings } from "lucide-react";
 import { useNavigate } from "react-router";
+import { logoutUser } from "../api/auth";
+import toast from "react-hot-toast";
 
 export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
   const navigate = useNavigate();
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      toast.success("Logout successful.");
+
+      setIsOpen(false);
+      setShowMenu(false);
+
+      navigate("/signin");
+    } catch (error) {
+      console.error(error.message);
+      toast.error("Logout failed.");
+    }
+  };
+
   return (
     <div className="absolute bottom-12 right-0 w-58 sm:w-64 bg-zinc-950 border border-zinc-800 rounded-xl shadow-2xl p-2 z-50">
       {/* User Info */}
@@ -35,7 +52,7 @@ export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
         <Item text="Changelog" icon={<Settings size={16} />} />
         <Item text="Help" icon={<Settings size={16} />} />
         <Item text="Docs" icon={<Settings size={16} />} />
-        <Item text="Log Out" icon={<LogOut size={16} />} danger />
+        <Item text="Log Out" icon={<LogOut size={16} />} danger onClick={handleLogout} />
       </div>
     </div>
   );
