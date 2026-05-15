@@ -156,7 +156,6 @@ export default function Sidebar() {
             icon={<BarChart2 size={16} />}
             text="Analytics"
             path=""
-            setIsOpen={setIsOpen}
           />
           <SidebarItem
             icon={<Gauge size={16} />}
@@ -218,9 +217,10 @@ function SidebarItem({ icon, text, path, setIsOpen }) {
   const location = useLocation();
 
   const active =
-    location.pathname === path ||
-    (location.pathname.startsWith(`/project/`) &&
-      location.pathname.endsWith(path));
+    path &&
+    (location.pathname === path ||
+      (location.pathname.startsWith(`/project/`) &&
+        location.pathname.endsWith(path)));
 
   return (
     <div
