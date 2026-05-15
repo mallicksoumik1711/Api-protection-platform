@@ -242,10 +242,10 @@ function ApiKeysDetails() {
                     </p>
                   </div>
 
-                  <div className="p-2 bg-amber-500/20 rounded-md items-center flex cursor-pointer">
+                  <div className="p-2 rounded-full bg-zinc-900 hover:bg-zinc-800 transition items-center flex cursor-pointer">
                     <button onClick={showKeyStatus}>
                       <RotateCw
-                        className={`w-4 h-4 text-amber-400 cursor-pointer ${
+                        className={`w-4 h-4 text-zinc-400 cursor-pointer ${
                           loadingStatus ? "animate-spin" : ""
                         }`}
                       />

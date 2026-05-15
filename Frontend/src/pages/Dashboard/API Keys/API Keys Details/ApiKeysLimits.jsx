@@ -9,8 +9,6 @@ function ApiKeysLimits() {
 
   const fetchKeys = async () => {
     try {
-      // for testing, remove in production
-      await new Promise((resolve) => setTimeout(resolve, 1000));
       const data = await getApiKeysDetails();
       setApiKeys(data);
     } catch (error) {
