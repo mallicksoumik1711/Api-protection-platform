@@ -15,7 +15,7 @@ function DevGuide() {
       code: `app.use(cors());
 app.use(express.json());
 
-// middleware
+// BOUNCER middleware
 app.use((req, res, next) => {
   // validation logic
 });
