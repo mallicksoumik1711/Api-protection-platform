@@ -48,11 +48,24 @@ export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
       <div className="mt-1 space-y-1 text-sm">
         <Item text="Feedback" icon={<Settings size={16} />} />
         <Item text="Theme" icon={<Settings size={16} />} />
-        <Item text="Home Page" icon={<Settings size={16} />} />
+        <Item
+          text="Home Page"
+          icon={<Settings size={16} />}
+          onClick={() => {
+            navigate("/");
+            setIsOpen(false);
+            setShowMenu(false);
+          }}
+        />
         <Item text="Changelog" icon={<Settings size={16} />} />
         <Item text="Help" icon={<Settings size={16} />} />
         <Item text="Docs" icon={<Settings size={16} />} />
-        <Item text="Log Out" icon={<LogOut size={16} />} danger onClick={handleLogout} />
+        <Item
+          text="Log Out"
+          icon={<LogOut size={16} />}
+          danger
+          onClick={handleLogout}
+        />
       </div>
     </div>
   );
