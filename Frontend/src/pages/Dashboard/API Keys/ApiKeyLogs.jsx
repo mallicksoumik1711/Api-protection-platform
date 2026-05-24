@@ -58,11 +58,11 @@ function ApiKeyLogs() {
           <h3 className="text-sm font-medium text-zinc-200">
             All Protected Requests
           </h3>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3 mr-0 sm:mr-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mr-0 sm:mr-6">
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-950/40 text-emerald-400 border border-emerald-800/50">
               Live Preview
             </span>
-            <span className="text-xs text-zinc-500">Updated just now</span>
+            <span className="text-xs text-zinc-500 hidden sm:block">Updated just now</span>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ function ApiKeyLogs() {
         >
           <div className="bg-zinc-900/70 px-4 py-1.5 border-b border-zinc-800 flex items-center justify-between text-xs text-zinc-500 font-mono">
             <span>protect-middleware • request-log</span>
-            <span>showing last 5 mins requests</span>
+            <span>showing all request hit</span>
           </div>
 
           <div className="p-4 pb-6 text-xs font-mono text-zinc-300 max-h-[55vh] overflow-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-950">
