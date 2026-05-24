@@ -1,4 +1,4 @@
-import { House, LogOut, Settings } from "lucide-react";
+import { Compass, HardHat, House, LogOut, Logs, Settings } from "lucide-react";
 import { useNavigate } from "react-router";
 import { logoutUser } from "../api/auth";
 import toast from "react-hot-toast";
@@ -48,6 +48,15 @@ export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
       <div className="mt-1 space-y-1 text-sm">
         <Item text="Feedback" icon={<Settings size={16} />} />
         <Item
+          text="Guidebook"
+          icon={<Compass size={16} />}
+          onClick={() => {
+            navigate("/setup-guide");
+            setIsOpen(false);
+            setShowMenu(false);
+          }}
+        />
+        <Item
           text="Home Page"
           icon={<House size={16} />}
           onClick={() => {
@@ -56,7 +65,24 @@ export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
             setShowMenu(false);
           }}
         />
-        <Item text="CheckLogs" icon={<Settings size={16} />} />
+        <Item
+          text="Setup"
+          icon={<HardHat size={16} />}
+          onClick={() => {
+            navigate("/integration");
+            setIsOpen(false);
+            setShowMenu(false);
+          }}
+        />
+        <Item
+          text="Checklogs"
+          icon={<Logs size={16} />}
+          onClick={() => {
+            navigate("/api-logs");
+            setIsOpen(false);
+            setShowMenu(false);
+          }}
+        />
         <Item text="Docs" icon={<Settings size={16} />} />
         <Item
           text="Log Out"
