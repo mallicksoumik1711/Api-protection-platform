@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { Book } from "lucide-react";
 
 export default function SegmentedCTA() {
   const [hovered, setHovered] = useState("left");
@@ -67,7 +68,10 @@ export default function SegmentedCTA() {
               ${hovered === "right" ? "text-black" : "text-white/70"}
             `}
           >
-            Try Demo →
+            <div className="flex items-center justify-center gap-2">
+              <span>Docs</span>
+              <Book size={18} />
+            </div>
           </button>
         </div>
       </div>
