@@ -1,4 +1,4 @@
-import { ArrowRight, Menu, X } from "lucide-react";
+import { ArrowRight, Menu, MoveRight, X } from "lucide-react";
 import { FaGithub } from "react-icons/fa";
 import { useNavigate } from "react-router";
 import { useEffect, useState, useRef } from "react";
@@ -85,7 +85,7 @@ export default function Navbar() {
               className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/10 text-white hover:bg-white/10"
             >
               Start Securing
-              <ArrowRight size={14} />
+              <MoveRight size={14} />
             </button>
 
             <button
@@ -130,7 +130,7 @@ export default function Navbar() {
               className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full mb-2"
             >
               Start Securing
-              <ArrowRight size={14} />
+              <MoveRight size={14} />
             </button>
 
             <button
