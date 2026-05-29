@@ -54,7 +54,7 @@ export default function DocsSidebar() {
       >
         {/* HEADER */}
         <div
-          onClick={() => navigate("/docs")}
+          onClick={() => navigate("/")}
           className="px-5 py-4 border-b border-zinc-800 flex items-center gap-3 cursor-pointer"
         >
           <img src="/asset/Images/bouncer.png" alt="Logo" className="w-6 h-6" />
