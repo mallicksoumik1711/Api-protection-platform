@@ -61,8 +61,6 @@ export default function DocsSidebar() {
 
           <div>
             <p className="text-sm font-semibold text-zinc-100">BOUNCER Docs</p>
-
-            <p className="text-xs text-zinc-500">Developer Documentation</p>
           </div>
         </div>
 

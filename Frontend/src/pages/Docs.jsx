@@ -1,23 +1,20 @@
 import DocsSidebar from "../components/DocsSidebar";
+import DashboardHeader from "../components/DashboardHeader";
+import DocsHeaderValues from "../utils/HelperFunctions/DocsHeaderValues";
 
 function Docs() {
   return (
     <div className="flex min-h-screen bg-black text-white">
-      {/* SIDEBAR */}
       <DocsSidebar />
-    </div>
-  );
-}
 
-function DocCard({ title, desc }) {
-  return (
-    <div
-      className="bg-zinc-950 border border-zinc-800 rounded-2xl p-5
-      hover:border-zinc-700 transition cursor-pointer"
-    >
-      <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
-
-      <p className="text-sm text-zinc-400 leading-6">{desc}</p>
+      <main className="flex-1 overflow-y-auto px-6 py-4">
+        <DashboardHeader
+          tag={DocsHeaderValues.docsHome.tag}
+          title={DocsHeaderValues.docsHome.title}
+          description={DocsHeaderValues.docsHome.description}
+          features={DocsHeaderValues.docsHome.features}
+        />
+      </main>
     </div>
   );
 }
