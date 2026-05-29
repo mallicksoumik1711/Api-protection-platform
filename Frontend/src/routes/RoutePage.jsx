@@ -1,6 +1,7 @@
 import LandingPage from "../pages/LandingPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import Docs from "../pages/Docs";
 import { Routes, Route } from "react-router-dom";
 import ProtectedRoutes from "../utils/HelperFunctions/ProtectedRoutes";
 import DashboardLayout from "../layouts/DashboardLayout";
@@ -41,6 +42,7 @@ function RoutePage() {
         <Route path="/" element={<LandingPage />} />
         <Route path="/signin" element={<SignIn />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/docs" element={<Docs />} />
         <Route
           path="/frontpage"
           element={
