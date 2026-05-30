@@ -76,7 +76,7 @@ export default function DocsSidebar() {
           >
             <SidebarItem
               text="Introduction"
-              path="/docs/introduction"
+              path="/docs"
               setIsOpen={setIsOpen}
             />
 
