@@ -1,7 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Welcome() {
   const [activeSection, setActiveSection] = useState("bouncer-documentation");
+  useEffect(() => {
+    const sections = document.querySelectorAll("section[id], h1[id]");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        root: null,
+        rootMargin: "-20% 0px -70% 0px",
+        threshold: 0,
+      },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="max-w-6xl mx-auto flex gap-16">
