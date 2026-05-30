@@ -8,6 +8,7 @@ import {
   Terminal,
   FileText,
   Sparkles,
+  PackageCheck,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -28,7 +29,7 @@ const DocsHeaderValues = {
         color: "text-emerald-400",
       },
       {
-        icon: Sparkles,
+        icon: PackageCheck,
         label: "Production Ready",
         color: "text-violet-400",
       },
