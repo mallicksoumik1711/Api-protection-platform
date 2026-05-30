@@ -49,14 +49,16 @@ export default function Welcome() {
             <h2 className="text-3xl font-semibold">Get Started with Bouncer</h2>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Install Bouncer and configure your first security policy. Connect
-              your identity provider, onboard users, and start protecting
-              applications within minutes.
+              Begin by creating a project in Bouncer and generating your API
+              keys. Integrate the credentials into your application and
+              configure the security settings required for your environment.
             </p>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Learn about authentication, access management, threat detection,
-              audit logging, integrations, and APIs.
+              Learn how to set up secret key generation, protect routes,
+              configure JWT validation, apply rate limiting policies, manage API
+              access, and monitor security events directly from the Bouncer
+              dashboard.
             </p>
 
             <p className="mt-8 text-lg leading-8 text-zinc-400">
@@ -72,15 +74,17 @@ export default function Welcome() {
             <h2 className="text-3xl font-semibold">Core Capabilities</h2>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Bouncer provides centralized security controls for managing
-              identities, enforcing access policies, monitoring user activity,
-              and maintaining compliance across your organization.
+              Bouncer provides the essential tools required to secure modern
+              applications, including project management, API key generation,
+              route protection, JWT validation, secret key management, and
+              configurable rate limiting.
             </p>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              From authentication and authorization to auditing and reporting,
-              Bouncer delivers the tools required to secure modern applications
-              and infrastructure.
+              Everything is managed through a centralized dashboard, allowing
+              developers to configure security policies, monitor usage, and
+              manage application access without maintaining complex security
+              infrastructure.
             </p>
           </section>
 
@@ -90,14 +94,16 @@ export default function Welcome() {
             </h2>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Configure authentication providers, role-based access control,
-              user provisioning, and permissions to ensure users only have
-              access to the resources they require.
+              Generate and manage project-specific API credentials that securely
+              connect your applications with Bouncer. Configure authentication
+              settings and control how applications interact with protected
+              resources.
             </p>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Implement least-privilege principles and streamline user access
-              management through centralized policy enforcement.
+              Bouncer helps ensure that only authorized requests are processed
+              by validating credentials, enforcing access rules, and securing
+              application endpoints.
             </p>
           </section>
 
@@ -107,14 +113,15 @@ export default function Welcome() {
             </h2>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Monitor login activity, detect suspicious behavior, identify
-              anomalous access patterns, and respond to potential threats in
-              real time.
+              Protect applications from abuse through configurable rate
+              limiting, request validation, and automated security controls
+              designed to prevent unauthorized access and excessive traffic.
             </p>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Security teams can investigate incidents faster using audit
-              trails, event logs, and automated response workflows.
+              Monitor API activity and security events directly from the
+              dashboard to identify unusual behavior and maintain visibility
+              into how your applications are being accessed.
             </p>
           </section>
 
@@ -122,14 +129,15 @@ export default function Welcome() {
             <h2 className="text-3xl font-semibold">Integrations & APIs</h2>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Integrate Bouncer with identity providers, cloud platforms,
-              monitoring systems, ticketing tools, and custom internal
-              applications.
+              Integrate Bouncer into your applications using API keys, SDKs, and
+              simple configuration workflows. Add your project credentials to
+              environment variables and connect your application within minutes.
             </p>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Use APIs and webhooks to automate workflows and extend Bouncer to
-              fit your organization's security requirements.
+              Use Bouncer APIs to generate secrets, validate tokens, secure
+              routes, and automate security-related operations directly from
+              your application code.
             </p>
           </section>
 
@@ -137,14 +145,15 @@ export default function Welcome() {
             <h2 className="text-3xl font-semibold">Best Practices</h2>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Follow recommended deployment patterns, security baselines, and
-              governance controls to maximize protection and operational
-              efficiency.
+              Store API keys securely, keep secret generation credentials
+              private, and use environment variables to manage sensitive
+              configuration across development and production environments.
             </p>
 
             <p className="mt-4 text-lg leading-8 text-zinc-400">
-              Explore guidance for authentication hardening, access reviews,
-              incident response planning, and compliance readiness.
+              Apply route protection consistently, configure appropriate rate
+              limits, rotate credentials when necessary, and validate JWT tokens
+              to maintain a strong security posture for your applications.
             </p>
           </section>
         </div>
