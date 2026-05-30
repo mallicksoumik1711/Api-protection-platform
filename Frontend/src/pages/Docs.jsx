@@ -1,4 +1,4 @@
-import DocsSidebar from "../components/DocsSidebar";
+import DocsSidebar from "../components/Docs/DocsSidebar";
 import DashboardHeader from "../components/DashboardHeader";
 import DocsHeaderValues from "../utils/HelperFunctions/DocsHeaderValues";
 
