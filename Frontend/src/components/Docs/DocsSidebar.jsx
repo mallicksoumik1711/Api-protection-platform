@@ -45,12 +45,13 @@ export default function DocsSidebar() {
 
       {/* SIDEBAR */}
       <aside
-        className={`fixed md:static top-0 left-0 z-50 h-screen
-        w-72 bg-black border-r border-zinc-800
-        flex flex-col overflow-y-auto
-        transform transition-transform duration-300
-        scrollbar scrollbar-thumb-zinc-800 scrollbar-track-black
-        ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}
+        className={`fixed top-0 left-0 z-50 h-screen
+  w-72 bg-black border-r border-zinc-800
+  flex flex-col
+  overflow-hidden
+  transform transition-transform duration-300
+  ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+  md:translate-x-0`}
       >
         {/* HEADER */}
         <div

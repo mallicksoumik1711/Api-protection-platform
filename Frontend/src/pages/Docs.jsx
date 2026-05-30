@@ -2,18 +2,24 @@ import DocsSidebar from "../components/Docs/DocsSidebar";
 import DashboardHeader from "../components/DashboardHeader";
 import DocsHeaderValues from "../utils/HelperFunctions/DocsHeaderValues";
 
+import Welcome from "../components/Docs/Welcome";
+
 function Docs() {
   return (
-    <div className="flex min-h-screen bg-black text-white">
+    <div className="h-screen overflow-hidden bg-black text-white">
       <DocsSidebar />
 
-      <main className="flex-1 overflow-y-auto px-6 py-4">
-        <DashboardHeader
-          tag={DocsHeaderValues.docsHome.tag}
-          title={DocsHeaderValues.docsHome.title}
-          description={DocsHeaderValues.docsHome.description}
-          features={DocsHeaderValues.docsHome.features}
-        />
+      <main className="ml-72 h-screen overflow-y-auto">
+        <div className="px-6 py-4">
+          <DashboardHeader
+            tag={DocsHeaderValues.docsHome.tag}
+            title={DocsHeaderValues.docsHome.title}
+            description={DocsHeaderValues.docsHome.description}
+            features={DocsHeaderValues.docsHome.features}
+          />
+
+          <Welcome />
+        </div>
       </main>
     </div>
   );
