@@ -1,7 +1,7 @@
 import DocsSidebar from "../components/Docs/DocsSidebar";
 import DashboardHeader from "../components/DashboardHeader";
 import DocsHeaderValues from "../utils/HelperFunctions/DocsHeaderValues";
-
+import DocsFooter from "../components/Docs/DocsFooter";
 import Welcome from "../components/Docs/Welcome";
 
 function Docs() {
@@ -19,6 +19,7 @@ function Docs() {
           />
 
           <Welcome />
+          <DocsFooter />
         </div>
       </main>
     </div>
