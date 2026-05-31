@@ -14,12 +14,17 @@ import {
 } from "lucide-react";
 
 import { useNavigate, useLocation } from "react-router-dom";
+import { getInitialSection } from "../../utils/HelperFunctions/docsPathSidebar";
 
 export default function DocsSidebar() {
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [isOpen, setIsOpen] = useState(false);
-  const [openSection, setOpenSection] = useState("getting-started");
+
+  const [openSection, setOpenSection] = useState(() =>
+    getInitialSection(location.pathname),
+  );
 
   const toggleSection = (section) => {
     setOpenSection(openSection === section ? "" : section);
