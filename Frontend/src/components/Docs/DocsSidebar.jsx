@@ -81,83 +81,37 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="Quickstart"
+              text="Quick Start"
               path="/docs/quickstart"
               setIsOpen={setIsOpen}
             />
 
             <SidebarItem
-              text="Installation"
-              path="/docs/installation"
+              text="Create a Project"
+              path="/docs/create-project"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Generate API Keys"
+              path="/docs/generate-api-keys"
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
 
-          {/* API REFERENCE */}
+          {/* Project Configuration */}
           <DocsDropdown
-            title="API Reference"
-            icon={<Code2 size={16} />}
-            open={openSection === "api"}
-            onClick={() => toggleSection("api")}
-          >
-            <SidebarItem
-              text="Authentication"
-              path="/docs/authentication"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Protected APIs"
-              path="/docs/protected-api"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Rate Limits"
-              path="/docs/rate-limit"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Errors"
-              path="/docs/errors"
-              setIsOpen={setIsOpen}
-            />
-          </DocsDropdown>
-
-          {/* SDKS */}
-          <DocsDropdown
-            title="SDKs & Libraries"
-            icon={<Boxes size={16} />}
-            open={openSection === "sdk"}
-            onClick={() => toggleSection("sdk")}
-          >
-            <SidebarItem
-              text="React SDK"
-              path="/docs/react-sdk"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Node SDK"
-              path="/docs/node-sdk"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Python SDK"
-              path="/docs/python-sdk"
-              setIsOpen={setIsOpen}
-            />
-          </DocsDropdown>
-
-          {/* SECURITY */}
-          <DocsDropdown
-            title="Security"
+            title="Project Configuration"
             icon={<Shield size={16} />}
-            open={openSection === "security"}
-            onClick={() => toggleSection("security")}
+            open={openSection === "configuration"}
+            onClick={() => toggleSection("configuration")}
           >
+            <SidebarItem
+              text="Protected Routes"
+              path="/docs/protected-routes"
+              setIsOpen={setIsOpen}
+            />
+
             <SidebarItem
               text="JWT Settings"
               path="/docs/jwt-settings"
@@ -165,61 +119,115 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="API Keys"
-              path="/docs/api-keys"
+              text="Rate Limiting"
+              path="/docs/rate-limiting"
               setIsOpen={setIsOpen}
             />
 
             <SidebarItem
-              text="Firewall"
-              path="/docs/firewall"
+              text="Environment Setup"
+              path="/docs/environment-setup"
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
 
-          {/* DEPLOYMENT */}
+          {/* Integration guide */}
           <DocsDropdown
-            title="Deployment"
+            title="Integration Guide"
+            icon={<Code2 size={16} />}
+            open={openSection === "integration"}
+            onClick={() => toggleSection("integration")}
+          >
+            <SidebarItem
+              text="Integration Overview"
+              path="/docs/integration-overview"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Frontend Integration"
+              path="/docs/frontend-integration"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Backend Integration"
+              path="/docs/backend-integration"
+              setIsOpen={setIsOpen}
+            />
+          </DocsDropdown>
+
+          {/* Monitoring */}
+          <DocsDropdown
+            title="Monitoring"
             icon={<Globe size={16} />}
-            open={openSection === "deployment"}
-            onClick={() => toggleSection("deployment")}
+            open={openSection === "monitoring"}
+            onClick={() => toggleSection("monitoring")}
           >
-            <SidebarItem
-              text="Integrations"
-              path="/docs/integrations"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem text="CDN" path="/docs/cdn" setIsOpen={setIsOpen} />
+            <SidebarItem text="Logs" path="/docs/logs" setIsOpen={setIsOpen} />
 
             <SidebarItem
-              text="Observability"
-              path="/docs/observability"
+              text="Favorites"
+              path="/docs/favorites"
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
 
-          {/* CLI */}
+          {/* PROJECT MANAGEMENT */}
           <DocsDropdown
-            title="CLI"
-            icon={<Terminal size={16} />}
-            open={openSection === "cli"}
-            onClick={() => toggleSection("cli")}
+            title="Project Management"
+            icon={<Boxes size={16} />}
+            open={openSection === "projects"}
+            onClick={() => toggleSection("projects")}
           >
             <SidebarItem
-              text="CLI Installation"
-              path="/docs/cli-installation"
+              text="All Projects Center"
+              path="/docs/projects-center"
               setIsOpen={setIsOpen}
             />
 
             <SidebarItem
-              text="CLI Commands"
-              path="/docs/cli-commands"
+              text="Project Settings"
+              path="/docs/project-settings"
+              setIsOpen={setIsOpen}
+            />
+          </DocsDropdown>
+
+          {/* GUIDES */}
+          <DocsDropdown
+            title="Guides"
+            icon={<Terminal size={16} />}
+            open={openSection === "guides"}
+            onClick={() => toggleSection("guides")}
+          >
+            <SidebarItem
+              text="Setup Guide"
+              path="/docs/setup-guide"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Best Practices"
+              path="/docs/best-practices"
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
 
           {/* CHANGELOG */}
+          <SidebarItem
+            icon={<FileText size={16} />}
+            text="API Reference"
+            path="/docs/api-reference"
+            setIsOpen={setIsOpen}
+          />
+
+          <SidebarItem
+            icon={<KeyRound size={16} />}
+            text="Error Codes"
+            path="/docs/error-codes"
+            setIsOpen={setIsOpen}
+          />
+
           <SidebarItem
             icon={<FileText size={16} />}
             text="Changelog"
