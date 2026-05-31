@@ -6,34 +6,10 @@ import {
   Gauge,
   CheckCircle2,
   ArrowRight,
+  MoveRight,
 } from "lucide-react";
 
 export default function IntegrationOverview() {
-  const flowSteps = [
-    {
-      title: "Client Request",
-      description: "A user sends a request to your backend API.",
-    },
-    {
-      title: "Middleware Intercepts",
-      description:
-        "Bouncer middleware captures the request before it reaches your routes.",
-    },
-    {
-      title: "Validation Service",
-      description: "Request details are sent to Bouncer for verification.",
-    },
-    {
-      title: "Security Checks",
-      description:
-        "JWT validation, route protection, and rate limiting are applied.",
-    },
-    {
-      title: "API Execution",
-      description: "If all checks pass, the request reaches your application.",
-    },
-  ];
-
   const features = [
     {
       icon: <ShieldCheck size={18} />,
@@ -100,29 +76,42 @@ export default function IntegrationOverview() {
   return (
     <div className="max-w-6xl mx-auto flex gap-16">
       <div className="flex-1 pr-6 text-zinc-300">
-
         {/* How It Works */}
         <section id="how-it-works" className="mb-10">
-          <h2 className="text-xl font-semibold text-white mb-5">
+          <h2 className="text-xl font-semibold text-white mb-4">
             How It Works
           </h2>
 
-          <div className="grid md:grid-cols-2 xl:grid-cols-5 gap-4">
-            {flowSteps.map((step, index) => (
-              <div
-                key={step.title}
-                className="bg-zinc-950 border border-zinc-900 rounded-lg p-4"
-              >
-                <div className="text-xs text-zinc-500 mb-2">
-                  Step {index + 1}
-                </div>
+          <p className="text-zinc-400 leading-8">
+            When you integrate Bouncer into your application:
+          </p>
 
-                <h3 className="font-medium text-white mb-2">{step.title}</h3>
+          <ol className="mt-4 space-y-3 text-zinc-400 leading-8 list-decimal pl-6">
+            <li>
+              Your application sends incoming requests through the Bouncer
+              middleware.
+            </li>
 
-                <p className="text-sm text-zinc-400">{step.description}</p>
-              </div>
-            ))}
-          </div>
+            <li>
+              The middleware collects request information and project
+              credentials.
+            </li>
+
+            <li>
+              Bouncer validates authentication, route permissions, and security
+              rules.
+            </li>
+
+            <li>
+              Rate limiting and access control policies are evaluated
+              automatically.
+            </li>
+
+            <li>
+              If validation succeeds, the request is forwarded to your backend
+              API.
+            </li>
+          </ol>
         </section>
 
         {/* Request Flow */}
@@ -154,12 +143,9 @@ Backend API`}
             What You'll Need
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-3">
+          <div className="grid md:grid-cols-3 gap-x-6 gap-y-3">
             {requirements.map((item) => (
-              <div
-                key={item}
-                className="flex items-center gap-3 bg-zinc-950 border border-zinc-900 rounded-lg p-4"
-              >
+              <div key={item} className="flex items-center gap-3">
                 <CheckCircle2
                   size={18}
                   className="text-green-500 flex-shrink-0"
@@ -179,12 +165,9 @@ Backend API`}
 
           <div className="space-y-3">
             {setupSteps.map((step, index) => (
-              <div
-                key={step}
-                className="bg-zinc-950 border border-zinc-900 rounded-lg p-4 flex items-start gap-4"
-              >
-                <div className="w-7 h-7 rounded-full bg-zinc-800 flex items-center justify-center text-xs text-white">
-                  {index + 1}
+              <div key={step} className="flex items-start gap-4">
+                <div className="w-7 h-7 flex items-center justify-center text-sm text-white">
+                  {index + 1}.
                 </div>
 
                 <p className="text-zinc-400">{step}</p>
@@ -203,7 +186,7 @@ Backend API`}
             {features.map((feature) => (
               <div
                 key={feature.title}
-                className="bg-zinc-950 border border-zinc-900 rounded-lg p-5"
+                className="p-4 border border-zinc-900 rounded-lg"
               >
                 <div className="text-white mb-3">{feature.icon}</div>
 
@@ -216,10 +199,7 @@ Backend API`}
         </section>
 
         {/* Next Step */}
-        <section
-          id="next-steps"
-          className="bg-zinc-950 border border-zinc-900 rounded-lg p-6"
-        >
+        <section id="next-steps" className="">
           <h2 className="text-xl font-semibold text-white mb-3">Next Steps</h2>
 
           <p className="text-zinc-400 leading-relaxed">
@@ -230,7 +210,7 @@ Backend API`}
 
           <div className="mt-4 flex items-center gap-2 text-white">
             <span>Continue to Frontend Integration</span>
-            <ArrowRight size={16} />
+            <MoveRight size={16} />
           </div>
         </section>
       </div>
