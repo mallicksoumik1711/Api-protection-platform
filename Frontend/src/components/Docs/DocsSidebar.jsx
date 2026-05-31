@@ -48,7 +48,7 @@ export default function DocsSidebar() {
         className={`fixed top-0 left-0 z-50 h-screen
   w-72 bg-black border-r border-zinc-800
   flex flex-col
-  overflow-hidden
+  overflow-y-auto
   transform transition-transform duration-300
   ${isOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
   md:translate-x-0`}
@@ -153,6 +153,62 @@ export default function DocsSidebar() {
             <SidebarItem
               text="Backend Integration"
               path="/docs/backend-integration"
+              setIsOpen={setIsOpen}
+            />
+
+            {/* Setup Flow */}
+
+            <SidebarItem
+              text="Middleware Placement"
+              path="/docs/middleware-placement"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Protected Route Setup"
+              path="/docs/protected-route-setup"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Validation Endpoint"
+              path="/docs/validation-endpoint"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Token Generation"
+              path="/docs/token-generation"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="JWT Workflow"
+              path="/docs/jwt-workflow"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Bearer Token Usage"
+              path="/docs/bearer-token-usage"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Testing Integration"
+              path="/docs/testing-integration"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Common Mistakes"
+              path="/docs/common-mistakes"
+              setIsOpen={setIsOpen}
+            />
+
+            <SidebarItem
+              text="Troubleshooting"
+              path="/docs/integration-troubleshooting"
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
