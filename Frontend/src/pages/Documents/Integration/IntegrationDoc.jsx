@@ -9,8 +9,8 @@ function IntegrationDoc() {
     <div className="h-screen overflow-hidden bg-black text-white">
       <DocsSidebar />
 
-      <main className="ml-72 h-screen overflow-y-auto">
-        <div className="px-6 py-4">
+      <main className="h-screen overflow-y-auto md:ml-72">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
             tag={DocsHeaderValues.docsIntegrationOverview.tag}
             title={DocsHeaderValues.docsIntegrationOverview.title}

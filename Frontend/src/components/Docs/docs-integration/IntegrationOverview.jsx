@@ -74,11 +74,11 @@ export default function IntegrationOverview() {
   }, []);
 
   return (
-    <div className="max-w-6xl mx-auto flex gap-16">
-      <div className="flex-1 pr-6 text-zinc-300">
+    <div className="max-w-6xl mx-auto flex flex-col xl:flex-row gap-8 xl:gap-16">
+      <div className="flex-1 min-w-0 xl:pr-6 text-zinc-300">
         {/* How It Works */}
         <section id="how-it-works" className="mb-10">
-          <h2 className="text-xl font-semibold text-white mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
             How It Works
           </h2>
 
@@ -116,11 +116,11 @@ export default function IntegrationOverview() {
 
         {/* Request Flow */}
         <section id="request-flow" className="mb-10">
-          <h2 className="text-xl font-semibold text-white mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
             Request Flow
           </h2>
 
-          <pre className="bg-black border border-zinc-900 rounded-lg p-5 overflow-x-auto text-sm text-zinc-300">
+          <pre className="bg-black border border-zinc-900 rounded-lg p-4 sm:p-5 overflow-x-auto text-xs sm:text-sm text-zinc-300 whitespace-pre-wrap">
             {`Client
    ↓
 Bouncer Middleware
@@ -139,11 +139,11 @@ Backend API`}
 
         {/* Requirements */}
         <section id="requirements" className="mb-10">
-          <h2 className="text-xl font-semibold text-white mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
             What You'll Need
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-x-6 gap-y-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-3">
             {requirements.map((item) => (
               <div key={item} className="flex items-center gap-3">
                 <CheckCircle2
@@ -159,7 +159,7 @@ Backend API`}
 
         {/* Setup Steps */}
         <section id="integration-steps" className="mb-10">
-          <h2 className="text-xl font-semibold text-white mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
             Integration Steps
           </h2>
 
@@ -178,11 +178,11 @@ Backend API`}
 
         {/* Features */}
         <section id="features" className="mb-10">
-          <h2 className="text-xl font-semibold text-white mb-4">
+          <h2 className="text-lg sm:text-xl font-semibold text-white mb-4">
             Features Enabled After Integration
           </h2>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {features.map((feature) => (
               <div
                 key={feature.title}
@@ -208,7 +208,7 @@ Backend API`}
             protecting your APIs.
           </p>
 
-          <div className="mt-4 flex items-center gap-2 text-white">
+          <div className="mt-4 flex flex-wrap items-center gap-2 text-white">
             <span>Continue to Frontend Integration</span>
             <MoveRight size={16} />
           </div>
