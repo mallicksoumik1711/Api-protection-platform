@@ -120,21 +120,13 @@ export default function IntegrationOverview() {
             Request Flow
           </h2>
 
-          <pre className="bg-black border border-zinc-900 rounded-lg p-4 sm:p-5 overflow-x-auto text-xs sm:text-sm text-zinc-300 whitespace-pre-wrap">
-            {`Client
-   ↓
-Bouncer Middleware
-   ↓
-Validation API
-   ↓
-JWT Verification
-   ↓
-Route Protection
-   ↓
-Rate Limit Check
-   ↓
-Backend API`}
-          </pre>
+          <div>
+            <img
+              src="../public/architecture/Request-flow.png"
+              alt="Request Flow Diagram"
+              className=""
+            />
+          </div>
         </section>
 
         {/* Requirements */}
