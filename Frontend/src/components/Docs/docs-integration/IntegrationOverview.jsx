@@ -124,7 +124,7 @@ export default function IntegrationOverview() {
             <img
               src="../public/architecture/Request-flow.png"
               alt="Request Flow Diagram"
-              className=""
+              className="sm:w-full"
             />
           </div>
         </section>
