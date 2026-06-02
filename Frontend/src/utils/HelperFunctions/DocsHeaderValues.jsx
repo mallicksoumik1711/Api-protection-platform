@@ -15,6 +15,9 @@ import {
   Wrench,
   LayersPlus,
   DoorClosedLocked,
+  Bolt,
+  CheckCheck,
+  TrafficCone,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -91,7 +94,7 @@ const DocsHeaderValues = {
     tag: "Integration Guide",
     title: "Backend Integration",
     description:
-      "Learn how to connect your backend application with Bouncer, generate authentication tokens, validate incoming requests, protect routes, and enforce security policies using centralized middleware.",
+      "Learn how to connect your backend application with Bouncer, generate authentication tokens, protect routes, and enforce security policies using centralized middleware.",
     features: [
       {
         icon: Wrench,
@@ -107,6 +110,29 @@ const DocsHeaderValues = {
         icon: DoorClosedLocked,
         label: "Gateway Authority",
         color: "text-green-400",
+      },
+    ],
+  },
+  docsMiddlewarePlacement: {
+    tag: "Integration Guide",
+    title: "Middleware Placement",
+    description:
+      "Learn how to properly place Bouncer middleware in your backend application to ensure all incoming requests are validated before reaching your route handlers.",
+    features: [
+      {
+        icon: Bolt,
+        label: "Configuration Guidelines",
+        color: "text-sky-400",
+      },
+      {
+        icon: CheckCheck,
+        label: "Enable Validation",
+        color: "text-emerald-400",
+      },
+      {
+        icon: TrafficCone,
+        label: "Request Control",
+        color: "text-orange-400",
       },
     ],
   },

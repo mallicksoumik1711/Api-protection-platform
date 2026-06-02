@@ -9,8 +9,9 @@ import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 // Docs
 import Docs from "../pages/Documents/Docs";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
-import FrontendIntegration from "../pages/Documents/Integration/FrontendDoc";
-import BackendIntegration from "../pages/Documents/Integration/BackendDoc";
+import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
+import BackendDoc from "../pages/Documents/Integration/BackendDoc";
+import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -51,14 +52,9 @@ function RoutePage() {
         {/* Docs */}
         <Route path="/docs" element={<Docs />} />
         <Route path="/docs/integration-overview" element={<IntegrationDoc />} />
-        <Route
-          path="/docs/frontend-integration"
-          element={<FrontendIntegration />}
-        />
-        <Route
-          path="/docs/backend-integration"
-          element={<BackendIntegration />}
-        />
+        <Route path="/docs/frontend-integration" element={<FrontendDoc />} />
+        <Route path="/docs/backend-integration" element={<BackendDoc />} />
+        <Route path="/docs/middleware-placement" element={<MiddlewareDoc />} />
 
         <Route
           path="/frontpage"
