@@ -64,7 +64,9 @@ export default function IntegrationOverview() {
         });
       },
       {
-        threshold: 1,
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0,
       },
     );
 
@@ -189,22 +191,6 @@ export default function IntegrationOverview() {
             ))}
           </div>
         </section>
-
-        {/* Next Step */}
-        <section id="next-steps" className="">
-          <h2 className="text-xl font-semibold text-white mb-3">Next Steps</h2>
-
-          <p className="text-zinc-400 leading-relaxed">
-            Continue with Frontend Integration if you're setting up a client
-            application, or move directly to Backend Integration to start
-            protecting your APIs.
-          </p>
-
-          <div className="mt-4 flex flex-wrap items-center gap-2 text-white">
-            <span>Continue to Frontend Integration</span>
-            <MoveRight size={16} />
-          </div>
-        </section>
       </div>
 
       {/* right */}
@@ -273,18 +259,6 @@ export default function IntegrationOverview() {
               }`}
             >
               Features
-            </a>
-
-            <a
-              href="#next-steps"
-              onClick={() => setActiveSection("next-steps")}
-              className={`block text-sm transition-colors ${
-                activeSection === "next-steps"
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              Next Steps
             </a>
           </nav>
         </div>

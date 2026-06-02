@@ -24,7 +24,9 @@ function FrontendIntegration() {
         });
       },
       {
-        threshold: 0.4,
+        root: null,
+        rootMargin: "-20% 0px -60% 0px",
+        threshold: 0,
       },
     );
 
@@ -39,7 +41,7 @@ function FrontendIntegration() {
       <div className="flex-1 min-w-0 text-zinc-300">
         {/* Public Pages */}
         <section id="public-pages" className="mb-12 scroll-mt-24">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-2">
             <h2 className="text-xl font-semibold text-white">Public Pages</h2>
           </div>
 
@@ -49,7 +51,7 @@ function FrontendIntegration() {
             Bouncer validation.
           </p>
 
-          <div className="mt-5 border border-zinc-900 rounded-md p-4">
+          <div className="mt-3">
             <p className="text-sm text-white mb-2">
               Common examples of public pages:
             </p>
@@ -66,7 +68,7 @@ function FrontendIntegration() {
 
         {/* Protected Pages */}
         <section id="protected-pages" className="mb-12 scroll-mt-24">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-2">
             <h2 className="text-xl font-semibold text-white">
               Protected Pages
             </h2>
@@ -78,7 +80,7 @@ function FrontendIntegration() {
             content.
           </p>
 
-          <div className="mt-5 border border-zinc-900 rounded-md p-4">
+          <div className="mt-3">
             <p className="text-sm text-white mb-2">Typical protected pages:</p>
 
             <ul className="space-y-2 text-sm text-zinc-400 list-disc pl-5">
@@ -105,7 +107,7 @@ function FrontendIntegration() {
             included so the authentication token can be sent with every request.
           </p>
 
-          <pre className="mt-5 bg-zinc-950 border border-zinc-900 rounded-md p-4 overflow-x-auto text-sm text-zinc-300">
+          <pre className="mt-3 border border-zinc-900 rounded-md p-4 overflow-x-auto text-sm text-zinc-300">
             {`fetch("/dashboard", {
   method: "GET",
   credentials: "include",
@@ -120,13 +122,13 @@ function FrontendIntegration() {
 
         {/* Route Validation Flow */}
         <section id="route-validation-flow" className="mb-12 scroll-mt-24">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-2">
             <h2 className="text-xl font-semibold text-white">
               Route Validation Flow
             </h2>
           </div>
 
-          <div className="border border-zinc-900 rounded-md p-5">
+          <div className="p-3">
             <div className="space-y-4 text-zinc-400">
               <div>
                 <span className="text-white font-medium">1.</span> User opens a
@@ -155,7 +157,7 @@ function FrontendIntegration() {
             </div>
           </div>
 
-          <div className="mt-5 bg-zinc-950 border border-zinc-900 rounded-md p-4">
+          <div className="mt-3 border border-zinc-900 rounded-md p-4">
             <pre className="text-sm text-zinc-300 overflow-x-auto">
               {`if (!response.ok) {
   navigate("/login");
@@ -167,7 +169,7 @@ function FrontendIntegration() {
 
         {/* Testing */}
         <section id="testing-protected-pages" className="mb-12 scroll-mt-24">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-2">
             <h2 className="text-xl font-semibold text-white">
               Testing Protected Pages
             </h2>
