@@ -6,6 +6,9 @@ import {
   Boxes,
   Globe,
   Terminal,
+  Cookie,
+  ScanFace,
+  Brackets,
   FileText,
   Sparkles,
   PackageCheck,
@@ -55,6 +58,29 @@ const DocsHeaderValues = {
         icon: PackageCheck,
         label: "Production Ready",
         color: "text-violet-400",
+      },
+    ],
+  },
+  docsFrontendIntegration: {
+    tag: "Integration Guide",
+    title: "Frontend Integration",
+    description:
+      "Learn how to integrate your frontend application with a backend secured by Bouncer, control access to protected pages, handle authentication-aware requests.",
+    features: [
+      {
+        icon: Cookie,
+        label: "Cookies & Tokens",
+        color: "text-emerald-400",
+      },
+      {
+        icon: ScanFace,
+        label: "Authenticated Requests",
+        color: "text-violet-400",
+      },
+      {
+        icon: Brackets,
+        label: "Token Override",
+        color: "text-sky-400",
       },
     ],
   },
