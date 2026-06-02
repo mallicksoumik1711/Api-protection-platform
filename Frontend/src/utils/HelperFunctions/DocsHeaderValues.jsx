@@ -12,6 +12,9 @@ import {
   FileText,
   Sparkles,
   PackageCheck,
+  Wrench,
+  LayersPlus,
+  DoorClosedLocked,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -81,6 +84,29 @@ const DocsHeaderValues = {
         icon: Brackets,
         label: "Token Override",
         color: "text-sky-400",
+      },
+    ],
+  },
+  docsBackendIntegration: {
+    tag: "Integration Guide",
+    title: "Backend Integration",
+    description:
+      "Learn how to connect your backend application with Bouncer, generate authentication tokens, validate incoming requests, protect routes, and enforce security policies using centralized middleware.",
+    features: [
+      {
+        icon: Wrench,
+        label: "Middleware Setup",
+        color: "text-slate-400",
+      },
+      {
+        icon: LayersPlus,
+        label: "Token Creation",
+        color: "text-blue-400",
+      },
+      {
+        icon: DoorClosedLocked,
+        label: "Gateway Authority",
+        color: "text-green-400",
       },
     ],
   },

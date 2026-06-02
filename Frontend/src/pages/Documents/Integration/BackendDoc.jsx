@@ -12,10 +12,10 @@ function BackendDoc() {
       <main className="h-screen overflow-y-auto md:ml-72">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
-            tag={DocsHeaderValues.docsFrontendIntegration.tag}
-            title={DocsHeaderValues.docsFrontendIntegration.title}
-            description={DocsHeaderValues.docsFrontendIntegration.description}
-            features={DocsHeaderValues.docsFrontendIntegration.features}
+            tag={DocsHeaderValues.docsBackendIntegration.tag}
+            title={DocsHeaderValues.docsBackendIntegration.title}
+            description={DocsHeaderValues.docsBackendIntegration.description}
+            features={DocsHeaderValues.docsBackendIntegration.features}
           />
 
           <BackendIntegration />
