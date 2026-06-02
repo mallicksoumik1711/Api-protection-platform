@@ -170,12 +170,6 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="Protected Route Setup"
-              path="/docs/protected-route-setup"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
               text="Validation Endpoint"
               path="/docs/validation-endpoint"
               setIsOpen={setIsOpen}
@@ -188,7 +182,7 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="JWT Workflow"
+              text="JWT & Rate Limit Workflow"
               path="/docs/jwt-workflow"
               setIsOpen={setIsOpen}
             />
@@ -202,12 +196,6 @@ export default function DocsSidebar() {
             <SidebarItem
               text="Testing Integration"
               path="/docs/testing-integration"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Common Mistakes"
-              path="/docs/common-mistakes"
               setIsOpen={setIsOpen}
             />
 
