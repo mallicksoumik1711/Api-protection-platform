@@ -2,9 +2,9 @@ import DocsSidebar from "../../../components/Docs/DocsSidebar";
 import DashboardHeader from "../../../components/DashboardHeader";
 import DocsHeaderValues from "../../../utils/HelperFunctions/DocsHeaderValues";
 import DocsFooter from "../../../components/Docs/DocsFooter";
-import FrontendIntegration from "../../../components/Docs/docs-integration/FrontendIntegration";
+import BackendIntegration from "../../../components/Docs/docs-integration/BackendIntegration";
 
-function FrontendDoc() {
+function BackendDoc() {
   return (
     <div className="h-screen overflow-hidden bg-black text-white">
       <DocsSidebar />
@@ -18,7 +18,7 @@ function FrontendDoc() {
             features={DocsHeaderValues.docsFrontendIntegration.features}
           />
 
-          <FrontendIntegration />
+          <BackendIntegration />
           <DocsFooter />
         </div>
       </main>
@@ -26,4 +26,4 @@ function FrontendDoc() {
   );
 }
 
-export default FrontendDoc;
+export default BackendDoc;
