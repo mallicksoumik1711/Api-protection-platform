@@ -64,7 +64,7 @@ export default function SegmentedCTA() {
             onMouseEnter={() => setHovered("right")}
             onClick={() => {
               setHovered("right");
-              navigate("/docs");
+              navigate("/docs/introduction");
             }}
             className={`
               font-medium

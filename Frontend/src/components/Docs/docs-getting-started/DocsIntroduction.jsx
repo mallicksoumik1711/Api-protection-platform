@@ -1,6 +1,6 @@
-import TablesOfContents from "./TableOfContents";
+import TablesOfContents from "../TableOfContents";
 
-export default function Welcome() {
+export default function DocsIntroduction() {
   const sections = [
     {
       id: "bouncer-documentation",

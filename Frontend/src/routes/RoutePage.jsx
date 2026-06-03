@@ -7,7 +7,8 @@ import DashboardLayout from "../layouts/DashboardLayout";
 import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 
 // Docs
-import Docs from "../pages/Documents/Docs";
+import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
+import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
@@ -50,7 +51,8 @@ function RoutePage() {
         <Route path="/signup" element={<SignUp />} />
 
         {/* Docs */}
-        <Route path="/docs" element={<Docs />} />
+        <Route path="/docs/introduction" element={<IntroductionDoc />} />
+        <Route path="/docs/quickstart" element={<QuickStartDoc />} />
         <Route path="/docs/integration-overview" element={<IntegrationDoc />} />
         <Route path="/docs/frontend-integration" element={<FrontendDoc />} />
         <Route path="/docs/backend-integration" element={<BackendDoc />} />

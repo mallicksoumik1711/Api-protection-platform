@@ -2,7 +2,7 @@ export const getInitialSection = (pathname) => {
   // Getting Started
   if (
     [
-      "/docs",
+      "/docs/introduction",
       "/docs/quickstart",
       "/docs/create-project",
       "/docs/generate-api-keys",
