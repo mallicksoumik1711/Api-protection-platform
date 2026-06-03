@@ -163,23 +163,26 @@ PROJECT_ID=your_project_id`}
         </section>
 
         {/* Protected Routes */}
-        <section id="protected-routes" className="mb-12">
+        <section id="backend-routes" className="mb-12">
           <div className="flex items-center gap-3 mb-4">
             <h2 className="text-xl font-semibold text-white">
-              Protect Application Routes
+              Create Matching Backend Routes
             </h2>
           </div>
 
           <p className="text-zinc-400 leading-8">
-            Once the middleware is active, every request that is not excluded
-            will automatically be validated by Bouncer before reaching your
-            route handlers.
+            Protected pages in your frontend should have corresponding routes in
+            your backend application. Bouncer validates requests at the backend
+            layer, so any page that requires protection should be backed by an
+            API endpoint or route that passes through the Bouncer middleware.
           </p>
 
           <p className="text-zinc-400 leading-8 mt-4">
-            Routes such as dashboards, user management, settings, billing,
-            analytics, and internal APIs can now be protected through your
-            Bouncer project configuration.
+            For example, if your frontend contains routes such as{" "}
+            <code className="text-white">/dashboard</code>,{" "}
+            <code className="text-white">/all-products</code>, or{" "}
+            <code className="text-white">/cart</code>, create the corresponding
+            backend routes that serve data for those pages.
           </p>
         </section>
 
@@ -234,7 +237,7 @@ PROJECT_ID=your_project_id`}
               ["secure-credentials", "Store Credentials Securely"],
               ["middleware-setup", "Add Bouncer Middleware"],
               ["public-routes", "Exclude Public Routes"],
-              ["protected-routes", "Protect Application Routes"],
+              ["backend-routes", "Create Matching Backend Routes"],
               ["testing", "Testing Integration"],
               ["development-notes", "Development Notes"],
             ].map(([id, label]) => (
