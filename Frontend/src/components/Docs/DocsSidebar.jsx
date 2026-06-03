@@ -170,26 +170,8 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="Validation Endpoint"
-              path="/docs/validation-endpoint"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Token Generation"
-              path="/docs/token-generation"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
               text="JWT & Rate Limit Workflow"
               path="/docs/jwt-workflow"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Bearer Token Usage"
-              path="/docs/bearer-token-usage"
               setIsOpen={setIsOpen}
             />
 
