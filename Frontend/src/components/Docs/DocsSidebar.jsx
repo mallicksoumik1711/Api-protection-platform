@@ -92,14 +92,8 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="Create a Project"
-              path="/docs/create-project"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Generate API Keys"
-              path="/docs/generate-api-keys"
+              text="How Bouncer Works"
+              path="/docs/architecture"
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
