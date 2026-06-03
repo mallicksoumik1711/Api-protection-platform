@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import {
   CheckCircle2,
   Lock,
@@ -8,32 +7,17 @@ import {
   TestTube2,
   TriangleAlert,
 } from "lucide-react";
+import TablesOfContents from "../TableOfContents";
 
 function FrontendIntegration() {
-  const [activeSection, setActiveSection] = useState("public-pages");
-
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: 0,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  const sections = [
+    { id: "public-pages", label: "Public Pages" },
+    { id: "protected-pages", label: "Protected Pages" },
+    { id: "include-credentials", label: "Include Credentials" },
+    { id: "route-validation-flow", label: "Route Validation Flow" },
+    { id: "testing-protected-pages", label: "Testing Protected Pages" },
+    { id: "development-notes", label: "Development Notes" },
+  ];
 
   return (
     <div className="max-w-6xl mx-auto flex flex-col xl:flex-row gap-12">
@@ -227,37 +211,7 @@ function FrontendIntegration() {
       </div>
 
       {/* Right Navigation */}
-      <aside className="hidden xl:block w-56 shrink-0">
-        <div className="sticky top-24 pl-6">
-          <h3 className="text-sm font-semibold text-zinc-500 mb-4">
-            On this page
-          </h3>
-
-          <nav className="space-y-3">
-            {[
-              ["public-pages", "Public Pages"],
-              ["protected-pages", "Protected Pages"],
-              ["include-credentials", "Include Credentials"],
-              ["route-validation-flow", "Route Validation Flow"],
-              ["testing-protected-pages", "Testing Protected Pages"],
-              ["development-notes", "Development Notes"],
-            ].map(([id, label]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setActiveSection(id)}
-                className={`block text-sm transition-colors ${
-                  activeSection === id
-                    ? "text-white"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </aside>
+      <TablesOfContents sections={sections} />
     </div>
   );
 }

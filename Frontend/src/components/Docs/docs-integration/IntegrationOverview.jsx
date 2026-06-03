@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   ShieldCheck,
   Workflow,
@@ -8,6 +7,7 @@ import {
   ArrowRight,
   MoveRight,
 } from "lucide-react";
+import TablesOfContents from "../TableOfContents";
 
 export default function IntegrationOverview() {
   const features = [
@@ -50,30 +50,13 @@ export default function IntegrationOverview() {
     "Test requests and verify security rules.",
   ];
 
-  const [activeSection, setActiveSection] = useState("what-is-bouncer");
-
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: 0,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  const sections = [
+    { id: "how-it-works", label: "How It Works" },
+    { id: "request-flow", label: "Request Flow" },
+    { id: "requirements", label: "What You'll Need" },
+    { id: "integration-steps", label: "Integration Steps" },
+    { id: "features", label: "Features" },
+  ];
 
   return (
     <div className="max-w-6xl mx-auto flex flex-col xl:flex-row gap-8 xl:gap-16">
@@ -194,75 +177,7 @@ export default function IntegrationOverview() {
       </div>
 
       {/* right */}
-      <aside className="hidden xl:block w-56 shrink-0">
-        <div className="sticky top-24 pl-6">
-          <h3 className="text-sm font-semibold text-zinc-500 mb-4">
-            On this page
-          </h3>
-
-          <nav className="space-y-3">
-            <a
-              href="#how-it-works"
-              onClick={() => setActiveSection("how-it-works")}
-              className={`block text-sm transition-colors ${
-                activeSection === "how-it-works"
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              How It Works
-            </a>
-
-            <a
-              href="#request-flow"
-              onClick={() => setActiveSection("request-flow")}
-              className={`block text-sm transition-colors ${
-                activeSection === "request-flow"
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              Request Flow
-            </a>
-
-            <a
-              href="#requirements"
-              onClick={() => setActiveSection("requirements")}
-              className={`block text-sm transition-colors ${
-                activeSection === "requirements"
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              Requirements
-            </a>
-
-            <a
-              href="#integration-steps"
-              onClick={() => setActiveSection("integration-steps")}
-              className={`block text-sm transition-colors ${
-                activeSection === "integration-steps"
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              Integration Steps
-            </a>
-
-            <a
-              href="#features"
-              onClick={() => setActiveSection("features")}
-              className={`block text-sm transition-colors ${
-                activeSection === "features"
-                  ? "text-white"
-                  : "text-zinc-400 hover:text-white"
-              }`}
-            >
-              Features
-            </a>
-          </nav>
-        </div>
-      </aside>
+      <TablesOfContents sections={sections} />
     </div>
   );
 }

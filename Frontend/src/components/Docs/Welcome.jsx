@@ -1,29 +1,36 @@
-import { useState, useEffect } from "react";
+import TablesOfContents from "./TableOfContents";
 
 export default function Welcome() {
-  const [activeSection, setActiveSection] = useState("bouncer-documentation");
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id], h1[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        root: null,
-        rootMargin: "-20% 0px -60% 0px",
-        threshold: 0,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  const sections = [
+    {
+      id: "bouncer-documentation",
+      label: "Introduction",
+    },
+    {
+      id: "get-started",
+      label: "Get Started",
+    },
+    {
+      id: "core-capabilities",
+      label: "Core Capabilities",
+    },
+    {
+      id: "identity-access",
+      label: "Identity & Access",
+    },
+    {
+      id: "threat-detection",
+      label: "Threat Detection",
+    },
+    {
+      id: "integrations",
+      label: "Integrations & APIs",
+    },
+    {
+      id: "best-practices",
+      label: "Best Practices",
+    },
+  ];
 
   return (
     <div>
@@ -159,101 +166,7 @@ export default function Welcome() {
         </div>
 
         {/* Right Sidebar */}
-        <div className="max-w-6xl mx-auto flex flex-col xl:flex-row gap-8 xl:gap-16 px-4 sm:px-6">
-          <aside className="hidden xl:block w-56 shrink-0">
-            <div className="sticky top-24">
-              <h3 className="text-sm font-semibold text-zinc-500 mb-4">
-                On this page
-              </h3>
-
-              <nav className="space-y-3">
-                <a
-                  href="#bouncer-documentation"
-                  onClick={() => setActiveSection("bouncer-documentation")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "bouncer-documentation"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Introduction
-                </a>
-
-                <a
-                  href="#get-started"
-                  onClick={() => setActiveSection("get-started")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "get-started"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Get started
-                </a>
-
-                <a
-                  href="#core-capabilities"
-                  onClick={() => setActiveSection("core-capabilities")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "core-capabilities"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Core Capabilities
-                </a>
-
-                <a
-                  href="#identity-access"
-                  onClick={() => setActiveSection("identity-access")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "identity-access"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Identity & Access
-                </a>
-
-                <a
-                  href="#threat-detection"
-                  onClick={() => setActiveSection("threat-detection")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "threat-detection"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Threat Detection
-                </a>
-
-                <a
-                  href="#integrations"
-                  onClick={() => setActiveSection("integrations")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "integrations"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Integrations & APIs
-                </a>
-
-                <a
-                  href="#best-practices"
-                  onClick={() => setActiveSection("best-practices")}
-                  className={`block text-sm transition-colors ${
-                    activeSection === "best-practices"
-                      ? "text-white"
-                      : "text-zinc-400 hover:text-white"
-                  }`}
-                >
-                  Best Practices
-                </a>
-              </nav>
-            </div>
-          </aside>
-        </div>
+        <TablesOfContents sections={sections} />
       </div>
     </div>
   );

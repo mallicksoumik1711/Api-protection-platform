@@ -1,28 +1,20 @@
-import { useState, useEffect } from "react";
+import TablesOfContents from "../TableOfContents";
 
 function MiddlewarePlacement() {
-  const [activeSection, setActiveSection] = useState("middleware-placement");
-
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.4,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  const sections = [
+    {
+      id: "middleware-placement",
+      label: "Middleware Placement",
+    },
+    {
+      id: "public-routes",
+      label: "Public Routes",
+    },
+    {
+      id: "route-flow",
+      label: "Route Protection Flow",
+    },
+  ];
 
   const middlewareCode = `
 // BOUNCER Middleware
@@ -140,34 +132,7 @@ app.use(async (req, res, next) => {
       </div>
 
       {/* Right Navigation */}
-      <aside className="hidden xl:block w-56 shrink-0">
-        <div className="sticky top-24 pl-6">
-          <h3 className="text-sm font-semibold text-zinc-500 mb-4">
-            On this page
-          </h3>
-
-          <nav className="space-y-3">
-            {[
-              ["middleware-placement", "Middleware Placement"],
-              ["public-routes", "Public Routes"],
-              ["route-flow", "Route Protection Flow"],
-            ].map(([id, label]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setActiveSection(id)}
-                className={`block text-sm transition-colors ${
-                  activeSection === id
-                    ? "text-white"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </aside>
+      <TablesOfContents sections={sections} />
     </div>
   );
 }

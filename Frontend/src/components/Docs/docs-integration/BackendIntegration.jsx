@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import {
   CheckCircle2,
   ShieldCheck,
@@ -7,30 +6,18 @@ import {
   Lock,
   Code2,
 } from "lucide-react";
+import TablesOfContents from "../TableOfContents";
 
 function BackendIntegration() {
-  const [activeSection, setActiveSection] = useState("requirements");
-
-  useEffect(() => {
-    const sections = document.querySelectorAll("section[id]");
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
-        });
-      },
-      {
-        threshold: 0.4,
-      },
-    );
-
-    sections.forEach((section) => observer.observe(section));
-
-    return () => observer.disconnect();
-  }, []);
+  const sections = [
+    { id: "generate-project-token", label: "Generate Project Token" },
+    { id: "secure-credentials", label: "Store Credentials Securely" },
+    { id: "middleware-setup", label: "Add Bouncer Middleware" },
+    { id: "public-routes", label: "Exclude Public Routes" },
+    { id: "backend-routes", label: "Create Matching Backend Routes" },
+    { id: "testing", label: "Testing Integration" },
+    { id: "development-notes", label: "Development Notes" },
+  ];
 
   return (
     <div className="max-w-6xl mx-auto flex flex-col xl:flex-row gap-8 xl:gap-16">
@@ -225,38 +212,7 @@ PROJECT_ID=your_project_id`}
       </div>
 
       {/* Right Navigation */}
-      <aside className="hidden xl:block w-56 shrink-0">
-        <div className="sticky top-24 pl-6">
-          <h3 className="text-sm font-semibold text-zinc-500 mb-4">
-            On this page
-          </h3>
-
-          <nav className="space-y-3">
-            {[
-              ["generate-project-token", "Generate Project Token"],
-              ["secure-credentials", "Store Credentials Securely"],
-              ["middleware-setup", "Add Bouncer Middleware"],
-              ["public-routes", "Exclude Public Routes"],
-              ["backend-routes", "Create Matching Backend Routes"],
-              ["testing", "Testing Integration"],
-              ["development-notes", "Development Notes"],
-            ].map(([id, label]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                onClick={() => setActiveSection(id)}
-                className={`block text-sm transition-colors ${
-                  activeSection === id
-                    ? "text-white"
-                    : "text-zinc-400 hover:text-white"
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-          </nav>
-        </div>
-      </aside>
+      <TablesOfContents sections={sections} />
     </div>
   );
 }
