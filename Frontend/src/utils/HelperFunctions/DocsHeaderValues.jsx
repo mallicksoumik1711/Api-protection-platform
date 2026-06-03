@@ -18,6 +18,9 @@ import {
   Bolt,
   CheckCheck,
   TrafficCone,
+  OctagonPause,
+  BookMarked,
+  RotateCwSquare,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -41,6 +44,29 @@ const DocsHeaderValues = {
         icon: PackageCheck,
         label: "Production Ready",
         color: "text-violet-400",
+      },
+    ],
+  },
+  docsQuickStart: {
+    tag: "Documentation",
+    title: "Quick Start",
+    description:
+      "Get started quickly with BOUNCER by following our step-by-step guides, setting up your environment, and understanding the core concepts.",
+    features: [
+      {
+        icon: OctagonPause,
+        label: "Guideline Documentation",
+        color: "text-amber-400",
+      },
+      {
+        icon: BookMarked,
+        label: "Recommended Practices",
+        color: "text-green-400",
+      },
+      {
+        icon: RotateCwSquare,
+        label: "Implementation Ready",
+        color: "text-purple-400",
       },
     ],
   },

@@ -15,10 +15,10 @@ function QuickStartDoc() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
-            tag={DocsHeaderValues.docsHome.tag}
-            title={DocsHeaderValues.docsHome.title}
-            description={DocsHeaderValues.docsHome.description}
-            features={DocsHeaderValues.docsHome.features}
+            tag={DocsHeaderValues.docsQuickStart.tag}
+            title={DocsHeaderValues.docsQuickStart.title}
+            description={DocsHeaderValues.docsQuickStart.description}
+            features={DocsHeaderValues.docsQuickStart.features}
           />
 
           <DocsQuickStart />
