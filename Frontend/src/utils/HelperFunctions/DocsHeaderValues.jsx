@@ -21,6 +21,8 @@ import {
   OctagonPause,
   BookMarked,
   RotateCwSquare,
+  Database,
+  CircleStop,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -67,6 +69,29 @@ const DocsHeaderValues = {
         icon: RotateCwSquare,
         label: "Implementation Ready",
         color: "text-purple-400",
+      },
+    ],
+  },
+  docsHowBouncerWorks: {
+    tag: "Documentation",
+    title: "How Bouncer Works",
+    description:
+      "Understand the internal architecture, Redis rate limiting, and frequently encountered status codes in BOUNCER.",
+    features: [
+      {
+        icon: Database,
+        label: "Internal architecture",
+        color: "text-blue-400",
+      },
+      {
+        icon: CircleStop,
+        label: "Redis Rate Limiting",
+        color: "text-red-400",
+      },
+      {
+        icon: Code2,
+        label: "Frequently Encountered Status Codes",
+        color: "text-green-400",
       },
     ],
   },
