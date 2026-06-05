@@ -1,11 +1,9 @@
 export const getInitialSection = (pathname) => {
   // Getting Started
   if (
-    [
-      "/docs/introduction",
-      "/docs/quickstart",
-      "/docs/architecture",
-    ].includes(pathname)
+    ["/docs/introduction", "/docs/quickstart", "/docs/architecture"].includes(
+      pathname,
+    )
   ) {
     return "getting-started";
   }
@@ -29,13 +27,7 @@ export const getInitialSection = (pathname) => {
       "/docs/frontend-integration",
       "/docs/backend-integration",
       "/docs/middleware-placement",
-      "/docs/protected-route-setup",
-      "/docs/validation-endpoint",
-      "/docs/token-generation",
-      "/docs/jwt-workflow",
-      "/docs/bearer-token-usage",
       "/docs/testing-integration",
-      "/docs/common-mistakes",
       "/docs/integration-troubleshooting",
     ].includes(pathname)
   ) {

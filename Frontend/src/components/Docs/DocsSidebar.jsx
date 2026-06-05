@@ -164,12 +164,6 @@ export default function DocsSidebar() {
             />
 
             <SidebarItem
-              text="JWT & Rate Limit Workflow"
-              path="/docs/jwt-workflow"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
               text="Testing Integration"
               path="/docs/testing-integration"
               setIsOpen={setIsOpen}
