@@ -90,73 +90,100 @@ function DocsHowBouncerWorks() {
               encounter the following response codes.
             </p>
 
-            <div className="mt-6 space-y-2">
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-emerald-500/15 px-3 py-1 text-sm font-medium text-emerald-400">
-                  200 OK
-                </span>
-                <p className="text-zinc-400">
-                  The request successfully passed all validation checks and was
-                  allowed to proceed.
-                </p>
-              </div>
+            <div className="mt-6 rounded-xl border border-zinc-800 bg-zinc-950/50 overflow-hidden">
+              <div className="p-4 text-xs font-mono text-zinc-300 overflow-x-auto">
+                <div className="space-y-1 min-w-max">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-emerald-400 font-medium flex-shrink-0">
+                      200
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-emerald-300">
+                      Request validation passed successfully
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • OK
+                    </span>
+                  </div>
 
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-amber-500/15 px-3 py-1 text-sm font-medium text-amber-400">
-                  400 Bad Request
-                </span>
-                <p className="text-zinc-400">
-                  The request contains invalid or improperly formatted data.
-                </p>
-              </div>
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-amber-400 font-medium flex-shrink-0">
+                      400
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-amber-300">
+                      Invalid or malformed request data
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • Bad Request
+                    </span>
+                  </div>
 
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-yellow-500/15 px-3 py-1 text-sm font-medium text-yellow-400">
-                  401 Unauthorized
-                </span>
-                <p className="text-zinc-400">
-                  Authentication failed because credentials are missing or
-                  invalid.
-                </p>
-              </div>
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-yellow-400 font-medium flex-shrink-0">
+                      401
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-yellow-300">
+                      Authentication credentials missing or invalid
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • Unauthorized
+                    </span>
+                  </div>
 
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-orange-500/15 px-3 py-1 text-sm font-medium text-orange-400">
-                  403 Forbidden
-                </span>
-                <p className="text-zinc-400">
-                  The request was authenticated but does not satisfy access
-                  rules.
-                </p>
-              </div>
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-orange-400 font-medium flex-shrink-0">
+                      403
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-orange-300">
+                      Authenticated but lacks required permissions
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • Forbidden
+                    </span>
+                  </div>
 
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-sky-500/15 px-3 py-1 text-sm font-medium text-sky-400">
-                  404 Not Found
-                </span>
-                <p className="text-zinc-400">
-                  The requested route, project, or resource could not be
-                  located.
-                </p>
-              </div>
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-sky-400 font-medium flex-shrink-0">
+                      404
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-sky-300">
+                      Requested route or resource not found
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • Not Found
+                    </span>
+                  </div>
 
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-red-500/15 px-3 py-1 text-sm font-medium text-red-400">
-                  429 Too Many Requests
-                </span>
-                <p className="text-zinc-400">
-                  The configured rate limit has been exceeded.
-                </p>
-              </div>
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-red-400 font-medium flex-shrink-0">
+                      429
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-red-300">
+                      Configured rate limit exceeded
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • Too Many Requests
+                    </span>
+                  </div>
 
-              <div className="flex gap-4 rounded-lg border border-zinc-800 p-4">
-                <span className="h-fit rounded-md bg-rose-500/15 px-3 py-1 text-sm font-medium text-rose-400">
-                  500 Internal Server Error
-                </span>
-                <p className="text-zinc-400">
-                  An unexpected server-side error occurred while processing the
-                  request.
-                </p>
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                    <span className="w-12 text-rose-400 font-medium flex-shrink-0">
+                      500
+                    </span>
+                    <span className="text-zinc-500 flex-shrink-0">→</span>
+                    <span className="text-rose-300">
+                      Unexpected server-side processing error
+                    </span>
+                    <span className="text-zinc-600 ml-2 flex-shrink-0">
+                      • Internal Error
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </section>
