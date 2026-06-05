@@ -4,8 +4,7 @@ export const getInitialSection = (pathname) => {
     [
       "/docs/introduction",
       "/docs/quickstart",
-      "/docs/create-project",
-      "/docs/generate-api-keys",
+      "/docs/architecture",
     ].includes(pathname)
   ) {
     return "getting-started";

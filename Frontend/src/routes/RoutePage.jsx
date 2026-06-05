@@ -9,6 +9,7 @@ import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 // Docs
 import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
 import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
+import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
@@ -53,6 +54,7 @@ function RoutePage() {
         {/* Docs */}
         <Route path="/docs/introduction" element={<IntroductionDoc />} />
         <Route path="/docs/quickstart" element={<QuickStartDoc />} />
+        <Route path="/docs/architecture" element={<HowBouncerWorksDoc />} />
         <Route path="/docs/integration-overview" element={<IntegrationDoc />} />
         <Route path="/docs/frontend-integration" element={<FrontendDoc />} />
         <Route path="/docs/backend-integration" element={<BackendDoc />} />
