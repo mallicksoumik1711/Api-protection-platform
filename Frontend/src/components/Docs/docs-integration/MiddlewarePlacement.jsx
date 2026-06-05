@@ -118,16 +118,7 @@ app.use(async (req, res, next) => {
             Route Protection Flow
           </h2>
 
-          <ol className="list-decimal pl-6 space-y-2 text-zinc-400 leading-8">
-            <li>Client sends a request to your backend.</li>
-            <li>Bouncer middleware intercepts the request.</li>
-            <li>
-              The request is validated using the Project ID, API Key, route
-              details, and project token.
-            </li>
-            <li>Allowed requests continue to the route handler.</li>
-            <li>Blocked requests return an authorization error response.</li>
-          </ol>
+          <img src="/architecture/Route-request-flow.png" alt="Route Request Flow Diagram" />
         </section>
       </div>
 
