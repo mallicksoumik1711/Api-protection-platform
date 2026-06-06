@@ -15,6 +15,7 @@ import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
 import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 import TestingDoc from "../pages/Documents/Integration/TestingDoc";
+import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -61,6 +62,7 @@ function RoutePage() {
         <Route path="/docs/backend-integration" element={<BackendDoc />} />
         <Route path="/docs/middleware-placement" element={<MiddlewareDoc />} />
         <Route path="/docs/testing-integration" element={<TestingDoc />} />
+        <Route path="/docs/integration-troubleshooting" element={<TroubleshootingDoc />} />
 
         <Route
           path="/frontpage"
