@@ -23,6 +23,9 @@ import {
   RotateCwSquare,
   Database,
   CircleStop,
+  FlaskConical,
+  ExternalLink,
+  Joystick,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -182,6 +185,29 @@ const DocsHeaderValues = {
       },
       {
         icon: TrafficCone,
+        label: "Request Control",
+        color: "text-orange-400",
+      },
+    ],
+  },
+  docsTestingIntegration: {
+    tag: "Integration Guide",
+    title: "Testing Integration",
+    description:
+      "Verify how to test your integration with Bouncer, including rate limits, API key validation, and expected responses.",
+    features: [
+      {
+        icon: FlaskConical,
+        label: "Testing Guidelines",
+        color: "text-emerald-400",
+      },
+      {
+        icon: ExternalLink,
+        label: "Expected Behavior",
+        color: "text-purple-400",
+      },
+      {
+        icon: Joystick,
         label: "Request Control",
         color: "text-orange-400",
       },

@@ -15,10 +15,10 @@ function TestingDoc() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
-            tag={DocsHeaderValues.docsMiddlewarePlacement.tag}
-            title={DocsHeaderValues.docsMiddlewarePlacement.title}
-            description={DocsHeaderValues.docsMiddlewarePlacement.description}
-            features={DocsHeaderValues.docsMiddlewarePlacement.features}
+            tag={DocsHeaderValues.docsTestingIntegration.tag}
+            title={DocsHeaderValues.docsTestingIntegration.title}
+            description={DocsHeaderValues.docsTestingIntegration.description}
+            features={DocsHeaderValues.docsTestingIntegration.features}
           />
 
           <TestingIntegration />
