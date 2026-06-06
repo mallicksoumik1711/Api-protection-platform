@@ -26,6 +26,9 @@ import {
   FlaskConical,
   ExternalLink,
   Joystick,
+  Bug,
+  BadgeAlert,
+  ListCheck,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -210,6 +213,29 @@ const DocsHeaderValues = {
         icon: Joystick,
         label: "Request Control",
         color: "text-orange-400",
+      },
+    ],
+  },
+  docsTroubleshooting: {
+    tag: "Integration Guide",
+    title: "Troubleshooting",
+    description:
+      "How to identify and resolve common issues when integrating Bouncer with your application.",
+    features: [
+      {
+        icon: Bug,
+        label: "Common Issues & Solutions",
+        color: "text-sky-400",
+      },
+      {
+        icon: BadgeAlert,
+        label: "Avoiding Pitfalls",
+        color: "text-emerald-400",
+      },
+      {
+        icon: ListCheck,
+        label: "Complete Setup",
+        color: "text-violet-400",
       },
     ],
   },

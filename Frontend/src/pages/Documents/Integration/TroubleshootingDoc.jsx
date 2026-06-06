@@ -15,10 +15,10 @@ function TroubleshootingDoc() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
-            tag={DocsHeaderValues.docsTestingIntegration.tag}
-            title={DocsHeaderValues.docsTestingIntegration.title}
-            description={DocsHeaderValues.docsTestingIntegration.description}
-            features={DocsHeaderValues.docsTestingIntegration.features}
+            tag={DocsHeaderValues.docsTroubleshooting.tag}
+            title={DocsHeaderValues.docsTroubleshooting.title}
+            description={DocsHeaderValues.docsTroubleshooting.description}
+            features={DocsHeaderValues.docsTroubleshooting.features}
           />
 
           <Troubleshooting />
