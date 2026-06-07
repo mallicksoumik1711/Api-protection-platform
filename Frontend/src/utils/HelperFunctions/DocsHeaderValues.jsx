@@ -37,6 +37,9 @@ import {
   ListPlus,
   SearchCode,
   Ban,
+  Star,
+  Tag,
+  Heart,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -336,6 +339,29 @@ const DocsHeaderValues = {
         icon: Ban,
         label: "Error Logging",
         color: "text-red-400",
+      },
+    ],
+  },
+  docsFavourites: {
+    tag: "Integration Guide",
+    title: "Favourites",
+    description:
+      "Manage and analyze your favourite items within Bouncer to ensure quick access and efficient workflow.",
+    features: [
+      {
+        icon: Star,
+        label: "Quick Access",
+        color: "text-amber-400",
+      },
+      {
+        icon: Heart,
+        label: "Personalized",
+        color: "text-pink-400",
+      },
+      {
+        icon: Tag,
+        label: "Faster Workflow",
+        color: "text-blue-400",
       },
     ],
   },

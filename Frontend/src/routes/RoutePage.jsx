@@ -20,6 +20,7 @@ import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 import TestingDoc from "../pages/Documents/Integration/TestingDoc";
 import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
 import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
+import FavouritesDoc from "../pages/Documents/monitoring/FavouritesDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -74,7 +75,7 @@ function RoutePage() {
         <Route path="/docs/jwt-settings" element={<JwtDoc />} />
         <Route path="/docs/rate-limiting" element={<RateLimitDoc />} />
         <Route path="/docs/logs" element={<LogsDoc />} />
-
+        <Route path="/docs/favorites" element={<FavouritesDoc />} />
         <Route
           path="/frontpage"
           element={
