@@ -15,10 +15,10 @@ function RateLimitDoc() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
-            tag={DocsHeaderValues.docsProtectedRoutes.tag}
-            title={DocsHeaderValues.docsProtectedRoutes.title}
-            description={DocsHeaderValues.docsProtectedRoutes.description}
-            features={DocsHeaderValues.docsProtectedRoutes.features}
+            tag={DocsHeaderValues.docsRateLimit.tag}
+            title={DocsHeaderValues.docsRateLimit.title}
+            description={DocsHeaderValues.docsRateLimit.description}
+            features={DocsHeaderValues.docsRateLimit.features}
           />
 
           <DocsRateLimit />

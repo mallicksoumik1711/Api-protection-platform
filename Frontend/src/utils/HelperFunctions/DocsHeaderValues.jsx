@@ -32,6 +32,8 @@ import {
   BrickWallShield,
   FingerprintPattern,
   SquareAsterisk,
+  TriangleAlert,
+  StopCircle,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -147,6 +149,29 @@ const DocsHeaderValues = {
         icon: SquareAsterisk,
         label: "Secret Management",
         color: "text-sky-400",
+      },
+    ],
+  },
+  docsRateLimit: {
+    tag: "Integration Guide",
+    title: "Rate Limiting",
+    description:
+      "Configure rate limiting settings in Bouncer, including request limits, window sizes, and strategies.",
+    features: [
+      {
+        icon: TriangleAlert,
+        label: "Limited Request",
+        color: "text-yellow-400",
+      },
+      {
+        icon: StopCircle,
+        label: "Abuse Protection",
+        color: "text-sky-400",
+      },
+      {
+        icon: OctagonPause,
+        label: "Attack Prevention",
+        color: "text-red-400",
       },
     ],
   },
