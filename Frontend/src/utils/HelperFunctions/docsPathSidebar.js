@@ -14,7 +14,6 @@ export const getInitialSection = (pathname) => {
       "/docs/protected-routes",
       "/docs/jwt-settings",
       "/docs/rate-limiting",
-      "/docs/environment-setup",
     ].includes(pathname)
   ) {
     return "configuration";
@@ -42,11 +41,6 @@ export const getInitialSection = (pathname) => {
   // Projects
   if (["/docs/projects-center", "/docs/project-settings"].includes(pathname)) {
     return "projects";
-  }
-
-  // Guides
-  if (["/docs/setup-guide", "/docs/best-practices"].includes(pathname)) {
-    return "guides";
   }
 
   return "";

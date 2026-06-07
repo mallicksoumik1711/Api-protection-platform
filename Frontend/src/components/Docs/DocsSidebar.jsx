@@ -122,12 +122,6 @@ export default function DocsSidebar() {
               path="/docs/rate-limiting"
               setIsOpen={setIsOpen}
             />
-
-            <SidebarItem
-              text="Environment Setup"
-              path="/docs/environment-setup"
-              setIsOpen={setIsOpen}
-            />
           </DocsDropdown>
 
           {/* Integration guide */}
@@ -211,55 +205,6 @@ export default function DocsSidebar() {
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
-
-          {/* GUIDES */}
-          <DocsDropdown
-            title="Guides"
-            icon={<Terminal size={16} />}
-            open={openSection === "guides"}
-            onClick={() => toggleSection("guides")}
-          >
-            <SidebarItem
-              text="Setup Guide"
-              path="/docs/setup-guide"
-              setIsOpen={setIsOpen}
-            />
-
-            <SidebarItem
-              text="Best Practices"
-              path="/docs/best-practices"
-              setIsOpen={setIsOpen}
-            />
-          </DocsDropdown>
-
-          {/* CHANGELOG */}
-          <SidebarItem
-            icon={<FileText size={16} />}
-            text="API Reference"
-            path="/docs/api-reference"
-            setIsOpen={setIsOpen}
-          />
-
-          <SidebarItem
-            icon={<KeyRound size={16} />}
-            text="Error Codes"
-            path="/docs/error-codes"
-            setIsOpen={setIsOpen}
-          />
-
-          <SidebarItem
-            icon={<FileText size={16} />}
-            text="Changelog"
-            path="/docs/changelog"
-            setIsOpen={setIsOpen}
-          />
-
-          <SidebarItem
-            icon={<KeyRound size={16} />}
-            text="API Status"
-            path="/docs/status"
-            setIsOpen={setIsOpen}
-          />
         </div>
       </aside>
     </>
