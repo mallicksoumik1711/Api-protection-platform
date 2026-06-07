@@ -12,6 +12,7 @@ import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
 import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
 import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
 import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
+import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
@@ -70,6 +71,7 @@ function RoutePage() {
         />
         <Route path="/docs/protected-routes" element={<ProtectedRoutesDoc />} />
         <Route path="/docs/jwt-settings" element={<JwtDoc />} />
+        <Route path="/docs/rate-limiting" element={<RateLimitDoc />} />
 
         <Route
           path="/frontpage"
