@@ -1,3 +1,4 @@
+import { Check, X } from "lucide-react";
 import TablesOfContents from "../TableOfContents";
 
 function DocsProtectedRoutes() {
@@ -25,7 +26,7 @@ function DocsProtectedRoutes() {
           </p>
 
           <div className="grid md:grid-cols-3 gap-4 mb-8">
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+            <div className="rounded-md border border-zinc-800 bg-zinc-900/30 p-5">
               <p className="text-xs uppercase tracking-wider text-zinc-500 mb-2">
                 Required
               </p>
@@ -33,7 +34,7 @@ function DocsProtectedRoutes() {
               <code className="text-blue-400">/api</code>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+            <div className="rounded-md border border-zinc-800 bg-zinc-900/30 p-5">
               <p className="text-xs uppercase tracking-wider text-zinc-500 mb-2">
                 Optional
               </p>
@@ -45,7 +46,7 @@ function DocsProtectedRoutes() {
               </div>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 bg-zinc-900/30 p-5">
+            <div className="rounded-md border border-zinc-800 bg-zinc-900/30 p-5">
               <p className="text-xs uppercase tracking-wider text-zinc-500 mb-2">
                 Optional
               </p>
@@ -104,7 +105,7 @@ function DocsProtectedRoutes() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-5 mb-8">
-            <div className="rounded-xl border border-zinc-800 p-5">
+            <div className="rounded-md border border-zinc-800 p-5">
               <div className="mb-3">
                 <span className="text-xs text-zinc-500 uppercase tracking-wider">
                   Disabled
@@ -120,7 +121,7 @@ function DocsProtectedRoutes() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 p-5">
+            <div className="rounded-md border border-zinc-800 p-5">
               <div className="mb-3">
                 <span className="text-xs text-zinc-500 uppercase tracking-wider">
                   Enabled
@@ -159,7 +160,7 @@ function DocsProtectedRoutes() {
           </p>
 
           <div className="grid md:grid-cols-2 gap-5 mb-8">
-            <div className="rounded-xl border border-zinc-800 p-5">
+            <div className="rounded-md border border-zinc-800 p-5">
               <h3 className="font-medium text-white mb-3">API Key Only</h3>
 
               <p className="text-zinc-400 leading-7">
@@ -168,7 +169,7 @@ function DocsProtectedRoutes() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 p-5">
+            <div className="rounded-md border border-zinc-800 p-5">
               <h3 className="font-medium text-white mb-3">JWT Only</h3>
 
               <p className="text-zinc-400 leading-7">
@@ -176,7 +177,7 @@ function DocsProtectedRoutes() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+            <div className="rounded-md border border-emerald-500/20 bg-emerald-500/5 p-5">
               <div className="text-xs uppercase tracking-wider text-emerald-400 mb-2">
                 Recommended
               </div>
@@ -189,7 +190,7 @@ function DocsProtectedRoutes() {
               </p>
             </div>
 
-            <div className="rounded-xl border border-zinc-800 p-5">
+            <div className="rounded-md border border-zinc-800 p-5">
               <h3 className="font-medium text-white mb-3">
                 Public + Rate Limited
               </h3>
@@ -201,7 +202,7 @@ function DocsProtectedRoutes() {
             </div>
           </div>
 
-          <div className="overflow-x-auto rounded-xl border border-zinc-800">
+          <div className="overflow-x-auto rounded-md border border-zinc-800">
             <table className="w-full text-sm">
               <thead className="border-b border-zinc-800">
                 <tr>
@@ -217,29 +218,45 @@ function DocsProtectedRoutes() {
               <tbody>
                 <tr className="border-b border-zinc-800">
                   <td className="px-5 py-4">API Key Only</td>
-                  <td className="px-5 py-4">✓</td>
-                  <td className="px-5 py-4">—</td>
+                  <td className="px-5 py-4">
+                    <Check className="h-4 w-4 text-emerald-400" />
+                  </td>
+                  <td className="px-5 py-4">
+                    <X className="h-4 w-4 text-red-400" />
+                  </td>
                   <td className="px-5 py-4">Internal APIs</td>
                 </tr>
 
                 <tr className="border-b border-zinc-800">
                   <td className="px-5 py-4">JWT Only</td>
-                  <td className="px-5 py-4">—</td>
-                  <td className="px-5 py-4">✓</td>
+                  <td className="px-5 py-4">
+                    <X className="h-4 w-4 text-red-400" />
+                  </td>
+                  <td className="px-5 py-4">
+                    <Check className="h-4 w-4 text-emerald-400" />
+                  </td>
                   <td className="px-5 py-4">User Sessions</td>
                 </tr>
 
                 <tr className="border-b border-zinc-800">
                   <td className="px-5 py-4">API Key + JWT</td>
-                  <td className="px-5 py-4">✓</td>
-                  <td className="px-5 py-4">✓</td>
+                  <td className="px-5 py-4">
+                    <Check className="h-4 w-4 text-emerald-400" />
+                  </td>
+                  <td className="px-5 py-4">
+                    <Check className="h-4 w-4 text-emerald-400" />
+                  </td>
                   <td className="px-5 py-4">Production</td>
                 </tr>
 
                 <tr>
                   <td className="px-5 py-4">Public + Rate Limited</td>
-                  <td className="px-5 py-4">—</td>
-                  <td className="px-5 py-4">—</td>
+                  <td className="px-5 py-4">
+                    <X className="h-4 w-4 text-red-400" />
+                  </td>
+                  <td className="px-5 py-4">
+                    <X className="h-4 w-4 text-red-400" />
+                  </td>
                   <td className="px-5 py-4">Public Endpoints</td>
                 </tr>
               </tbody>
@@ -248,7 +265,7 @@ function DocsProtectedRoutes() {
         </section>
 
         {/* Recommendation */}
-        <div className="rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5">
+        <div className="rounded-md border border-emerald-500/20 bg-emerald-500/5 p-5">
           <h3 className="text-emerald-400 font-medium mb-2">Recommendation</h3>
 
           <p className="text-zinc-400 leading-7">
