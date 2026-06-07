@@ -10,13 +10,14 @@ import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
 import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
 import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
+import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
+import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
 import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 import TestingDoc from "../pages/Documents/Integration/TestingDoc";
 import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
-import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -68,6 +69,7 @@ function RoutePage() {
           element={<TroubleshootingDoc />}
         />
         <Route path="/docs/protected-routes" element={<ProtectedRoutesDoc />} />
+        <Route path="/docs/jwt-settings" element={<JwtDoc />} />
 
         <Route
           path="/frontpage"
