@@ -19,6 +19,7 @@ import BackendDoc from "../pages/Documents/Integration/BackendDoc";
 import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 import TestingDoc from "../pages/Documents/Integration/TestingDoc";
 import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
+import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -72,6 +73,7 @@ function RoutePage() {
         <Route path="/docs/protected-routes" element={<ProtectedRoutesDoc />} />
         <Route path="/docs/jwt-settings" element={<JwtDoc />} />
         <Route path="/docs/rate-limiting" element={<RateLimitDoc />} />
+        <Route path="/docs/logs" element={<LogsDoc />} />
 
         <Route
           path="/frontpage"
