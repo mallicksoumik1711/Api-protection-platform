@@ -30,6 +30,8 @@ import {
   BadgeAlert,
   ListCheck,
   BrickWallShield,
+  FingerprintPattern,
+  SquareAsterisk,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -122,6 +124,29 @@ const DocsHeaderValues = {
         icon: BrickWallShield,
         label: "Realtime Protection",
         color: "text-purple-400",
+      },
+    ],
+  },
+  docsJwt: {
+    tag: "Integration Guide",
+    title: "JWT Configuration",
+    description:
+      "Configure JWT settings in Bouncer, including token expiry, storage, and algorithms.",
+    features: [
+      {
+        icon: Brackets,
+        label: "Token Security",
+        color: "text-purple-400",
+      },
+      {
+        icon: FingerprintPattern,
+        label: "Authentication Control",
+        color: "text-amber-400",
+      },
+      {
+        icon: SquareAsterisk,
+        label: "Secret Management",
+        color: "text-sky-400",
       },
     ],
   },

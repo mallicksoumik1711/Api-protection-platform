@@ -15,10 +15,10 @@ function JwtDoc() {
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-4">
           <DashboardHeader
-            tag={DocsHeaderValues.docsProtectedRoutes.tag}
-            title={DocsHeaderValues.docsProtectedRoutes.title}
-            description={DocsHeaderValues.docsProtectedRoutes.description}
-            features={DocsHeaderValues.docsProtectedRoutes.features}
+            tag={DocsHeaderValues.docsJwt.tag}
+            title={DocsHeaderValues.docsJwt.title}
+            description={DocsHeaderValues.docsJwt.description}
+            features={DocsHeaderValues.docsJwt.features}
           />
 
           <DocsJwt />
