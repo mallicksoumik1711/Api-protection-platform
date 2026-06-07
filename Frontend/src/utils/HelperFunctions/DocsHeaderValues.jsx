@@ -29,6 +29,7 @@ import {
   Bug,
   BadgeAlert,
   ListCheck,
+  BrickWallShield,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -98,6 +99,29 @@ const DocsHeaderValues = {
         icon: Code2,
         label: "Frequently Encountered Status Codes",
         color: "text-green-400",
+      },
+    ],
+  },
+  docsProtectedRoutes: {
+    tag: "Integration Guide",
+    title: "Protected Routes",
+    description:
+      "Protect your application's routes using Bouncer, ensuring that only authenticated and authorized users can access sensitive endpoints.",
+    features: [
+      {
+        icon: DoorClosedLocked,
+        label: "Secure API Endpoints",
+        color: "text-emerald-400",
+      },
+      {
+        icon: ScanFace,
+        label: "Modern Security Practices",
+        color: "text-sky-400",
+      },
+      {
+        icon: BrickWallShield,
+        label: "Realtime Protection",
+        color: "text-purple-400",
       },
     ],
   },
