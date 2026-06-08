@@ -22,6 +22,7 @@ import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDo
 import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
 import FavouritesDoc from "../pages/Documents/monitoring/FavouritesDoc";
 import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
+import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -78,6 +79,8 @@ function RoutePage() {
         <Route path="/docs/logs" element={<LogsDoc />} />
         <Route path="/docs/favorites" element={<FavouritesDoc />} />
         <Route path="/docs/projects-center" element={<AllProjectCenterDoc />} />
+        <Route path="/docs/project-templates" element={<ProjectTemplatesDoc />} />
+
         <Route
           path="/frontpage"
           element={
