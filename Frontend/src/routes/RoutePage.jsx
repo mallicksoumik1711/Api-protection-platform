@@ -21,6 +21,7 @@ import TestingDoc from "../pages/Documents/Integration/TestingDoc";
 import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
 import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
 import FavouritesDoc from "../pages/Documents/monitoring/FavouritesDoc";
+import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -76,6 +77,7 @@ function RoutePage() {
         <Route path="/docs/rate-limiting" element={<RateLimitDoc />} />
         <Route path="/docs/logs" element={<LogsDoc />} />
         <Route path="/docs/favorites" element={<FavouritesDoc />} />
+        <Route path="/docs/projects-center" element={<AllProjectCenterDoc />} />
         <Route
           path="/frontpage"
           element={
