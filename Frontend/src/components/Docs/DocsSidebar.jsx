@@ -11,6 +11,14 @@ import {
   Menu,
   ChevronDown,
   ChevronRight,
+  LayoutDashboard,
+  Key,
+  LaptopMinimalCheck,
+  CodeXml,
+  TriangleAlert,
+  Toolbox,
+  Logs,
+  Users,
 } from "lucide-react";
 
 import { useNavigate, useLocation } from "react-router-dom";
@@ -199,6 +207,55 @@ export default function DocsSidebar() {
               setIsOpen={setIsOpen}
             />
           </DocsDropdown>
+
+          <SidebarItem
+            text="Project Templates"
+            icon={<LayoutDashboard size={16} />}
+            path="/docs/project-templates"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="Key Management Examples"
+            icon={<Key size={16} />}
+            path="/docs/key-management"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="Protected APIs Access Control"
+            icon={<LaptopMinimalCheck size={16} />}
+            path="/docs/access-control"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="JWT Configurations"
+            icon={<CodeXml size={16} />}
+            path="/docs/jwt-configurations"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="Rate Limiting Reference"
+            icon={<TriangleAlert size={16} />}
+            path="/docs/rate-limiting"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="Integration Insights"
+            icon={<Toolbox size={16} />}
+            path="/docs/integration-insights"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="Logs Activity Reference"
+            icon={<Logs size={16} />}
+            path="/docs/logs-activity"
+            setIsOpen={setIsOpen}
+          />
+          <SidebarItem
+            text="User Profile Scenarios"
+            icon={<Users size={16} />}
+            path="/docs/user-profile"
+            setIsOpen={setIsOpen}
+          />
         </div>
       </aside>
     </>
