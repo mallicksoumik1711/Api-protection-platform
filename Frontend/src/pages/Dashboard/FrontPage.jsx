@@ -303,7 +303,7 @@ function FrontPage() {
                   No projects yet.{" "}
                   <Link
                     to="/create-project"
-                    className="hover:text-blue-400/60 transition"
+                    className="text-blue-400"
                   >
                     Create your first project
                   </Link>{" "}
