@@ -43,6 +43,10 @@ import {
   MapPinned,
   VenusAndMars,
   BookmarkCheck,
+  HatGlasses,
+  LucideUserRoundCheck,
+  KeySquare,
+  SquarePower,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -388,6 +392,29 @@ const DocsHeaderValues = {
         icon: VenusAndMars,
         label: "Efficient Flow",
         color: "text-rose-400",
+      },
+    ],
+  },
+  docsKeyManagement: {
+    tag: "Integration Guide",
+    title: "Key Management",
+    description:
+      "Manage and analyze your keys within Bouncer to ensure security and efficiency.",
+    features: [
+      {
+        icon: HatGlasses,
+        label: "Secret Management",
+        color: "text-yellow-400",
+      },
+      {
+        icon: KeySquare,
+        label: "Key Generation",
+        color: "text-emerald-400",
+      },
+      {
+        icon: SquarePower,
+        label: "Limit Control",
+        color: "text-blue-400",
       },
     ],
   },
