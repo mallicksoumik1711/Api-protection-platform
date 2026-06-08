@@ -40,6 +40,9 @@ import {
   Star,
   Tag,
   Heart,
+  MapPinned,
+  VenusAndMars,
+  BookmarkCheck,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -362,6 +365,29 @@ const DocsHeaderValues = {
         icon: Tag,
         label: "Faster Workflow",
         color: "text-blue-400",
+      },
+    ],
+  },
+  docsProjectsCenter: {
+    tag: "Integration Guide",
+    title: "Projects Center",
+    description:
+      "Manage and analyze your projects within Bouncer to ensure quick access and efficient workflow.",
+    features: [
+      {
+        icon: BookmarkCheck,
+        label: "Central Management",
+        color: "text-violet-400",
+      },
+      {
+        icon: MapPinned,
+        label: "Easy Organization",
+        color: "text-sky-400",
+      },
+      {
+        icon: VenusAndMars,
+        label: "Efficient Flow",
+        color: "text-rose-400",
       },
     ],
   },
