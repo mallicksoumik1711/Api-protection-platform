@@ -47,22 +47,10 @@ function DocsAllProjectsCenter() {
               Once selected, all project-related operations will be performed
               within the chosen project until another project is selected.
             </p>
-
-            <div className="rounded-lg border border-zinc-800 p-4 mt-6 overflow-x-auto">
-              <pre className="text-sm text-zinc-300">
-                {`Dashboard
-   ↓
-Select Project
-   ↓
-Project Becomes Active
-   ↓
-Project Settings Opens`}
-              </pre>
-            </div>
           </section>
 
           {/* Active Project */}
-          <section id="active-project" className="mt-16">
+          <section id="active-project" className="mt-8">
             <h2 className="text-xl font-semibold">Active Project</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
@@ -84,7 +72,7 @@ Project Settings Opens`}
           </section>
 
           {/* Project Settings */}
-          <section id="project-settings" className="mt-16">
+          <section id="project-settings" className="mt-8">
             <h2 className="text-xl font-semibold">Project Settings</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
@@ -98,21 +86,21 @@ Project Settings Opens`}
               other project-specific settings.
             </p>
 
-            <div className="mt-6 rounded-xl border border-zinc-800 bg-zinc-950/50 overflow-hidden">
-              <div className="p-4 text-sm text-zinc-300">
+            <div className="mt-6 overflow-hidden">
+              <div className="text-zinc-300">
                 <div className="space-y-2">
-                  <div>• Protected Routes</div>
-                  <div>• JWT Configuration</div>
-                  <div>• API Keys</div>
-                  <div>• Rate Limiting</div>
-                  <div>• Logs</div>
+                  <div>Protected Routes</div>
+                  <div>JWT Configuration</div>
+                  <div>API Keys</div>
+                  <div>Rate Limiting</div>
+                  <div>Logs</div>
                 </div>
               </div>
             </div>
           </section>
 
           {/* Deleting a Project */}
-          <section id="deleting-a-project" className="mt-16">
+          <section id="deleting-a-project" className="mt-8">
             <h2 className="text-xl font-semibold">Deleting a Project</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
@@ -131,8 +119,8 @@ Project Settings Opens`}
               backed up or migrated elsewhere.
             </p>
 
-            <div className="mt-6 rounded-lg border border-amber-900/50 bg-amber-950/20 p-4">
-              <p className="text-sm text-amber-300">
+            <div className="mt-6 rounded-lg border border-red-900/50 bg-red-950/20 p-4">
+              <p className="text-sm text-red-400">
                 Warning: Project deletion is permanent and cannot be reversed.
               </p>
             </div>
