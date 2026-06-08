@@ -198,12 +198,6 @@ export default function DocsSidebar() {
               path="/docs/projects-center"
               setIsOpen={setIsOpen}
             />
-
-            <SidebarItem
-              text="Project Settings"
-              path="/docs/project-settings"
-              setIsOpen={setIsOpen}
-            />
           </DocsDropdown>
         </div>
       </aside>

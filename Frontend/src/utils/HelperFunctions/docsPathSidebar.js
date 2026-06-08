@@ -39,7 +39,7 @@ export const getInitialSection = (pathname) => {
   }
 
   // Projects
-  if (["/docs/projects-center", "/docs/project-settings"].includes(pathname)) {
+  if (["/docs/projects-center"].includes(pathname)) {
     return "projects";
   }
 
