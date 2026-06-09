@@ -40,7 +40,7 @@ function DocsJwtConfigurations() {
             </p>
 
             <img
-              src="/docs-blueprint/jwt-configurations/secret-key.png"
+              src="/docs-blueprint/jwt-configurations/jwt-secrets.png"
               alt="Secret Key"
               className="mt-6 rounded-lg border border-zinc-800"
             />

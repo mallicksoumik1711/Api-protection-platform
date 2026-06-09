@@ -62,7 +62,7 @@ function DocsIntegrationInsights() {
             </p>
 
             <img
-              src="/docs-blueprint/integration-insights/setup.png"
+              src="/docs-blueprint/integration-insights/integration-setup.png"
               alt="Integration Setup"
               className="mt-6 rounded-lg border border-zinc-800"
             />

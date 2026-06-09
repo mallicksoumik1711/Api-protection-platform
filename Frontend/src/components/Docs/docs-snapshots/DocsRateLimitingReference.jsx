@@ -46,7 +46,7 @@ function DocsRateLimitingReference() {
             </div>
 
             <img
-              src="/docs-blueprint/rate-limiting/request-limit-window.png"
+              src="/docs-blueprint/rate-limiting-reference/request-time.png"
               alt="Request Limits and Time Windows"
               className="mt-6 rounded-lg border border-zinc-800"
             />

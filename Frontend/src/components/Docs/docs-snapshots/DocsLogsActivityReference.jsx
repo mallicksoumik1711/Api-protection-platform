@@ -35,7 +35,7 @@ function DocsLogsActivityReference() {
             </p>
 
             <img
-              src="/docs-blueprint/logs-activity/activity-monitoring.png"
+              src="/docs-blueprint/logs-activity-reference/logs-activity.png"
               alt="Activity Monitoring"
               className="mt-6 rounded-lg border border-zinc-800"
             />
