@@ -48,6 +48,7 @@ import {
   KeySquare,
   SquarePower,
   MonitorUp,
+  QrCode,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -438,6 +439,29 @@ const DocsHeaderValues = {
       {
         icon: Globe,
         label: "Route Access Control",
+        color: "text-rose-400",
+      },
+    ],
+  },
+  docsJwtConfigurations: {
+    tag: "Integration Guide",
+    title: "JWT Configurations",
+    description:
+      "Manage and analyze your JWT configurations within your application for enhanced security and control.",
+    features: [
+      {
+        icon: SquareAsterisk,
+        label: "JWT Secrets Management",
+        color: "text-purple-400",
+      },
+      {
+        icon: ScanFace,
+        label: "Authentication Monitoring",
+        color: "text-blue-400",
+      },
+      {
+        icon: QrCode,
+        label: "Token Expiry",
         color: "text-rose-400",
       },
     ],
