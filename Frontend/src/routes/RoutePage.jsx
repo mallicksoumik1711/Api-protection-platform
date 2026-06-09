@@ -26,6 +26,7 @@ import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDo
 import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
 import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
+import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -88,7 +89,16 @@ function RoutePage() {
         />
         <Route path="/docs/key-management" element={<KeyManagementDoc />} />
         <Route path="/docs/access-control" element={<ProtectedApiDoc />} />
-        <Route path="/docs/jwt-configurations" element={<JwtConfigurationsDoc />} />
+        <Route
+          path="/docs/jwt-configurations"
+          element={<JwtConfigurationsDoc />}
+        />
+        <Route
+          path="/docs/rate-limiting-reference"
+          element={<RateLimitingReferenceDoc />}
+        />
+
+        {/* Dashboard */}
 
         <Route
           path="/frontpage"

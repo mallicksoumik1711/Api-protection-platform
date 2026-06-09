@@ -49,6 +49,8 @@ import {
   SquarePower,
   MonitorUp,
   QrCode,
+  MessageCircleWarning,
+  ShieldAlert,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -463,6 +465,29 @@ const DocsHeaderValues = {
         icon: QrCode,
         label: "Token Expiry",
         color: "text-rose-400",
+      },
+    ],
+  },
+  docsRateLimiting: {
+    tag: "Integration Guide",
+    title: "Rate Limiting",
+    description:
+      "Manage and analyze your rate limiting settings within your application for optimal performance and security.",
+    features: [
+      {
+        icon: MessageCircleWarning,
+        label: "Abuse Protection",
+        color: "text-sky-400",
+      },
+      {
+        icon: ShieldAlert,
+        label: "Attack Prevention",
+        color: "text-red-400",
+      },
+      {
+        icon: Database,
+        label: "Server Load Control",
+        color: "text-pink-400",
       },
     ],
   },

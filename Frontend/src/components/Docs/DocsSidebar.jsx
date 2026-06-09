@@ -235,7 +235,7 @@ export default function DocsSidebar() {
           <SidebarItem
             text="Rate Limiting Reference"
             icon={<TriangleAlert size={16} />}
-            path="/docs/rate-limiting"
+            path="/docs/rate-limiting-reference"
             setIsOpen={setIsOpen}
           />
           <SidebarItem
