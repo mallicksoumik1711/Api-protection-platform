@@ -51,6 +51,9 @@ import {
   QrCode,
   MessageCircleWarning,
   ShieldAlert,
+  Blocks,
+  LockKeyhole,
+  BatteryCharging,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -488,6 +491,29 @@ const DocsHeaderValues = {
         icon: Database,
         label: "Server Load Control",
         color: "text-pink-400",
+      },
+    ],
+  },
+  docsIntegrationInsights: {
+    tag: "Integration Guide",
+    title: "Integration Insights",
+    description:
+      "Gain insights into your integrations within your application for better decision-making and optimization.",
+    features: [
+      {
+        icon: Blocks,
+        label: "Integrated Analytics",
+        color: "text-violet-400",
+      },
+      {
+        icon: LockKeyhole,
+        label: "Integration Security",
+        color: "text-amber-400",
+      },
+      {
+        icon: BatteryCharging,
+        label: "Performance Optimization",
+        color: "text-green-400",
       },
     ],
   },

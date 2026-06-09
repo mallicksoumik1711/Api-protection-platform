@@ -27,6 +27,7 @@ import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
 import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
 import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
+import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -97,6 +98,7 @@ function RoutePage() {
           path="/docs/rate-limiting-reference"
           element={<RateLimitingReferenceDoc />}
         />
+        <Route path="/docs/integration-insights" element={<IntegrationInsightsDoc />}/>
 
         {/* Dashboard */}
 
