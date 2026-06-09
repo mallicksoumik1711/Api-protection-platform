@@ -24,6 +24,7 @@ import FavouritesDoc from "../pages/Documents/monitoring/FavouritesDoc";
 import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
 import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDoc";
 import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
+import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -80,9 +81,13 @@ function RoutePage() {
         <Route path="/docs/logs" element={<LogsDoc />} />
         <Route path="/docs/favorites" element={<FavouritesDoc />} />
         <Route path="/docs/projects-center" element={<AllProjectCenterDoc />} />
-        <Route path="/docs/project-templates" element={<ProjectTemplatesDoc />} />
+        <Route
+          path="/docs/project-templates"
+          element={<ProjectTemplatesDoc />}
+        />
         <Route path="/docs/key-management" element={<KeyManagementDoc />} />
-        
+        <Route path="/docs/access-control" element={<ProtectedApiDoc />} />
+
         <Route
           path="/frontpage"
           element={

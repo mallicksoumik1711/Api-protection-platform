@@ -47,6 +47,7 @@ import {
   LucideUserRoundCheck,
   KeySquare,
   SquarePower,
+  MonitorUp,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -415,6 +416,29 @@ const DocsHeaderValues = {
         icon: SquarePower,
         label: "Limit Control",
         color: "text-blue-400",
+      },
+    ],
+  },
+  docsProtectedApi: {
+    tag: "Integration Guide",
+    title: "Protected APIs",
+    description:
+      "Manage and analyze your protected APIs within your application for enhanced security and control.",
+    features: [
+      {
+        icon: BadgeAlert,
+        label: "Secures Endpoints",
+        color: "text-emerald-400",
+      },
+      {
+        icon: MonitorUp,
+        label: "Monitor Traffic",
+        color: "text-blue-400",
+      },
+      {
+        icon: Globe,
+        label: "Route Access Control",
+        color: "text-rose-400",
       },
     ],
   },
