@@ -250,12 +250,6 @@ export default function DocsSidebar() {
             path="/docs/logs-activity"
             setIsOpen={setIsOpen}
           />
-          <SidebarItem
-            text="User Profile Scenarios"
-            icon={<Users size={16} />}
-            path="/docs/user-profile"
-            setIsOpen={setIsOpen}
-          />
         </div>
       </aside>
     </>
