@@ -28,6 +28,7 @@ import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
 import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
 import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
+import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
@@ -99,6 +100,7 @@ function RoutePage() {
           element={<RateLimitingReferenceDoc />}
         />
         <Route path="/docs/integration-insights" element={<IntegrationInsightsDoc />}/>
+        <Route path="/docs/logs-activity" element={<LogsActivityReferenceDoc />} />
 
         {/* Dashboard */}
 

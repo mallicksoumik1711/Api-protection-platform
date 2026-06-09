@@ -54,6 +54,9 @@ import {
   Blocks,
   LockKeyhole,
   BatteryCharging,
+  ScanHeart,
+  Radar,
+  Keyboard,
 } from "lucide-react";
 
 const DocsHeaderValues = {
@@ -514,6 +517,29 @@ const DocsHeaderValues = {
         icon: BatteryCharging,
         label: "Performance Optimization",
         color: "text-green-400",
+      },
+    ],
+  },
+  docsLogsActivityReference: {
+    tag: "Integration Guide",
+    title: "Logs Activity Reference",
+    description:
+      "Gain insights into your logs activity within your application for better monitoring and troubleshooting.",
+    features: [
+      {
+        icon: Keyboard,
+        label: "API Usage",
+        color: "text-sky-400",
+      },
+      {
+        icon: Radar,
+        label: "Security Events",
+        color: "text-violet-400",
+      },
+      {
+        icon: ScanHeart,
+        label: "Performance Metrics",
+        color: "text-blue-400",
       },
     ],
   },
