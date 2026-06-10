@@ -23,9 +23,14 @@ export default function Footer() {
         >
           {/* Left - Brand */}
           <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-5 text-center sm:text-left">
-            <h1 className="text-3xl sm:text-3xl font-bold tracking-wide">
+            <h2
+              className="text-7xl font-bold text-transparent tracking-tight"
+              style={{
+                WebkitTextStroke: "1px rgb(113 113 122)", // zinc-500
+              }}
+            >
               BOUNCER
-            </h1>
+            </h2>
             <p className="text-xs sm:text-sm text-white/60 max-w-xs">
               Bouncer® play with <br className="hidden sm:block" />
               the world
