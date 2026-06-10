@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-const screenshot = "/screens/Frontpage.PNG";
-const screenshotResponsive = "/screens/Frontpage-mobile.PNG";
+const screenshot = "/screens/test-frontpage.png";
+const screenshotResponsive = "/screens/test-frontpage-responsive.png";
 
 export default function ScreenshotSection() {
   const [pos, setPos] = useState({ x: 0, y: 0 });
