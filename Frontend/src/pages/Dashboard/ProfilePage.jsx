@@ -105,16 +105,6 @@ function ProfilePage() {
       field: "status",
     },
     {
-      icon: <KeyRound size={18} />,
-      color: "rose",
-      title: "Password Hash",
-      desc: "Encrypted user password",
-      value: `${user?.password.slice(0, 25)}...`,
-      copy: true,
-      field: "password",
-      fullValue: user?.password,
-    },
-    {
       icon: <CalendarDays size={18} />,
       color: "cyan",
       title: "Created At",
