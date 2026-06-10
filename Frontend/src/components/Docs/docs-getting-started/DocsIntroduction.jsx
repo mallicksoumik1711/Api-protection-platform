@@ -148,7 +148,7 @@ export default function DocsIntroduction() {
             </p>
           </section>
 
-          <section id="best-practices" className="mt-16 mb-24">
+          <section id="best-practices" className="mt-16">
             <h2 className="text-xl font-semibold">Best Practices</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
