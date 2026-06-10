@@ -61,7 +61,9 @@ app.use(async (req, res, next) => {
       headers: {
         "Content-Type": "application/json",
         "x-api-key": "YOUR_API_KEY",
-        "Authorization": req.headers.authorization || "",
+        "Authorization": req.cookies.token
+        ? \`Bearer \${req.cookies.token}\`
+        : "",
       },
       body: JSON.stringify({
         projectId: "${project?.projectId ?? "your_project_id"}",
