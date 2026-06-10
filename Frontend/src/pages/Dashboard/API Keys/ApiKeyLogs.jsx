@@ -2,9 +2,11 @@ import { useState, useEffect } from "react";
 import { getApiLogs } from "../../../api/apilogs";
 import DashboardHeader from "../../../components/DashboardHeader";
 import DashboardHeaderValues from "../../../utils/HelperFunctions/DashboardHeaderValues";
+import ApiLogsSkeleton from "../../../layouts/skeletons/ApiLogsSkeleton";
 
 function ApiKeyLogs() {
   const [logs, setLogs] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchLogs = async () => {
@@ -13,11 +15,17 @@ function ApiKeyLogs() {
         setLogs(data);
       } catch (err) {
         console.error("Failed to fetch API logs:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
     fetchLogs();
   }, []);
+
+  if (loading) {
+    return <ApiLogsSkeleton />;
+  }
 
   const groupedLogs = [];
 
@@ -62,7 +70,9 @@ function ApiKeyLogs() {
             <span className="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-950/40 text-emerald-400 border border-emerald-800/50">
               Live Preview
             </span>
-            <span className="text-xs text-zinc-500 hidden sm:block">Updated just now</span>
+            <span className="text-xs text-zinc-500 hidden sm:block">
+              Updated just now
+            </span>
           </div>
         </div>
 
