@@ -1,4 +1,13 @@
-import { Compass, HardHat, House, LogOut, Logs, Settings } from "lucide-react";
+import {
+  Book,
+  BookOpen,
+  Compass,
+  HardHat,
+  House,
+  LogOut,
+  Logs,
+  Settings,
+} from "lucide-react";
 import { useNavigate } from "react-router";
 import { logoutUser } from "../api/auth";
 import toast from "react-hot-toast";
@@ -83,7 +92,15 @@ export default function UserMenu({ user, capitalize, setIsOpen, setShowMenu }) {
             setShowMenu(false);
           }}
         />
-        <Item text="Docs" icon={<Settings size={16} />} />
+        <Item
+          text="Docs"
+          icon={<BookOpen size={16} />}
+          onClick={() => {
+            window.open("/docs/introduction", "_blank");
+            setIsOpen(false);
+            setShowMenu(false);
+          }}
+        />
         <Item
           text="Log Out"
           icon={<LogOut size={16} />}
