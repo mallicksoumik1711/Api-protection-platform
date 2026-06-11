@@ -99,8 +99,22 @@ export default function FeaturesStrip() {
   ];
 
   return (
-    <section className="relative z-10 bg-gradient-to-br from-black via-slate-900 to-black text-white py-16 md:py-24 px-4 sm:px-6 w-full md:w-3/4 mx-auto md:my-20">
-      
+    <section className="relative z-10 bg-gradient-to-br from-black via-slate-900 to-black text-white py-12 px-4 sm:px-6 w-full md:w-3/4 mx-auto md:my-20 sm:rounded-xl">
+      <div className="mb-10 md:mb-16">
+        <p className="text-[10px] sm:text-xs text-white/40 tracking-widest mb-3 md:mb-4">
+          What Bouncer Delivers
+        </p>
+
+        <div className="flex flex-col md:flex-row md:items-center md:gap-10">
+          <h2 className="text-xl sm:text-2xl md:text-5xl font-semibold leading-tight">
+            What you Can Expect
+            <br />
+            From This Platform
+          </h2>
+
+          <div className="hidden md:block flex-1 h-[1px] bg-white/10 mt-4 md:mt-0" />
+        </div>
+      </div>
       <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-3">
         {features.map((item, i) => (
           <div
