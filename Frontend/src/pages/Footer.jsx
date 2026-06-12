@@ -14,22 +14,31 @@ export default function Footer() {
 
         {/* Bottom Bar */}
         <div className="flex flex-col md:flex-row items-center justify-between px-6 md:px-10 gap-4 mt-8">
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-white/50">
             © 2026 Bouncer. All rights reserved.
           </p>
 
-          <div className="flex items-center gap-6 text-zinc-500">
-            <a href="#" className="hover:text-white transition text-sm">
-              LinkedIn
-            </a>
+          <div className="flex items-center gap-6 text-white/50">
+            <div className="flex items-center gap-2 hover:text-white transition">
+              <FaLinkedin />
+              <a href="#" className="text-sm">
+                LinkedIn
+              </a>
+            </div>
 
-            <a href="#" className="hover:text-white transition text-sm">
-              GitHub
-            </a>
+            <div className="flex items-center gap-2 hover:text-white transition">
+              <FaSquareGithub />
+              <a href="#" className="text-sm">
+                GitHub
+              </a>
+            </div>
 
-            <a href="#" className="hover:text-white transition text-sm">
-              Twitter
-            </a>
+            <div className="flex items-center gap-2 hover:text-white transition">
+              <FaSquareXTwitter />
+              <a href="#" className="text-sm">
+                Twitter
+              </a>
+            </div>
           </div>
         </div>
       </div>
