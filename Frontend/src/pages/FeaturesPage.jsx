@@ -85,7 +85,7 @@ export default function FeaturesPage() {
           {/* Right */}
           <button
             onClick={() => navigate("/signin")}
-            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black font-medium hover:bg-white/90 transition oswald-text"
+            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black font-medium transition hover:bg-white/10 hover:text-white oswald-text cursor-pointer"
           >
             Start Now →
           </button>
