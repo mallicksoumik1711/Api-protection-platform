@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="relative z-10 flex flex-col justify-between">
         {/* Logo Text */}
         <div className="px-6 flex items-center justify-center sm:inline">
-          <h1 className="text-[4rem] sm:text-[8rem] font-black tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-br from-black/70 via-slate-900 to-black/30">
+          <h1 className="text-[5rem] sm:text-[10rem] font-black tracking-tight leading-none text-transparent bg-clip-text bg-gradient-to-br from-black/10 via-slate-900 to-black/20 anton-regular">
             BOUNCER
           </h1>
         </div>

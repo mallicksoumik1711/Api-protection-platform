@@ -9,7 +9,7 @@ export default function ScreenshotSection() {
           Inside The Bouncer Dashboard
         </p>
 
-        <div className="flex flex-col md:flex-row md:items-center md:gap-10">
+        <div className="flex flex-col md:flex-row md:items-center md:gap-10 oswald-text">
           <h2 className="text-xl sm:text-2xl md:text-5xl font-semibold leading-tight">
             One Platform For Monitoring,
             <br />

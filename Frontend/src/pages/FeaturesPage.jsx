@@ -11,7 +11,7 @@ export default function FeaturesPage() {
     {
       id: "02",
       title: "Create API Keys for the activated Project",
-      desc: "Activate your subscription with just a click — no forms, no hassle.",
+      desc: "Activate your subscription with just a click no forms, no hassle.",
     },
     {
       id: "03",
@@ -35,7 +35,7 @@ export default function FeaturesPage() {
             4 SIMPLE STEPS
           </p>
 
-          <div className="flex flex-col md:flex-row md:items-center md:gap-10">
+          <div className="flex flex-col md:flex-row md:items-center md:gap-10 oswald-text">
             <h2 className="text-xl sm:text-2xl md:text-5xl font-semibold leading-tight">
               Effortless Process,
               <br />
@@ -61,7 +61,7 @@ export default function FeaturesPage() {
                   <p className="text-sm sm:text-base text-white/40 mb-2 sm:mb-3">
                     {step.id}.
                   </p>
-                  <h3 className="text-xs sm:text-lg md:text-2xl font-medium mb-2 sm:mb-3">
+                  <h3 className="text-2xl sm:text-3xl font-medium mb-2 sm:mb-3 oswald-text">
                     {step.title}
                   </h3>
                 </div>
@@ -77,7 +77,7 @@ export default function FeaturesPage() {
         <div className="mt-8 md:mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6 bg-white/[0.03] border border-white/10 rounded-xl px-4 sm:px-6 py-4">
           {/* Left */}
           <div className="flex items-center gap-3 sm:gap-4">
-            <p className="text-xs sm:text-sm text-white/60">
+            <p className="text-white/60 oswald-text">
               Trusted by teams building modern APIs
             </p>
           </div>
@@ -85,7 +85,7 @@ export default function FeaturesPage() {
           {/* Right */}
           <button
             onClick={() => navigate("/signin")}
-            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black text-xs sm:text-sm font-medium hover:bg-white/90 transition"
+            className="flex items-center gap-2 px-4 sm:px-5 py-2 rounded-md bg-white text-black font-medium hover:bg-white/90 transition oswald-text"
           >
             Start Now →
           </button>
