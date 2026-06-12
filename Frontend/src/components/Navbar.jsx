@@ -75,14 +75,14 @@ export default function Navbar() {
               alt="Bouncer Logo"
               className="w-8"
             />
-            <span className="text-gray-100">Bouncer</span>
+            <span className="text-gray-100 oswald-text">BOUNCER</span>
           </div>
 
           {/* Desktop Buttons */}
           <div className="hidden md:flex items-center justify-center gap-3">
             <button
               onClick={() => navigate("/signin")}
-              className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/10 text-white hover:bg-white/10"
+              className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 oswald-text"
             >
               Start Securing
               <MoveRight size={14} />
@@ -127,7 +127,7 @@ export default function Navbar() {
                 setIsMenuOpen(false);
                 navigate("/signin");
               }}
-              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full mb-2"
+              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full mb-2 oswald-text"
             >
               Start Securing
               <MoveRight size={14} />
@@ -141,7 +141,7 @@ export default function Navbar() {
                   "_blank",
                 );
               }}
-              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full"
+              className="flex bg-zinc-950/50 items-center justify-center gap-2 px-6 py-3 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 w-full oswald-text"
             >
               <FaGithub size={18} />
               GitHub

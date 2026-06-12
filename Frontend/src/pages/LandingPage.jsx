@@ -17,15 +17,15 @@ export default function LandingPage() {
         <section className="relative min-h-screen flex items-center justify-center">
           <Navbar />
           <div className="relative z-20 flex flex-col items-center text-center px-4 xs:px-6 sm:px-10 max-w-8xl mx-auto lg:mt-10 mt-18">
-            <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.05] xs:leading-tight">
+            <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.2] anton-regular">
               Supercharge your API Protection
               <br />
-              <span className="bg-gradient-to-r from-[#8e9eab] to-[#eef2f3] bg-clip-text text-transparent">
+              <span className="">
                 with Bouncer
               </span>
             </h1>
 
-            <p className="mt-6 sm:mt-8 max-w-3xl text-base sm:text-lg md:text-2xl lg:text-3xl font-medium text-white/80 px-2 sm:px-0">
+            <p className="oswald-text leading-[1.2] mt-6 sm:mt-8 max-w-3xl text-xl sm:text-4xl text-white/80 px-2 sm:px-0">
               The fastest API Protection Platform
               <br className="" />
               For Modern Applications
