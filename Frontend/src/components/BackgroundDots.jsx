@@ -12,7 +12,7 @@ export default function BackgroundDots() {
     let width, height, raf;
 
     const DOT_RADIUS = 1;
-    const DOT_SPACING = 16;
+    const DOT_SPACING = 12;
     const OPACITY = 0.3;
     const REPEL_RADIUS = 120;
     const DAMPING = 0.92;
