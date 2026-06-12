@@ -49,22 +49,11 @@ export default function Navbar() {
   return (
     <>
       <div
-        className={`
-          fixed top-10 left-0 w-full flex justify-center z-50 px-4
-          transition-transform duration-300 ease-out
-          ${show ? "translate-y-0" : "-translate-y-32"}
+        className={`fixed top-10 left-0 w-full flex justify-center z-50 px-4 transition-transform duration-300 ease-out 
+        ${show ? "translate-y-0" : "-translate-y-32"}
         `}
       >
-        <nav
-          className="
-            flex items-center justify-between
-            w-full max-w-4xl
-            rounded-md
-            px-6 py-2
-            bg-white/10 backdrop-blur-sm
-            shadow-[0_8px_32px_rgba(0,0,0,0.35)]
-          "
-        >
+        <nav className="flex items-center justify-betweenw-full max-w-4xlrounded-mdpx-6 py-2bg-white/10 backdrop-blur-smshadow-[0_8px_32px_rgba(0,0,0,0.35)]">
           {/* Logo */}
           <div
             onClick={() => navigate("/")}
@@ -82,7 +71,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center justify-center gap-3">
             <button
               onClick={() => navigate("/signin")}
-              className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 oswald-text"
+              className="flex items-center gap-2 px-6 py-2 text-sm rounded-md border border-white/10 text-white hover:bg-white/10 oswald-text tracking-wide"
             >
               Start Securing
               <MoveRight size={14} />

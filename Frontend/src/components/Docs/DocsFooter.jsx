@@ -29,7 +29,7 @@ const DocsFooter = () => {
           <div className="w-full lg:w-72 lg:pr-12">
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left">
               <h2
-                className="text-7xl font-bold text-transparent tracking-tight"
+                className="text-7xl font-bold text-transparent tracking-wider anton-regular"
                 style={{
                   WebkitTextStroke: "1px rgb(113 113 122)", // zinc-500
                 }}

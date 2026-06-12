@@ -74,7 +74,7 @@ export default function DocsSidebar() {
           <img src="/asset/Images/bouncer.png" alt="Logo" className="w-6 h-6" />
 
           <div>
-            <p className="text-sm font-semibold text-zinc-100">BOUNCER Docs</p>
+            <p className="font-semibold text-zinc-100 oswald-text tracking-wide">BOUNCER Docs</p>
           </div>
         </div>
 
