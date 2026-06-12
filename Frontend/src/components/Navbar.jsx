@@ -53,7 +53,7 @@ export default function Navbar() {
         ${show ? "translate-y-0" : "-translate-y-32"}
         `}
       >
-        <nav className="flex items-center justify-betweenw-full max-w-4xlrounded-mdpx-6 py-2bg-white/10 backdrop-blur-smshadow-[0_8px_32px_rgba(0,0,0,0.35)]">
+        <nav className="flex items-center justify-between w-full max-w-4xl rounded-md px-6 py-2 bg-white/10 backdrop-blur-sm shadow-[0_8px_32px_rgba(0,0,0,0.35)]">
           {/* Logo */}
           <div
             onClick={() => navigate("/")}
