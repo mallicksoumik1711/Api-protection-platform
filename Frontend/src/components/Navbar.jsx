@@ -60,7 +60,7 @@ export default function Navbar() {
             className="flex items-center gap-2 cursor-pointer"
           >
             <img
-              src="/asset/Images/bouncer.png"
+              src="/logo/bouncer.png"
               alt="Bouncer Logo"
               className="w-8"
             />

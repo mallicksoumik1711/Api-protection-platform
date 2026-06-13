@@ -83,7 +83,7 @@ export default function Sidebar() {
           onClick={() => navigate("/frontpage")}
           className="px-4 py-4 border-b border-zinc-800 flex items-center gap-2 cursor-pointer"
         >
-          <img className="w-6 h-6" src="/asset/Images/bouncer.png" alt="Logo" />
+          <img className="w-6 h-6" src="/logo/bouncer.png" alt="Logo" />
           <p className="text-sm font-medium text-zinc-200 ">
             {user?.name ? `${capitalize(user.name)}'s projects` : "BOUNCER"}
           </p>

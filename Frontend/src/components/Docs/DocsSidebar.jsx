@@ -71,7 +71,7 @@ export default function DocsSidebar() {
           onClick={() => navigate("/")}
           className="px-5 py-4 border-b border-zinc-800 flex items-center gap-3 cursor-pointer"
         >
-          <img src="/asset/Images/bouncer.png" alt="Logo" className="w-6 h-6" />
+          <img src="/logo/bouncer.png" alt="Logo" className="w-6 h-6" />
 
           <div>
             <p className="font-semibold text-zinc-100 oswald-text tracking-wide">BOUNCER Docs</p>
