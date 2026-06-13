@@ -1,6 +1,8 @@
 import TablesOfContents from "../TableOfContents";
+import { useNavigate } from "react-router-dom";
 
 export default function DocsIntroduction() {
+  const navigate = useNavigate();
   const sections = [
     {
       id: "bouncer-documentation",
@@ -70,14 +72,17 @@ export default function DocsIntroduction() {
 
             <p className="mt-8 text-base leading-8 text-zinc-400">
               See the{" "}
-              <button className="underline underline-offset-4 hover:text-blue-600">
+              <button
+                onClick={() => navigate("/docs/quickstart")}
+                className="cursor-pointer text-blue-400 transition hover:text-blue-600"
+              >
                 Quick Start Guide
               </button>{" "}
               for more information.
             </p>
           </section>
 
-          <section id="core-capabilities" className="mt-16">
+          <section id="core-capabilities" className="mt-8">
             <h2 className="text-xl font-semibold">Core Capabilities</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
@@ -95,7 +100,7 @@ export default function DocsIntroduction() {
             </p>
           </section>
 
-          <section id="identity-access" className="mt-16">
+          <section id="identity-access" className="mt-8">
             <h2 className="text-xl font-semibold">
               Identity & Access Management
             </h2>
@@ -114,7 +119,7 @@ export default function DocsIntroduction() {
             </p>
           </section>
 
-          <section id="threat-detection" className="mt-16">
+          <section id="threat-detection" className="mt-8">
             <h2 className="text-xl font-semibold">
               Threat Detection & Response
             </h2>
@@ -132,7 +137,7 @@ export default function DocsIntroduction() {
             </p>
           </section>
 
-          <section id="integrations" className="mt-16">
+          <section id="integrations" className="mt-8">
             <h2 className="text-xl font-semibold">Integrations & APIs</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
@@ -148,7 +153,7 @@ export default function DocsIntroduction() {
             </p>
           </section>
 
-          <section id="best-practices" className="mt-16">
+          <section id="best-practices" className="mt-8">
             <h2 className="text-xl font-semibold">Best Practices</h2>
 
             <p className="mt-2 text-base leading-8 text-zinc-400">
