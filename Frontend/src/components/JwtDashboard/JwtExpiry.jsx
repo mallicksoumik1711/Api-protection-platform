@@ -110,7 +110,7 @@ function JwtExpiry({ formData, setFormData }) {
       </div>
 
       <p className="mt-2 text-xs text-zinc-500 leading-relaxed">
-        Short expiry (e.g. 15m–1h) is recommended for better security.
+        Short expiry (e.g. 15m-1h) is recommended for better security.
       </p>
     </div>
   );
