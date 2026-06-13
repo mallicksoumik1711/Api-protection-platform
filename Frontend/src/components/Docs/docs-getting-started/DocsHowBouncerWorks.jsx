@@ -1,4 +1,5 @@
 import TablesOfContents from "../TableOfContents";
+import { Dot } from "lucide-react";
 
 function DocsHowBouncerWorks() {
   const sections = [
@@ -92,8 +93,8 @@ function DocsHowBouncerWorks() {
 
             <div className="mt-6 rounded-xl border border-zinc-800 bg-zinc-950/50 overflow-hidden">
               <div className="p-4 text-xs font-mono text-zinc-300 overflow-x-auto">
-                <div className="space-y-1 min-w-max">
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                <div className="min-w-max">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-emerald-400 font-medium flex-shrink-0">
                       200
                     </span>
@@ -101,12 +102,12 @@ function DocsHowBouncerWorks() {
                     <span className="text-emerald-300">
                       Request validation passed successfully
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • OK
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> OK
                     </span>
                   </div>
 
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-amber-400 font-medium flex-shrink-0">
                       400
                     </span>
@@ -114,12 +115,12 @@ function DocsHowBouncerWorks() {
                     <span className="text-amber-300">
                       Invalid or malformed request data
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • Bad Request
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> Bad Request
                     </span>
                   </div>
 
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-yellow-400 font-medium flex-shrink-0">
                       401
                     </span>
@@ -127,12 +128,12 @@ function DocsHowBouncerWorks() {
                     <span className="text-yellow-300">
                       Authentication credentials missing or invalid
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • Unauthorized
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> Unauthorized
                     </span>
                   </div>
 
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-orange-400 font-medium flex-shrink-0">
                       403
                     </span>
@@ -140,12 +141,12 @@ function DocsHowBouncerWorks() {
                     <span className="text-orange-300">
                       Authenticated but lacks required permissions
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • Forbidden
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> Forbidden
                     </span>
                   </div>
 
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-sky-400 font-medium flex-shrink-0">
                       404
                     </span>
@@ -153,12 +154,12 @@ function DocsHowBouncerWorks() {
                     <span className="text-sky-300">
                       Requested route or resource not found
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • Not Found
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> Not Found
                     </span>
                   </div>
 
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-red-400 font-medium flex-shrink-0">
                       429
                     </span>
@@ -166,12 +167,12 @@ function DocsHowBouncerWorks() {
                     <span className="text-red-300">
                       Configured rate limit exceeded
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • Too Many Requests
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> Too Many Requests
                     </span>
                   </div>
 
-                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 py-1 flex items-center gap-2 whitespace-nowrap">
+                  <div className="group hover:bg-zinc-900/40 transition-colors rounded px-2 flex items-center gap-2 whitespace-nowrap">
                     <span className="w-12 text-rose-400 font-medium flex-shrink-0">
                       500
                     </span>
@@ -179,8 +180,8 @@ function DocsHowBouncerWorks() {
                     <span className="text-rose-300">
                       Unexpected server-side processing error
                     </span>
-                    <span className="text-zinc-600 ml-2 flex-shrink-0">
-                      • Internal Error
+                    <span className="flex justify-center items-center text-zinc-600 ml-2 flex-shrink-0">
+                      <Dot/> Internal Server Error
                     </span>
                   </div>
                 </div>
