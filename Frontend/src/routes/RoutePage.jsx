@@ -6,7 +6,7 @@ import ProtectedRoutes from "../utils/HelperFunctions/ProtectedRoutes";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 
-// Docs 
+// Docs
 import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
 import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
 import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
