@@ -55,8 +55,8 @@ function JwtSettings() {
       setTimeout(() => {
         navigate(`/project/${projectId}/rate-limit`);
       }, 1000);
-      console.log("Saving JWT response:", response);
-      console.log("Saving JWT payload:", payload);
+      // console.log("Saving JWT response:", response);
+      // console.log("Saving JWT payload:", payload);
     } catch (error) {
       toast.error("Failed to save JWT settings.");
       console.error("Failed to save JWT settings", error);

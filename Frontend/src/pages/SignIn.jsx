@@ -19,7 +19,7 @@ function SignIn() {
     }
     try {
       const submission = await handleLogin(email, password);
-      console.log("Login response:", submission);
+      // console.log("Login response:", submission);
       navigate("/frontpage");
     } catch (err) {
       console.log("Login error:", err);

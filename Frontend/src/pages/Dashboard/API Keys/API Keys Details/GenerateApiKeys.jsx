@@ -35,7 +35,7 @@ function GenerateApiKeys() {
       toast.success(
         "API Key generated successfully! Make sure to copy it now.",
       );
-      console.log("Generated API Key:", response.apiKey);
+      // console.log("Generated API Key:", response.apiKey);
     } catch (err) {
       toast.error("Failed to generate API key");
       console.error("Error generating API key:", err);

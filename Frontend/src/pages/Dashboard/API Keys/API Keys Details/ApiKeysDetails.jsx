@@ -41,10 +41,6 @@ function ApiKeysDetails() {
   const showKeyStatus = async () => {
     try {
       setLoadingStatus(true);
-
-      // for testing the loader. remove in the production
-      await new Promise((resolve) => setTimeout(resolve, 1000));
-
       const data = await getApiKeys();
       setApiKeyStatus(data);
     } catch (error) {

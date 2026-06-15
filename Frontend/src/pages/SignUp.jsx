@@ -26,7 +26,7 @@ function SignUp() {
     }
     try {
       const submission = await handleSignup(name, email, password);
-      console.log("Signup response:", submission);
+      // console.log("Signup response:", submission);
       navigate("/frontpage");
     } catch (error) {
       toast.error(error.message);
