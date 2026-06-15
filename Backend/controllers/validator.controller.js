@@ -109,14 +109,14 @@ const validateRequest = async (req, res) => {
         });
       }
 
-      console.log("Jwt validation start");
+      // console.log("Jwt validation start");
       try {
         const rawToken = apiToken.startsWith("Bearer ")
           ? apiToken.split(" ")[1]
           : apiToken;
-        console.log("Raw JWT token:", rawToken);
+        // console.log("Raw JWT token:", rawToken);
         const decoded = jwt.verify(rawToken, jwtSettings.secretKey);
-        console.log("Decoded JWT token:", decoded);
+        // console.log("Decoded JWT token:", decoded);
       } catch (error) {
         return res.json({
           allowed: false,
@@ -138,9 +138,9 @@ const validateRequest = async (req, res) => {
         }
       }
 
-      console.log("Rate limit key:", key);
-      console.log("Current count:", current);
-      console.log("Limit:", rateLimits.limit);
+      // console.log("Rate limit key:", key);
+      // console.log("Current count:", current);
+      // console.log("Limit:", rateLimits.limit);
 
       if (current > rateLimits.limit) {
         return res.json({

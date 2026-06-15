@@ -74,7 +74,7 @@ const loginUser = async (req, res) => {
       sameSite: "none",
     });
 
-    console.log("Login successful", token);
+    // console.log("Login successful", token);
     return res.status(200).send({ message: "Login successful.", token: token });
   } catch (err) {
     res.status(500).send({ message: err.message });

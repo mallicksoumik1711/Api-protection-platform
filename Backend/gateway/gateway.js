@@ -15,7 +15,7 @@ const runMiddleware = (middleware, req, res) => {
 };
 
 const gateway = async (req, res, next) => {
-  console.log("GATEWAY HIT:", req.path);
+  // console.log("GATEWAY HIT:", req.path);
   try {
     const route = `/${req.path.split("/")[1]}`; //get the base route
     const rule = rules[route];

@@ -4,7 +4,7 @@ const {getRequestCount, incrementRequestCount} = require("./projectRedis.service
 
 const projectRateLimit = async (req, res, next) => {
     try{
-        const projectId = req.headers["x-project-id"] || "project123"; //only for testing. remove in production
+        const projectId = req.headers["x-project-id"]; 
         if(!projectId){
             return res.status(400).json({message: "Project ID is required in x-project-id header"});
         }
