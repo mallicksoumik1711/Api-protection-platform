@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:3000/logs";
+const BASE_URL = "https://bouncer-u9t6.onrender.com/logs";
 
 export const getApiLogs = async () => {
   try {

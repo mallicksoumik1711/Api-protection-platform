@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "http://localhost:3000/apikeys";
+const BASE_URL = "https://bouncer-u9t6.onrender.com/apikeys";
 
 export const getApiKeysDetails = async () => {
   try {

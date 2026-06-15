@@ -47,7 +47,7 @@ function BackendIntegration() {
             <pre className="text-sm text-zinc-300">
               {`const generateProjectToken = async (userId) => {
   const response = await fetch(
-    "http://localhost:3000/apiauth/token",
+    "https://bouncer-u9t6.onrender.com/apiauth/token",
     {
       method: "POST",
       headers: {

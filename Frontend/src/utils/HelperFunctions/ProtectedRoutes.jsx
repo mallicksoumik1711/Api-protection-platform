@@ -12,7 +12,7 @@ function ProtectedRoutes({ children }) {
       // for testing. remove in production
       await new Promise((resolve) => setTimeout(resolve, 1000));
       try {
-        await axios.get("http://localhost:3000/auth/protected", {
+        await axios.get("https://bouncer-u9t6.onrender.com/auth/protected", {
           withCredentials: true,
         });
         setIsAuth(true);

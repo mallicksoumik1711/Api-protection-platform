@@ -3,7 +3,7 @@ import axios from "axios";
 export const handleLogin = async (email, password) => {
   try {
     const res = await axios.post(
-      "http://localhost:3000/auth/login",
+      "https://bouncer-u9t6.onrender.com/auth/login",
       { email, password },
       { withCredentials: true },
     );
@@ -20,7 +20,7 @@ export const handleLogin = async (email, password) => {
 export const handleSignup = async (name, email, password) => {
   try {
     const res = await axios.post(
-      "http://localhost:3000/auth/register",
+      "https://bouncer-u9t6.onrender.com/auth/register",
       {
         name,
         email,
@@ -41,7 +41,7 @@ export const handleSignup = async (name, email, password) => {
 export const logoutUser = async () => {
   try {
     const res = await axios.post(
-      "http://localhost:3000/auth/logout",
+      "https://bouncer-u9t6.onrender.com/auth/logout",
       {},
       {
         withCredentials: true,
@@ -58,7 +58,7 @@ export const logoutUser = async () => {
 
 export const getUser = async () => {
   try {
-    const res = await axios.get("http://localhost:3000/auth/me", {
+    const res = await axios.get("https://bouncer-u9t6.onrender.com/auth/me", {
       withCredentials: true,
     });
     return res.data.user;
@@ -73,7 +73,7 @@ export const getUser = async () => {
 export const updateUser = async (field, value) => {
   try {
     const res = await axios.put(
-      "http://localhost:3000/auth/update-me",
+      "https://bouncer-u9t6.onrender.com/auth/update-me",
       {
         field,
         value,

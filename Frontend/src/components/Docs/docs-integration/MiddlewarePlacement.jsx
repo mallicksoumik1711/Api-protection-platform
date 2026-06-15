@@ -26,7 +26,7 @@ app.use(async (req, res, next) => {
   }
 
   try {
-    const response = await fetch("http://localhost:3000/validate", {
+    const response = await fetch("https://bouncer-u9t6.onrender.com/validate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

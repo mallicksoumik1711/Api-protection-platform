@@ -56,7 +56,7 @@ app.use(async (req, res, next) => {
   }
 
   try {
-    const response = await fetch("http://localhost:3000/validate", {
+    const response = await fetch("https://bouncer-u9t6.onrender.com/validate", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -91,7 +91,7 @@ app.use(async (req, res, next) => {
   const tokenCode = `// Call this after user login/signup
 
 const generateToken = async (userId) => {
-  const response = await fetch("http://localhost:3000/apiauth/token", {
+  const response = await fetch("https://bouncer-u9t6.onrender.com/apiauth/token", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -381,7 +381,7 @@ console.log("JWT Token:", token);
             </div>
 
             <div className="text-xs sm:text-sm text-zinc-400 truncate text-right max-w-[45%]">
-              http://localhost:3000/validate
+              https://bouncer-u9t6.onrender.com/validate
             </div>
           </div>
         </div>
