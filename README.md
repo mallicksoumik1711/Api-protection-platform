@@ -6,16 +6,16 @@ Bouncer is a Node.js middleware platform that helps secure and monitor APIs with
 
 ## Features
 
-* API Key Authentication
-* Project-Based Access Control
-* Global and Project-Level Rate Limiting
-* Request Monitoring and Activity Logs
-* JWT Configuration Support
-* Route Protection
-* Middleware Integration
-* Redis-Based Request Counting
-* MongoDB Persistence
-* Dashboard for Managing Projects and Settings
+- API Key Authentication
+- Project-Based Access Control
+- Global and Project-Level Rate Limiting
+- Request Monitoring and Activity Logs
+- JWT Configuration Support
+- Route Protection
+- Middleware Integration
+- Redis-Based Request Counting
+- MongoDB Persistence
+- Dashboard for Managing Projects and Settings
 
 ---
 
@@ -23,16 +23,16 @@ Bouncer is a Node.js middleware platform that helps secure and monitor APIs with
 
 ### Frontend
 
-* React
-* Tailwind CSS
-* React Router
+- React
+- Tailwind CSS
+- React Router
 
 ### Backend
 
-* Node.js
-* Express.js
-* MongoDB Atlas
-* Redis / Upstash Redis
+- Node.js
+- Express.js
+- MongoDB Atlas
+- Redis / Upstash Redis
 
 ---
 
@@ -40,10 +40,10 @@ Bouncer is a Node.js middleware platform that helps secure and monitor APIs with
 
 Before running the project locally, make sure you have:
 
-* Node.js (v18 or later)
-* MongoDB Atlas connection string
-* Redis server or Upstash Redis database
-* npm
+- Node.js (v18 or later)
+- MongoDB Atlas connection string
+- Redis server or Upstash Redis database
+- npm
 
 ---
 
@@ -243,22 +243,22 @@ npm run preview
 
 Recommended:
 
-* Vercel
+- Vercel
 
 ### Backend
 
 Recommended:
 
-* Render
-* Railway
+- Render
+- Railway
 
 ### Database
 
-* MongoDB Atlas
+- MongoDB Atlas
 
 ### Redis
 
-* Upstash Redis
+- Upstash Redis
 
 ---
 
