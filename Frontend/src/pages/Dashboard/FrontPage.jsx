@@ -16,16 +16,22 @@ import {
 } from "lucide-react";
 import DashboardHeader from "../../components/DashboardHeader";
 import DashboardHeaderValues from "../../utils/HelperFunctions/DashboardHeaderValues";
-import { getProjects, deleteProject, toggleFavourite } from "../../api/projects";
+import {
+  getProjects,
+  deleteProject,
+  toggleFavourite,
+} from "../../api/projects";
 import { useSelector, useDispatch } from "react-redux";
 import { setProject, clearProject } from "../../store/projectSlice";
 import handleCopy from "../../utils/HelperFunctions/handleCopy";
 import DeleteProjectPopup from "../../components/DeleteProjectPopup";
 import { toast } from "react-hot-toast";
+import FrontpageSkeleton from "../../layouts/skeletons/FrontpageSkeleton";
 
 function FrontPage() {
   const [openMenuId, setOpenMenuId] = useState(null);
   const [projects, setProjects] = useState([]);
+  const [loadingProjects, setLoadingProject] = useState(false);
   const [searchProject, setSearchProject] = useState("");
   const [copied, setCopied] = useState(null);
   const navigate = useNavigate();
@@ -38,6 +44,7 @@ function FrontPage() {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
+        setLoadingProject(true);
         const res = await getProjects();
 
         let activeProjectId = selectedProject;
@@ -60,6 +67,8 @@ function FrontPage() {
         setProjects(updatedProjects);
       } catch (error) {
         console.error("Error fetching projects:", error);
+      } finally {
+        setLoadingProject(false);
       }
     };
 
@@ -121,7 +130,9 @@ function FrontPage() {
               Projects
             </h2>
 
-            {filteredProjects.length > 0 ? (
+            {loadingProjects ? (
+              <FrontpageSkeleton />
+            ) : filteredProjects.length > 0 ? (
               <div className="grid sm:grid-cols-2 gap-4">
                 {filteredProjects.map((project) => (
                   <div
@@ -301,10 +312,7 @@ function FrontPage() {
                 </div>
                 <p>
                   No projects yet.{" "}
-                  <Link
-                    to="/create-project"
-                    className="text-blue-400"
-                  >
+                  <Link to="/create-project" className="text-blue-400">
                     Create your first project
                   </Link>{" "}
                   and start monitoring, securing, and controlling your API
@@ -325,10 +333,12 @@ function FrontPage() {
           project={projectToDelete}
           onClose={() => setProjectToDelete(null)}
           onConfirm={async () => {
-            try{
+            try {
               await deleteProject(projectToDelete.projectId);
-              setProjects((prev) => prev.filter((p) => p.projectId !== projectToDelete.projectId));
-              if(selectedProject === projectToDelete.projectId){
+              setProjects((prev) =>
+                prev.filter((p) => p.projectId !== projectToDelete.projectId),
+              );
+              if (selectedProject === projectToDelete.projectId) {
                 dispatch(clearProject());
               }
               toast.success("Project deleted successfully");
