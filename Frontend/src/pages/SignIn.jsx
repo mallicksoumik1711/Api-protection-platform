@@ -1,15 +1,21 @@
+import { useState } from "react";
 import BackgroundDots from "../components/BackgroundDots";
 import Navbar from "../components/Navbar";
 import { handleLogin } from "../api/auth";
 import { useNavigate } from "react-router-dom";
+import ServerWakeupScreen from "../components/ServerWakeupScreen";
 
 import toast from "react-hot-toast";
 
 function SignIn() {
   const navigate = useNavigate();
+  const [showWakeupScreen, setShowWakeupScreen] = useState(false);
+  const [loginCompleted, setLoginCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const email = e.target.email.value;
     const password = e.target.password.value;
     if (!email || !password) {
@@ -17,13 +23,30 @@ function SignIn() {
       console.error("Email and password are required");
       return;
     }
+
+    setIsLoading(true);
+    const overlayTimeout = setTimeout(() => {
+      setShowWakeupScreen(true);
+    }, 5000);
+
     try {
-      const submission = await handleLogin(email, password);
-      // console.log("Login response:", submission);
-      navigate("/frontpage");
+      await handleLogin(email, password);
+      clearTimeout(overlayTimeout);
+      setLoginCompleted(true);
+
+      setTimeout(() => {
+        setShowWakeupScreen(false);
+        setLoginCompleted(false);
+        navigate("/frontpage");
+      }, 1000);
     } catch (err) {
+      clearTimeout(overlayTimeout);
+      setShowWakeupScreen(false);
+      setLoginCompleted(false);
       console.log("Login error:", err);
       toast.error(err.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -104,6 +127,7 @@ function SignIn() {
 
             <button
               type="submit"
+              disabled={isLoading}
               className="
                 flex items-center justify-center gap-3 
                 w-full py-3.5 
@@ -112,10 +136,10 @@ function SignIn() {
                 rounded-lg 
                 hover:bg-white/10 
                 transition-all duration-200
-                text-base font-medium
+                text-base font-medium disabled:opacity-50 disabled:pointer-events-none
               "
             >
-              Sign In
+              {isLoading ? "Signing In" : "Sign In"}
             </button>
           </form>
 
@@ -137,6 +161,7 @@ function SignIn() {
           </p>
         </div>
       </div>
+      <ServerWakeupScreen show={showWakeupScreen} completed={loginCompleted} />
     </div>
   );
 }

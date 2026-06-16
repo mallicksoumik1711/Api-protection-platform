@@ -1,36 +1,64 @@
+import { useState } from "react";
 import BackgroundDots from "../components/BackgroundDots";
 import Navbar from "../components/Navbar";
 import { useNavigate } from "react-router-dom";
 import { handleSignup } from "../api/auth";
+import ServerWakeupScreen from "../components/ServerWakeupScreen";
 
 import toast from "react-hot-toast";
 
 function SignUp() {
   const navigate = useNavigate();
+  const [showWakeupScreen, setShowWakeupScreen] = useState(false);
+  const [signupCompleted, setSignupCompleted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
     const confirmPassword = e.target.confirmPassword.value;
+
     if (!name || !email || !password || !confirmPassword) {
       toast.error("All fields are required");
-      console.error("All fields are required");
       return;
     }
+
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
-      console.error("Passwords do not match");
       return;
     }
+
+    setIsLoading(true);
+
+    const overlayTimeout = setTimeout(() => {
+      setShowWakeupScreen(true);
+    }, 5000);
+
     try {
-      const submission = await handleSignup(name, email, password);
-      // console.log("Signup response:", submission);
-      navigate("/frontpage");
+      await handleSignup(name, email, password);
+
+      clearTimeout(overlayTimeout);
+
+      setSignupCompleted(true);
+
+      setTimeout(() => {
+        setShowWakeupScreen(false);
+        setSignupCompleted(false);
+        navigate("/frontpage");
+      }, 1000);
     } catch (error) {
+      clearTimeout(overlayTimeout);
+
+      setShowWakeupScreen(false);
+      setSignupCompleted(false);
+
       toast.error(error.message);
       console.error("Signup error:", error);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -159,18 +187,21 @@ function SignUp() {
 
             <button
               type="submit"
+              disabled={isLoading}
               className="
-                flex items-center justify-center gap-3 
-                w-full py-3.5 
-                bg-white/5 
-                border border-white/10 
-                rounded-lg 
-                hover:bg-white/10 
-                transition-all duration-200
-                text-base font-medium
-              "
+    flex items-center justify-center gap-3 
+    w-full py-3.5 
+    bg-white/5 
+    border border-white/10 
+    rounded-lg 
+    hover:bg-white/10 
+    transition-all duration-200
+    text-base font-medium
+    disabled:opacity-50
+    disabled:pointer-events-none
+  "
             >
-              Sign Up
+              {isLoading ? "Creating Account" : "Sign Up"}
             </button>
           </form>
 
@@ -192,6 +223,7 @@ function SignUp() {
           </p>
         </div>
       </div>
+      <ServerWakeupScreen show={showWakeupScreen} completed={signupCompleted} />
     </div>
   );
 }
