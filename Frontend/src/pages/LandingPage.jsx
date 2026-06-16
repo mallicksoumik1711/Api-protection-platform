@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import ScrollRevealSection from "../components/ScrollRevealSection";
 import ScreenshotScroll from "../components/ScreenshotScroll";
 import FeaturesPage from "./FeaturesPage";
+import FAQs from "../components/FAQs"
 import Footer from "./Footer";
 
 export default function LandingPage() {
@@ -48,6 +49,10 @@ export default function LandingPage() {
 
       <ScrollRevealSection direction="up" duration="800" delay="100">
         <FeaturesPage />
+      </ScrollRevealSection>
+
+      <ScrollRevealSection direction="up" duration="800" delay="100">
+        <FAQs />
       </ScrollRevealSection>
 
       <ScrollRevealSection direction="up" duration="800" delay="100">

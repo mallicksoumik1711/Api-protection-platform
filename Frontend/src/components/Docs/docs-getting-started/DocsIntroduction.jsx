@@ -46,7 +46,7 @@ export default function DocsIntroduction() {
             Bouncer Documentation
           </h1>
 
-          <p className="mt-2 text-sm text-zinc-400">Last updated August 2026</p>
+          <p className="mt-2 text-sm text-zinc-400">Last updated June 2026</p>
 
           <p className="mt-2 leading-8 text-zinc-400">
             Bouncer helps organizations protect accounts, identities, and
