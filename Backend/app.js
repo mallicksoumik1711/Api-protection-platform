@@ -8,7 +8,7 @@ const cookieParser = require("cookie-parser");
 
 app.use(
   cors({
-    origin: ["http://localhost:5174", "https://bouncerapp.vercel.app"],
+    origin: ["http://localhost:5173", "https://bouncerapp.vercel.app"],
     credentials: true,
   }),
 );
