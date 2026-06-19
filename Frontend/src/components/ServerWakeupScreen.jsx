@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Check } from "lucide-react";
 
 export default function ServerWakeupScreen({ show, completed }) {
   const [progress, setProgress] = useState(0);
@@ -61,7 +62,9 @@ export default function ServerWakeupScreen({ show, completed }) {
     <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/30 backdrop-blur-xl px-4">
       <div className="w-full max-w-md rounded-2xl border border-white/10 bg-black/20 p-8 shadow-2xl">
         <div className="text-center">
-          <h2 className="text-2xl font-semibold text-white mb-3 anton-regular tracking-wide">BOUNCER</h2>
+          <h2 className="text-2xl font-semibold text-white mb-3 anton-regular tracking-wide">
+            BOUNCER
+          </h2>
 
           <p className="text-white/70 mb-8 oswald-text tracking-wide">
             {completed ? "Connection established" : "Starting secure services"}
@@ -79,7 +82,13 @@ export default function ServerWakeupScreen({ show, completed }) {
           </div>
 
           <div className="mt-8 text-white/80 min-h-[24px] oswald-text tracking-wide">
-            {completed ? "Connected ✓" : messages[messageIndex]}
+            {completed ? (
+              <div className="flex justify-center items-center gap-1">
+                Connected <Check size={18} />
+              </div>
+            ) : (
+              messages[messageIndex]
+            )}
           </div>
 
           <div className="mt-4 text-sm text-white/40">
