@@ -9,7 +9,10 @@ import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 import { RouteLoader } from "../utils/HelperFunctions/RouteLoader";
 
 // Docs
-import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
+// import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
+const IntroductionDoc = lazy(
+  () => import("../pages/Documents/getting-started/IntroductionDoc"),
+);
 // import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
 const QuickStartDoc = lazy(
   () => import("../pages/Documents/getting-started/QuickStartDoc"),
@@ -72,7 +75,14 @@ function RoutePage() {
         <Route path="/signup" element={<SignUp />} />
 
         {/* Docs */}
-        <Route path="/docs/introduction" element={<IntroductionDoc />} />
+        <Route
+          path="/docs/introduction"
+          element={
+            <RouteLoader>
+              <IntroductionDoc />
+            </RouteLoader>
+          }
+        />
         <Route
           path="/docs/quickstart"
           element={
