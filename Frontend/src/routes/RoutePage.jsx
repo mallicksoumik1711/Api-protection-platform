@@ -17,7 +17,10 @@ const IntroductionDoc = lazy(
 const QuickStartDoc = lazy(
   () => import("../pages/Documents/getting-started/QuickStartDoc"),
 );
-import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
+// import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
+const HowBouncerWorksDoc = lazy(
+  () => import("../pages/Documents/getting-started/HowBouncerWorksDoc"),
+);
 import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
 import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
 import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
@@ -91,7 +94,14 @@ function RoutePage() {
             </RouteLoader>
           }
         />
-        <Route path="/docs/architecture" element={<HowBouncerWorksDoc />} />
+        <Route
+          path="/docs/architecture"
+          element={
+            <RouteLoader>
+              <HowBouncerWorksDoc />
+            </RouteLoader>
+          }
+        />
         <Route path="/docs/integration-overview" element={<IntegrationDoc />} />
         <Route path="/docs/frontend-integration" element={<FrontendDoc />} />
         <Route path="/docs/backend-integration" element={<BackendDoc />} />
