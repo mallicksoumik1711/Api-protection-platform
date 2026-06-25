@@ -2,13 +2,18 @@ import LandingPage from "../pages/LandingPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import { Routes, Route } from "react-router-dom";
+import { lazy } from "react";
 import ProtectedRoutes from "../utils/HelperFunctions/ProtectedRoutes";
 import DashboardLayout from "../layouts/DashboardLayout";
 import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
+import { RouteLoader } from "../utils/HelperFunctions/RouteLoader";
 
 // Docs
 import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
-import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
+// import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
+const QuickStartDoc = lazy(
+  () => import("../pages/Documents/getting-started/QuickStartDoc"),
+);
 import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
 import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
 import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
@@ -68,7 +73,14 @@ function RoutePage() {
 
         {/* Docs */}
         <Route path="/docs/introduction" element={<IntroductionDoc />} />
-        <Route path="/docs/quickstart" element={<QuickStartDoc />} />
+        <Route
+          path="/docs/quickstart"
+          element={
+            <RouteLoader>
+              <QuickStartDoc />
+            </RouteLoader>
+          }
+        />
         <Route path="/docs/architecture" element={<HowBouncerWorksDoc />} />
         <Route path="/docs/integration-overview" element={<IntegrationDoc />} />
         <Route path="/docs/frontend-integration" element={<FrontendDoc />} />
@@ -99,8 +111,14 @@ function RoutePage() {
           path="/docs/rate-limiting-reference"
           element={<RateLimitingReferenceDoc />}
         />
-        <Route path="/docs/integration-insights" element={<IntegrationInsightsDoc />}/>
-        <Route path="/docs/logs-activity" element={<LogsActivityReferenceDoc />} />
+        <Route
+          path="/docs/integration-insights"
+          element={<IntegrationInsightsDoc />}
+        />
+        <Route
+          path="/docs/logs-activity"
+          element={<LogsActivityReferenceDoc />}
+        />
 
         {/* Dashboard */}
 
