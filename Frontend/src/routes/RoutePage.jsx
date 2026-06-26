@@ -53,7 +53,10 @@ const MiddlewareDoc = lazy(
 const TestingDoc = lazy(
   () => import("../pages/Documents/Integration/TestingDoc"),
 );
-import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
+// import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
+const TroubleshootingDoc = lazy(
+  () => import("../pages/Documents/Integration/TroubleshootingDoc"),
+);
 import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
 import FavouritesDoc from "../pages/Documents/monitoring/FavouritesDoc";
 import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
