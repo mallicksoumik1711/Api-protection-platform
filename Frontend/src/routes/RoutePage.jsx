@@ -37,7 +37,10 @@ const RateLimitDoc = lazy(
 const IntegrationDoc = lazy(
   () => import("../pages/Documents/Integration/IntegrationDoc"),
 );
-import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
+// import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
+const FrontendDoc = lazy(
+  () => import("../pages/Documents/Integration/FrontendDoc"),
+);
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
 import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 import TestingDoc from "../pages/Documents/Integration/TestingDoc";
