@@ -29,7 +29,10 @@ const ProtectedRoutesDoc = lazy(
 const JwtDoc = lazy(
   () => import("../pages/Documents/project-configuration/JwtDoc"),
 );
-import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
+// import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
+const RateLimitDoc = lazy(
+  () => import("../pages/Documents/project-configuration/RateLimitDoc"),
+);
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
