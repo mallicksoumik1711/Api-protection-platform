@@ -45,7 +45,10 @@ const FrontendDoc = lazy(
 const BackendDoc = lazy(
   () => import("../pages/Documents/Integration/BackendDoc"),
 );
-import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
+// import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
+const MiddlewareDoc = lazy(
+  () => import("../pages/Documents/Integration/MiddlewareDoc"),
+);
 import TestingDoc from "../pages/Documents/Integration/TestingDoc";
 import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
 import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
