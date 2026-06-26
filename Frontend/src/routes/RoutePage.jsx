@@ -33,7 +33,10 @@ const JwtDoc = lazy(
 const RateLimitDoc = lazy(
   () => import("../pages/Documents/project-configuration/RateLimitDoc"),
 );
-import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
+// import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
+const IntegrationDoc = lazy(
+  () => import("../pages/Documents/Integration/IntegrationDoc"),
+);
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 import BackendDoc from "../pages/Documents/Integration/BackendDoc";
 import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
