@@ -25,7 +25,10 @@ const HowBouncerWorksDoc = lazy(
 const ProtectedRoutesDoc = lazy(
   () => import("../pages/Documents/project-configuration/ProtectedRoutesDoc"),
 );
-import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
+// import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
+const JwtDoc = lazy(
+  () => import("../pages/Documents/project-configuration/JwtDoc"),
+);
 import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
