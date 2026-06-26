@@ -21,7 +21,10 @@ const QuickStartDoc = lazy(
 const HowBouncerWorksDoc = lazy(
   () => import("../pages/Documents/getting-started/HowBouncerWorksDoc"),
 );
-import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
+// import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
+const ProtectedRoutesDoc = lazy(
+  () => import("../pages/Documents/project-configuration/ProtectedRoutesDoc"),
+);
 import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
 import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
 import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
