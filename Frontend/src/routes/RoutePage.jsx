@@ -65,7 +65,10 @@ const LogsDoc = lazy(
 const FavouritesDoc = lazy(
   () => import("../pages/Documents/monitoring/FavouritesDoc"),
 );
-import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
+// import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
+const AllProjectCenterDoc = lazy(
+  () => import("../pages/Documents/project-management/AllProjectCenterDoc"),
+);
 import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDoc";
 import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
 import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
