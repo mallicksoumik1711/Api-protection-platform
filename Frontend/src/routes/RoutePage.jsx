@@ -77,7 +77,10 @@ const ProjectTemplatesDoc = lazy(
 const KeyManagementDoc = lazy(
   () => import("../pages/Documents/snapshots/KeyManagementDoc"),
 );
-import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
+// import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
+const ProtectedApiDoc = lazy(
+  () => import("../pages/Documents/snapshots/ProtectedApiDoc"),
+);
 import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
 import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
 import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
