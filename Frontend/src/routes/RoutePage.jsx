@@ -95,7 +95,7 @@ const IntegrationInsightsDoc = lazy(
 );
 // import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
 const LogsActivityReferenceDoc = lazy(
-  () => import("../pages/Documents/snapshots/LogsActivityreferenceDoc"),
+  () => import("../pages/Documents/snapshots/LogsActivityReferenceDoc"),
 );
 
 // Dashboard Pages
