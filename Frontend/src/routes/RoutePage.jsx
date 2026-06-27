@@ -9,91 +9,69 @@ import ProjectRouteGuard from "../utils/HelperFunctions/ProjectRouteGuard";
 import { RouteLoader } from "../utils/HelperFunctions/RouteLoader";
 
 // Docs
-// import IntroductionDoc from "../pages/Documents/getting-started/IntroductionDoc";
 const IntroductionDoc = lazy(
   () => import("../pages/Documents/getting-started/IntroductionDoc"),
 );
-// import QuickStartDoc from "../pages/Documents/getting-started/QuickStartDoc";
 const QuickStartDoc = lazy(
   () => import("../pages/Documents/getting-started/QuickStartDoc"),
 );
-// import HowBouncerWorksDoc from "../pages/Documents/getting-started/HowBouncerWorksDoc";
 const HowBouncerWorksDoc = lazy(
   () => import("../pages/Documents/getting-started/HowBouncerWorksDoc"),
 );
-// import ProtectedRoutesDoc from "../pages/Documents/project-configuration/ProtectedRoutesDoc";
 const ProtectedRoutesDoc = lazy(
   () => import("../pages/Documents/project-configuration/ProtectedRoutesDoc"),
 );
-// import JwtDoc from "../pages/Documents/project-configuration/JwtDoc";
 const JwtDoc = lazy(
   () => import("../pages/Documents/project-configuration/JwtDoc"),
 );
-// import RateLimitDoc from "../pages/Documents/project-configuration/RateLimitDoc";
 const RateLimitDoc = lazy(
   () => import("../pages/Documents/project-configuration/RateLimitDoc"),
 );
-// import IntegrationDoc from "../pages/Documents/Integration/IntegrationDoc";
 const IntegrationDoc = lazy(
   () => import("../pages/Documents/Integration/IntegrationDoc"),
 );
-// import FrontendDoc from "../pages/Documents/Integration/FrontendDoc";
 const FrontendDoc = lazy(
   () => import("../pages/Documents/Integration/FrontendDoc"),
 );
-// import BackendDoc from "../pages/Documents/Integration/BackendDoc";
 const BackendDoc = lazy(
   () => import("../pages/Documents/Integration/BackendDoc"),
 );
-// import MiddlewareDoc from "../pages/Documents/Integration/MiddlewareDoc";
 const MiddlewareDoc = lazy(
   () => import("../pages/Documents/Integration/MiddlewareDoc"),
 );
-// import TestingDoc from "../pages/Documents/Integration/TestingDoc";
 const TestingDoc = lazy(
   () => import("../pages/Documents/Integration/TestingDoc"),
 );
-// import TroubleshootingDoc from "../pages/Documents/Integration/TroubleshootingDoc";
 const TroubleshootingDoc = lazy(
   () => import("../pages/Documents/Integration/TroubleshootingDoc"),
 );
-// import LogsDoc from "../pages/Documents/monitoring/LogsDoc";
 const LogsDoc = lazy(
   () => import("../pages/Documents/monitoring/LogsDoc"),
 );
-// import FavouritesDoc from "../pages/Documents/monitoring/FavouritesDoc";
 const FavouritesDoc = lazy(
   () => import("../pages/Documents/monitoring/FavouritesDoc"),
 );
-// import AllProjectCenterDoc from "../pages/Documents/project-management/AllProjectCenterDoc";
 const AllProjectCenterDoc = lazy(
   () => import("../pages/Documents/project-management/AllProjectCenterDoc"),
 );
-// import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDoc";
 const ProjectTemplatesDoc = lazy(
   () => import("../pages/Documents/snapshots/ProjectTemplatesDoc"),
 );
-// import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
 const KeyManagementDoc = lazy(
   () => import("../pages/Documents/snapshots/KeyManagementDoc"),
 );
-// import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 const ProtectedApiDoc = lazy(
   () => import("../pages/Documents/snapshots/ProtectedApiDoc"),
 );
-// import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
 const JwtConfigurationsDoc = lazy(
   () => import("../pages/Documents/snapshots/JwtConfigurationsDoc"),
 );
-// import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
 const RateLimitingReferenceDoc = lazy(
   () => import("../pages/Documents/snapshots/RateLimitingReferenceDoc"),
 );
-// import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
 const IntegrationInsightsDoc = lazy(
   () => import("../pages/Documents/snapshots/IntegrationInsightsDoc"),
 );
-// import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
 const LogsActivityReferenceDoc = lazy(
   () => import("../pages/Documents/snapshots/LogsActivityReferenceDoc"),
 );
