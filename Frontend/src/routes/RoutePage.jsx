@@ -93,7 +93,10 @@ const RateLimitingReferenceDoc = lazy(
 const IntegrationInsightsDoc = lazy(
   () => import("../pages/Documents/snapshots/IntegrationInsightsDoc"),
 );
-import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
+// import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
+const LogsActivityReferenceDoc = lazy(
+  () => import("../pages/Documents/snapshots/LogsActivityreferenceDoc"),
+);
 
 // Dashboard Pages
 import FrontPage from "../pages/Dashboard/FrontPage";
