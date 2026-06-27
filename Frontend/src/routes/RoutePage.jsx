@@ -73,7 +73,10 @@ const AllProjectCenterDoc = lazy(
 const ProjectTemplatesDoc = lazy(
   () => import("../pages/Documents/snapshots/ProjectTemplatesDoc"),
 );
-import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
+// import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
+const KeyManagementDoc = lazy(
+  () => import("../pages/Documents/snapshots/KeyManagementDoc"),
+);
 import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
 import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
