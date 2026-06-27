@@ -69,7 +69,10 @@ const FavouritesDoc = lazy(
 const AllProjectCenterDoc = lazy(
   () => import("../pages/Documents/project-management/AllProjectCenterDoc"),
 );
-import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDoc";
+// import ProjectTemplatesDoc from "../pages/Documents/snapshots/ProjectTemplatesDoc";
+const ProjectTemplatesDoc = lazy(
+  () => import("../pages/Documents/snapshots/ProjectTemplatesDoc"),
+);
 import KeyManagementDoc from "../pages/Documents/snapshots/KeyManagementDoc";
 import ProtectedApiDoc from "../pages/Documents/snapshots/ProtectedApiDoc";
 import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
