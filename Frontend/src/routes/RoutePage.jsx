@@ -81,7 +81,10 @@ const KeyManagementDoc = lazy(
 const ProtectedApiDoc = lazy(
   () => import("../pages/Documents/snapshots/ProtectedApiDoc"),
 );
-import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
+// import JwtConfigurationsDoc from "../pages/Documents/snapshots/JwtConfigurationsDoc";
+const JwtConfigurationsDoc = lazy(
+  () => import("../pages/Documents/snapshots/JwtConfigurationsDoc"),
+);
 import RateLimitingReferenceDoc from "../pages/Documents/snapshots/RateLimitingReferenceDoc";
 import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
 import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
