@@ -45,9 +45,7 @@ const TestingDoc = lazy(
 const TroubleshootingDoc = lazy(
   () => import("../pages/Documents/Integration/TroubleshootingDoc"),
 );
-const LogsDoc = lazy(
-  () => import("../pages/Documents/monitoring/LogsDoc"),
-);
+const LogsDoc = lazy(() => import("../pages/Documents/monitoring/LogsDoc"));
 const FavouritesDoc = lazy(
   () => import("../pages/Documents/monitoring/FavouritesDoc"),
 );
@@ -137,42 +135,157 @@ function RoutePage() {
             </RouteLoader>
           }
         />
-        <Route path="/docs/integration-overview" element={<IntegrationDoc />} />
-        <Route path="/docs/frontend-integration" element={<FrontendDoc />} />
-        <Route path="/docs/backend-integration" element={<BackendDoc />} />
-        <Route path="/docs/middleware-placement" element={<MiddlewareDoc />} />
-        <Route path="/docs/testing-integration" element={<TestingDoc />} />
+        <Route
+          path="/docs/integration-overview"
+          element={
+            <RoutesLoader>
+              <IntegrationDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/frontend-integration"
+          element={
+            <RoutesLoader>
+              <FrontendDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/backend-integration"
+          element={
+            <RoutesLoader>
+              <BackendDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/middleware-placement"
+          element={
+            <RoutesLoader>
+              <MiddlewareDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/testing-integration"
+          element={
+            <RoutesLoader>
+              <TestingDoc />
+            </RoutesLoader>
+          }
+        />
         <Route
           path="/docs/integration-troubleshooting"
-          element={<TroubleshootingDoc />}
+          element={
+            <RoutesLoader>
+              <TroubleshootingDoc />
+            </RoutesLoader>
+          }
         />
-        <Route path="/docs/protected-routes" element={<ProtectedRoutesDoc />} />
-        <Route path="/docs/jwt-settings" element={<JwtDoc />} />
-        <Route path="/docs/rate-limiting" element={<RateLimitDoc />} />
-        <Route path="/docs/logs" element={<LogsDoc />} />
-        <Route path="/docs/favorites" element={<FavouritesDoc />} />
-        <Route path="/docs/projects-center" element={<AllProjectCenterDoc />} />
+        <Route
+          path="/docs/protected-routes"
+          element={
+            <RoutesLoader>
+              <ProtectedRoutesDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/jwt-settings"
+          element={
+            <RoutesLoader>
+              <JwtDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/rate-limiting"
+          element={
+            <RoutesLoader>
+              <RateLimitDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/logs"
+          element={
+            <RoutesLoader>
+              <LogsDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/favorites"
+          element={
+            <RoutesLoader>
+              <FavouritesDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/projects-center"
+          element={
+            <RoutesLoader>
+              <AllProjectCenterDoc />
+            </RoutesLoader>
+          }
+        />
         <Route
           path="/docs/project-templates"
-          element={<ProjectTemplatesDoc />}
+          element={
+            <RoutesLoader>
+              <ProjectTemplatesDoc />
+            </RoutesLoader>
+          }
         />
-        <Route path="/docs/key-management" element={<KeyManagementDoc />} />
-        <Route path="/docs/access-control" element={<ProtectedApiDoc />} />
+        <Route
+          path="/docs/key-management"
+          element={
+            <RoutesLoader>
+              <KeyManagementDoc />
+            </RoutesLoader>
+          }
+        />
+        <Route
+          path="/docs/access-control"
+          element={
+            <RoutesLoader>
+              <ProtectedApiDoc />
+            </RoutesLoader>
+          }
+        />
         <Route
           path="/docs/jwt-configurations"
-          element={<JwtConfigurationsDoc />}
+          element={
+            <RoutesLoader>
+              <JwtConfigurationsDoc />
+            </RoutesLoader>
+          }
         />
         <Route
           path="/docs/rate-limiting-reference"
-          element={<RateLimitingReferenceDoc />}
+          element={
+            <RoutesLoader>
+              <RateLimitingReferenceDoc />
+            </RoutesLoader>
+          }
         />
         <Route
           path="/docs/integration-insights"
-          element={<IntegrationInsightsDoc />}
+          element={
+            <RoutesLoader>
+              <IntegrationInsightsDoc />
+            </RoutesLoader>
+          }
         />
         <Route
           path="/docs/logs-activity"
-          element={<LogsActivityReferenceDoc />}
+          element={
+            <RoutesLoader>
+              <LogsActivityReferenceDoc />
+            </RoutesLoader>
+          }
         />
 
         {/* Dashboard */}
