@@ -138,153 +138,153 @@ function RoutePage() {
         <Route
           path="/docs/integration-overview"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <IntegrationDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/frontend-integration"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <FrontendDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/backend-integration"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <BackendDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/middleware-placement"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <MiddlewareDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/testing-integration"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <TestingDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/integration-troubleshooting"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <TroubleshootingDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/protected-routes"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <ProtectedRoutesDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/jwt-settings"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <JwtDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/rate-limiting"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <RateLimitDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/logs"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <LogsDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/favorites"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <FavouritesDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/projects-center"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <AllProjectCenterDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/project-templates"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <ProjectTemplatesDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/key-management"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <KeyManagementDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/access-control"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <ProtectedApiDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/jwt-configurations"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <JwtConfigurationsDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/rate-limiting-reference"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <RateLimitingReferenceDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/integration-insights"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <IntegrationInsightsDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
         <Route
           path="/docs/logs-activity"
           element={
-            <RoutesLoader>
+            <RouteLoader>
               <LogsActivityReferenceDoc />
-            </RoutesLoader>
+            </RouteLoader>
           }
         />
 
