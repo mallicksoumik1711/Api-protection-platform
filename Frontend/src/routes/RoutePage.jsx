@@ -89,7 +89,10 @@ const JwtConfigurationsDoc = lazy(
 const RateLimitingReferenceDoc = lazy(
   () => import("../pages/Documents/snapshots/RateLimitingReferenceDoc"),
 );
-import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
+// import IntegrationInsightsDoc from "../pages/Documents/snapshots/IntegrationInsightsDoc";
+const IntegrationInsightsDoc = lazy(
+  () => import("../pages/Documents/snapshots/IntegrationInsightsDoc"),
+);
 import LogsActivityReferenceDoc from "../pages/Documents/snapshots/LogsActivityreferenceDoc";
 
 // Dashboard Pages
